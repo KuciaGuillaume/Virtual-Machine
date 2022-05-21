@@ -1,0 +1,49 @@
+/// @Project by Kucia Guillaume* ///
+
+
+
+// CREATE ALL OBJECTS STOCKAGE
+
+CLASS = ["NULL", "NULL", room];
+global.OBJECTS = ["NULL"];
+
+// CREATE GLOBAL WRITE
+
+global.WRITE = ["NULL"];
+
+// CREATE GLOBAL TEXT
+
+global.TEXT = ["NULL"];
+
+// CREATE GLOBAL START STATE VARIABLES
+
+global.RstartMode = "START";
+
+// INIT_TIMER
+
+global.TIMER = 2;
+
+// CREATE USERS VARAIBLES
+
+STATE = "NULL";
+FIRST_NAME = "NULL";
+LAST_NAME = "NULL";
+EMAIL = "NULL";
+AGE = "NULL";
+PASSWORD = "NULL";
+ICON = ["NULL", -1];
+BACKGROUND = -1;
+HELPING_PASSWORD = "NULL";
+
+global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGROUND, HELPING_PASSWORD];
+
+// CREATE LOAD_LIST
+
+LOAD_LIST = [global.USER, "NULL"];
+
+// LOAD
+savegame_load("USER", LOAD_LIST);
+global.USER = LOAD_LIST[0];
+
+// LOAD GAME
+room = Rstart;

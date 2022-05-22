@@ -14,3 +14,7 @@ SECRET = false;
 write = "NULL";
 X = 0;
 Y = 0;
+
+//FADE ON
+FADE_ON = false;
+FADE_ON_POWER = 0;

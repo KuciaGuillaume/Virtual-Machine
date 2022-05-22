@@ -24,3 +24,7 @@ STEP = 0;
 // DAY
 DAY = "MONDAY";
 MONTH = "mai";
+
+//FADE ON
+FADE_ON = false;
+FADE_ON_POWER = 0;

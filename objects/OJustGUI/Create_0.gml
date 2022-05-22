@@ -26,3 +26,7 @@ DESCRIPTION = "If you are browsing Commons for the first time,\n you may want to
 USER_TIME = 0;
 USER_TIMER = 60;
 
+//FADE ON
+FADE_ON = false;
+FADE_ON_POWER = 0;
+

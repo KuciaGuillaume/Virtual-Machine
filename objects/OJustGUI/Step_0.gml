@@ -96,8 +96,23 @@ if (TAG == "USER_BACKGROUND") {
 	USER_TIME += delta_time / 1000000;
 	if (!FIRST_PASS || USER_TIME >= USER_TIMER) {
 		USER_TIME = 0;
+		global.USER[9][image_index] = -1;
 		randomize();
-		image_index = random_range(0, 15);
+		var i = random_range(0, 15);
+		var all_negative = true;
+		for (; i == image_index && global.USER[9][i] < 0;) {
+			i = random_range(0, 15);
+			for (var e = 0; e != 15; e++)
+				if (global.USER[9][e] >= 0) all_negative = false;
+			if (all_negative) {
+				i = 0;
+				break;
+			}
+				
+		}
+		image_index = i;
+		SAVE_LIST = [global.USER, "NULL"];
+		savegame_save("USER", SAVE_LIST);
 	}
 }
 

@@ -163,6 +163,7 @@ if (TAG == "EDIT_FINISH") {
 	load.TIMER = global.TIMER / 2;
 	SAVE_LIST = [global.USER, "NULL"];
 	savegame_save("USER", SAVE_LIST);
+	DestroyObject("CURSOR");
 }
 
 if (TAG == "BACKGROUND_SELECTOR") {
@@ -170,15 +171,32 @@ if (TAG == "BACKGROUND_SELECTOR") {
 	WALLPAPER = true;
 }
 
-if (TAG == "LIKE")
+if (TAG == "LIKE") {
+	var get = GetObject("USER_BACKGROUND");
 	image_index = 1;
+	global.USER[9][get.image_index] = 1;
+	SAVE_LIST = [global.USER, "NULL"];
+	savegame_save("USER", SAVE_LIST);
+}
 if (TAG == "DISLIKE" && image_index == 0) {
 	image_index = 1;
 	var get = GetObject("USER_BACKGROUND");
 	get.USER_TIME = 0;
+	global.USER[9][get.image_index] = -1;
 	randomize();
-	i = random_range(0, 15);
-	for (; i == get.image_index;)
+	var i = random_range(0, 15);
+	var all_negative = true;
+	for (; i == get.image_index && global.USER[9][i] < 0;) {
 		i = random_range(0, 15);
+		for (var e = 0; e != 15; e++)
+			if (global.USER[9][e] >= 0) { all_negative = false; }
+		if (all_negative) {
+			i = 0;
+			break;
+		}
+				
+	}
 	get.image_index = i;
+	SAVE_LIST = [global.USER, "NULL"];
+	savegame_save("USER", SAVE_LIST);
 }

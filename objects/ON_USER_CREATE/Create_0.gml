@@ -1,5 +1,13 @@
 /// @Project by Kucia Guillaume* ///
 
+
+// INIT LIKR_lIST
+if (global.USER[9][0] == "NULL") {
+	for (var i = 0; i != 15; i++)
+		global.USER[9][i] = 0;
+}
+
+
 // CREATE OBJECTS
 CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", ["NULL"]);
 CreateObjectSprite(0, 0, "Gp1", Suser_connect_background, OJustGUI, "IMAGE", "USER_BACKGROUND", [["FADE_IN", 0.0000005], "NULL"]);

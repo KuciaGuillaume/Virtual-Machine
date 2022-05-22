@@ -7,6 +7,7 @@ for (var i = 0; OPTION[i] != "NULL"; i++) {
 		SECRET = true;
 	if (OPTION[i][0] == "CENTERED")
 		CENTERED = true;
+	if (OPTION[i][0] == "FADE_ON") {OPT_POSITIONS = true; FADE_ON_POWER = OPTION[i][1]; }
 }
 
 // GET TEXT

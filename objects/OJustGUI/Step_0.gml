@@ -1,6 +1,23 @@
 /// @Project by Kucia Guillaume* ///
 
 
+for (var i = 0; OPTION[i] != "NULL"; i++) {
+	if (OPTION[i][0] == "FADE_IN" && !FADE_SATE) { 
+		FADE_IN = true; FADE_POWER = OPTION[i][1];
+		FADE_SATE = true; image_alpha = 0;
+	}
+	if (OPTION[i][0] == "FADE_ON") {FADE_ON = true; FADE_ON_POWER = OPTION[i][1]; }
+}
+
+if (!FIRST_PASS && !FADE_IN) {image_alpha = 1; } 
+
+// FADE_IN
+
+if (FADE_IN && image_alpha < 1)
+	image_alpha += FADE_POWER * delta_time;
+else
+	FADE_IN = false;
+
 // GUI SELECt
 if (TAG == "GUI_SELECT_BACKGROUNDS") {
 	var scroll_bar = GetObject("SCROLL_IMAGE_BAR");
@@ -8,9 +25,9 @@ if (TAG == "GUI_SELECT_BACKGROUNDS") {
 	var Description = GetText("BACKGROUND_DESCRIPTION");
 	var button = GetObject("BACKGROUND_SELECTOR");
 	if (MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom)) {
-		if (mouse_wheel_down())
+		if (mouse_wheel_down() && image_alpha >= 1)
 			if (TARGET_INDEX < 5) TARGET_INDEX += 1 else TARGET_INDEX = 0;
-		if (mouse_wheel_up())
+		if (mouse_wheel_up() && image_alpha >= 1)
 			if (TARGET_INDEX > 0) TARGET_INDEX -= 1 else TARGET_INDEX = 5;
 		if (scroll_bar.image_alpha < 1)
 			scroll_bar.image_alpha += 0.000005 * delta_time;
@@ -72,3 +89,17 @@ if (TAG == "GUI_SELECT_BACKGROUNDS") {
 	Title.TEXT = TITLE; Title.image_alpha = image_alpha - 0.3;
 	Description.TEXT = DESCRIPTION; Description.image_alpha = image_alpha - 0.3;
 }
+
+
+// USER BACKGROUND
+if (TAG == "USER_BACKGROUND") {
+	USER_TIME += delta_time / 1000000;
+	if (!FIRST_PASS || USER_TIME >= USER_TIMER) {
+		USER_TIME = 0;
+		randomize();
+		image_index = random_range(0, 15);
+	}
+}
+
+// FIRST PASS
+FIRST_PASS = true; 

@@ -7,8 +7,8 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 3,
-  "bbox_right": 60,
+  "bbox_left": 5,
+  "bbox_right": 55,
   "bbox_top": 0,
   "bbox_bottom": 63,
   "HTile": false,
@@ -24,18 +24,18 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"2af8ef0d-ee92-4e9a-89ef-bf898b5743be","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"2af8ef0d-ee92-4e9a-89ef-bf898b5743be","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"ce11ad20-f8b4-45f5-b3ca-dba5591c595b","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"2af8ef0d-ee92-4e9a-89ef-bf898b5743be","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"4a2d893b-1fbe-4170-8850-eaead4eb38bd","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4a2d893b-1fbe-4170-8850-eaead4eb38bd","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"ce11ad20-f8b4-45f5-b3ca-dba5591c595b","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"4a2d893b-1fbe-4170-8850-eaead4eb38bd","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"1a37d219-9dcf-49d1-8f7d-da9cbea349a1","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"1a37d219-9dcf-49d1-8f7d-da9cbea349a1","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"ce11ad20-f8b4-45f5-b3ca-dba5591c595b","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"1a37d219-9dcf-49d1-8f7d-da9cbea349a1","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"ea486785-965a-4c0a-b05d-2eec49b96256","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"ea486785-965a-4c0a-b05d-2eec49b96256","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"ce11ad20-f8b4-45f5-b3ca-dba5591c595b","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"ea486785-965a-4c0a-b05d-2eec49b96256","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"e59e20b5-ecde-4cff-9065-1a7d23d72291","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"e59e20b5-ecde-4cff-9065-1a7d23d72291","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"a2dc2f8a-43d6-4f5d-b72b-27d6424a8746","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"e59e20b5-ecde-4cff-9065-1a7d23d72291","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"8948eb77-dc0e-419a-a84d-05b7a3c55553","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"8948eb77-dc0e-419a-a84d-05b7a3c55553","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"a2dc2f8a-43d6-4f5d-b72b-27d6424a8746","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"8948eb77-dc0e-419a-a84d-05b7a3c55553","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"b119166e-26e9-46b3-8726-ce5447782659","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"b119166e-26e9-46b3-8726-ce5447782659","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"a2dc2f8a-43d6-4f5d-b72b-27d6424a8746","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"b119166e-26e9-46b3-8726-ce5447782659","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"8d68b2e0-304b-4a01-8830-a149cf9b5488","path":"sprites/Shomme/Shomme.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"8d68b2e0-304b-4a01-8830-a149cf9b5488","path":"sprites/Shomme/Shomme.yy",},"LayerId":{"name":"a2dc2f8a-43d6-4f5d-b72b-27d6424a8746","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","name":"8d68b2e0-304b-4a01-8830-a149cf9b5488","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"Shomme","path":"sprites/Shomme/Shomme.yy",},
@@ -50,10 +50,10 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"045a3d0b-a9c2-4a34-90d9-baae2523ca3e","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"2af8ef0d-ee92-4e9a-89ef-bf898b5743be","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"8b5e63eb-d875-497c-b817-02a9f2eff504","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4a2d893b-1fbe-4170-8850-eaead4eb38bd","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"a25b462e-bedb-4346-a766-4f86986e86af","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1a37d219-9dcf-49d1-8f7d-da9cbea349a1","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"f807fa95-f53f-4eae-a49d-25d63de5211e","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ea486785-965a-4c0a-b05d-2eec49b96256","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3e8ec5a3-1584-4658-b75c-53bed2982e36","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e59e20b5-ecde-4cff-9065-1a7d23d72291","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"10abd465-1897-4369-bace-326adf10bf34","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"8948eb77-dc0e-419a-a84d-05b7a3c55553","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"bdcdda9b-c5ff-4133-956f-7c891a34ebc2","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b119166e-26e9-46b3-8726-ce5447782659","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"03a10736-8887-4c40-b113-3f5b68f5943e","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"8d68b2e0-304b-4a01-8830-a149cf9b5488","path":"sprites/Shomme/Shomme.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -77,7 +77,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"ce11ad20-f8b4-45f5-b3ca-dba5591c595b","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"a2dc2f8a-43d6-4f5d-b72b-27d6424a8746","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {

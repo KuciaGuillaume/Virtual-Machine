@@ -25,7 +25,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Objects",
-    "path": "folders/Scenes/RegisterScene/Objects/Objects.yy",
+    "path": "folders/Global/Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "Obox",

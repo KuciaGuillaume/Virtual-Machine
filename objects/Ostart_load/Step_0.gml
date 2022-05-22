@@ -9,6 +9,8 @@ TIME += delta_time / 1000000;
 if (TIME >= TIMER) {
 	if (!REGISTER && MODE == "START")
 		room = Rregister;
+	else if (REGISTER && MODE == "START")
+		room = RUserConnection;
 	if (MODE == "END")
 		game_end(0);
 	if (MODE == "RESTART") {

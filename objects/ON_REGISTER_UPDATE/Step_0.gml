@@ -92,7 +92,7 @@ if (REGISTER != "NULL") {
 }
 
 if (global.USER[6][0] != "NULL" && global.USER[7] >= 0) {
-	var next = GetText("EDIT_NEXT");
+	var next = GetText("EDIT_FINISH");
 	if (next != "NULL") { next.image_alpha = 1; LOCK_STATE = true; }
 }
 

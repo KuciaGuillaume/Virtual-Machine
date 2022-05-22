@@ -1,7 +1,7 @@
 
 
 // CREATE AN OBJECT AND ADD IT TO THE LIST
-function CreateObjects(x, y, Layer, object, type, tag){
+function CreateObjects(x, y, Layer, object, type, tag, option){
 	
 	// CREATE VARIABLES
 	i = 0;
@@ -9,6 +9,7 @@ function CreateObjects(x, y, Layer, object, type, tag){
 
 	object.TYPE = type;
 	object.TAG = tag;
+	object.OPTION = option;
 	CLASS = [object, type, room, tag];
 	for (; global.OBJECTS[i] != "NULL";) i++;
 	global.OBJECTS[i] = CLASS;
@@ -30,7 +31,7 @@ function GetObject(TAG) {
 }
 
 
-function CreateObjectSprite(x, y, Layer, sprite, object, type, tag){
+function CreateObjectSprite(x, y, Layer, sprite, object, type, tag, option){
 	
 	// CREATE VARIABLES
 	i = 0;
@@ -39,6 +40,7 @@ function CreateObjectSprite(x, y, Layer, sprite, object, type, tag){
 	object.TYPE = type;
 	object.sprite_index = sprite;
 	object.TAG = tag;
+	object.OPTION = option;
 	CLASS = [object, type, room, tag];
 	for (; global.OBJECTS[i] != "NULL";) i++;
 	global.OBJECTS[i] = CLASS;

@@ -12,3 +12,10 @@ OBJECT_LINKED = "NULL";
 
 // SLEF
 SELF = "NULL";
+
+// INIT OPTION VARIABLES
+FADE_IN = false;
+FADE_SATE = false;
+FADE_POWER = 0;
+FIRST_PASS = false;
+image_alpha = 0;

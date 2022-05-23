@@ -13,7 +13,7 @@ for (var i = 0; OPTION[i] != "NULL"; i++) {
 	}
 }
 
-if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 1; } 
+if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 
 
 // FADE_IN
 
@@ -31,6 +31,7 @@ if ((LOCK[0] != "NULL" && !LOCK[1].LOCK_STATE)) {
 	image_index = 2;
 	return;
 } else if (image_index == 2) { image_index = 0; }
+
 
 if (mouse_x < bbox_left || mouse_x > bbox_right)
 	return;

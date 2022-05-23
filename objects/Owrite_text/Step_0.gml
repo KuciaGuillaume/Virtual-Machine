@@ -36,7 +36,7 @@ if (KeyPressed(vk_right)) { if (TEXT_INDEX < TEXT_INDEX_MAX) { TEXT_INDEX += 1; 
 // Delete char
 if (KeyPress(vk_backspace) && !KeyPressed(vk_backspace))
 	TIME += delta_time / 1000000;
-if ((KeyPress(vk_backspace) && TIME >= 0.1) || KeyPressed(vk_backspace)) {
+if ((KeyPress(vk_backspace) && TIME >= 0.2) || KeyPressed(vk_backspace)) {
 	BAR.visible = true;
 	BAR.TIME = 0;
 	TIME = 0;
@@ -49,11 +49,6 @@ if ((KeyPress(vk_backspace) && TIME >= 0.1) || KeyPressed(vk_backspace)) {
 	TEXT_INDEX -= 1;
 	return;
 }
-
-// CHECK INPUT
-if (KeyPressed(vk_shift) || KeyPress(vk_backspace) || TEXT_INDEX_MAX >= MAX ||
-KeyPressed(vk_alt))
-	return;
 
 if ((KeyPressed(vk_tab) || KeyPressed(vk_enter) || KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE && !TAB) {
 	
@@ -78,6 +73,11 @@ if ((KeyPressed(vk_tab) || KeyPressed(vk_enter) || KeyPressed(vk_up) || KeyPress
 	TAB = false;
 	return;
 }
+
+// CHECK INPUT
+if (KeyPressed(vk_shift) || KeyPress(vk_backspace) || TEXT_INDEX_MAX >= MAX ||
+KeyPressed(vk_alt))
+	return;
 
 // WRITE ON TEXT
 if (keyboard_check_pressed(vk_anykey) && ON_WRITE) {

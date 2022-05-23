@@ -36,35 +36,39 @@ if (TAG == "FINISH_MESSAGE") {
 	if (STEP == 3) { room = RUserConnection; }
 }
 
-switch ((current_year + current_month + current_day) % 7) {
-	case 6: DAY = "Monday"; break;
-	case 0: DAY = "Tuesday"; break;
-	case 1: DAY = "Wednesday"; break;
-	case 2: DAY = "Thusday"; break;
-	case 3: DAY = "Friday"; break;
-	case 4: DAY = "Saturday"; break;
-	case 5: DAY = "Sunday"; break;
+if (TAG == "CURRENT_TIME" || TAG == "CURRENT_DATE") {
+
+	switch ((current_year + current_month + current_day) % 7) {
+		case 6: DAY = "Monday"; break;
+		case 0: DAY = "Tuesday"; break;
+		case 1: DAY = "Wednesday"; break;
+		case 2: DAY = "Thusday"; break;
+		case 3: DAY = "Friday"; break;
+		case 4: DAY = "Saturday"; break;
+		case 5: DAY = "Sunday"; break;
+	}
+
+	switch (current_month) {
+		case 1: MONTH = "January"; break;
+		case 2: MONTH = "February"; break;
+		case 3: MONTH = "March"; break;
+		case 4: MONTH = "April"; break;
+		case 5: MONTH = "May"; break;
+		case 6: MONTH = "June"; break;
+		case 7: MONTH = "July"; break;
+		case 8: MONTH = "August"; break;
+		case 9: MONTH = "September"; break;
+		case 10: MONTH = "October"; break;
+		case 11: MONTH = "November"; break;
+		case 12: MONTH = "December"; break;
+	}
+
+	var CURRENT_MINUTE = string(current_minute);
+
+	if (current_minute < 10)
+		CURRENT_MINUTE = "0" + CURRENT_MINUTE;
+
+	if (TAG == "CURRENT_TIME") TEXT = string(current_hour) + ":" + CURRENT_MINUTE;
+	if (TAG == "CURRENT_DATE") TEXT = DAY + " " + string(current_day) + " " + MONTH;
+
 }
-
-switch (current_month) {
-	case 1: MONTH = "January"; break;
-	case 2: MONTH = "February"; break;
-	case 3: MONTH = "March"; break;
-	case 4: MONTH = "April"; break;
-	case 5: MONTH = "May"; break;
-	case 6: MONTH = "June"; break;
-	case 7: MONTH = "July"; break;
-	case 8: MONTH = "August"; break;
-	case 9: MONTH = "September"; break;
-	case 10: MONTH = "October"; break;
-	case 11: MONTH = "November"; break;
-	case 12: MONTH = "December"; break;
-}
-
-var CURRENT_MINUTE = string(current_minute);
-
-if (current_minute < 10)
-	CURRENT_MINUTE = "0" + CURRENT_MINUTE;
-
-if (TAG == "CURRENT_TIME") TEXT = string(current_hour) + ":" + CURRENT_MINUTE;
-if (TAG == "CURRENT_DATE") TEXT = DAY + " " + string(current_day) + " " + MONTH;

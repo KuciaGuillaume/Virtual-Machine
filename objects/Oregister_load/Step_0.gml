@@ -53,10 +53,11 @@ if (STATE == 1) {
 	CreateObjectSprite(506, 456, "Gp3", Sbackgrounds, OJustGUI, "IMAGE", "GUI_SELECT_BACKGROUNDS", ["NULL"]);
 	var scrollbar = CreateObjectSprite(540, 670, "Gp4", Sscroll_image_bar, OJustGUI, "IMAGE", "SCROLL_IMAGE_BAR", ["NULL"]);
 	scrollbar.image_alpha = 0;
-	AddText(1520, 490, "NONE", Arial25, c_white, "Gp4", "BACKGROUND_TITLE", [["CENTERED"], "NULL"]);
-	AddText(1550, 680, "NONE", Arial10, c_white, "Gp4", "BACKGROUND_DESCRIPTION", [["CENTERED"], "NULL"]);
+	AddText(1520, 490, "BACKGROUND_TITLE", Arial25, c_white, "Gp4", "BACKGROUND_TITLE", [["CENTERED"], "NULL"]);
+	AddText(1550, 680, "BACKGROUND_DESCRIPTION", Arial10, c_white, "Gp4", "BACKGROUND_DESCRIPTION", [["CENTERED"], "NULL"]);
 	CreateButtonBox(1530, 850, Sselector, OboxText, "Select this one", "Gp3", "Gp4", Arial15, c_white, "BACKGROUND_SELECTOR", [["CENTERED"], "NULL"]);
 	CreateButtonBox(1680, 1010, Sbox, OboxText, "Finish", "Gp2", "Gp3", Arial15, c_white, "EDIT_FINISH", [["CENTERED"], ["LOCK", ON_REGISTER_UPDATE], "NULL"]);
+	CreateObjects(x, y, "Gp4", OnDraw, "DRAW", "ON_BACKGROUNDS", ["NULL"]);
 	DestroyObject("LOAD_P_PROFILE");
 }
 
@@ -64,6 +65,5 @@ if (STATE == 2) {
 	DestroyObject("REGISTER_BACKGROUND");
 	DestroyText("WAIT");
 	DestroyObject("FINISH_LOAD");
-	DestroyObject("CURSOR");
 	AddText(960, 540, "Hello", Arial25, c_white, "Gp1", "FINISH_MESSAGE", [["CENTERED"], "NULL"]);
 }

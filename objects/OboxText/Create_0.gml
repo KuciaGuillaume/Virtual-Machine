@@ -26,3 +26,8 @@ FADE_SATE = false;
 FADE_POWER = 0;
 FIRST_PASS = false;
 image_alpha = 0;
+
+// DISLIKE
+DISLIKE = false;
+DISLIKE_TIME = 0;
+DISLIKE_TIMER = 0.5;

@@ -9,7 +9,7 @@ for (var i = 0; OPTION[i] != "NULL"; i++) {
 	if (OPTION[i][0] == "FADE_ON") {FADE_ON = true; FADE_ON_POWER = OPTION[i][1]; }
 }
 
-if (!FIRST_PASS && !FADE_IN) {image_alpha = 1; } 
+if (!FIRST_PASS && !FADE_IN) {image_alpha = 2; FIRST_PASS = true; } 
 
 // FADE_IN
 
@@ -20,10 +20,12 @@ else
 
 // GUI SELECt
 if (TAG == "GUI_SELECT_BACKGROUNDS") {
+
 	var scroll_bar = GetObject("SCROLL_IMAGE_BAR");
 	var Title = GetText("BACKGROUND_TITLE");
 	var Description = GetText("BACKGROUND_DESCRIPTION");
 	var button = GetObject("BACKGROUND_SELECTOR");
+
 	if (MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom)) {
 		if (mouse_wheel_down() && image_alpha >= 1)
 			if (TARGET_INDEX < 5) TARGET_INDEX += 1 else TARGET_INDEX = 0;
@@ -42,6 +44,7 @@ if (TAG == "GUI_SELECT_BACKGROUNDS") {
 		}
 		B_INSIDE = false;
 	}
+
 	if (image_index != TARGET_INDEX && !PASS && image_alpha > 0)
 		image_alpha -= 0.000003 * delta_time;
 	else
@@ -82,11 +85,13 @@ if (TAG == "GUI_SELECT_BACKGROUNDS") {
 		TITLE = "Wallpaper";
 		DESCRIPTION = "This is a simple background";
 	}
+
 	scroll_bar.image_index = image_index;
 	button.image_alpha = image_alpha;
 	button.TEXT_CONNECT.image_alpha = image_alpha;
 	button.WALLPAPER_INDEX = image_index;
-	Title.TEXT = TITLE; Title.image_alpha = image_alpha - 0.3;
+	
+	Title.TEXT = TITLE;
 	Description.TEXT = DESCRIPTION; Description.image_alpha = image_alpha - 0.3;
 }
 
@@ -96,25 +101,26 @@ if (TAG == "USER_BACKGROUND") {
 	USER_TIME += delta_time / 1000000;
 	if (!FIRST_PASS || USER_TIME >= USER_TIMER) {
 		USER_TIME = 0;
-		global.USER[9][image_index] = -1;
+		FIRST_PASS = true;
 		randomize();
 		var i = random_range(0, 15);
 		var all_negative = true;
-		for (; i == image_index && global.USER[9][i] < 0;) {
+		for (; i == image_index || global.USER[9][i] < 0;) {
 			i = random_range(0, 15);
 			for (var e = 0; e != 15; e++)
-				if (global.USER[9][e] >= 0) all_negative = false;
-			if (all_negative) {
-				i = 0;
-				break;
-			}
+				if (global.USER[9][e] >= 0) { all_negative = false; }
+			if (all_negative) { i = 0; break; }
 				
 		}
 		image_index = i;
 		SAVE_LIST = [global.USER, "NULL"];
 		savegame_save("USER", SAVE_LIST);
+		var like = GetObject("LIKE");
+		var dislike = GetObject("DISLIKE");
+		if (like != "NULL" && dislike != "NULL") {
+			like.image_index = 0;
+			dislike.image_index = 0;
+		}
 	}
 }
 
-// FIRST PASS
-FIRST_PASS = true; 

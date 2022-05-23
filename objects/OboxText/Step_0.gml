@@ -48,8 +48,8 @@ if (TAG == "PHOTO") {
 	if (IN) {
 		if (get == "NULL") {
 			CreateObjectSprite(x, y, "Gp3", SphotoOn, OJustGUI, "IMAGE", "ON_PHOTO", [["FADE_IN", 0.000003], "NULL"]);
-			CreateButtonBox(x, y + 170, Sdislike, OboxText, "I do not like", "Gp4", "Gp5", Arial10, c_white, "DISLIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], "NULL"]);
-			CreateButtonBox(x, y + 120, Slike, OboxText, "I love it", "Gp4", "Gp5", Arial10, c_white, "LIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], "NULL"]);
+			CreateButtonBox(x, y + 180, Sdislike, OboxText, "I do not like", "Gp4", "Gp5", Arial10, c_white, "DISLIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], "NULL"]);
+			CreateButtonBox(x, y + 130, Slike, OboxText, "I love it", "Gp4", "Gp5", Arial10, c_white, "LIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], "NULL"]);
 		}
 		else if (get.image_alpha < 1) get.image_alpha += 0.000003 * delta_time;
 	} else {
@@ -68,6 +68,44 @@ if (TAG == "PHOTO") {
 	}
 	if (get != "NULL")
 			image_alpha = 1 - get.image_alpha;
+}
+
+// DISLIKE
+if (DISLIKE) {
+	DISLIKE_TIME += delta_time / 1000000;
+	if (DISLIKE_TIME >= DISLIKE_TIMER) {
+		DISLIKE_TIME = 0;
+		DISLIKE = 0;
+		var get = GetObject("USER_BACKGROUND");
+		get.USER_TIME = 0;
+		global.USER[9][get.image_index] = -1;
+		randomize();
+		var i = random_range(0, 15);
+		var all_negative = true;
+		for (; i == get.image_index || global.USER[9][i] < 0;) {
+			i = random_range(0, 15);
+			for (var e = 0; e != 15; e++)
+				if (global.USER[9][e] >= 0) { all_negative = false; }
+			if (all_negative) {
+				i = 0;
+				break;
+			}
+				
+		}
+		get.image_index = i;
+		SAVE_LIST = [global.USER, "NULL"];
+		savegame_save("USER", SAVE_LIST);
+		var like = GetObject("LIKE");
+		like.image_index = 0;
+		image_index = 0;
+	}
+}
+
+//LIKE
+if (TAG == "LIKE") {
+	var get = GetObject("USER_BACKGROUND");
+	if (global.USER[9][get.image_index] > 0)
+		image_index = 1;
 }
 
 if (mouse_x < bbox_left || mouse_x > bbox_right)
@@ -130,7 +168,6 @@ if (TAG == "EDIT PREVIOUS") {
 	DestroyText("BACKGROUND_TITLE");
 	DestroyText("BACKGROUND_DESCRIPTION");
 	DestroyButtonBox("BACKGROUND_SELECTOR");
-	DestroyButtonBox("EDIT_NEXT");
 	// CREATE OBJECTS
 
 	CreateObjects(960, 540, "Gp1", Oregister_background, "IMAGE", "REGISTER_BACKGROUND", ["NULL"]);
@@ -139,6 +176,7 @@ if (TAG == "EDIT PREVIOUS") {
 	load.TIMER = global.TIMER / 3;
 	// CREATE TEXT
 	AddText(960, 300, "We create your registration environment...", Arial35, c_white, "Gp2", "LAUNCH_REGISTER", [["CENTERED"], "NULL"]);
+	DestroyButtonBox("EDIT_FINISH");
 }
 
 if (TAG == "EDIT_FINISH") {
@@ -157,13 +195,14 @@ if (TAG == "EDIT_FINISH") {
 	DestroyText("BACKGROUND_TITLE");DestroyText("BACKGROUND_DESCRIPTION");
 	DestroyButtonBox("BACKGROUND_SELECTOR");
 	DestroyButtonBox("EDIT_FINISH");
+	DestroyObject("ON_BACKGROUNDS");
 	AddText(960, 400, "Please wait...", Arial25, c_white, "Gp2", "WAIT", [["CENTERED"], "NULL"]);
 	var load = CreateObjects(960, 540, "Gp2", Oregister_load, "IMAGE", "FINISH_LOAD", ["NULL"]);
 	load.STATE = 2;
 	load.TIMER = global.TIMER / 2;
 	SAVE_LIST = [global.USER, "NULL"];
 	savegame_save("USER", SAVE_LIST);
-	DestroyObject("CURSOR");
+	DestroyObject("REGISTER_CURSOR");
 }
 
 if (TAG == "BACKGROUND_SELECTOR") {
@@ -179,24 +218,7 @@ if (TAG == "LIKE") {
 	savegame_save("USER", SAVE_LIST);
 }
 if (TAG == "DISLIKE" && image_index == 0) {
-	image_index = 1;
-	var get = GetObject("USER_BACKGROUND");
-	get.USER_TIME = 0;
-	global.USER[9][get.image_index] = -1;
-	randomize();
-	var i = random_range(0, 15);
-	var all_negative = true;
-	for (; i == get.image_index && global.USER[9][i] < 0;) {
-		i = random_range(0, 15);
-		for (var e = 0; e != 15; e++)
-			if (global.USER[9][e] >= 0) { all_negative = false; }
-		if (all_negative) {
-			i = 0;
-			break;
-		}
-				
-	}
-	get.image_index = i;
-	SAVE_LIST = [global.USER, "NULL"];
-	savegame_save("USER", SAVE_LIST);
+	image_index = 1
+	DISLIKE_TIME = 0;
+	DISLIKE = true;
 }

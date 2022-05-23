@@ -29,6 +29,7 @@
     {"id":{"name":"MouseInside","path":"scripts/MouseInside/MouseInside.yy",},"order":1,},
     {"id":{"name":"Simple25","path":"fonts/Simple25/Simple25.yy",},"order":0,},
     {"id":{"name":"Arial15","path":"fonts/Arial15/Arial15.yy",},"order":4,},
+    {"id":{"name":"OnDraw","path":"objects/OnDraw/OnDraw.yy",},"order":9,},
     {"id":{"name":"CreateTextButton","path":"scripts/CreateTextButton/CreateTextButton.yy",},"order":2,},
     {"id":{"name":"CreateButtonBox","path":"scripts/CreateButtonBox/CreateButtonBox.yy",},"order":0,},
     {"id":{"name":"Sregister_textbutton","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"order":1,},

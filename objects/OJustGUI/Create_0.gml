@@ -30,3 +30,7 @@ USER_TIMER = 60;
 FADE_ON = false;
 FADE_ON_POWER = 0;
 
+// INFO
+INFO = false;
+INFO_NAME = "NULL";
+

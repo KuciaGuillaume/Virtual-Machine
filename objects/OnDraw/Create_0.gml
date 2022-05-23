@@ -4,3 +4,7 @@
 TYPE = "NULL";
 OPTION = "NULL";
 TAG = "NULL";
+
+// INFO
+INFO = false;
+INFO_NAME = "NULL";

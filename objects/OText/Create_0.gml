@@ -28,3 +28,7 @@ MONTH = "mai";
 //FADE ON
 FADE_ON = false;
 FADE_ON_POWER = 0;
+
+// TEXT
+TEXT_WIDTH = 0;
+TEXT_HEIGHT = 0;

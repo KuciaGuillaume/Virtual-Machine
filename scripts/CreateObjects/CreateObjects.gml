@@ -41,8 +41,8 @@ function CreateObjectSprite(x, y, Layer, sprite, object, type, tag, option){
 	Isobject.sprite_index = sprite;
 	Isobject.TAG = tag;
 	Isobject.OPTION = option;
-	CLASS = [Isobject, type, room, tag];
-	for (; global.OBJECTS[i] != "NULL";) i++;
+	var CLASS = [Isobject, type, room, tag];
+	for (; global.OBJECTS[i] != "NULL";) { i++; }
 	global.OBJECTS[i] = CLASS;
 	global.OBJECTS[i + 1] = "NULL";
 	return Isobject;

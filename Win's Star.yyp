@@ -29,6 +29,7 @@
     {"id":{"name":"GetCollisons","path":"scripts/GetCollisons/GetCollisons.yy",},"order":4,},
     {"id":{"name":"OboxText","path":"objects/OboxText/OboxText.yy",},"order":7,},
     {"id":{"name":"MouseInside","path":"scripts/MouseInside/MouseInside.yy",},"order":1,},
+    {"id":{"name":"Svague","path":"sprites/Svague/Svague.yy",},"order":5,},
     {"id":{"name":"Simple25","path":"fonts/Simple25/Simple25.yy",},"order":0,},
     {"id":{"name":"Arial15","path":"fonts/Arial15/Arial15.yy",},"order":4,},
     {"id":{"name":"OnDraw","path":"objects/OnDraw/OnDraw.yy",},"order":9,},

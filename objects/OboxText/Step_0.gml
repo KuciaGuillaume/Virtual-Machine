@@ -39,19 +39,18 @@ if (LOCK[0] != "NULL" && !LOCK[1].LOCK_STATE || (WALLPAPER && global.USER[7] == 
 }
 
 if (TAG == "PHOTO") {
-	var get = GetObject("ON_PHOTO")
+	var get = GetObject("ON_PHOTO");
 	
 	if (get == "NULL")
 		IN = MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom);
-	else
+	else if (get.TAG == "ON_PHOTO")
 		IN = MouseInside(get.bbox_left, get.bbox_right, get.bbox_top, get.bbox_bottom);
 	if (IN) {
 		if (get == "NULL") {
 			CreateObjectSprite(x, y, "Gp3", SphotoOn, OJustGUI, "IMAGE", "ON_PHOTO", [["FADE_IN", 0.000003], "NULL"]);
 			CreateButtonBox(x, y + 180, Sdislike, OboxText, "I do not like", "Gp4", "Gp5", Arial10, c_white, "DISLIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], "NULL"]);
 			CreateButtonBox(x, y + 130, Slike, OboxText, "I love it", "Gp4", "Gp5", Arial10, c_white, "LIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], "NULL"]);
-		}
-		else if (get.image_alpha < 1) get.image_alpha += 0.000003 * delta_time;
+		} else if (get.image_alpha < 1) { get.image_alpha += 0.000003 * delta_time; }
 	} else {
 		if (get != "NULL")  {
 			var dislike = GetObject("DISLIKE");

@@ -8,7 +8,7 @@ image_index = 0;
 for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 	var class = global.OBJECTS[i];
 	
-	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "INFO") || class[2] != room)
+	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
 		continue;
 	if (MouseInside(class[0].bbox_left, class[0].bbox_right, class[0].bbox_top, class[0].bbox_bottom) && class[0].image_index < 2) {
 		if (class[1] == "BUTTON")
@@ -19,11 +19,11 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 		// INFO
 		if (class[0].INFO) {
 			var get_info = GetObject(class[0].INFO_NAME);
-			if (get_info = "NULL")
-				CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", c_white, 10, [["CENTERED"], "NULL"]);
+			if (get_info == "NULL")
+				CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.00001], ["CENTERED"], "NULL"]);
 			else {
 				get_info.x = x - ((get_info.BBOX_X - get_info.x) / 2);
-				get_info.y = y - 45;
+				get_info.y = y - 30;
 			}
 		}
 		//

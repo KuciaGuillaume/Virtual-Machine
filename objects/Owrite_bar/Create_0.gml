@@ -8,3 +8,7 @@ TIMER = 0.5;
 
 // GET PARENT
 PARENT = "NULL";
+
+// INFO
+INFO = false;
+INFO_NAME = "NULL";

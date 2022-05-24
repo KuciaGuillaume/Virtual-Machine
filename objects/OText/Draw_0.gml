@@ -7,7 +7,7 @@ draw_set_alpha(image_alpha);
 TEXT_WIDTH = string_width(TEXT);
 TEXT_HEIGHT = string_height(TEXT);
 if (CENTERED) {
-	draw_text(x - (string_width(TEXT) / 2), (y - string_height(TEXT) / 2) + 2, TEXT);
+	draw_text(x - (TEXT_WIDTH / 2), (y - (TEXT_HEIGHT / 2)) + 2, TEXT);
 	return;
 }
 draw_text(x, y, TEXT);

@@ -7,6 +7,7 @@ TEXT = "NULL";
 OPTION = "NULL";
 FIRST_PASS = false;
 TAG = "NULL";
+TEXT_CONNECT = "NULL";
 image_alpha = 0;
 
 

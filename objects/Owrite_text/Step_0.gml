@@ -38,8 +38,9 @@ if (KeyPress(vk_backspace) && !KeyPressed(vk_backspace))
 	TIME += delta_time / 1000000;
 if ((KeyPress(vk_backspace) && TIME >= 0.2) || KeyPressed(vk_backspace)) {
 	BAR.visible = true;
+	if (KeyPressed(vk_backspace))
+		TIME = 0;
 	BAR.TIME = 0;
-	TIME = 0;
 	if (TEXT_INDEX <= 0)
 		return;
 	for (var i = TEXT_INDEX; i != TEXT_INDEX_MAX; i++) {

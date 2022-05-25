@@ -126,10 +126,3 @@ if (TAG == "USER_BACKGROUND") {
 		}
 	}
 }
-
-
-if (TAG == "USER_BACKGROUND_VAGUE") {
-
-
-}
-

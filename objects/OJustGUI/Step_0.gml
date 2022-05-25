@@ -1,6 +1,7 @@
 /// @Project by Kucia Guillaume* ///
 
-
+if (TAG == "NULL")
+	return;
 for (var i = 0; OPTION[i] != "NULL"; i++) {
 	if (OPTION[i][0] == "FADE_IN" && !FADE_SATE) { 
 		FADE_IN = true; FADE_POWER = OPTION[i][1];
@@ -125,4 +126,17 @@ if (TAG == "USER_BACKGROUND") {
 			dislike.image_index = 0;
 		}
 	}
+}
+
+if (TAG == "IMAGE_WIFI" && ON_USER_INPUT.MODE == 1) {
+	var power_off = GetObject("POWER_OFF");
+	if (x > 1815)
+		x -= 0.0001 * delta_time;
+	else if (power_off == "NULL")
+		CreateObjectSprite(1866, 1041.15, "Gp2", Spower_off, Obox, "BUTTON-NO-HAND", "POWER_OFF", [["INFO", "Power-off"], ["FADE_IN", 0.000001], "NULL"]);
+}
+
+if (TAG == "POWER_OPTION") {
+	if (y > 900)
+		y -= 0.0001 * delta_time;
 }

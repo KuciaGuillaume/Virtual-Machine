@@ -1,6 +1,7 @@
 /// @Project by Kucia Guillaume* ///
 
-
+if (TAG == "NULL")
+	return;
 //GET OPTIONS
 for (var i = 0; OPTION[i] != "NULL"; i++) {
 	if (OPTION[i][0] == "LOCK")
@@ -21,10 +22,14 @@ if (FADE_IN && image_alpha < 1)
 	image_alpha += FADE_POWER * delta_time;
 else
 	FADE_IN = false;
+	
+	
+if (TAG == "SUTDOWN") { if (y > 990) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
+if (TAG == "RESTART") { if (y > 965) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
 
 
 // POSITIONS
-if (OPT_POSITIONS) {TEXT_CONNECT.x = OPT_X; TEXT_CONNECT.y = OPT_Y; }
+if (OPT_POSITIONS && TEXT_CONNECT != "NULL") {TEXT_CONNECT.x = OPT_X; TEXT_CONNECT.y = OPT_Y; }
 
 // REGISTER BUTTON
 if (LOCK[0] != "NULL" && !LOCK[1].LOCK_STATE || (WALLPAPER && global.USER[7] == WALLPAPER_INDEX)) {
@@ -221,3 +226,5 @@ if (TAG == "DISLIKE" && image_index == 0) {
 	DISLIKE_TIME = 0;
 	DISLIKE = true;
 }
+if (TAG == "SUTDOWN") Machine("END");
+if (TAG == "RESTART") Machine("RESTART");

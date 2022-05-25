@@ -1,6 +1,7 @@
 /// @Project by Kucia Guillaume* ///
 
-
+if (TAG == "NULL")
+	return;
 //GET OPTIONS
 for (var i = 0; OPTION[i] != "NULL"; i++) {
 	if (OPTION[i][0] == "SECRET")

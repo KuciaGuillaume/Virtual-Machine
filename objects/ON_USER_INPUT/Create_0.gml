@@ -4,4 +4,5 @@
 SWITCH_TO_CONNECT = false;
 TIME = 0;
 I = 0.000008;
-TIME_TO_RESET = 0;
+MODE = 0;
+TIME_PASS = 0;

@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if (TAG == "NULL")
+	return;
 // GET OPTION
 for (var i = 0; OPTION[i] != "NULL"; i++) {
 	if (OPTION[i][0] == "CENTERED")

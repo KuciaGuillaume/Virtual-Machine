@@ -1,5 +1,8 @@
 /// @Project by Kucia Guillaume* ///
 
+
+if (TAG == "NULL")
+	return;
 // ON_WRITE
 if (ON_WRITE && PASSED == 0) {
 	BAR.visible = true;

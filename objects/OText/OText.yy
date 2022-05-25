@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "Svariables_objects",
-    "path": "sprites/Svariables_objects/Svariables_objects.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

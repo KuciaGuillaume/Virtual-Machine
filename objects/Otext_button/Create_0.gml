@@ -22,3 +22,10 @@ FADE_ON_POWER = 0;
 // INFO
 INFO = false;
 INFO_NAME = "NULL";
+
+// INIT OPTION VARIABLES
+FADE_IN = false;
+FADE_SATE = false;
+FADE_POWER = 0;
+FIRST_PASS = false;
+image_alpha = 0;

@@ -13,7 +13,7 @@ for (var i = 0; OPTION[i] != "NULL"; i++) {
 	}
 }
 
-if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 1; } 
+if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 
 
 // FADE_IN
 
@@ -71,11 +71,10 @@ if (TAG == "PHOTO") {
 
 // DISLIKE
 if (DISLIKE) {
-	DISLIKE_TIME += delta_time / 1000000;
-	if (DISLIKE_TIME >= DISLIKE_TIMER) {
-		DISLIKE_TIME = 0;
-		DISLIKE = 0;
-		var get = GetObject("USER_BACKGROUND");
+	var get = GetObject("USER_BACKGROUND");
+	get.image_alpha -= 0.000002 * delta_time;
+	if (get.image_alpha <= 0) {
+		DISLIKE = false;
 		get.USER_TIME = 0;
 		global.USER[9][get.image_index] = -1;
 		randomize();
@@ -97,6 +96,7 @@ if (DISLIKE) {
 		var like = GetObject("LIKE");
 		like.image_index = 0;
 		image_index = 0;
+		get.image_alpha = 2;
 	}
 }
 

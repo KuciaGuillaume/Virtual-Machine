@@ -30,12 +30,12 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 
 		if (class[0].FADE_ON == false)
 			class[0].image_index = 1;
-		else if (class[0].image_alpha < 1)
+		else if (class[0].image_alpha < 1 && class[0].FADE_ON)
 			class[0].image_alpha += class[0].FADE_ON_POWER * delta_time;
 	} else if ((class[0].image_index == 1 && class[0].image_index != 0) || class[0].FADE_ON || class[0].INFO) {
 		if (class[0].FADE_ON == false)
 			class[0].image_index = 0;
-		else if (class[0].image_alpha > 0)
+		else if (class[0].image_alpha > 0 && class[0].FADE_ON)
 			class[0].image_alpha -= class[0].FADE_ON_POWER * delta_time;
 			
 		// INFO

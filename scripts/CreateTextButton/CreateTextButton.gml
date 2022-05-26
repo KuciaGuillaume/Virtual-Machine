@@ -12,6 +12,8 @@ function CreateTextButton(X, Y, IMAGE, TEXT, LAYER1, LAYER2, COLOR, FONT, SIZE, 
 	obj.FONT = FONT;
 	obj.NAME = NAME;
 	obj.OPTION = OPTION;
+	write.BAR.x = X;
+	write.BAR.y = Y;
 	return obj;
 }
 

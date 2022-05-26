@@ -1,6 +1,7 @@
 /// @Project by Kucia Guillaume* ///
 
 // DRAW TEXT
+
 draw_set_font(FONT);
 draw_set_color(COLOR);
 draw_set_alpha(image_alpha);
@@ -10,3 +11,4 @@ if (CENTERED)
 	draw_text(x - (TEXT_WIDTH / 2), (y - (TEXT_HEIGHT / 2)) + 2, TEXT);
 else
 	draw_text(x, y, TEXT);
+draw_set_alpha(1);

@@ -21,7 +21,7 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 5;
+global.TIMER = 0;
 
 // CREATE USERS VARAIBLES
 

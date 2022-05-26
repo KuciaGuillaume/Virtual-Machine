@@ -61,7 +61,7 @@
   },
   "parent": {
     "name": "Room",
-    "path": "folders/Scenes/StartScene/Room.yy",
+    "path": "folders/Scenes/UserConnection/ADMIN/StartScene/Room.yy",
   },
   "resourceVersion": "1.0",
   "name": "Rstart",

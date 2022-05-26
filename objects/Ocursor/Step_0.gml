@@ -20,7 +20,7 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 		if (class[0].INFO) {
 			var get_info = GetObject(class[0].INFO_NAME);
 			if (get_info == "NULL")
-				CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.000005], ["CENTERED"], "NULL"]);
+				CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], "NULL"]);
 			else {
 				get_info.x = x - ((get_info.BBOX_X - get_info.x) / 2);
 				get_info.y = y - 30;
@@ -46,6 +46,19 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 		}
 		//
 	}
+}
+
+
+for (var i = 0; global.TEXT[i] != "NULL"; i++) {
+	if (global.TEXT[2] != room || global.TEXT[i][1].LINK_BTN_TEXT == false)
+		continue;
+	var text = global.TEXT[i][1];
+	if (mouse_x >= text.x - (text.TEXT_WIDTH / 2) && mouse_x <= text.x + (text.TEXT_WIDTH/2) &&
+	mouse_y >= text.y - (text.TEXT_HEIGHT/2) && mouse_y <= text.y + (text.TEXT_HEIGHT/2)) {
+		game_end();
+		text.COLOR = text.LINK_COLOR;
+	} else
+		text.COLOR = text.LINK_FIRST_COLOR;
 }
 
 

@@ -54,7 +54,12 @@ if ((KeyPress(vk_backspace) && TIME >= 0.2) || KeyPressed(vk_backspace)) {
 	return;
 }
 
-if ((KeyPressed(vk_tab) || KeyPressed(vk_enter) || KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE && !TAB) {
+if (KeyPressed(vk_enter)) {
+	ON_WRITE = false;
+	return;
+}
+
+if ((KeyPressed(vk_tab) || KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE && !TAB) {
 	
 	
 	for (var i = 0; global.WRITE[i][0] != TAG;) { i++ };

@@ -3,6 +3,7 @@
 
 if (TAG == "NULL")
 	return;
+	
 // GET OPTION
 for (var i = 0; OPTION[i] != "NULL"; i++) {
 	if (OPTION[i][0] == "CENTERED")
@@ -74,3 +75,14 @@ if (TAG == "CURRENT_TIME" || TAG == "CURRENT_DATE") {
 	if (TAG == "CURRENT_DATE") TEXT = DAY + " " + string(current_day) + " " + MONTH;
 
 }
+
+
+if (mouse_x < x - (TEXT_WIDTH / 2) || mouse_x > x + (TEXT_WIDTH/2) ||
+	mouse_y < y - (TEXT_HEIGHT/2) && mouse_y > y + (TEXT_HEIGHT/2))
+		return;
+
+if (!mouse_check_button_pressed(mb_left))
+	return;
+
+if (TAG == "FORGOT")
+	CreateNotification(Ssystem_icon, "Your reminder phrase", global.USER[8], "REMEMBER_SENTENCE");

@@ -24,8 +24,8 @@ else
 	FADE_IN = false;
 	
 	
-if (TAG == "SUTDOWN") { if (y > 990) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
-if (TAG == "RESTART") { if (y > 965) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
+if (TAG == "SUTDOWN") { if (y > 980) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
+if (TAG == "RESTART") { if (y > 940) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
 
 
 // POSITIONS

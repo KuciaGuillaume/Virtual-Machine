@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Scenes/UserConnection/Objects/Sprites.yy",
+    "name": "Power_option",
+    "path": "folders/Scenes/UserConnection/Objects/Sprites/Power_option.yy",
   },
   "resourceVersion": "1.0",
   "name": "Senterpassword",

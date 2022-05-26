@@ -27,7 +27,7 @@ else
 
 // ICON BUTTON
 if (OBJECT_LINKED != "NULL") {
-	if (global.USER[6][0] == OBJECT_LINKED.sprite_index && global.USER[6][1] == OBJECT_LINKED.image_index) { image_index = 2; }
+	if (((global.USER[6][0] == 0 && OBJECT_LINKED.sprite_index == Shomme) || (global.USER[6][0] == 1 && OBJECT_LINKED.sprite_index == Sfemme)) && global.USER[6][1] == OBJECT_LINKED.image_index) { image_index = 2; }
 	else if (image_index == 2) { image_index = 0; LOCK_STATE = true; }
 }
 
@@ -62,13 +62,21 @@ if (TAG == "EDIT_ICON_1" || TAG == "EDIT_ICON_2" || TAG == "EDIT_ICON_3" || TAG 
 if (TAG == "POWER_OFF") {
 	var get = GetObject("POWER_OPTION")
 	if (get == "NULL") {
-		CreateObjectSprite(1820, 920, "Gp2", Spower_option, OJustGUI, "IMAGE", "POWER_OPTION", [["FADE_IN", 0.000001], "NULL"]);
-		CreateButtonBox(1820, 1010, Sshutdown, OboxText, "Stop", "Gp3", "Gp4", Arial10, c_white, "SUTDOWN", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
-		CreateButtonBox(1820, 985, Srestart, OboxText, "Restart", "Gp3", "Gp4", Arial10, c_white, "RESTART", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
+		CreateObjectSprite(1820, 935, "Gp2", Spower_option, OJustGUI, "IMAGE", "POWER_OPTION", [["FADE_IN", 0.000001], "NULL"]);
+		CreateButtonBox(1820, 1000, Sshutdown, OboxText, "Stop", "Gp3", "Gp4", Arial10, c_white, "SUTDOWN", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
+		CreateButtonBox(1820, 960, Srestart, OboxText, "Restart", "Gp3", "Gp4", Arial10, c_white, "RESTART", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
 	} else {
 		DestroyObject("POWER_OPTION");
 		DestroyButtonBox("SUTDOWN");
 		DestroyButtonBox("RESTART");
 	}
+}
+
+if (TAG == "CLOSE_NOTIF") {
+	DestroyObject(OBJECT_LINKED.ICON_CONNECT.TAG);
+	DestroyText(OBJECT_LINKED.TITLE_CONNECT.TAG);
+	DestroyText(OBJECT_LINKED.DESCRIPTION_CONNECT.TAG);
+	DestroyObject(OBJECT_LINKED.TAG);
+	DestroyObject(TAG);
 }
 

@@ -5,6 +5,7 @@
   },
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -28,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Variables",
-    "path": "folders/Scenes/StartScene/Admin/Variables.yy",
+    "path": "folders/Scenes/UserConnection/ADMIN/StartScene/Admin/Variables.yy",
   },
   "resourceVersion": "1.0",
   "name": "ON_START_INPUT",

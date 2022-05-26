@@ -137,6 +137,6 @@ if (TAG == "IMAGE_WIFI" && ON_USER_INPUT.MODE == 1) {
 }
 
 if (TAG == "POWER_OPTION") {
-	if (y > 900)
+	if (y > 912)
 		y -= 0.0001 * delta_time;
 }

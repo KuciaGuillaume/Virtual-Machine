@@ -6,3 +6,6 @@ TIME = 0;
 I = 0.000008;
 MODE = 0;
 TIME_PASS = 0;
+
+Y_pos = 0;
+MOVEMENT_TIME = 0;

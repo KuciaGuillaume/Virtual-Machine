@@ -50,12 +50,12 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 
 
 for (var i = 0; global.TEXT[i] != "NULL"; i++) {
-	if (global.TEXT[2] != room || global.TEXT[i][1].LINK_BTN_TEXT == false)
+	if (global.TEXT[i][1].LINK_BTN_TEXT == false)
 		continue;
 	var text = global.TEXT[i][1];
 	if (mouse_x >= text.x - (text.TEXT_WIDTH / 2) && mouse_x <= text.x + (text.TEXT_WIDTH/2) &&
 	mouse_y >= text.y - (text.TEXT_HEIGHT/2) && mouse_y <= text.y + (text.TEXT_HEIGHT/2)) {
-		game_end();
+		image_index = 1;
 		text.COLOR = text.LINK_COLOR;
 	} else
 		text.COLOR = text.LINK_FIRST_COLOR;

@@ -78,7 +78,7 @@ if (TAG == "CURRENT_TIME" || TAG == "CURRENT_DATE") {
 
 
 if (mouse_x < x - (TEXT_WIDTH / 2) || mouse_x > x + (TEXT_WIDTH/2) ||
-	mouse_y < y - (TEXT_HEIGHT/2) && mouse_y > y + (TEXT_HEIGHT/2))
+	mouse_y < y - (TEXT_HEIGHT/2) || mouse_y > y + (TEXT_HEIGHT/2))
 		return;
 
 if (!mouse_check_button_pressed(mb_left))

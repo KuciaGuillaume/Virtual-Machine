@@ -5,7 +5,6 @@
   },
   "solid": false,
   "visible": true,
-  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -30,7 +29,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Objects",
-    "path": "folders/Scenes/UserConnection/ADMIN/StartScene/Objects/Objects.yy",
+    "path": "folders/Scenes/StartScene/Objects/Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "Ostart_load",

@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Sprites",
-    "path": "folders/Scenes/UserConnection/ADMIN/StartScene/Objects/Sprites.yy",
+    "path": "folders/Scenes/StartScene/Objects/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "Sstart_background",

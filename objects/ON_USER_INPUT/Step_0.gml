@@ -24,9 +24,14 @@ if ((KeyPressed(vk_escape) || MOVEMENT_TIME >= 60) && MODE == 1) {
 	DestroyObject("USER_ICON");
 	DestroyText("NAME");
 	DestroyText("FORGOT");
+	DestroyObject("POWER_OPTION");
 	DestroyButtonBox("SUTDOWN");
 	DestroyButtonBox("RESTART");
 	DestroyRound("POWER_OFF");
+	DestroyNotification("REMEMBER_SENTENCE");
+	DestroyText("EMAIL");
+	DestroyText("WRONG_PASSWORD");
+	DestroyButtonBox("OK")
 	for (var i = 0; global.OBJECTS[i] != "NULL"; i++)
 		DestroyObject(global.OBJECTS[i][3]);
 	for (var i = 0; global.TEXT[i] != "NULL"; i++)
@@ -45,8 +50,7 @@ if ((KeyPressed(vk_escape) || MOVEMENT_TIME >= 60) && MODE == 1) {
 	CreateButtonBox(1737.5, 56.75, Sphoto, OboxText, "Do you like the displayed image ?", "Gp2", "Gp3", Arial10, c_white, "PHOTO", [["CENTERED"], ["POSITIONS", 1737.5, 90], "NULL"]);
 	CreateObjectSprite(1866, 1041.15, "Gp2", Swifi, OJustGUI, "BUTTON-NO-HAND", "IMAGE_WIFI", [["INFO", "Wifi"], ["FADE_IN", 0.0000003], "NULL"]);
 	return;
-} else if (KeyPressed(vk_escape))
-	game_end();
+}
 
 if (mouse_check_button_pressed(mb_left) && powers != "NULL") {
 	if (!MouseInside(powers.bbox_left, powers.bbox_right, powers.bbox_top, powers.bbox_bottom)
@@ -57,7 +61,20 @@ if (mouse_check_button_pressed(mb_left) && powers != "NULL") {
 	}
 }
 
-if ((KeyPressed(vk_anykey) || (mouse_check_button(mb_left) && photo == "NULL")) && get != "NULL" && TIME > 1) {
+if (MODE == 1 && KeyPressed(vk_enter)) {
+	var password = GetObject("Password");
+	
+	if (password == "NULL")
+		return;
+	if (password.TEXT != global.USER[5]) {
+		DestroyTextButton("Password");
+		DestroyText("FORGOT");
+		AddText(960, 650, "The password is incorrect, please try again", Segoe10, c_white, "Gp2", "WRONG_PASSWORD", [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
+		CreateButtonBox(960, 700, Sok, OboxText, "OK", "Gp2", "Gp3", Arial10, c_white, "OK", [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
+	}
+}
+
+if (((KeyPressed(vk_anykey) || mouse_wheel_down()) || (mouse_check_button(mb_left) && photo == "NULL")) && get != "NULL" && TIME > 1) {
 	SWITCH_TO_CONNECT = true;
 	CreateObjectSprite(0, 0, "Gp0", Suser_connect_background, OJustGUI, "IMAGE", "USER_BACKGROUND_VAGUE", [["INDEX_IMAGE", get.image_index + 16], ["FADE_IN", 0.0000009], "NULL"]);
 	DestroyObject("PHOTO");
@@ -97,7 +114,8 @@ if (SWITCH_TO_CONNECT && TIME > 1) {
 		var type = GetWrite("Password");
 		type.ON_WRITE = true;
 		CreateObjectSprite(960, 450, "Gp1", Sicon_turing, OJustGUI, "IMAGE", "ICON_TURING", [["FADE_IN", 0.00001], "NULL"]);
-		AddText(960, 600, global.USER[1], Segoe25, c_white, "Gp2", "NAME", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]);
+		AddText(960, 580, global.USER[1], Segoe25, c_white, "Gp2", "NAME", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]);
+		AddText(960, 610, global.USER[3], Segoe10, c_white, "Gp2", "EMAIL", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]);
 		if (global.USER[6][0] == 0)
 			CreateObjectSprite(960, 450, "Gp2", Shomme, OJustGUI, "ICON", "USER_ICON", [["INDEX_IMAGE", global.USER[6][1]], ["FADE_IN", 0.00001], "NULL"]);
 		else

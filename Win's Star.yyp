@@ -6,6 +6,7 @@
     {"id":{"name":"Swrite_bar","path":"sprites/Swrite_bar/Swrite_bar.yy",},"order":3,},
     {"id":{"name":"Arial25","path":"fonts/Arial25/Arial25.yy",},"order":5,},
     {"id":{"name":"Ostart_load","path":"objects/Ostart_load/Ostart_load.yy",},"order":1,},
+    {"id":{"name":"Sok","path":"sprites/Sok/Sok.yy",},"order":11,},
     {"id":{"name":"Segoe10","path":"fonts/Segoe10/Segoe10.yy",},"order":10,},
     {"id":{"name":"Sbackgrounds","path":"sprites/Sbackgrounds/Sbackgrounds.yy",},"order":0,},
     {"id":{"name":"Arial10","path":"fonts/Arial10/Arial10.yy",},"order":6,},

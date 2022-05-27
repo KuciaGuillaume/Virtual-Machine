@@ -60,6 +60,8 @@ if (TAG == "PHOTO") {
 		if (get != "NULL")  {
 			var dislike = GetObject("DISLIKE");
 			var like = GetObject("LIKE");
+			if (dislike == "NULL" || like == "NULL")
+				return;
 			get.image_alpha -= 0.000003 * delta_time;
 			dislike.TEXT_CONNECT.image_alpha -= 0.000005 * delta_time;
 			like.TEXT_CONNECT.image_alpha -= 0.000005 * delta_time;
@@ -77,6 +79,8 @@ if (TAG == "PHOTO") {
 // DISLIKE
 if (DISLIKE) {
 	var get = GetObject("USER_BACKGROUND");
+	if (get == "NULL")
+		return;
 	get.image_alpha -= 0.000002 * delta_time;
 	if (get.image_alpha <= 0) {
 		DISLIKE = false;
@@ -108,6 +112,8 @@ if (DISLIKE) {
 //LIKE
 if (TAG == "LIKE") {
 	var get = GetObject("USER_BACKGROUND");
+	if (get == "NULL")
+		return;
 	if (global.USER[9][get.image_index] > 0)
 		image_index = 1;
 }
@@ -222,9 +228,22 @@ if (TAG == "LIKE") {
 	savegame_save("USER", SAVE_LIST);
 }
 if (TAG == "DISLIKE" && image_index == 0) {
+	var get = GetObject("USER_BACKGROUND");
+	if (get != "NULL")
+		get.INDEX_IMAGE = false;
 	image_index = 1
 	DISLIKE_TIME = 0;
 	DISLIKE = true;
 }
 if (TAG == "SUTDOWN") Machine("END");
 if (TAG == "RESTART") Machine("RESTART");
+
+if (TAG == "OK") {
+	DestroyText("WRONG_PASSWORD");
+	AddTextLink(960, 670, "I forgot my password", Arial10, c_white, #2980B9, "Gp2", "FORGOT", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
+	CreateTextButton(960, 640, Senterpassword, "Password", "Gp1", "Gp2", c_white, Arial10, 20, "Password", [["FADE_IN", 0.00001], ["SECRET"], "NULL"]);
+	var type = GetWrite("Password");
+	type.ON_WRITE = true;
+	type.ON_WRITE = true;
+	DestroyButtonBox("OK");
+}

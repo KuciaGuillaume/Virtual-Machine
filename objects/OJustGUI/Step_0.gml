@@ -7,7 +7,7 @@ for (var i = 0; OPTION[i] != "NULL"; i++) {
 		FADE_IN = true; FADE_POWER = OPTION[i][1];
 		FADE_SATE = true; image_alpha = 0;
 	}
-	if (OPTION[i][0] == "INDEX_IMAGE")
+	if (OPTION[i][0] == "INDEX_IMAGE" && INDEX_IMAGE)
 		image_index = OPTION[i][1];
 	if (OPTION[i][0] == "FADE_ON") {FADE_ON = true; FADE_ON_POWER = OPTION[i][1]; }
 	if (OPTION[i][0] == "INFO") {INFO = true; INFO_NAME = OPTION[i][1]; }
@@ -105,6 +105,8 @@ if (TAG == "USER_BACKGROUND") {
 	USER_TIME += delta_time / 1000000;
 	if (!FIRST_PASS || USER_TIME >= USER_TIMER) {
 		USER_TIME = 0;
+		if (FIRST_PASS)
+			INDEX_IMAGE = false;
 		FIRST_PASS = true;
 		randomize();
 		var i = random_range(0, 15);

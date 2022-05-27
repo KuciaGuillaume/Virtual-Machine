@@ -50,7 +50,7 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 
 
 for (var i = 0; global.TEXT[i] != "NULL"; i++) {
-	if (global.TEXT[i][1].LINK_BTN_TEXT == false)
+	if (global.TEXT[i][2] != room || global.TEXT[i][1].LINK_BTN_TEXT == false)
 		continue;
 	var text = global.TEXT[i][1];
 	if (mouse_x >= text.x - (text.TEXT_WIDTH / 2) && mouse_x <= text.x + (text.TEXT_WIDTH/2) &&

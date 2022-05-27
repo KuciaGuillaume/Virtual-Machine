@@ -19,3 +19,16 @@ function CreateNotification(ICON, TITLE, DESCRIPTION, TAG) {
 	close.OBJECT_LINKED = notif;
 	return notif;
 }
+
+function DestroyNotification(TAG) {
+	var get  = GetObject(TAG);
+	
+	if (get == "NULL")
+		return;
+	DestroyText(get.TITLE_CONNECT.TAG);
+	DestroyText(get.DESCRIPTION_CONNECT.TAG);
+	DestroyObject(get.CLOSE_CONNECT.TAG);
+	DestroyObject(get.ICON_CONNECT.TAG);
+	DestroyObject(TAG);
+}
+

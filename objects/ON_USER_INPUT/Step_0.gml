@@ -15,8 +15,8 @@ else
 	MOVEMENT_TIME = 0;
 if ((KeyPressed(vk_escape) || MOVEMENT_TIME >= 60) && MODE == 1) {
 	MOVEMENT_TIME = 0;
-	var get = GetObject("USER_BACKGROUND_VAGUE");
-	get = get.image_index;
+	var image_get = GetObject("USER_BACKGROUND_VAGUE");
+	image_get = image_get.image_index;
 	DestroyTextButton("Password");
 	DestroyObject("ICON_TURING");
 	DestroyObject("IMAGE_WIFI");
@@ -44,7 +44,9 @@ if ((KeyPressed(vk_escape) || MOVEMENT_TIME >= 60) && MODE == 1) {
 	MODE = 0;
 	TIME_PASS = 0;
 	CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", ["NULL"]);
-	CreateObjectSprite(0, 0, "Gp1", Suser_connect_background, OJustGUI, "IMAGE", "USER_BACKGROUND", [["INDEX_IMAGE", get - 16], ["FADE_IN", 0.0000005], "NULL"]);
+	var vague = CreateObjectSprite(0, 0, "Gp1", Suser_connect_background, OJustGUI, "IMAGE", "USER_BACKGROUND", [["FADE_IN", 0.0000005], "NULL"]);
+	vague.SKIP = true;
+	vague.image_index = image_get - 16;
 	AddText(960, 240, "16:01", Segoe75, c_white, "Gp2", "CURRENT_TIME", [["CENTERED"],["FADE_IN", 0.0000005], "NULL"]);
 	AddText(960, 320, "dimanche 22 mai", Arial15, c_white, "Gp2", "CURRENT_DATE", [["CENTERED"],["FADE_IN", 0.0000005], "NULL"]);
 	CreateButtonBox(1737.5, 56.75, Sphoto, OboxText, "Do you like the displayed image ?", "Gp2", "Gp3", Arial10, c_white, "PHOTO", [["CENTERED"], ["POSITIONS", 1737.5, 90], "NULL"]);
@@ -88,6 +90,8 @@ if (MODE == 1 && KeyPressed(vk_enter)) {
 	}
 }
 
+var get = GetObject("USER_BACKGROUND");
+
 if (((KeyPressed(vk_anykey) || mouse_wheel_down()) || (mouse_check_button(mb_left) && photo == "NULL")) && get != "NULL" && TIME > 1) {
 	SWITCH_TO_CONNECT = true;
 	CreateObjectSprite(0, 0, "Gp0", Suser_connect_background, OJustGUI, "IMAGE", "USER_BACKGROUND_VAGUE", [["INDEX_IMAGE", get.image_index + 16], ["FADE_IN", 0.0000009], "NULL"]);
@@ -122,7 +126,7 @@ if (SWITCH_TO_CONNECT && TIME > 1) {
 			DestroyText(copy.TAG);
 	}
 	I *= 1.2;
-	if (TIME_PASS > 1) {
+	if (TIME_PASS > 0.2) {
 		AddTextLink(960, 670, "I forgot my password", Arial10, c_white, #2980B9, "Gp2", "FORGOT", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
 		CreateTextButton(960, 640, Senterpassword, "Password", "Gp1", "Gp2", c_white, Arial10, 20, "Password", [["FADE_IN", 0.00001], ["SECRET"], "NULL"]);
 		var type = GetWrite("Password");

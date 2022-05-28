@@ -34,6 +34,6 @@ FADE_ON_POWER = 0;
 INFO = false;
 INFO_NAME = "NULL";
 
-// INDEX_IMAGE
-INDEX_IMAGE = true;
+// BACKGROUND
+SKIP = false;
 

@@ -148,4 +148,8 @@ if (TAG == "SYSTEM_LOAD") {
 	image_angle += 0.001 * delta_time;
 	image_xscale = 0.5;
 	image_yscale = 0.5;
+	SYSTEM_LOAD_TIME += delta_time / 1000000;
+	if (SYSTEM_LOAD_TIME >= 3)
+		room = RMainScene;
+		
 }

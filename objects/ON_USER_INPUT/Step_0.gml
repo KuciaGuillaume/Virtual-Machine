@@ -85,8 +85,8 @@ if (MODE == 1 && KeyPressed(vk_enter)) {
 		DestroyObject("CURSOR");
 		MODE = 2;
 		
-		CreateObjectSprite(960, 550, "Gp2", Sstart_load, OJustGUI, "IMAGE", "SYSTEM_LOAD", [["FADE_IN", 0.0000003], "NULL"]);
-		AddText(960, 600, "Login to your session..", Arial10, c_white, "Gp2", "CONNECTION", [["CENTERED"], ["FADE_IN", 0.0000003], "NULL"] )
+		CreateObjectSprite(960, 550, "Gp2", Sstart_load, OJustGUI, "IMAGE", "SYSTEM_LOAD", [["FADE_IN", 0.0000006], "NULL"]);
+		AddText(960, 600, "Login to your session..", Arial10, c_white, "Gp2", "CONNECTION", [["CENTERED"], ["FADE_IN", 0.0000006], "NULL"] )
 	}
 }
 

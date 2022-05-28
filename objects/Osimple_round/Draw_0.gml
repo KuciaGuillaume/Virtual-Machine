@@ -6,3 +6,4 @@ draw_set_color(COLOR);
 draw_rectangle(x, y, BBOX_X, BBOX_Y, false);
 draw_set_color(c_black);
 draw_rectangle(x, y, BBOX_X, BBOX_Y, true);
+draw_set_alpha(1);

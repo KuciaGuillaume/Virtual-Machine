@@ -37,3 +37,6 @@ INFO_NAME = "NULL";
 // BACKGROUND
 SKIP = false;
 
+// SYSTEM
+SYSTEM_LOAD_TIME = 0;
+

@@ -228,9 +228,6 @@ if (TAG == "LIKE") {
 	savegame_save("USER", SAVE_LIST);
 }
 if (TAG == "DISLIKE" && image_index == 0) {
-	var get = GetObject("USER_BACKGROUND");
-	if (get != "NULL")
-		get.INDEX_IMAGE = false;
 	image_index = 1
 	DISLIKE_TIME = 0;
 	DISLIKE = true;

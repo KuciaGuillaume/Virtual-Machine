@@ -45,3 +45,5 @@ CLASS = "NULL";
 ON_CLASS = "NULL";
 MAIN_LAYER_ID = "NULL";
 CAN_TAKE = true;
+FIRST_TAKE = false;
+FADE_MOVEMENT = false

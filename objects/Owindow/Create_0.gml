@@ -47,3 +47,6 @@ MAIN_LAYER_ID = "NULL";
 CAN_TAKE = true;
 FIRST_TAKE = false;
 FADE_MOVEMENT = false
+FADE_END = false;
+ICON = "NULL";
+ON_THIS_WINDOW = true;

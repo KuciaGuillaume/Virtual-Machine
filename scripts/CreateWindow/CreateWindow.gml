@@ -45,11 +45,14 @@ function CreateWindow(WINDOW_BK, TAG, ICON) {
 	if (icon == "NULL") {
 		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, OJustGUI, "BUTTON-NO-HAND", TAG + "TASK_ICON", ["NULL"]);
 		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
+		icon.image_xscale = 0;
+		icon.image_yscale = 0;
 	} else
 		window.ON_OBJECT = GetObject(TAG + "ON_TASK");
 	window.image_alpha = 0;
 	window.WINDOW_BK.image_alpha = 0;
 	window.CLOSE.image_alpha = 0;
 	window.REDUCE.image_alpha = 0;
+	window.ICON = icon;
 	ID += 1;
 }

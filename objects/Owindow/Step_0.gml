@@ -30,6 +30,11 @@ if (y > 240 && !FADE_MOVEMENT)
 else
 	FADE_MOVEMENT = true;
 
+if (ICON.image_xscale < 1 && !FADE_END) {
+	ICON.image_xscale += 0.00001 * delta_time;
+	ICON.image_yscale += 0.00001 * delta_time;
+}
+
 WINDOW_BK.x = x + 3;
 WINDOW_BK.y = y + (sprite_height/2) - 6;
 CLOSE.x = bbox_left + 17.5 + 10;
@@ -38,6 +43,23 @@ REDUCE.x = bbox_left + 42.5 + 10;
 REDUCE.y = y + 3;
 
 FIRST_TAKE = true;
+
+if (FADE_END) { 
+	y += 0.0001 * delta_time; 
+	image_alpha -= 0.000005 * delta_time;
+	CLOSE.image_alpha = image_alpha;
+	WINDOW_BK.image_alpha = image_alpha;
+	REDUCE.image_alpha = image_alpha;
+	if (ON_OBJECT.image_xscale > 0)
+		ON_OBJECT.image_xscale -= 0.000005 * delta_time;
+	if (CLASS[1] - 1 <= 0 && ICON.image_xscale > 0) {
+		ICON.image_xscale -= 0.000005 * delta_time;
+		ICON.image_yscale -= 0.000005 * delta_time;
+	}
+}
+
+if (mouse_check_button_pressed(mb_left) && (!MouseInsideObject(id) || !MouseInsideObject(WINDOW_BK)))
+	ON_THIS_WINDOW = false;
 for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
 	if ( ON_MAIN_SCENE.TASKS[i][0] == WINDOW_TAG)
 		CLASS = ON_MAIN_SCENE.TASKS[i];
@@ -45,6 +67,23 @@ for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
 		var object = ON_MAIN_SCENE.TASKS[i][3][e];
 		if ((MouseInsideObject(object) || MouseInsideObject(object.WINDOW_BK)) && object.MAIN_LAYER_ID > MAIN_LAYER_ID)
 			FIRST_TAKE = false
+		if (mouse_check_button_pressed(mb_left) && (MouseInsideObject(object) || MouseInsideObject(object.WINDOW_BK)) && !ON_THIS_WINDOW) {
+			ON_THIS_WINDOW = true;
+			ON_OBJECT.image_xscale = 0.5;
+		}
+	}
+}
+
+if (ON_THIS_WINDOW && !FADE_END) {
+	ON_OBJECT.image_index = 1;
+	if (ON_OBJECT.image_xscale < 1)
+		ON_OBJECT.image_xscale += 0.000005 * delta_time;
+} else if (!FADE_END) {
+	if (ON_OBJECT.image_xscale > 0.5 && ON_OBJECT.image_index)
+		ON_OBJECT.image_xscale -= 0.000005 * delta_time;
+	else {
+		ON_OBJECT.image_index = 0;
+		ON_OBJECT.image_xscale = 1;
 	}
 }
 
@@ -58,8 +97,6 @@ for (var e = 0; CLASS[2][e] != "NULL"; e++) {
 		CAN_TAKE = false;
 }
 
-
-	
 if (mouse_check_button(mb_left) && (MouseInsideObject(self) || MouseInsideObject(WINDOW_BK)) && CAN_TAKE) {
 	ON = true;
 	ON_CLASS[1] = true;
@@ -124,7 +161,10 @@ if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mou
 	
 
 // FERMETURE DE LA WINDOW
-if (MouseInsideObject(CLOSE) && mouse_check_button_pressed(mb_left)) {
+if (MouseInsideObject(CLOSE) && mouse_check_button_pressed(mb_left))
+	FADE_END = true;
+
+if (image_alpha <= 0 && FADE_END) {
 	// delete layer index
 	for (var i = 0; global.layer_depth[MAIN_LAYER_ID + i] != "NULL"; i++) {
 		global.layer_depth[MAIN_LAYER_ID + i] = global.layer_depth[MAIN_LAYER_ID + (i + 1)];
@@ -151,25 +191,14 @@ if (MouseInsideObject(CLOSE) && mouse_check_button_pressed(mb_left)) {
 	WINDOW_BK.CLOSE = true;
 	CLASS[1] -= 1;
 	if (CLASS[1] <= 0) {
-		DestroyObject(WINDOW_TAG + "TASK_ICON");
+		DestroyObject(ICON.TAG);
 		DestroyObject(WINDOW_TAG + "ON_TASK");
 	}
 	DestroyObject(CLOSE.TAG);
 	DestroyObject(REDUCE.TAG);
 	DestroyObject(TAG);
 	return;
-}
-
-var on = false;
-
-for (var t = 0; CLASS[2][t] != "NULL"; t++)
-	if (CLASS[2][t][1] == true)
-		on = true;
-if (on)
-	ON_OBJECT.image_index = 1;
-else
-	ON_OBJECT.image_index = 0;
-	
+}	
 
 WINDOW_BK.x = x + 3;
 WINDOW_BK.y = y + (sprite_height/2) - 6;

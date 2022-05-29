@@ -8,6 +8,7 @@
     {"id":{"name":"Ostart_load","path":"objects/Ostart_load/Ostart_load.yy",},"order":1,},
     {"id":{"name":"Sok","path":"sprites/Sok/Sok.yy",},"order":11,},
     {"id":{"name":"Segoe10","path":"fonts/Segoe10/Segoe10.yy",},"order":10,},
+    {"id":{"name":"S_terminal_icon","path":"sprites/S_terminal_icon/S_terminal_icon.yy",},"order":1,},
     {"id":{"name":"Sbackgrounds","path":"sprites/Sbackgrounds/Sbackgrounds.yy",},"order":0,},
     {"id":{"name":"Arial10","path":"fonts/Arial10/Arial10.yy",},"order":6,},
     {"id":{"name":"Segoe55","path":"fonts/Segoe55/Segoe55.yy",},"order":7,},
@@ -191,7 +192,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2022.3.0.625",
+    "IDEVersion": "2022.500.0.116",
   },
   "resourceVersion": "1.5",
   "name": "Win's Star",

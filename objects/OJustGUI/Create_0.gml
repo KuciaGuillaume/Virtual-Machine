@@ -40,3 +40,6 @@ SKIP = false;
 // SYSTEM
 SYSTEM_LOAD_TIME = 0;
 
+// ACTION
+CLOSE = false;
+

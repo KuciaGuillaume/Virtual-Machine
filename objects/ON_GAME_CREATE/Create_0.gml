@@ -47,4 +47,4 @@ savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 
 // LOAD GAME
-room = Rstart;
+room = RMainScene;

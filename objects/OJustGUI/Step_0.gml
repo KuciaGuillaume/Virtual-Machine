@@ -153,3 +153,7 @@ if (TAG == "SYSTEM_LOAD") {
 		room = RMainScene;
 		
 }
+
+if (CLOSE && TAG == "TERMINAL_BK") {
+	DestroyObject(TAG);
+}

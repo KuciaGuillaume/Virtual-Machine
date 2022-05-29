@@ -46,6 +46,17 @@ if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mou
 	}
 } else
 	SELECT = false;
+	
+
+// FERMETURE DE LA WINDOW
+if (MouseInsideObject(CLOSE) && mouse_check_button_pressed(mb_left)) {
+	WINDOW_BK.CLOSE = true;
+	DestroyObject(CLOSE.TAG);
+	DestroyObject(REDUCE.TAG);
+	DestroyObject(TAG)
+	return;
+}
+	
 
 WINDOW_BK.x = x;
 WINDOW_BK.y = y + (sprite_height/2);

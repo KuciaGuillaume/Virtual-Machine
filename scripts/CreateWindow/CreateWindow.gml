@@ -7,4 +7,5 @@ function CreateWindow(WINDOW_BK, TAG, LAYER) {
 	window.WINDOW_BK = CreateObjectSprite(960, window.y + (window.sprite_height/2), LAYER, WINDOW_BK, OJustGUI, "WINDOW_BK", TAG + "_BK", ["NULL"]);
 	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5, window.y, UP_LAYER, Swindow_close, Obox, "BUTTON-NO-HAND", TAG + "CLOSE", ["NULL"]);
 	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5, window.y, UP_LAYER, Swindow_reduce, Obox, "BUTTON-NO-HAND", TAG + "CLOSE", ["NULL"]);
+	ON_GAME_CREATE.TERMINAL += 1;
 }

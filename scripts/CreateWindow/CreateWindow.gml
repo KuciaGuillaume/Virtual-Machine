@@ -1,11 +1,47 @@
 
 
-function CreateWindow(WINDOW_BK, TAG, LAYER) {
+function CreateWindow(WINDOW_BK, TAG, ICON) {
+	static ID = 0;
 	
-	var UP_LAYER = string(string_char_at(LAYER, 1)) + string(string_char_at(LAYER, 2)) + string((CharToNum(string_char_at(LAYER, 3)) + 1));
-	var window = CreateObjectSprite(960, 240, LAYER, Swindow_top, Owindow, "TOP_WINDOW", TAG, ["NULL"]);
-	window.WINDOW_BK = CreateObjectSprite(960, window.y + (window.sprite_height/2), LAYER, WINDOW_BK, OJustGUI, "WINDOW_BK", TAG + "_BK", ["NULL"]);
-	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5, window.y, UP_LAYER, Swindow_close, Obox, "BUTTON-NO-HAND", TAG + "CLOSE", ["NULL"]);
-	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5, window.y, UP_LAYER, Swindow_reduce, Obox, "BUTTON-NO-HAND", TAG + "CLOSE", ["NULL"]);
-	ON_GAME_CREATE.TERMINAL += 1;
+	// LAYER
+	for (var i = 0; global.layer_depth[i] != "NULL"; ) { i++; }
+	var LAYER_1 = string(ID) + "LAYER" + string(global.last_layer_id - 1);
+	layer_create(global.last_layer_id - 1, LAYER_1);
+	var LAYER_2 = string(ID) + "LAYER" + string(global.last_layer_id - 2);
+	layer_create(global.last_layer_id - 2, LAYER_2);
+	global.layer_depth[i] = ["LAYER" + string(ID), [LAYER_1, LAYER_2, "NULL"]];
+	global.layer_depth[i + 1] = "NULL";
+	global.last_layer_id -= 2;
+
+	var window = CreateObjectSprite(960, 240, LAYER_1, Swindow_top, Owindow, "TOP_WINDOW", TAG + string(ID), ["NULL"]);
+	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, OJustGUI, "WINDOW_BK", TAG + "_BK" + string(ID), ["NULL"]);
+	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5 + 10, window.y + 3, LAYER_2 , Swindow_close, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), ["NULL"]);
+	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5 + 10, window.y + 3, LAYER_2 , Swindow_reduce, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), ["NULL"]);
+	window.ID = ID;
+	window.WINDOW_TAG = TAG;
+	window.MAIN_LAYER_ID = i;
+	global.layer_depth[i][2] = window;
+	
+	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL" && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
+	
+	if (ON_MAIN_SCENE.TASKS[i] != "NULL") {
+		ON_MAIN_SCENE.TASKS[i][1] += 1;
+		for (var e = 0; ON_MAIN_SCENE.TASKS[i][2][e] != "NULL"; ) { e++ }
+		ON_MAIN_SCENE.TASKS[i][2][e] = [ID, true];
+		ON_MAIN_SCENE.TASKS[i][2][e + 1] = "NULL";
+	} else {
+		var new_class = [TAG, 1, [[ID, true], "NULL"]];
+		ON_MAIN_SCENE.TASKS[i] = new_class;
+		ON_MAIN_SCENE.TASKS[i + 1] = "NULL";
+	}
+	
+	var icon = GetObject(ON_MAIN_SCENE.TASKS[i][0] + "TASK_ICON");
+	var task_bar = GetObject("MAIN_TASKBAR");
+	// ICON
+	if (icon == "NULL") {
+		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, OJustGUI, "BUTTON-NO-HAND", TAG + "TASK_ICON", ["NULL"]);
+		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
+	} else
+		window.ON_OBJECT = GetObject(TAG + "ON_TASK");
+	ID += 1;
 }

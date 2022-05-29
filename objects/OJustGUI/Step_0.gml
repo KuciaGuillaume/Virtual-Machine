@@ -154,6 +154,4 @@ if (TAG == "SYSTEM_LOAD") {
 		
 }
 
-if (CLOSE && TAG == "TERMINAL_BK") {
-	DestroyObject(TAG);
-}
+if (CLOSE) DestroyObject(TAG);

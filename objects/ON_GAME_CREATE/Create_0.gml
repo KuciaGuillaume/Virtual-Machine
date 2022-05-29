@@ -1,6 +1,9 @@
 /// @Project by Kucia Guillaume* ///
 
 
+// CREATE GLOBAL WINDOW LAYER
+global.layer_depth = ["NULL"];
+global.last_layer_id = 400;
 
 // CREATE ALL OBJECTS STOCKAGE
 

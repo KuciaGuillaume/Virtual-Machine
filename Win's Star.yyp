@@ -48,6 +48,7 @@
     {"id":{"name":"Osimple_round","path":"objects/Osimple_round/Osimple_round.yy",},"order":10,},
     {"id":{"name":"Sregister_textbutton","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"order":1,},
     {"id":{"name":"S_backgrounds","path":"sprites/S_backgrounds/S_backgrounds.yy",},"order":0,},
+    {"id":{"name":"S_on_task","path":"sprites/S_on_task/S_on_task.yy",},"order":3,},
     {"id":{"name":"Sselector","path":"sprites/Sselector/Sselector.yy",},"order":2,},
     {"id":{"name":"Spower_option","path":"sprites/Spower_option/Spower_option.yy",},"order":2,},
     {"id":{"name":"Machine","path":"scripts/Machine/Machine.yy",},"order":0,},

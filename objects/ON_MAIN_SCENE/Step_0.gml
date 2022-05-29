@@ -4,4 +4,4 @@
 var CTRL = KeyPress(vk_control);
 
 if (CTRL && KeyPressed(ord("T")))
-	CreateWindow(Sterminal_bk, "TERMINAL", "Gp1");
+	CreateWindow(Sterminal_bk, "TERMINAL", S_terminal_icon);

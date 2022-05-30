@@ -5,7 +5,7 @@ function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, 
 	
 	if (my == "NULL" || my.TAG != OBJECT_TAG)
 		return "NULL";
-	var TEXT = AddText(my.x, my.y - 30, TEXT_NAME, FONT, c_white, LAYER2, TEXT_NAME, OPTION);
+	var TEXT = AddText(my.x, my.y - 35, TEXT_NAME, FONT, c_white, LAYER2, TEXT_NAME, OPTION);
 	var X = (TEXT.x - (string_width(TEXT.TEXT) / 2)) - MARGE;
 	var Y = (TEXT.y - (string_height(TEXT.TEXT) / 2)) - (MARGE / 2);
 	var roundRect = CreateObjects(X, Y, LAYER1, Osimple_round, "ROUND", TEXT_NAME, OPTION);

@@ -144,6 +144,12 @@ if (TAG == "POWER_OPTION") {
 		y -= 0.0001 * delta_time;
 }
 
+var right_option = GetObject(TAG + "RIGHT_OPT");
+if (right_option != "NULL") {
+	if (right_option.y > right_option.Y_TARGET)
+		right_option.y -= 0.0001 * delta_time;
+}
+
 if (TAG == "SYSTEM_LOAD") {
 	image_angle += 0.001 * delta_time;
 	image_xscale = 0.5;
@@ -155,3 +161,39 @@ if (TAG == "SYSTEM_LOAD") {
 }
 
 if (CLOSE) DestroyObject(TAG);
+
+if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_count("_TASK_ICON", TAG) >= 1) {
+	if (right_option != "NULL")
+		DestroyObject(TAG + "RIGHT_OPT");
+	right_option = CreateObjectSprite(x, y, "TaskBar_Gp0", S_right_option, OJustGUI, "IMAGE", TAG + "RIGHT_OPT", [["FADE_IN", 0.00001], "NULL"]);
+	right_option.Y_TARGET = y - 20;
+} else if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && string_count("_TASK_ICON", TAG) >= 1) {
+	if (right_option != "NULL")
+		DestroyObject(TAG + "RIGHT_OPT");
+}
+	
+
+if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count("_TASK_ICON", TAG) >= 1) {
+	var all_open = true;
+	for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
+		var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
+		if (obj.IS_REDUCE)
+			all_open = false;
+		if (obj.IS_REDUCE && obj.image_alpha <= 0) {
+			obj.FADE_MOVEMENT = false;
+			obj.IS_REDUCE = false;
+			obj.y = obj.Y_TARGET + 20;
+			obj.FADE_IN = true;
+		}
+	}
+	if (all_open) {
+		for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
+			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
+			if (obj.image_alpha >= 1) {
+				obj.REDUCING = true;
+				obj.FADE_END = true;
+			}
+		}
+	}
+	mouse_clear(mb_left);
+}

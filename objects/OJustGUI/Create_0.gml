@@ -43,3 +43,7 @@ SYSTEM_LOAD_TIME = 0;
 // ACTION
 CLOSE = false;
 
+// window
+WINDOW = "NULL";
+Y_TARGET = 0;
+

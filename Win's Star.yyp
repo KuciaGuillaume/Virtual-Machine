@@ -29,6 +29,7 @@
     {"id":{"name":"Svariables_objects","path":"sprites/Svariables_objects/Svariables_objects.yy",},"order":1,},
     {"id":{"name":"Sicon_box","path":"sprites/Sicon_box/Sicon_box.yy",},"order":4,},
     {"id":{"name":"ON_CREATE","path":"rooms/ON_CREATE/ON_CREATE.yy",},"order":1,},
+    {"id":{"name":"S_right_option","path":"sprites/S_right_option/S_right_option.yy",},"order":4,},
     {"id":{"name":"Simple15","path":"fonts/Simple15/Simple15.yy",},"order":1,},
     {"id":{"name":"GetCollisons","path":"scripts/GetCollisons/GetCollisons.yy",},"order":4,},
     {"id":{"name":"Swindow_reduce","path":"sprites/Swindow_reduce/Swindow_reduce.yy",},"order":2,},

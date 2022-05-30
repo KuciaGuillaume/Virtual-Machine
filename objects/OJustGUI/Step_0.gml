@@ -153,7 +153,7 @@ if (right_option != "NULL") {
 		right_option.y += 0.0001 * delta_time;
 		right_option.image_alpha -= 0.00001 * delta_time;
 		if (right_option.image_alpha <= 0) {
-			DestroyObject(right_option);
+			DestroyObject(right_option.TAG);
 			OPT_CLOSING = false
 		}
 	} else if (info != "NULL")
@@ -177,6 +177,21 @@ if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_coun
 		DestroyObject(TAG + "RIGHT_OPT");
 	right_option = CreateObjectSprite(x, y, "TaskBar_Gp0", S_right_option, OJustGUI, "IMAGE", TAG + "RIGHT_OPT", [["FADE_IN", 0.00001], "NULL"]);
 	right_option.Y_TARGET = y - 20;
+	
+	// CREATE ADD RECREATE BUTTON
+	var windows_n = 0;
+	var Y = y - 50;
+	for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
+			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
+			if (instance_exists(obj))
+				windows_n += 1;
+		}
+	var close_all = GetObject(TAG + "CLOSE_ALL");
+	if (close_all != "NULL")
+		DestroyObject(TAG + "CLOSE_ALL");
+	else if (windows_n > 0) {
+		close_all = CreateButtonBox(x, Y, S_window_option_button, Obox, "Close all windows", "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "CLOSE_ALL", [["IMAGE_LINK", S_window_option_close], ["CENTERED"], ["FADE_IN", 0.00001], "NULL"]);
+	}
 } else if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && string_count("_TASK_ICON", TAG) >= 1) {
 	if (right_option != "NULL") {
 		if (!MouseInsideObject(right_option))

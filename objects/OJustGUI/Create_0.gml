@@ -46,4 +46,5 @@ CLOSE = false;
 // window
 WINDOW = "NULL";
 Y_TARGET = 0;
+OPT_CLOSING = false;
 

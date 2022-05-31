@@ -31,7 +31,6 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, OJustGUI, "WINDOW_BK", TAG + "_BK" + string(ID), OPTION);
 	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5 + 10, window.y + 3, LAYER_2 , Swindow_close, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
 	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5 + 10, window.y + 3, LAYER_2 , Swindow_reduce, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
-	window.TEXT_TITLE = AddText(x + 10, y + 3, NAME, Arial10, c_black, LAYER_2, TAG + "TITLE" + string(ID), [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
 	window.ID = ID;
 	window.WINDOW_TAG = TAG;
 	window.MAIN_LAYER_ID = i;
@@ -49,17 +48,31 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 		for (var l = 0;  ON_MAIN_SCENE.TASKS[i][3][l] != "NULL"; ) { l++; }
 		ON_MAIN_SCENE.TASKS[i][3][l] = window;
 		ON_MAIN_SCENE.TASKS[i][3][l + 1] = "NULL";
+		if (string_count("-", NAME) == 0)
+			NAME = NAME + " - " + string(l + 1);
+		else {
+			var news = "";
+			for (var e = 0; string_char_at(NAME, e) != "-"; e++)
+				news += string_char_at(NAME, e + 1);
+			news += " " + string(l + 1);
+			NAME = news;
+		}
 	} else {
 		var new_class = [TAG, 1, [[ID, true], "NULL"], [window, "NULL"]];
 		ON_MAIN_SCENE.TASKS[i] = new_class;
 		ON_MAIN_SCENE.TASKS[i + 1] = "NULL";
+		NAME = NAME + " - 1";
 	}
 	
+	var ORIGINAL_NAME = "";
+	for (var e = 0; string_char_at(NAME, e + 1) != " "; e++)
+		ORIGINAL_NAME += string_char_at(NAME, e + 1);
+	window.TEXT_TITLE = AddText(x + 10, y + 3, NAME, Arial10, c_black, LAYER_2, TAG + "TITLE" + string(ID), [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
 	var icon = GetObject(TAG + "_TASK_ICON");
 	var task_bar = GetObject("MAIN_TASKBAR");
 	// ICON
 	if (icon == "NULL") {
-		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", NAME], "NULL"]);
+		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], "NULL"]);
 		icon.WINDOW = i;
 		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
 		icon.image_xscale = 0;
@@ -76,5 +89,6 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	window.CLOSE.image_alpha = 0;
 	window.REDUCE.image_alpha = 0;
 	window.ICON = icon;
+	window.NAME = NAME;
 	ID += 1;
 }

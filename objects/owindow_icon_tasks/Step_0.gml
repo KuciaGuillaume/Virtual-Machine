@@ -25,7 +25,46 @@ else
 if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == "NULL")
 	OPT_CLOSING = true;
 
+var windows_n = 0;
+for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
+	var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
+	if (instance_exists(obj))
+		windows_n += 1;
+}
+
+var visio = GetObject(TAG + "VISIO");
 var right_option = GetObject(TAG + "RIGHT_OPT");
+if (MouseInsideObject(id) && right_option == "NULL") {
+	if (GetObject(TAG + "VISIO") == "NULL" && windows_n > 0 && VISIO_TIME > 0.5) {
+		var Y = y - 30;
+		var all_button_box = ["NULL"];
+		var f = 0;
+		for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
+			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
+			if (instance_exists(obj)) {
+				all_button_box[f] = CreateButton_Image_Text(x, Y, S_window_option_button_mini, sprite_index, x - 40, Y, Obox, obj.NAME, "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, obj.TAG + "VISIO_BUTTON", [["BACK", 20], ["FADE_IN", 0.00001], "NULL"]);
+				Y -= 22.5;
+				all_button_box[f].PARENT = obj;
+				all_button_box[f].OBJECT_LINKED.image_xscale = 0.5;
+				all_button_box[f].OBJECT_LINKED.image_yscale = 0.5;
+				f += 1;
+				all_button_box[f] = "NULL";
+			}
+		}
+		visio = CreateEmptyRound(x - 60, y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)), c_white, 120, (20 * windows_n) + (2.5 * (windows_n - 1)) + 20, "TaskBar_Gp0", TAG + "VISIO", [["FADE_IN", 0.00001], "NULL"]);
+		visio.Y_TARGET = y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)) - 20;
+		visio.PARENT = id;
+		visio.COMPONENTS = all_button_box;
+	} else if (VISIO_TIME < 0.5)
+		VISIO_TIME += delta_time / 1000000;
+} else if (visio != "NULL" && ((!MouseInsideObject(id) && !MouseInside(visio.x, visio.x + visio.SIZE_X, visio.y, visio.y + visio.SIZE_Y)) || right_option != "NULL")) {
+	if (VISIO_TIME <= 0 || right_option != "NULL")
+		visio.CLOSE = true;
+	else
+		VISIO_TIME -= delta_time / 1000000;
+} else if (visio != "NULL" && MouseInside(visio.x, visio.x + visio.SIZE_X, visio.y, visio.y + visio.SIZE_Y))
+	VISIO_TIME = 0.5;
+
 var info = GetObject(INFO_NAME);
 if (right_option != "NULL") {
 	if (right_option.y > right_option.Y_TARGET && !OPT_CLOSING) {
@@ -87,14 +126,8 @@ if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_coun
 		DestroyObject(TAG + "RIGHT_OPT");
 	
 	// CREATE ADD RECREATE BUTTON
-	var windows_n = 0;
 	var Y = y - 30;
 	Y_BASE = Y - 20;
-	for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
-			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
-			if (instance_exists(obj))
-				windows_n += 1;
-		}
 	for (var i = 0; WINDOWS_BUTTONS[i] != "NULL"; i++)
 		if (instance_exists(WINDOWS_BUTTONS[i]))
 			DestroyButtonBox(WINDOWS_BUTTONS[i].TAG);
@@ -107,7 +140,10 @@ if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_coun
 	var pin = CreateButton_Image_Text(x, Y, S_window_option_button, S_window_option_pin, x - 100, Y,  Obox, "Pin to taskbar", "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "PIN", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]); Y -= 22.5;
 	pin.PARENT = id;
 	WINDOWS_BUTTONS = addtolist(pin, WINDOWS_BUTTONS);
-	var me = CreateButton_Image_Text(x, Y, S_window_option_button, CREATE_WINDOW_ICON, x - 100, Y,  Obox, CREATE_WINDOW_NAME, "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "WINDOW_ME", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]); Y -= 22.5;
+	var name = "";
+	for (var e = 0; string_char_at(CREATE_WINDOW_NAME, e + 1) != " "; e++)
+		name += string_char_at(CREATE_WINDOW_NAME, e + 1);
+	var me = CreateButton_Image_Text(x, Y, S_window_option_button, CREATE_WINDOW_ICON, x - 100, Y,  Obox, name, "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "WINDOW_ME", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]); Y -= 22.5;
 	me.PARENT = id;
 	me.OBJECT_LINKED.image_xscale = 0.5; me.OBJECT_LINKED.image_yscale = 0.5;
 	WINDOWS_BUTTONS = addtolist(me, WINDOWS_BUTTONS);

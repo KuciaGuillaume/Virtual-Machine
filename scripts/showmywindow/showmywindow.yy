@@ -6,7 +6,7 @@
     "path": "folders/Global/Scripts/Window.yy",
   },
   "resourceVersion": "1.0",
-  "name": "CreateWindow",
+  "name": "ShowMyWindow",
   "tags": [],
   "resourceType": "GMScript",
 }

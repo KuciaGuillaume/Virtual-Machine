@@ -119,3 +119,6 @@ if (string_count("PIN", TAG) > 0) {
 if (string_count("WINDOW_ME", TAG) > 0)
 	CreateWindow(PARENT.CREATE_WINDOW_IMAGE, PARENT.CREATE_WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME);
 
+if (PARENT != "NULL" && string_count("VISIO_BUTTON", TAG))
+	showmywindow(PARENT.id, PARENT.id, PARENT.depth, PARENT.MAIN_LAYER_ID);
+

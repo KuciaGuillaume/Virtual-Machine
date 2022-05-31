@@ -182,31 +182,8 @@ if (mouse_check_button_pressed(mb_left) && (MouseInsideObject(self) || MouseInsi
 if (!FIRST_TAKE)
 	return;
 
-if (ON && mouse_check_button(mb_left)) {
-	var min_depth = 30000;
-	var is = 0;
-	for (var mac = 0; global.layer_depth[mac] != "NULL"; mac ++) {
-		if (global.layer_depth[mac][2] == id || global.layer_depth[mac][2] == self)
-			continue;
-		var test = layer_get_id(global.layer_depth[mac][1][6]);
-		if (layer_get_depth(test) < min_depth) {
-			is = mac;
-			min_depth = layer_get_depth(test);
-		}
-	}
-	for (var la = 0; global.layer_depth[la] != "NULL" && depth > min_depth; la++) {
-		if (global.layer_depth[la][2] == id || global.layer_depth[la][2] == self)
-			continue;
-		for (var f = 0; global.layer_depth[MAIN_LAYER_ID][1][f] != "NULL"; f++) {
-			var get = layer_get_id(global.layer_depth[MAIN_LAYER_ID][1][f]);
-			layer_depth(get, layer_get_depth(get) - 7);
-		}
-		for (var f = 0; global.layer_depth[la][1][f] != "NULL"; f++) {
-			var get = layer_get_id(global.layer_depth[la][1][f]);
-			layer_depth(get, layer_get_depth(get) + 7);
-		}
-	}
-}
+if (ON && mouse_check_button(mb_left))
+	showmywindow(id, self, depth, MAIN_LAYER_ID);
 
 
 // MOVE WINDOW

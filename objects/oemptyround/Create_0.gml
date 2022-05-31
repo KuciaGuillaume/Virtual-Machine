@@ -26,3 +26,6 @@ SIZE_X = 0;
 SIZE_Y = 0;
 COLOR = "NULL";
 Y_TARGET = 0;
+PARENT = "NULL";
+CLOSE = false;
+COMPONENTS = "NULL";

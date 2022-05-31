@@ -21,3 +21,38 @@ if (FADE_IN && image_alpha < 1)
 	image_alpha += FADE_POWER * delta_time;
 else
 	FADE_IN = false;
+
+if (PARENT != "NULL") {
+	if (PARENT.TAG + "VISIO" == TAG) {
+		if (y > Y_TARGET && !CLOSE) {
+			y -= 0.0001 * delta_time
+			if (COMPONENTS != "NULL") {
+				for (var i = 0; COMPONENTS[i] != "NULL"; i++) {
+					var obj = COMPONENTS[i];
+					obj.y -= 0.0001 * delta_time; obj.TEXT_CONNECT.y -= 0.0001 * delta_time;
+					obj.OBJECT_LINKED.y -= 0.0001 * delta_time;
+				}
+			}
+		} else if (CLOSE) {
+			if (y < Y_TARGET + 20) {
+				y += 0.0001 * delta_time;
+				image_alpha -= 0.00001 * delta_time;
+				if (COMPONENTS != "NULL") {
+					for (var i = 0; COMPONENTS[i] != "NULL"; i++) {
+						var obj = COMPONENTS[i];
+						obj.y += 0.0001 * delta_time; obj.TEXT_CONNECT.y += 0.0001 * delta_time;
+						obj.OBJECT_LINKED.y += 0.0001 * delta_time;
+						obj.image_alpha = image_alpha;
+						obj.OBJECT_LINKED.image_alpha = image_alpha;
+				}
+			}
+			} else {
+				if (COMPONENTS != "NULL") {
+					for (var i = 0; COMPONENTS[i] != "NULL"; i++)
+						DestroyButtonBox(COMPONENTS[i].TAG);
+				}
+				DestroyObject(TAG);
+			}
+		}
+	}
+}

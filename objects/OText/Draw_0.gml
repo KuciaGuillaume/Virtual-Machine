@@ -9,6 +9,8 @@ TEXT_WIDTH = string_width(TEXT);
 TEXT_HEIGHT = string_height(TEXT);
 if (CENTERED)
 	draw_text(x - (TEXT_WIDTH / 2), (y - (TEXT_HEIGHT / 2)) + 2, TEXT);
+else if (BACK)
+	draw_text(x - BACK_POWER, (y - (TEXT_HEIGHT / 2)) + 2, TEXT);
 else
 	draw_text(x, y, TEXT);
 draw_set_alpha(1);

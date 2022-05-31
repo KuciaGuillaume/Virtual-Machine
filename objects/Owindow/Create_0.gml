@@ -57,3 +57,4 @@ CLOSING = false;
 REDUCING = false;
 IS_REDUCE = false;
 Y_TARGET = 240;
+NAME = "NULL";

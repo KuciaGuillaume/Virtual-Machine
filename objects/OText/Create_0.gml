@@ -16,6 +16,8 @@ CENTERED = false;
 FADE_IN = false;
 FADE_SATE = false;
 FADE_POWER = 0;
+BACK = false;
+BACK_POWER = 0; 
 
 // FINISHED MESSAGE
 FINISH_TIME = 0;

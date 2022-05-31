@@ -1,5 +1,5 @@
 
-function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, OPTION){
+function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, OPTION) {
 	
 	var my = GetObject(OBJECT_TAG);
 	
@@ -17,6 +17,22 @@ function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, 
 	roundRect.TEXT_CONNECT = TEXT;
 	roundRect.MARGE = MARGE;
 	return roundRect;
+}
+
+function CreateEmptyRound(X, Y, COLOR, SIZE_X, SIZE_Y, LAYER, TAG, OPTION) {
+	var rounded = GetObject(TAG);
+	if (rounded != "NULL") {
+		rounded.x = X; rounded.y = Y;
+		rounded.COLOR = COLOR;
+		rounded.SIZE_X = SIZE_X;
+		rounded.SIZE_Y = SIZE_Y;
+		return rounded;
+	}
+	rounded = CreateObjects(X, Y, LAYER, OEmptyRound, "IMAGE", TAG, OPTION);
+	rounded.COLOR = COLOR;
+	rounded.SIZE_X = SIZE_X;
+	rounded.SIZE_Y = SIZE_Y;
+	return rounded;
 }
 
 function DestroyRound(TEXT_NAME) {

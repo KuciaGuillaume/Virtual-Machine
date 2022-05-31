@@ -72,6 +72,7 @@ if (right_option != "NULL") {
 			WINDOWS_BUTTONS = ["NULL"];
 			DestroyObject(right_option.TAG);
 			OPT_CLOSING = false;
+			NBAR = 0;
 			if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == "NULL") {
 				DestroyObject(TAG);
 				DestroyObject(ON_TASK.TAG);
@@ -84,8 +85,6 @@ if (right_option != "NULL") {
 if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_count("_TASK_ICON", TAG) >= 1) {
 	if (right_option != "NULL")
 		DestroyObject(TAG + "RIGHT_OPT");
-	right_option = CreateObjectSprite(x, y, "TaskBar_Gp0", S_right_option, OJustGUI, "IMAGE", TAG + "RIGHT_OPT", [["FADE_IN", 0.00001], "NULL"]);
-	right_option.Y_TARGET = y - 20;
 	
 	// CREATE ADD RECREATE BUTTON
 	var windows_n = 0;
@@ -107,10 +106,17 @@ if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_coun
 	}
 	var pin = CreateButton_Image_Text(x, Y, S_window_option_button, S_window_option_pin, x - 100, Y,  Obox, "Pin to taskbar", "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "PIN", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]); Y -= 22.5;
 	pin.PARENT = id;
-	WINDOWS_BUTTONS = addtolist(pin, WINDOWS_BUTTONS);	
+	WINDOWS_BUTTONS = addtolist(pin, WINDOWS_BUTTONS);
+	var me = CreateButton_Image_Text(x, Y, S_window_option_button, CREATE_WINDOW_ICON, x - 100, Y,  Obox, CREATE_WINDOW_NAME, "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "WINDOW_ME", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]); Y -= 22.5;
+	me.PARENT = id;
+	me.OBJECT_LINKED.image_xscale = 0.5; me.OBJECT_LINKED.image_yscale = 0.5;
+	WINDOWS_BUTTONS = addtolist(me, WINDOWS_BUTTONS);
+	var nbar = list_n(WINDOWS_BUTTONS);
+	right_option = CreateEmptyRound(x - 120, y - 30 - (20 * nbar) - (2.5 * (nbar - 1)), c_white, 240, (20 * nbar) + (2.5 * (nbar - 1)) + 20, "TaskBar_Gp0", TAG + "RIGHT_OPT", [["FADE_IN", 0.00001], "NULL"]);
+	right_option.Y_TARGET = y - 30 - (20 * nbar) - (2.5 * (nbar - 1)) - 20;
 } else if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && string_count("_TASK_ICON", TAG) >= 1) {
 	if (right_option != "NULL") {
-		if (!MouseInsideObject(right_option))
+		if (!MouseInside(right_option.bbox_left, right_option.bbox_left + right_option.SIZE_X, right_option.bbox_top, right_option.bbox_top + right_option.SIZE_Y))
 			OPT_CLOSING = true;
 	}
 }

@@ -14,3 +14,9 @@ function remove_list(i, LIST) {
 		LIST[i] = LIST[i + 1];
 	return LIST;
 }
+
+function list_n(LIST) {
+	var i = 0;
+	for (; LIST[i] != "NULL";) { i++ }
+	return i;
+}

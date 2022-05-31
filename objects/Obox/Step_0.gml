@@ -103,6 +103,10 @@ if (string_count("CLOSE_ALL_WINDOW", TAG) > 0) {
 		obj.CLOSING = true;
 	}
 	DestroyButtonBox(PARENT.TAG + "CLOSE_ALL_WINDOW");
+	var opt = GetObject(PARENT.TAG + "RIGHT_OPT");
+	opt.y += 22.5;
+	opt.Y_TARGET += 22.5;
+	opt.SIZE_Y -= 22.5
 }
 
 if (string_count("PIN", TAG) > 0) {
@@ -111,4 +115,7 @@ if (string_count("PIN", TAG) > 0) {
 	else
 		PARENT.PIN = false;
 }
+
+if (string_count("WINDOW_ME", TAG) > 0)
+	CreateWindow(PARENT.CREATE_WINDOW_IMAGE, PARENT.CREATE_WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME);
 

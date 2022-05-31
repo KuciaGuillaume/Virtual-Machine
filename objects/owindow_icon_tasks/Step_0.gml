@@ -35,23 +35,27 @@ for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
 var visio = GetObject(TAG + "VISIO");
 var right_option = GetObject(TAG + "RIGHT_OPT");
 if (MouseInsideObject(id) && right_option == "NULL") {
-	if (GetObject(TAG + "VISIO") == "NULL" && windows_n > 0 && VISIO_TIME > 0.5) {
+	if (GetObject(TAG + "VISIO") == "NULL" && windows_n > 0 && VISIO_TIME >= 0.5) {
 		var Y = y - 30;
 		var all_button_box = ["NULL"];
 		var f = 0;
 		for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
 			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
 			if (instance_exists(obj)) {
-				all_button_box[f] = CreateButton_Image_Text(x, Y, S_window_option_button_mini, sprite_index, x - 40, Y, Obox, obj.NAME, "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, obj.TAG + "VISIO_BUTTON", [["BACK", 20], ["FADE_IN", 0.00001], "NULL"]);
-				Y -= 22.5;
+				all_button_box[f] = CreateButton_Image_Text(x, Y, S_window_option_button, sprite_index, x - 100, Y, Obox, obj.NAME, "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, obj.TAG + "VISIO_BUTTON", [["CENTERED"], ["FADE_IN", 0.00001], "NULL"]);
 				all_button_box[f].PARENT = obj;
 				all_button_box[f].OBJECT_LINKED.image_xscale = 0.5;
 				all_button_box[f].OBJECT_LINKED.image_yscale = 0.5;
-				f += 1;
+				all_button_box[f + 1] = CreateObjectSprite(x + 100, Y, "TaskBar_Gp2", S_window_visio_close, Obox, "BUTTON", obj.TAG + "VISIO_CLOSE", [["FADE_IN", 0.00001], "NULL"])
+				all_button_box[f + 1].PARENT = obj;
+				all_button_box[f + 1].OTHER_PARENT = all_button_box[f];
+				all_button_box[f + 1].VISIO_TAG = TAG + "VISIO";
+				f += 2;
 				all_button_box[f] = "NULL";
+				Y -= 22.5;
 			}
 		}
-		visio = CreateEmptyRound(x - 60, y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)), c_white, 120, (20 * windows_n) + (2.5 * (windows_n - 1)) + 20, "TaskBar_Gp0", TAG + "VISIO", [["FADE_IN", 0.00001], "NULL"]);
+		visio = CreateEmptyRound(x - 120, y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)), c_white, 240, (20 * windows_n) + (2.5 * (windows_n - 1)) + 20, "TaskBar_Gp0", TAG + "VISIO", [["FADE_IN", 0.00001], "NULL"]);
 		visio.Y_TARGET = y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)) - 20;
 		visio.PARENT = id;
 		visio.COMPONENTS = all_button_box;

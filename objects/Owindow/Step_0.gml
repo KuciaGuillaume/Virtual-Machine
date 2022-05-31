@@ -46,6 +46,8 @@ TEXT_TITLE.x = x + 10;
 CLOSE.image_alpha = image_alpha; REDUCE.image_alpha = image_alpha; TEXT_TITLE.image_alpha = image_alpha;
 WINDOW_BK.image_alpha = image_alpha;
 
+var visio = GetObject(ICON.TAG + "VISIO");
+
 if (IS_REDUCE)
 	return;
 
@@ -95,6 +97,8 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	CLASS[1] -= 1;
 	if (CLASS[1] <= 0) {
 		if (!ICON.PIN) {
+			if (visio != "NULL")
+				DestroyObject(visio.TAG);
 			DestroyObject(ICON.TAG);
 			DestroyObject(ON_OBJECT.TAG);
 		}	
@@ -116,7 +120,7 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	return;
 }
 
-if (mouse_check_button_pressed(mb_left) && (!MouseInsideObject(id) || !MouseInsideObject(WINDOW_BK)))
+if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (!MouseInsideObject(id) || !MouseInsideObject(WINDOW_BK)))
 	ON_THIS_WINDOW = false;
 for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
 	if ( ON_MAIN_SCENE.TASKS[i][0] == WINDOW_TAG)
@@ -127,7 +131,7 @@ for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
 		
 		if ((MouseInsideObject(object) || MouseInsideObject(object.WINDOW_BK)) && get < depth)
 			FIRST_TAKE = false
-		if (mouse_check_button_pressed(mb_left) && (MouseInsideObject(object) || MouseInsideObject(object.WINDOW_BK)) && !ON_THIS_WINDOW) {
+		if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(object) || MouseInsideObject(object.WINDOW_BK)) && !ON_THIS_WINDOW) {
 			ON_THIS_WINDOW = true;
 			ON_OBJECT.image_xscale = 0.5;
 		}
@@ -148,7 +152,7 @@ if (ON_THIS_WINDOW && !FADE_END) {
 }
 
 
-if (mouse_check_button_pressed(mb_left) && (MouseInsideObject(self) || MouseInsideObject(WINDOW_BK))) {
+if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(self) || MouseInsideObject(WINDOW_BK))) {
 	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
 		for (var g = 0; ON_MAIN_SCENE.TASKS[i][3][g] != "NULL"; g++) {
 			var obj = ON_MAIN_SCENE.TASKS[i][3][g];
@@ -171,10 +175,10 @@ for (var e = 0; CLASS[2][e] != "NULL"; e++) {
 if (!FIRST_TAKE)
 	CAN_TAKE = false;
 
-if (mouse_check_button_pressed(mb_left) && (MouseInsideObject(self) || MouseInsideObject(WINDOW_BK)) && CAN_TAKE) {
+if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(self) || MouseInsideObject(WINDOW_BK)) && CAN_TAKE) {
 	ON = true;
 	ON_CLASS[1] = true;
-} else if (mouse_check_button_pressed(mb_left) && (!MouseInsideObject(self) && !MouseInsideObject(WINDOW_BK)) || !FIRST_TAKE) {
+} else if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (!MouseInsideObject(self) && !MouseInsideObject(WINDOW_BK)) || !FIRST_TAKE) {
 	ON = false;
 	ON_CLASS[1] = false;
 }
@@ -182,12 +186,12 @@ if (mouse_check_button_pressed(mb_left) && (MouseInsideObject(self) || MouseInsi
 if (!FIRST_TAKE)
 	return;
 
-if (ON && mouse_check_button(mb_left))
+if (ON && mouse_check_button(mb_left) && !ON_MAIN_SCENE.ON_GUI)
 	showmywindow(id, self, depth, MAIN_LAYER_ID);
 
 
 // MOVE WINDOW
-if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mouse_check_button(mb_left) && CAN_TAKE) {
+if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mouse_check_button(mb_left) && !ON_MAIN_SCENE.ON_GUI && CAN_TAKE) {
 	if (!MouseInsideObject(CLOSE) && !MouseInsideObject(REDUCE) && !SELECT) {
 		SELECT = true;
 		X = mouse_x;
@@ -209,7 +213,7 @@ if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mou
 	
 
 // FERMETURE DE LA WINDOW
-if ((MouseInsideObject(CLOSE) || MouseInsideObject(REDUCE)) && mouse_check_button_pressed(mb_left)) {
+if ((MouseInsideObject(CLOSE) || MouseInsideObject(REDUCE)) && mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI) {
 	FADE_END = true;
 	if (MouseInsideObject(CLOSE))
 		CLOSING = true;

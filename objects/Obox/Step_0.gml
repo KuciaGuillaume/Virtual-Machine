@@ -121,4 +121,28 @@ if (string_count("WINDOW_ME", TAG) > 0)
 
 if (PARENT != "NULL" && string_count("VISIO_BUTTON", TAG))
 	showmywindow(PARENT.id, PARENT.id, PARENT.depth, PARENT.MAIN_LAYER_ID);
+if (PARENT != "NULL" && string_count("VISIO_CLOSE", TAG)) {
+	PARENT.FADE_END = true;
+	PARENT.CLOSING = true;
+	var visio = GetObject(VISIO_TAG);
+	if (visio != "NULL") {
+		visio.Y_TARGET += 22.5;
+		for (var i = 0; visio.COMPONENTS[i] != id;) { i++ };
+		for (; visio.COMPONENTS[i] != "NULL"; i++) {
+			var object = visio.COMPONENTS[i];
+			if (object == "NULL" || !instance_exists(object))
+				continue;
+			object.y += 22.5
+			if (object.OBJECT_LINKED != "NULL")
+				object.OBJECT_LINKED.y += 22.5;
+			if (object.TEXT_CONNECT != "NULL")
+				object.TEXT_CONNECT.y += 22.5;
+		}
+		visio.y += 22.5;
+		visio.SIZE_Y -= 22.5;
+	}
+	DestroyObject(TAG);
+	DestroyButtonBox(OTHER_PARENT.TAG);
+	mouse_clear(mb_left);
+}
 

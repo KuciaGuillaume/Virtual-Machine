@@ -5,6 +5,7 @@
 
 image_index = 0;
 
+ON_MAIN_SCENE.ON_GUI = false;
 for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 	var class = global.OBJECTS[i];
 	
@@ -27,7 +28,9 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 			}
 		}
 		//
-
+		var get_depth = class[0].depth;
+		if (get_depth <= -100 && class[0] != self)
+			ON_MAIN_SCENE.ON_GUI = true;
 		if (class[0].FADE_ON == false)
 			class[0].image_index = 1;
 		else if (class[0].image_alpha < 1 && class[0].FADE_ON)

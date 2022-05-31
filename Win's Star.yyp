@@ -27,6 +27,7 @@
     {"id":{"name":"Swindow_close","path":"sprites/Swindow_close/Swindow_close.yy",},"order":1,},
     {"id":{"name":"Scursor","path":"sprites/Scursor/Scursor.yy",},"order":2,},
     {"id":{"name":"Svariables_objects","path":"sprites/Svariables_objects/Svariables_objects.yy",},"order":1,},
+    {"id":{"name":"S_window_visio_close","path":"sprites/S_window_visio_close/S_window_visio_close.yy",},"order":9,},
     {"id":{"name":"Sicon_box","path":"sprites/Sicon_box/Sicon_box.yy",},"order":4,},
     {"id":{"name":"ON_CREATE","path":"rooms/ON_CREATE/ON_CREATE.yy",},"order":1,},
     {"id":{"name":"S_right_option","path":"sprites/S_right_option/S_right_option.yy",},"order":4,},

@@ -23,14 +23,17 @@ else
 	FADE_IN = false;
 
 if (PARENT != "NULL") {
-	if (PARENT.TAG + "VISIO" == TAG) {
+	if (instance_exists(PARENT) && PARENT.TAG + "VISIO" == TAG) {
 		if (y > Y_TARGET && !CLOSE) {
 			y -= 0.0001 * delta_time
 			if (COMPONENTS != "NULL") {
 				for (var i = 0; COMPONENTS[i] != "NULL"; i++) {
 					var obj = COMPONENTS[i];
-					obj.y -= 0.0001 * delta_time; obj.TEXT_CONNECT.y -= 0.0001 * delta_time;
-					obj.OBJECT_LINKED.y -= 0.0001 * delta_time;
+					obj.y -= 0.0001 * delta_time;
+					if (obj.TEXT_CONNECT != "NULL")	
+						obj.TEXT_CONNECT.y -= 0.0001 * delta_time;
+					if (obj.OBJECT_LINKED != "NULL")
+						obj.OBJECT_LINKED.y -= 0.0001 * delta_time;
 				}
 			}
 		} else if (CLOSE) {
@@ -40,16 +43,23 @@ if (PARENT != "NULL") {
 				if (COMPONENTS != "NULL") {
 					for (var i = 0; COMPONENTS[i] != "NULL"; i++) {
 						var obj = COMPONENTS[i];
-						obj.y += 0.0001 * delta_time; obj.TEXT_CONNECT.y += 0.0001 * delta_time;
-						obj.OBJECT_LINKED.y += 0.0001 * delta_time;
+						if (!instance_exists(obj))
+							continue;
+						obj.y += 0.0001 * delta_time; 
 						obj.image_alpha = image_alpha;
-						obj.OBJECT_LINKED.image_alpha = image_alpha;
+						if (obj.TEXT_CONNECT != "NULL")	
+							obj.TEXT_CONNECT.y += 0.0001 * delta_time;
+						if (obj.OBJECT_LINKED != "NULL") {
+							obj.OBJECT_LINKED.y += 0.0001 * delta_time;
+							obj.OBJECT_LINKED.image_alpha = image_alpha;
+						}
 				}
 			}
 			} else {
 				if (COMPONENTS != "NULL") {
 					for (var i = 0; COMPONENTS[i] != "NULL"; i++)
-						DestroyButtonBox(COMPONENTS[i].TAG);
+						if (instance_exists(COMPONENTS[i]))
+							DestroyButtonBox(COMPONENTS[i].TAG);
 				}
 				DestroyObject(TAG);
 			}

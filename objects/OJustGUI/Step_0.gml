@@ -144,22 +144,6 @@ if (TAG == "POWER_OPTION") {
 		y -= 0.0001 * delta_time;
 }
 
-var right_option = GetObject(TAG + "RIGHT_OPT");
-var info = GetObject(INFO_NAME);
-if (right_option != "NULL") {
-	if (right_option.y > right_option.Y_TARGET && !OPT_CLOSING)
-		right_option.y -= 0.0001 * delta_time;
-	if (OPT_CLOSING) {
-		right_option.y += 0.0001 * delta_time;
-		right_option.image_alpha -= 0.00001 * delta_time;
-		if (right_option.image_alpha <= 0) {
-			DestroyObject(right_option.TAG);
-			OPT_CLOSING = false
-		}
-	} else if (info != "NULL")
-		DestroyRound(INFO_NAME);
-}
-
 if (TAG == "SYSTEM_LOAD") {
 	image_angle += 0.001 * delta_time;
 	image_xscale = 0.5;
@@ -172,55 +156,7 @@ if (TAG == "SYSTEM_LOAD") {
 
 if (CLOSE) DestroyObject(TAG);
 
-if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_count("_TASK_ICON", TAG) >= 1) {
-	if (right_option != "NULL")
-		DestroyObject(TAG + "RIGHT_OPT");
-	right_option = CreateObjectSprite(x, y, "TaskBar_Gp0", S_right_option, OJustGUI, "IMAGE", TAG + "RIGHT_OPT", [["FADE_IN", 0.00001], "NULL"]);
-	right_option.Y_TARGET = y - 20;
-	
-	// CREATE ADD RECREATE BUTTON
-	var windows_n = 0;
-	var Y = y - 50;
-	for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
-			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
-			if (instance_exists(obj))
-				windows_n += 1;
-		}
-	var close_all = GetObject(TAG + "CLOSE_ALL");
-	if (close_all != "NULL")
-		DestroyObject(TAG + "CLOSE_ALL");
-	else if (windows_n > 0) {
-		close_all = CreateButtonBox(x, Y, S_window_option_button, Obox, "Close all windows", "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "CLOSE_ALL", [["IMAGE_LINK", S_window_option_close], ["CENTERED"], ["FADE_IN", 0.00001], "NULL"]);
-	}
-} else if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && string_count("_TASK_ICON", TAG) >= 1) {
-	if (right_option != "NULL") {
-		if (!MouseInsideObject(right_option))
-			OPT_CLOSING = true;
-	}
-}
-	
-
-if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count("_TASK_ICON", TAG) >= 1 && string_count("RIGHT_OPT", TAG) <= 0) {
-	var all_open = true;
-	for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
-		var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
-		if (obj.IS_REDUCE)
-			all_open = false;
-		if (obj.IS_REDUCE && obj.image_alpha <= 0) {
-			obj.FADE_MOVEMENT = false;
-			obj.IS_REDUCE = false;
-			obj.y = obj.Y_TARGET + 20;
-			obj.FADE_IN = true;
-		}
-	}
-	if (all_open) {
-		for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
-			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
-			if (obj.image_alpha >= 1) {
-				obj.REDUCING = true;
-				obj.FADE_END = true;
-			}
-		}
-	}
-	mouse_clear(mb_left);
+if (OBJECT_LINKED != "NULL") {
+	OBJECT_LINKED.x = x;
+	OBJECT_LINKED.y = y;
 }

@@ -47,4 +47,4 @@ CLOSE = false;
 WINDOW = "NULL";
 Y_TARGET = 0;
 OPT_CLOSING = false;
-
+OBJECT_LINKED = "NULL";

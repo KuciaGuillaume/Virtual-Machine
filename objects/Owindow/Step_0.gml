@@ -58,9 +58,9 @@ if (FADE_END) {
 	WINDOW_BK.image_alpha = image_alpha;
 	REDUCE.image_alpha = image_alpha;
 	TEXT_TITLE.image_alpha = image_alpha;
-	if (ON_OBJECT.image_xscale > 0 && CLOSING)
+	if (ON_OBJECT.image_xscale > 0 && CLOSING && !ICON.PIN)
 		ON_OBJECT.image_xscale -= 0.000005 * delta_time;
-	if (CLASS[1] - 1 <= 0 && ICON.image_xscale > 0 && CLOSING) {
+	if (CLASS[1] - 1 <= 0 && ICON.image_xscale > 0 && CLOSING && !ICON.PIN) {
 		ICON.image_xscale -= 0.000005 * delta_time;
 		ICON.image_yscale -= 0.000005 * delta_time;
 	}
@@ -94,8 +94,10 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	WINDOW_BK.CLOSE = true;
 	CLASS[1] -= 1;
 	if (CLASS[1] <= 0) {
-		DestroyObject(ICON.TAG);
-		DestroyObject(WINDOW_TAG + "ON_TASK");
+		if (!ICON.PIN) {
+			DestroyObject(ICON.TAG);
+			DestroyObject(ON_OBJECT.TAG);
+		}	
 	}
 	DestroyObject(CLOSE.TAG);
 	DestroyObject(REDUCE.TAG);

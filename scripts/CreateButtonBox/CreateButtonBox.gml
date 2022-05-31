@@ -23,8 +23,22 @@ function CreateButtonImage(X, Y, IMAGE1, OBJECT1, LAYER1, LAYER2, IMAGE2, OBJECT
 	return btn;
 }
 
+function CreateButton_Image_Text(X, Y, IMAGE, IMAGE_LINK, X2, Y2, OBJECT, TEXT, LAYER1, LAYER2, FONT, COLOR, TAG, OPTION)
+{
+	var btn = CreateObjectSprite(X, Y, LAYER1, IMAGE, OBJECT, "BUTTON", TAG, OPTION);
+	btn.TAG = TAG;
+	btn.OPTION = OPTION;
+	var text = AddText(X, Y, TEXT, FONT, COLOR, LAYER2, TAG, OPTION);
+	btn.TEXT_CONNECT = text;
+	btn.OBJECT_LINKED = CreateObjectSprite(X2, Y2, LAYER2, IMAGE_LINK, OJustGUI, "IMAGE", TAG + "icon", OPTION);
+	return btn;
+}
+
 function DestroyButtonBox(TAG) {
 	
+	var get = GetObject(TAG);
+	if (get != "NULL" && get.OBJECT_LINKED != "NULL")
+		DestroyObject(get.OBJECT_LINKED.TAG);
 	DestroyObject(TAG);
 	DestroyText(TAG);
 }

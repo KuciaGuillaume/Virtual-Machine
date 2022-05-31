@@ -37,6 +37,16 @@ if ((LOCK[0] != "NULL" && !LOCK[1].LOCK_STATE)) {
 	return;
 } else if (image_index == 2) { image_index = 0; }
 
+if (string_count("PIN", TAG) > 0) {
+	if (!PARENT.PIN) {
+		OBJECT_LINKED.image_index = 0;
+		TEXT_CONNECT.TEXT = "Pin from taskbar";
+	} else {
+		OBJECT_LINKED.image_index = 1;
+		TEXT_CONNECT.TEXT = "Unpin from taskbar";
+	}
+}
+
 
 if (mouse_x < bbox_left || mouse_x > bbox_right)
 	return;
@@ -78,5 +88,27 @@ if (TAG == "CLOSE_NOTIF") {
 	DestroyText(OBJECT_LINKED.DESCRIPTION_CONNECT.TAG);
 	DestroyObject(OBJECT_LINKED.TAG);
 	DestroyObject(TAG);
+}
+
+if (string_count("CLOSE_ALL_WINDOW", TAG) > 0) {
+	if (!PARENT.PIN)
+		PARENT.OPT_CLOSING = true;
+	for (var i = 0; ON_MAIN_SCENE.TASKS[PARENT.WINDOW][3][i] != "NULL"; i++) {
+		var obj = ON_MAIN_SCENE.TASKS[PARENT.WINDOW][3][i];
+		if (obj.IS_REDUCE) {
+			obj.IS_REDUCE = false;
+			obj.image_alpha = 5;
+		}
+		obj.FADE_END = true;
+		obj.CLOSING = true;
+	}
+	DestroyButtonBox(PARENT.TAG + "CLOSE_ALL_WINDOW");
+}
+
+if (string_count("PIN", TAG) > 0) {
+	if (!PARENT.PIN)
+		PARENT.PIN = true;
+	else
+		PARENT.PIN = false;
 }
 

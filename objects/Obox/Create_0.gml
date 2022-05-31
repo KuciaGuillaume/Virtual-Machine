@@ -27,3 +27,6 @@ FADE_ON_POWER = 0;
 // INFO
 INFO = false;
 INFO_NAME = "NULL";
+
+// WINDOW
+PARENT = "NULL";

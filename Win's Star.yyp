@@ -55,6 +55,7 @@
     {"id":{"name":"Sselector","path":"sprites/Sselector/Sselector.yy",},"order":2,},
     {"id":{"name":"Spower_option","path":"sprites/Spower_option/Spower_option.yy",},"order":2,},
     {"id":{"name":"S_window_option_button_mini","path":"sprites/S_window_option_button_mini/S_window_option_button_mini.yy",},"order":5,},
+    {"id":{"name":"Terminal_functions","path":"scripts/Terminal_functions/Terminal_functions.yy",},"order":0,},
     {"id":{"name":"Machine","path":"scripts/Machine/Machine.yy",},"order":0,},
     {"id":{"name":"Sdislike","path":"sprites/Sdislike/Sdislike.yy",},"order":3,},
     {"id":{"name":"Segoe75","path":"fonts/Segoe75/Segoe75.yy",},"order":8,},
@@ -198,6 +199,7 @@
     {"folderPath":"folders/MainScene/Objects/Objects/Window.yy","order":1,"resourceVersion":"1.0","name":"Window","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Global/Scripts/Window.yy","order":18,"resourceVersion":"1.0","name":"Window","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Global/Objects/Window.yy","order":13,"resourceVersion":"1.0","name":"Window","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Global/Scripts/Terminal.yy","order":19,"resourceVersion":"1.0","name":"Terminal","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

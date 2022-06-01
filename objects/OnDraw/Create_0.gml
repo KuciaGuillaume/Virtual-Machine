@@ -4,6 +4,7 @@
 TYPE = "NULL";
 OPTION = "NULL";
 TAG = "NULL";
+DESTROY = DestroyObject;
 
 // INFO
 INFO = false;

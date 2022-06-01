@@ -14,6 +14,7 @@ SECRET = false;
 write = "NULL";
 X = 0;
 Y = 0;
+DESTROY = DestroyTextButton;
 
 //FADE ON
 FADE_ON = false;

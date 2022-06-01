@@ -55,7 +55,7 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 			var news = "";
 			for (var e = 0; string_char_at(NAME, e) != "-"; e++)
 				news += string_char_at(NAME, e + 1);
-			news += " " + string(ON_MAIN_SCENE.TASK[i][4]);
+			news += " " + string(ON_MAIN_SCENE.TASKS[i][4]);
 			NAME = news;
 		}
 	} else {

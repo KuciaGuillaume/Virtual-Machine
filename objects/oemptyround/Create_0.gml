@@ -6,6 +6,7 @@ TYPE = "NULL";
 OPTION = ["NULL"];
 TAG = "NULL";
 image_alpha = 0;
+DESTROY = DestroyObject;
 
 // INIT OPTION VARIABLES
 FADE_IN = false;

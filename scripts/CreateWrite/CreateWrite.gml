@@ -13,6 +13,7 @@ function CreateWrite(TAG, MAX, LAYER, TEXT) {
 	write.TEXT[1] = "";
 	write.INITIAL_TEXT = TEXT;
 	write.TAG = TAG;
+	write.TYPE = "WRITE";
 	write_class = [TAG, room, write];
 	for (i = 0; global.WRITE[i] != "NULL";) { i++; }
 	global.WRITE[i] = write_class;

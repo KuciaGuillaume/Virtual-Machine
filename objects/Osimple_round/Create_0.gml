@@ -8,6 +8,7 @@ BBOX_Y = 0;
 BBOX_X = 0;
 COLOR = c_white;
 MARGE = 0;
+DESTROY = DestroyRound;
 image_alpha = 0;
 
 // INFO

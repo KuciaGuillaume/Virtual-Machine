@@ -8,6 +8,8 @@ OPTION = "NULL";
 FIRST_PASS = false;
 TAG = "NULL";
 TEXT_CONNECT = "NULL";
+TYPE = "NULL";
+DESTROY = DestroyText;
 image_alpha = 0;
 
 

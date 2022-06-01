@@ -6,6 +6,7 @@ TAG = "NULL";
 OPTION = ["NULL"];
 TEXT_CONNECT = "NULL";
 OBJECT_LINKED = "NULL";
+DESTROY = DestroyButtonBox;
 
 // INIT ALL OPTION;
 LOCK = ["NULL", "NULL"];

@@ -10,6 +10,7 @@ LOCK = ["NULL", "NULL"];
 LOCK_STATE = false;
 OBJECT_LINKED = "NULL";
 TEXT_CONNECT = "NULL";
+DESTROY = DestroyButtonBox;
 
 // SLEF
 SELF = "NULL";

@@ -101,6 +101,7 @@ if (string_count("CLOSE_ALL_WINDOW", TAG) > 0) {
 		}
 		obj.FADE_END = true;
 		obj.CLOSING = true;
+		obj.WINDOW_BK.CLOSE = true;
 	}
 	DestroyButtonBox(PARENT.TAG + "CLOSE_ALL_WINDOW");
 	var opt = GetObject(PARENT.TAG + "RIGHT_OPT");

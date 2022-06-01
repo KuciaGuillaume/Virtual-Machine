@@ -101,8 +101,8 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 				DestroyObject(visio.TAG);
 			DestroyObject(ICON.TAG);
 			DestroyObject(ON_OBJECT.TAG);
-			ON_MAIN_SCENE.TASKS[INDEX][4] = 0;
 		}	
+		ON_MAIN_SCENE.TASKS[INDEX][4] = 0;
 	} else if (ON_MAIN_SCENE.TASKS[INDEX][4] == NUMBER)
 		ON_MAIN_SCENE.TASKS[INDEX][4] -= 1;
 	DestroyObject(CLOSE.TAG);

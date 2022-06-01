@@ -10,7 +10,8 @@ ON_WRITE = false;
 TEXT_OUTPUT = "";
 TAG = "NULL";
 TAB = false;
-
+TYPE = "NULL";
+DESTROY = DestroyWrite;
 // CREATE BAR
 BAR = "NONE";
 PASSED = 0;

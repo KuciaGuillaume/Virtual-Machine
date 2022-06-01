@@ -88,6 +88,7 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	icon.ON_TASK = window.ON_OBJECT;
 	window.image_alpha = 0;
 	window.WINDOW_BK.image_alpha = 0;
+	window.WINDOW_BK.WINDOW_TAG = window.TAG;
 	window.CLOSE.image_alpha = 0;
 	window.REDUCE.image_alpha = 0;
 	window.ICON = icon;

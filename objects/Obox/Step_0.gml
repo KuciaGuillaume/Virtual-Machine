@@ -125,6 +125,7 @@ if (PARENT != "NULL" && string_count("VISIO_BUTTON", TAG))
 if (PARENT != "NULL" && string_count("VISIO_CLOSE", TAG)) {
 	PARENT.FADE_END = true;
 	PARENT.CLOSING = true;
+	PARENT.IS_REDUCE = false;
 	var visio = GetObject(VISIO_TAG);
 	if (visio != "NULL") {
 		visio.Y_TARGET += 22.5;

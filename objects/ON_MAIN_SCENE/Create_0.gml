@@ -8,8 +8,8 @@ N_WINDOW_LIMITED = 50;
 ON_GUI = false;
 
 // CREATE PATH;
-
-PATH = ["~", ["Desk", ["NULL", "NULL"]], ["Documents", ["NULL", "NULL"]], "NULL"];
+PATH = ["~", ["Desk", ["..", "NULL", "NULL"],"NULL"], ["Documents", ["..", "NULL", "NULL"], "NULL"], "NULL"];
+PATH = ["~", ["Desk", ["..", PATH, "NULL"],"NULL"], ["Documents", ["..", PATH, "NULL"], "NULL"], "NULL"];
 
 CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", ["NULL"]);
 CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["INDEX_IMAGE", global.USER[7]], ["FADE_IN", 0.00001], "NULL"]);

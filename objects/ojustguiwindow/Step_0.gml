@@ -69,7 +69,7 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE) {
 		if (user_enter.TEXT_HEIGHT > 0)
 			write_text.BAR.y = user_enter.y + user_enter.TEXT_HEIGHT/2;
 		else
-			write_text.BAR.y = user_enter.y + 7;
+			write_text.BAR.y = user_enter.y + 8;
 		UpdateBar(write_text.BAR, user_enter.TEXT_WIDTH, user_enter.x);
 		
 		// GET COMMAND
@@ -80,6 +80,12 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE) {
 			write_text.TEXT_INDEX_MAX = 1;
 			var command_find = false;
 			var ARRAY = get_array(COMMAND, " ");
+			if (ARRAY[0] == "exit" && ARRAY[1] == "NULL") {
+				CLOSE = true;
+				WINDOW.FADE_END = true;
+				WINDOW.CLOSING = true;
+				return;
+			}
 			if (ARRAY[0] != "NULL") {
 				if (terminal_ls(ARRAY, system_write, PWD)) command_find = true;
 				if (terminal_clear(ARRAY, system_write)) command_find = true;

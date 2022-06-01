@@ -29,7 +29,7 @@
     "path": "folders/Global/Objects/Window.yy",
   },
   "resourceVersion": "1.0",
-  "name": "Owindow",
+  "name": "OJustGUIWindow",
   "tags": [],
   "resourceType": "GMObject",
 }

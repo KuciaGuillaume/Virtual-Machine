@@ -58,3 +58,4 @@ REDUCING = false;
 IS_REDUCE = false;
 Y_TARGET = 240;
 NAME = "NULL";
+INDEX = 0;

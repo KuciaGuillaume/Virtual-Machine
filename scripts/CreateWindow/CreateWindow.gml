@@ -28,7 +28,7 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	global.last_layer_id -= 7;
 
 	var window = CreateObjectSprite(960, 260, LAYER_1, Swindow_top, Owindow, "TOP_WINDOW", TAG + string(ID), OPTION);
-	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, OJustGUI, "WINDOW_BK", TAG + "_BK" + string(ID), OPTION);
+	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, OJustGUIWindow, "WINDOW_BK", TAG + "_BK" + string(ID), OPTION);
 	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5 + 10, window.y + 3, LAYER_2 , Swindow_close, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
 	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5 + 10, window.y + 3, LAYER_2 , Swindow_reduce, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
 	window.ID = ID;
@@ -48,20 +48,22 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 		for (var l = 0;  ON_MAIN_SCENE.TASKS[i][3][l] != "NULL"; ) { l++; }
 		ON_MAIN_SCENE.TASKS[i][3][l] = window;
 		ON_MAIN_SCENE.TASKS[i][3][l + 1] = "NULL";
+		ON_MAIN_SCENE.TASKS[i][4] += 1;
 		if (string_count("-", NAME) == 0)
-			NAME = NAME + " - " + string(l + 1);
+			NAME = NAME + " - " + string(ON_MAIN_SCENE.TASKS[i][4]);
 		else {
 			var news = "";
 			for (var e = 0; string_char_at(NAME, e) != "-"; e++)
 				news += string_char_at(NAME, e + 1);
-			news += " " + string(l + 1);
+			news += " " + string(ON_MAIN_SCENE.TASK[i][4]);
 			NAME = news;
 		}
 	} else {
 		var new_class = [TAG, 1, [[ID, true], "NULL"], [window, "NULL"]];
 		ON_MAIN_SCENE.TASKS[i] = new_class;
 		ON_MAIN_SCENE.TASKS[i + 1] = "NULL";
-		NAME = NAME + " - 1";
+		ON_MAIN_SCENE.TASKS[i][4] = 1;
+		NAME = NAME + " - " + string(ON_MAIN_SCENE.TASKS[i][4]);
 	}
 	
 	var ORIGINAL_NAME = "";
@@ -90,5 +92,8 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	window.REDUCE.image_alpha = 0;
 	window.ICON = icon;
 	window.NAME = NAME;
+	window.WINDOW_BK.WINDOW = window;
+	window.INDEX = i;
+	window.NUMBER = ON_MAIN_SCENE.TASKS[i][4];
 	ID += 1;
 }

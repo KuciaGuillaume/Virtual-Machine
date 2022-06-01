@@ -41,6 +41,8 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE) {
 		// ON CREATE
 		addtolist(AddText(x, y, "Je suis une phrase de test", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_TEXT", ["NULL"]), WINDOW.list_objects);
 		addtolist(CreateWrite(TAG + "TERMINAL_WRITE", 150, WINDOW.LAYERS[0], ""), WINDOW.list_objects);
+		var write_text = GetWrite(TAG + "TERMINAL_WRITE");
+		write_text.BAR.x = x;
 		addtolist(AddText(x, y, "[ " + global.USER[1] + "/" + PWD[0] + " ]", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_PWD", ["NULL"]), WINDOW.list_objects);
 		addtolist(AddText(x, y, "", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_WRITE", ["NULL"]), WINDOW.list_objects);
 		CREATE = true;
@@ -58,6 +60,8 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE) {
 		user_enter.image_alpha = image_alpha; pwd.image_alpha = image_alpha;
 		write_text.BAR.image_alpha = image_alpha;
 		user_enter.TEXT = write_text.TEXT_OUTPUT;
+		if (mouse_check_button(mb_left))
+			write_text.BAR.x = user_enter.x + user_enter.TEXT_WIDTH;
 		if (!WINDOW.IS_REDUCE)
 			write_text.ON_WRITE = true;
 		else

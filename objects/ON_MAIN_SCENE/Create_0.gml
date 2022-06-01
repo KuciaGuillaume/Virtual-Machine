@@ -4,7 +4,7 @@
 
 TASKS = ["NULL"];
 N_WINDOW = 0;
-N_WINDOW_LIMITED = 50;
+N_WINDOW_LIMITED = 15;
 ON_GUI = false;
 
 // CREATE PATH;

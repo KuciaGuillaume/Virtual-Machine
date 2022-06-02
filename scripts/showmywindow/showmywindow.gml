@@ -21,7 +21,9 @@ function showmywindow(ID, SELF, DEPTH, MAIN_LAYER_ID) {
 		}
 		for (var f = 0; global.layer_depth[la][1][f] != "NULL"; f++) {
 			var get = layer_get_id(global.layer_depth[la][1][f]);
-			layer_depth(get, layer_get_depth(get) + 7);
+			//var me = layer_get_id(global.layer_depth[MAIN_LAYER_ID][1][0]);
+			///if (layer_get_depth(get) <= layer_get_depth(me))
+				layer_depth(get, layer_get_depth(get) + 7);
 		}
 	}
 

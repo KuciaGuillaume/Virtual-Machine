@@ -78,7 +78,7 @@ if ((KeyPressed(vk_tab) || KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE
 		get.TAB = true;
 	}
 	return;
-} else if ((KeyPressed(vk_tab) || KeyPressed(vk_enter)|| KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE)  {
+} else if ((KeyPressed(vk_tab) || KeyPressed(vk_enter)|| KeyPressed(vk_up) || KeyPressed(vk_down) || KeyPressed(vk_control)) && ON_WRITE)  {
 	TAB = false;
 	return;
 }

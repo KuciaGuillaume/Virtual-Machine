@@ -20,3 +20,18 @@ function list_n(LIST) {
 	for (; LIST[i] != "NULL";) { i++ }
 	return i;
 }
+
+function addtolist_limited(OBJECT, LIST, MAX) {
+	
+	for (var i = 0; LIST[i] != "NULL" && i != MAX; ) { i++; }
+	if (i != MAX) {
+		LIST[i] = OBJECT;
+		LIST[i + 1] = "NULL";
+	} else {
+		for (var e = 0; e != i; e++)
+			LIST[e] = LIST[e + 1];
+		e--;
+		LIST[e] = OBJECT;
+	}
+	return LIST;
+}

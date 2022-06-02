@@ -46,6 +46,10 @@ function go_to_path(PWD, PATH) {
 	var array = get_array(PATH, "/");
 	for (var i = 1; array[i] != "NULL"; i++) {
 		var get = terminal_cd(["cd", array[i], "NULL"], "NULL", PWD, PATH);
+		if (!get[1]) {
+			return ON_MAIN_SCENE.PATH;
+			PATH = "/~";
+		}
 		PWD = get[0];
 	}
 	return PWD;
@@ -70,9 +74,7 @@ function terminal_ls(ARRAY, ID_RESULT, PWD) {
 				for (var e = 1; ls[e] != "NULL"; e++) {
 					for (var f = 0; PWD[f] != "NULL"; f++) {
 						if (PWD[f] == "~") { continue; }
-						show_debug_message(ls[e]);
-						show_debug_message(PWD[f]);
-						if (PWD[f][0] == ls[e]) { break; }
+						if (is_array(PWD[f]) && PWD[f][0] == ls[e]) { break; }
 					}
 					if (PWD[f] == "NULL") {
 						ID_RESULT.TEXT = ID_RESULT.TEXT + "ls: folder [ " + ls[e] + " ] not found.\n";
@@ -109,10 +111,8 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 				return [PWD, true, PATH];
 			}
 			for (; PWD[0] != "~"; ) {
-				show_debug_message("PATH = " + PATH);
 				var get = terminal_cd(["cd", "..", "NULL"], ID_RESULT, PWD, PATH);
 				PWD = get[0];
-				show_debug_message(PWD[0]);
 				PATH = get[2];
 			}
 			return [PWD, true, PATH];
@@ -125,7 +125,6 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 					PWD = PWD[i];
 					PATH = PATH + "/" + PWD[0];
 				} else {
-					show_debug_message("PATH RECU = " + PATH);
 					var slash = string_count("/", PATH);
 					var new_path = "";
 					for (var h = 0; slash != 0; h++) {
@@ -140,13 +139,14 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 				}
 				return [PWD, true, PATH];
 			}
-		ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n" + "cd: " + cd[1] + " was not found.\n";
+		if (ID_RESULT != "NULL")
+			ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n" + "cd: " + cd[1] + " was not found.\n";
 		return [PWD, true, PATH];
 	}
 	return [PWD, false, PATH];
 }
 
-function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH) {
+function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var mkdir = ARRAY;
 	if (mkdir[0] == "mkdir" && mkdir[1] == "NULL") {
 		if (ID_RESULT != "NULL")
@@ -173,14 +173,16 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH) {
 			ON_MAIN_SCENE.PATH[e + 1] = "NULL";
 			var copy = PATH;
 			ON_MAIN_SCENE.PATH = save;
-			if (ID_RESULT != "NULL")
+			if (ID_RESULT != "NULL") {
+				terminal_saving(PARENT);
 				ID_RESULT.TEXT = ID_RESULT.TEXT + "[ " + mkdir[i] + " ] was created.\n";
+			}
 		}
 		return [PWD, true];
 	}
 	return [PWD, false];
 }
-function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH) {
+function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var rm = ARRAY;
 	if (rm[0] == "rm" && rm[1] == "NULL") {
 		ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n" + "rm: No arguments.\n";
@@ -188,12 +190,19 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH) {
 	} else if (rm[0] == "rm") {
 		ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n";
 		var find = false;
+		var save = ON_MAIN_SCENE.PATH;
 		for (var i = 1; rm[i] != "NULL"; i++) {
+			if (rm[i] == ".." || ((rm[i] == "Desk" || rm[i] == "Documents") && PWD[0] == "~")) {
+				ID_RESULT.TEXT = ID_RESULT.TEXT + "[ " + rm[i] + " ] You do not have permission to delete it.\n";
+				find = true;
+				continue;
+			}
 			ON_MAIN_SCENE.PATH = go_to_path(ON_MAIN_SCENE.PATH, PATH);
 			for (var e = 0; ON_MAIN_SCENE.PATH[e] != "NULL"; e++) { 
 				if (is_array(ON_MAIN_SCENE.PATH[e]) && ON_MAIN_SCENE.PATH[e][0] == rm[i]) {
 					for (; ON_MAIN_SCENE.PATH[e] != "NULL"; e++)
 						ON_MAIN_SCENE.PATH[e] = ON_MAIN_SCENE.PATH[e + 1];
+					terminal_saving(PARENT);
 					ID_RESULT.TEXT = ID_RESULT.TEXT + "[ " + rm[i] + " ] was deleted.\n";
 					find = true;
 					break;
@@ -203,11 +212,62 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH) {
 		if (!find)
 			ID_RESULT.TEXT = ID_RESULT.TEXT + "rm: " + rm[1] + " was not found.\n";
 		var copy = PATH;
-		var get = terminal_cd(["cd", "NULL"], "NULL", ON_MAIN_SCENE.PATH, copy);
-		ON_MAIN_SCENE.PATH = get[0];
+		ON_MAIN_SCENE.PATH = save;
 		return [PWD, true];
 	}
 	return [PWD, false];
 }
 
+function terminal_history(PARENT) {
+	PARENT.system_write.TEXT = PARENT.system_write.TEXT + "Here is the list of your keyboard commands: \n";
+	for (var e = 0; PARENT.COMMAND_HISTORY[e] != "NULL"; e++) {
+		PARENT.system_write.TEXT = PARENT.system_write.TEXT + "- " + PARENT.COMMAND_HISTORY[e] + "\n";
+	}
+	if (e == 0)
+		PARENT.system_write.TEXT = PARENT.system_write.TEXT + "Your keyboard command history is empty !\n";
+}
+
+
+function terminal_getpid(PARENT) {
+	PARENT.system_write.TEXT = PARENT.system_write.TEXT + "PID : " + string(PARENT.id) + "\n";
+}
+
+function terminal_connect(ARRAY, PARENT) {
+	
+	if (ARRAY[0] == "connect" && ARRAY[1] != "NULL") {
+		terminal_saving(PARENT);
+		PARENT.CONNECTION = true;
+		PARENT.CONNECT_ID = string_digits(ARRAY[1]);
+		PARENT.SAVING_TIMER = 5;
+		return true;
+	}
+	return false;
+}
+
+function terminal_execute(id, ARRAY, COMMAND, send) {
+	var command_find = false;
+	if (ARRAY[0] == "exit" && ARRAY[1] == "NULL") {
+		id.CLOSE = true;
+		id.WINDOW.FADE_END = true;
+		id.WINDOW.CLOSING = true;
+		send.CONNECT = false;
+		DestroyObject(send.TAG + "CONNECT_AT_IMAGE");
+		DestroyText(send.TAG + "CONNECT_AT_TEXT");
+		return;
+	}
+	if (ARRAY[0] == "help" && ARRAY[1] == "NULL") { id.system_write.TEXT = id.system_write.TEXT + HELP_MESSAGE + "\n"; return; }
+	if (ARRAY[0] != "NULL") {
+		if (terminal_ls(ARRAY, id.system_write, id.PWD)) command_find = true;
+		if (terminal_clear(ARRAY, id.system_write)) command_find = true;
+		var cd = terminal_cd(ARRAY, id.system_write, id.PWD, id.PATH); id.PWD = cd[0]; id.PATH = cd[2]; if (cd[1]) { command_find = true; }
+		var mkdir = terminal_mkdir(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = mkdir[0]; if (mkdir[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, "NULL"]; savegame_save("USER", SAVE_LIST);}
+		var rm = terminal_rm(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = rm[0]; if (rm[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, "NULL"]; savegame_save("USER", SAVE_LIST);}
+		if (ARRAY[0] == "history" && ARRAY[1] == "NULL") { command_find = true; terminal_history(id); }
+		if (ARRAY[0] == "getpid" && ARRAY[1] == "NULL") { command_find = true; terminal_getpid(id); }
+		if (terminal_connect(ARRAY, id)) { command_find = true; }
+		if (!command_find)
+			id.system_write.TEXT = id.system_write.TEXT + COMMAND + ": command not found.\n";
+	} else
+		id.system_write.TEXT = id.system_write.TEXT + id.pwd.TEXT + "\n";
+}
 

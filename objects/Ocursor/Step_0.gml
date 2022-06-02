@@ -20,7 +20,7 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 
 		// INFO
 		if (class[0].INFO) {
-			var get_info = GetObject(class[0].INFO_NAME);
+			var get_info = GetObject(class[0].INFO_NAME + class[0].TAG);
 			if (get_info == "NULL") {
 				if (room != RMainScene)
 					CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], "NULL"]);
@@ -44,9 +44,9 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 			
 		// INFO
 		if (class[0].INFO) {
-			var get_info = GetObject(class[0].INFO_NAME);
+			var get_info = GetObject(class[0].INFO_NAME + class[0].TAG);
 			if (get_info != "NULL")
-				DestroyRound(class[0].INFO_NAME);
+				DestroyRound(class[0].INFO_NAME + class[0].TAG);
 		}
 		//
 	}

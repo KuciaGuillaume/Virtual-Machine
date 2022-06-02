@@ -113,7 +113,7 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TER
 			var ARRAY = get_array(COMMAND, " ");
 			if (CONNECT) {
 				var get = GetObject(CONNECT_ID.TAG);
-				if (get == "NULL") { CONNECT = false; terminal_execute(id, ARRAY, COMMAND, id); } else { terminal_execute(get.id, ARRAY, COMMAND, id); system_write.TEXT = get.system_write.TEXT; }
+				if (get == "NULL") { CONNECT = false; terminal_execute(id, ARRAY, COMMAND, id); } else { terminal_execute(get.id, ARRAY, COMMAND, id); if (CONNECT) {system_write.TEXT = get.system_write.TEXT; }}
 			} else
 				terminal_execute(id, ARRAY, COMMAND, id);
 		}

@@ -53,3 +53,4 @@ HELP_MESSAGE = HELP_MESSAGE + "-rm : Allows you to delete a directory\n";
 HELP_MESSAGE = HELP_MESSAGE + "-exit : To close the window\n";
 HELP_MESSAGE = HELP_MESSAGE + "-getpid : Informs the process id\n";
 HELP_MESSAGE = HELP_MESSAGE + "-connect : Allows you to connect to a specified id\n";
+HELP_MESSAGE = HELP_MESSAGE + "-close : End of connection\n";

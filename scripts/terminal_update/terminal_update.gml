@@ -74,7 +74,7 @@ function terminal_update(id) {
 				if (find) {
 					if (id.CONNECT_AT_IMAGE == "NULL") {
 						addtolist(AddText(x, y, "CONNECT ID: " + string(id.CONNECT_ID), Arial10, c_black, id.WINDOW.LAYERS[1], id.TAG + "CONNECT_AT_TEXT", [["CENTERED"], "NULL"]), id.WINDOW.list_objects);
-						addtolist(CreateObjectSprite(x, y, id.WINDOW.LAYERS[0], S_connect_at, OJustGUI, "IMAGE", id.TAG + "CONNECT_AT_IMAGE" , ["NULL"]), id.WINDOW.list_objects);
+						addtolist(CreateObjectSprite(x, y, id.WINDOW.LAYERS[0], S_connect_at, OJustGUI, "BUTTON-NO-HAND", id.TAG + "CONNECT_AT_IMAGE" , [["INFO", "This means that your terminal\nis connected to another process,\nthey are now possible for\nyou to control this process\nremotely"], "NULL"]), id.WINDOW.list_objects);
 					}
 					id.CONNECT = true;
 					id.CONNECTION = false;

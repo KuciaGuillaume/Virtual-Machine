@@ -253,7 +253,19 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		send.CONNECT = false;
 		DestroyObject(send.TAG + "CONNECT_AT_IMAGE");
 		DestroyText(send.TAG + "CONNECT_AT_TEXT");
+		send.system_write.TEXT = send.system_write.TEXT + "End of connection.\n";
 		return;
+	}
+	if (ARRAY[0] == "close" && ARRAY[1] == "NULL") {
+		command_find = true;
+		if (send.CONNECT == false)
+			send.system_write.TEXT = send.system_write.TEXT + "You are not connected to anything.\n";
+		else {
+			DestroyObject(send.TAG + "CONNECT_AT_IMAGE");
+			DestroyText(send.TAG + "CONNECT_AT_TEXT");
+			send.CONNECT = false;
+			send.system_write.TEXT = send.system_write.TEXT + "End of connection.\n";
+		}
 	}
 	if (ARRAY[0] == "help" && ARRAY[1] == "NULL") { id.system_write.TEXT = id.system_write.TEXT + HELP_MESSAGE + "\n"; return; }
 	if (ARRAY[0] != "NULL") {

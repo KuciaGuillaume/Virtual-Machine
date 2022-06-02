@@ -13,7 +13,7 @@
   "AntiAlias": 1,
   "first": 0,
   "last": 0,
-  "sampleText": "abcdef ABCDEF\n0123456789 .,<>\"'&!?\nthe quick brown fox jumps over the lazy dog\nTHE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nDefault character: ▯ (9647)",
+  "sampleText": "abcdef ABCDEF\n0123456789 .,<>\"'&!?\nthe quick brown fox jumps over the lazy dog\nTHE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nDefault character: ▯ (9647)🧱",
   "includeTTF": false,
   "TTFName": "",
   "textureGroupId": {
@@ -264,6 +264,9 @@
   "ranges": [
     {"lower":32,"upper":255,},
     {"lower":9647,"upper":9647,},
+    {"lower":55357,"upper":55358,},
+    {"lower":56550,"upper":56550,},
+    {"lower":56817,"upper":56817,},
   ],
   "regenerateBitmap": false,
   "canGenerateBitmap": true,

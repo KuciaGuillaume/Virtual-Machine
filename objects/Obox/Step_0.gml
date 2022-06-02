@@ -53,7 +53,7 @@ if (mouse_x < bbox_left || mouse_x > bbox_right)
 if (mouse_y < bbox_top || mouse_y > bbox_bottom)
 	return;
 	
-if (!mouse_check_button_pressed(mb_left))
+if (!mouse_check_button_pressed(mb_left) || !ON)
 	return;
 
 if (TAG == "EDIT_ICON_1" || TAG == "EDIT_ICON_2" || TAG == "EDIT_ICON_3" || TAG == "EDIT_ICON_4" ||

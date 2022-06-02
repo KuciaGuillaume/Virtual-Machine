@@ -31,8 +31,16 @@ CREATE = false;
 
 // VARIABLES FOR TERMINAL
 USER_WRITE_POSITION = 16;
-PWD_DISPLAY = "[ " + global.USER[1] + "/" + ON_MAIN_SCENE.PATH[0] + " ]";
 PWD = ON_MAIN_SCENE.PATH;
 COMMAND = "NULL";
 WINDOW_TAG = "NULL";
 PATH = "/~";
+// TERMINAL HELP MESSAGE
+HELP_MESSAGE = "[HELP] List of commands that may be useful to you:\n\n";
+HELP_MESSAGE = HELP_MESSAGE + "-help : View this post\n";
+HELP_MESSAGE = HELP_MESSAGE + "-ls : Allows you to see the contents of the current folder or a specific folder\n";
+HELP_MESSAGE = HELP_MESSAGE + "-cd : Allows you to move to the desired directory\n";
+HELP_MESSAGE = HELP_MESSAGE + "-cd [..] : Move to the back directory\n";
+HELP_MESSAGE = HELP_MESSAGE + "-mkdir : Allows you to create a directory\n";
+HELP_MESSAGE = HELP_MESSAGE + "-rm : Allows you to delete a directory\n";
+HELP_MESSAGE = HELP_MESSAGE + "-exit : To close the window\n";

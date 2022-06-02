@@ -35,6 +35,7 @@ if (ICON.image_xscale < 1 && !FADE_END) {
 	ICON.image_yscale += 0.00001 * delta_time;
 }
 
+
 WINDOW_BK.x = x + 3;
 WINDOW_BK.y = y + (sprite_height/2) - 6;
 CLOSE.x = bbox_left + 17.5 + 10;
@@ -193,7 +194,7 @@ if (ON && mouse_check_button(mb_left) && !ON_MAIN_SCENE.ON_GUI)
 
 
 // MOVE WINDOW
-if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mouse_check_button(mb_left) && !ON_MAIN_SCENE.ON_GUI && CAN_TAKE) {
+if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mouse_check_button(mb_left) && !ON_MAIN_SCENE.ON_GUI && CAN_TAKE && ON) {
 	if (!MouseInsideObject(CLOSE) && !MouseInsideObject(REDUCE) && !SELECT) {
 		SELECT = true;
 		X = mouse_x;

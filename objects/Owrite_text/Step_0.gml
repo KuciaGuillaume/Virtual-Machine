@@ -84,8 +84,7 @@ if ((KeyPressed(vk_tab) || KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE
 }
 
 // CHECK INPUT
-if (KeyPressed(vk_shift) || KeyPress(vk_backspace) || TEXT_INDEX_MAX >= MAX ||
-KeyPressed(vk_alt) || KeyPress(vk_control))
+if (KeyPressed(vk_shift) || KeyPress(vk_backspace) || TEXT_INDEX_MAX >= MAX || KeyPressed(vk_control))
 	return;
 
 // WRITE ON TEXT

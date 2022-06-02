@@ -13,6 +13,7 @@ FADE_IN = false;
 FADE_SATE = false;
 FADE_POWER = 0;
 FIRST_PASS = false;
+ON = true;
 
 // BACKGROUNDS
 TARGET_INDEX = 0;

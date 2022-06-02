@@ -10,6 +10,7 @@ COLOR = c_white;
 MARGE = 0;
 DESTROY = DestroyRound;
 image_alpha = 0;
+ON = true;
 
 // INFO
 INFO = false;

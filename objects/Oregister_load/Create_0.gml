@@ -8,6 +8,7 @@ TYPE = "NULL";
 // CREATE TIMER
 TIME = 0;
 TIMER = global.TIMER;
+ON = true;
 
 // STATE
 STATE = 0;

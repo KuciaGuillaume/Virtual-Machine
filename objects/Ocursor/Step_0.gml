@@ -5,13 +5,14 @@
 
 image_index = 0;
 
-ON_MAIN_SCENE.ON_GUI = false;
+if (room == RMainScene)
+	ON_MAIN_SCENE.ON_GUI = false;
 for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 	var class = global.OBJECTS[i];
 	
 	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
 		continue;
-	if (MouseInside(class[0].bbox_left, class[0].bbox_right, class[0].bbox_top, class[0].bbox_bottom) && class[0].image_index < 2) {
+	if (MouseInside(class[0].bbox_left, class[0].bbox_right, class[0].bbox_top, class[0].bbox_bottom) && class[0].image_index < 2 && class[0].ON) {
 		if (class[1] == "BUTTON")
 			image_index = 1;
 		if (class[1] == "TEXT_BUTTON")
@@ -29,7 +30,7 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 		}
 		//
 		var get_depth = class[0].depth;
-		if (get_depth <= -100 && class[0] != self)
+		if (room == RMainScene && get_depth <= -100 && class[0] != self)
 			ON_MAIN_SCENE.ON_GUI = true;
 		if (class[0].FADE_ON == false)
 			class[0].image_index = 1;

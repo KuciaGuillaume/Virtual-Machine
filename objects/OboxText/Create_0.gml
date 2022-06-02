@@ -12,6 +12,7 @@ DESTROY = DestroyButtonBox;
 LOCK = ["NULL", "NULL"];
 WALLPAPER_INDEX = -1;
 WALLPAPER = false;
+ON = true;
 
 //POSITIONS
 OPT_POSITIONS = false;

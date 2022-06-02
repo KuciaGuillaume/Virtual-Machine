@@ -30,3 +30,4 @@ FADE_SATE = false;
 FADE_POWER = 0;
 FIRST_PASS = false;
 image_alpha = 0;
+ON = true;

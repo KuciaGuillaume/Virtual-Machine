@@ -269,8 +269,10 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		id.WINDOW.FADE_END = true;
 		id.WINDOW.CLOSING = true;
 		send.CONNECT = false;
-		DestroyObject(send.TAG + "CONNECT_AT_IMAGE");
-		DestroyText(send.TAG + "CONNECT_AT_TEXT");
+		DestroyObject(send.TAG + "CONNECT_AT_IMAGE"); send.CONNECT_AT_IMAGE = "NULL";
+		DestroyText(send.TAG + "CONNECT_AT_TEXT"); send.CONNECT_AT_TEXT = "NULL";
+		DestroyObject(id.TAG + "CONNECT_TO_YOU"); id.CONNECT_TO_YOU = "NULL";
+		DestroyText(id.TAG + "CONNECT_TO_YOU_TEXT"); id.CONNECT_TO_YOU_TEXT = "NULL";
 		display_result(send.system_write, "End of connection.");
 		return;
 	}
@@ -279,8 +281,10 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		if (send.CONNECT == false)
 			display_result(send.system_write, "You are not connected to anything.");
 		else {
-			DestroyObject(send.TAG + "CONNECT_AT_IMAGE");
-			DestroyText(send.TAG + "CONNECT_AT_TEXT");
+			DestroyObject(send.TAG + "CONNECT_AT_IMAGE"); send.CONNECT_AT_IMAGE = "NULL";
+			DestroyText(send.TAG + "CONNECT_AT_TEXT"); send.CONNECT_AT_TEXT = "NULL";
+			DestroyObject(id.TAG + "CONNECT_TO_YOU"); id.CONNECT_TO_YOU = "NULL";
+			DestroyText(id.TAG + "CONNECT_TO_YOU_TEXT"); id.CONNECT_TO_YOU_TEXT = "NULL";
 			send.CONNECT = false;
 			display_result(send.system_write, "End of connection.");
 			var ID = GetObject(send.CONNECT_ID.TAG);

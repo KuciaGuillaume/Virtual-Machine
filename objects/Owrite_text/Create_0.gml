@@ -15,6 +15,7 @@ DESTROY = DestroyWrite;
 // CREATE BAR
 BAR = "NONE";
 PASSED = 0;
+LAST_KEY_PRESSED = 0;
 
 //CREATE TIME
 TIME = 0;

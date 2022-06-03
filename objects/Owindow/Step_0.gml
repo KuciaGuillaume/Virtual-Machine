@@ -2,19 +2,6 @@
 
 if (TAG == "NULL")
 	return;
-//GET OPTIONS
-for (var i = 0; OPTION[i] != "NULL"; i++) {
-	if (OPTION[i][0] == "LOCK")
-		LOCK = OPTION[i];
-	if (OPTION[i][0] == "IMAGE_INDEX")
-		OBJECT_LINKED.image_index = OPTION[i][1];
-	if (OPTION[i][0] == "FADE_ON") {FADE_ON = true; FADE_ON_POWER = OPTION[i][1]; }
-	if (OPTION[i][0] == "FADE_IN" && !FADE_SATE) { 
-		FADE_IN = true; FADE_POWER = OPTION[i][1];
-		FADE_SATE = true; image_alpha = 0;	
-	}
-	if (OPTION[i][0] == "INFO") {INFO = true; INFO_NAME = OPTION[i][1]; }
-}
 
 if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 
 
@@ -35,9 +22,11 @@ if (ICON.image_xscale < 1 && !FADE_END) {
 	ICON.image_yscale += 0.00001 * delta_time;
 }
 
-
-WINDOW_BK.x = x + 3;
-WINDOW_BK.y = y + (sprite_height/2) - 6;
+if (WINDOW_BK != undefined && instance_exists(WINDOW_BK)) {
+	WINDOW_BK.x = x + 3;
+	WINDOW_BK.y = y + (sprite_height/2) - 6;
+	WINDOW_BK.image_alpha = image_alpha;
+}
 CLOSE.x = bbox_left + 17.5 + 10;
 CLOSE.y = y + 3;
 REDUCE.x = bbox_left + 42.5 + 10;
@@ -45,7 +34,6 @@ REDUCE.y = y + 3;
 TEXT_TITLE.y = y + 3;
 TEXT_TITLE.x = x + 10;
 CLOSE.image_alpha = image_alpha; REDUCE.image_alpha = image_alpha; TEXT_TITLE.image_alpha = image_alpha;
-WINDOW_BK.image_alpha = image_alpha;
 
 var visio = GetObject(ICON.TAG + "VISIO");
 
@@ -57,9 +45,11 @@ FIRST_TAKE = true;
 if (FADE_END) { 
 	y += 0.0001 * delta_time; 
 	image_alpha -= 0.000005 * delta_time;
-	CLOSE.image_alpha = image_alpha;
-	WINDOW_BK.image_alpha = image_alpha;
-	REDUCE.image_alpha = image_alpha;
+	if (WINDOW_BK != undefined && instance_exists(WINDOW_BK)) {
+		CLOSE.image_alpha = image_alpha;
+		WINDOW_BK.image_alpha = image_alpha;
+		REDUCE.image_alpha = image_alpha;
+	}
 	TEXT_TITLE.image_alpha = image_alpha;
 	if (ON_OBJECT.image_xscale > 0 && CLOSING && !ICON.PIN)
 		ON_OBJECT.image_xscale -= 0.000005 * delta_time;
@@ -94,7 +84,8 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	for (; CLASS[3][i] != "NULL"; i++)
 		CLASS[3][i] = CLASS[3][i + 1];
 	global.last_layer_id += 7;
-	WINDOW_BK.CLOSE = true;
+	if (WINDOW_BK != undefined && instance_exists(WINDOW_BK))
+		WINDOW_BK.CLOSE = true;
 	CLASS[1] -= 1;
 	if (CLASS[1] <= 0) {
 		if (!ICON.PIN) {
@@ -108,6 +99,7 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 		ON_MAIN_SCENE.TASKS[INDEX][4] -= 1;
 	DestroyObject(CLOSE.TAG);
 	DestroyObject(REDUCE.TAG);
+	DestroyText(TEXT_TITLE.TAG);
 	DestroyObject(TAG);
 	ON_MAIN_SCENE.N_WINDOW -= 1;
 	return;
@@ -132,7 +124,7 @@ for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
 		var object = ON_MAIN_SCENE.TASKS[i][3][e];
 		var get = layer_get_depth(object.layer);
 		
-		if ((MouseInsideObject(object) || MouseInsideObject(object.WINDOW_BK)) && get < depth)
+		if ((MouseInsideObject(object) ||(object.WINDOW_BK != undefined && instance_exists(object.WINDOW_BK) && MouseInsideObject(object.WINDOW_BK))) && get < depth)
 			FIRST_TAKE = false
 		if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(object) || MouseInsideObject(object.WINDOW_BK)) && !ON_THIS_WINDOW) {
 			ON_THIS_WINDOW = true;
@@ -224,8 +216,11 @@ if ((MouseInsideObject(CLOSE) || MouseInsideObject(REDUCE)) && mouse_check_butto
 		REDUCING = true;
 }
 
-WINDOW_BK.x = x + 3;
-WINDOW_BK.y = y + (sprite_height/2) - 6;
+if (WINDOW_BK != undefined && instance_exists(WINDOW_BK)) {
+	WINDOW_BK.x = x + 3;
+	WINDOW_BK.y = y + (sprite_height/2) - 6;
+	WINDOW_BK.image_alpha = image_alpha;
+}
 CLOSE.x = bbox_left + 17.5 + 10;
 CLOSE.y = y + 3;
 REDUCE.x = bbox_left + 42.5 + 10;
@@ -233,4 +228,3 @@ REDUCE.y = y + 3;
 TEXT_TITLE.y = y + 3;
 TEXT_TITLE.x = x + 10;
 CLOSE.image_alpha = image_alpha; REDUCE.image_alpha = image_alpha; TEXT_TITLE.image_alpha = image_alpha;
-WINDOW_BK.image_alpha = image_alpha;

@@ -2,16 +2,6 @@
 
 if (TAG == "NULL")
 	return;
-for (var i = 0; OPTION[i] != "NULL"; i++) {
-	if (OPTION[i][0] == "FADE_IN" && !FADE_SATE) { 
-		FADE_IN = true; FADE_POWER = OPTION[i][1];
-		FADE_SATE = true; image_alpha = 0;
-	}
-	if (OPTION[i][0] == "INDEX_IMAGE")
-		image_index = OPTION[i][1];
-	if (OPTION[i][0] == "FADE_ON") {FADE_ON = true; FADE_ON_POWER = OPTION[i][1]; }
-	if (OPTION[i][0] == "INFO") {INFO = true; INFO_NAME = OPTION[i][1]; }
-}
 
 if (!FIRST_PASS && !FADE_IN) {image_alpha = 2; FIRST_PASS = true; } 
 
@@ -35,19 +25,25 @@ if (CLOSE && string_count("TERMINAL", WINDOW_TAG)) {
 	DestroyButtonBox(TAG + "SAVING");
 	DestroyObject(TAG + "CONNECT_AT_IMAGE");
 	DestroyText(TAG + "CONNECT_AT_TEXT");
+	DestroyObject(TAG + "CONNECT_TO_YOU");
+	DestroyText(TAG + "CONNECT_TO_YOU_TEXT");
+	DestroyObject(TAG);
 }
 
 if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TERMINAL", WINDOW.TAG) ) {
-	user_enter = GetText(TAG + "TERMINAL_TEXT");
-	write_text = GetWrite(TAG + "TERMINAL_WRITE");
-	pwd = GetText(TAG + "TERMINAL_SYSTEM_PWD");
-	system_write = GetText(TAG + "TERMINAL_SYSTEM_WRITE");
-	BTN_HELP = GetObject(TAG + "TERMINAL_HELP"); if (BTN_HELP != "NULL") BTN_HELP.ON = WINDOW.ON;
-	BTN_HISTORY = GetObject(TAG + "TERMINAL_HISTORY"); if (BTN_HISTORY != "NULL") BTN_HISTORY.ON = WINDOW.ON;
-	BTN_CLEAR = GetObject(TAG + "TERMINAL_CLEAR"); if (BTN_CLEAR != "NULL") BTN_CLEAR.ON = WINDOW.ON;
-	SAVING_LOAD = GetObject(TAG + "SAVING");
-	CONNECT_AT_IMAGE = GetObject(TAG + "CONNECT_AT_IMAGE");
-	CONNECT_AT_TEXT = GetText(TAG + "CONNECT_AT_TEXT");
+
+	if (user_enter == "NULL") user_enter = GetText(TAG + "TERMINAL_TEXT");
+	if (write_text == "NULL") write_text = GetWrite(TAG + "TERMINAL_WRITE");
+	if (pwd == "NULL") pwd = GetText(TAG + "TERMINAL_SYSTEM_PWD");
+	if (system_write == "NULL") system_write = GetText(TAG + "TERMINAL_SYSTEM_WRITE");
+	if (BTN_HELP == "NULL") BTN_HELP = GetObject(TAG + "TERMINAL_HELP"); if (BTN_HELP != "NULL") BTN_HELP.ON = WINDOW.ON;
+	if (BTN_HISTORY == "NULL") BTN_HISTORY = GetObject(TAG + "TERMINAL_HISTORY"); if (BTN_HISTORY != "NULL") BTN_HISTORY.ON = WINDOW.ON;
+	if (BTN_CLEAR == "NULL") BTN_CLEAR = GetObject(TAG + "TERMINAL_CLEAR"); if (BTN_CLEAR != "NULL") BTN_CLEAR.ON = WINDOW.ON;
+	if (SAVING_LOAD == "NULL") SAVING_LOAD = GetObject(TAG + "SAVING");
+	if (CONNECT_AT_IMAGE == "NULL") CONNECT_AT_IMAGE = GetObject(TAG + "CONNECT_AT_IMAGE");
+	if (CONNECT_AT_TEXT == "NULL") CONNECT_AT_TEXT = GetText(TAG + "CONNECT_AT_TEXT");
+	if (CONNECT_TO_YOU == "NULL") CONNECT_TO_YOU = GetObject(TAG + "CONNECT_TO_YOU");
+	if (CONNECT_TO_YOU_TEXT == "NULL") CONNECT_TO_YOU_TEXT = GetText(TAG + "CONNECT_TO_YOU_TEXT");
 	
 	if (CREATE) {
 		if (CONNECT) {

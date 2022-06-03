@@ -25,6 +25,23 @@ function remove_char(STR, CHAR) {
 	return result;
 }
 
+function display_result(system, text) {
+
+	var ID = system.PARENT;
+	var value = system.TEXT + text + "\n";
+	for (;ID.pwd.y + ID.pwd.TEXT_HEIGHT + 30 + string_height(value) - 500 >= bbox_bottom;) {
+		var replace = "";
+		for (var i = 1; string_char_at(ID.system_write.TEXT, i - 1) != "\n";) { i++; }
+		for (; string_char_at(ID.system_write.TEXT, i - 1) == "\n";) { i++; }
+		for (; i != string_length(ID.system_write.TEXT); i++)
+			replace = replace + string_char_at(ID.system_write.TEXT, i);
+		ID.system_write.TEXT = replace + "\n";
+		ID.pwd.TEXT_HEIGHT = string_height(ID.pwd.TEXT)
+		ID.pwd.y =  ID.y + (ID.USER_WRITE_POSITION * string_count("\n", ID.system_write.TEXT)) + 30;
+	}
+	system.TEXT = system.TEXT + text + "\n";
+}
+
 function get_array(STR, TYPE) {
 	var array_size = strlen(STR, TYPE);
 	var size = string_byte_length(STR) + 1;
@@ -61,15 +78,15 @@ function terminal_ls(ARRAY, ID_RESULT, PWD) {
 	if (ls[0] == "ls") {
 		find = true;
 		if (PWD[1] != "NULL" && ls[1] == "NULL")
-			ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n";
+			display_result(ID_RESULT, "|->" + COMMAND);
 		if (PWD[1] == "NULL" || (PWD[1][0] == ".." && PWD[2] == "NULL")) {
-			ID_RESULT.TEXT = ID_RESULT.TEXT + "Folder is empty\n";
+			display_result(ID_RESULT, "Folder is empty");
 			return find;
 		}
 		for (var i = 1; PWD[i] != "NULL"; i++) {
 			if (ls[1] == "NULL") {
 				if (PWD[i] != "NULL")
-					ID_RESULT.TEXT = ID_RESULT.TEXT + PWD[i][0] + "\n";
+					display_result(ID_RESULT, PWD[i][0]);
 			} else {
 				for (var e = 1; ls[e] != "NULL"; e++) {
 					for (var f = 0; PWD[f] != "NULL"; f++) {
@@ -77,7 +94,7 @@ function terminal_ls(ARRAY, ID_RESULT, PWD) {
 						if (is_array(PWD[f]) && PWD[f][0] == ls[e]) { break; }
 					}
 					if (PWD[f] == "NULL") {
-						ID_RESULT.TEXT = ID_RESULT.TEXT + "ls: folder [ " + ls[e] + " ] not found.\n";
+						display_result(ID_RESULT, "ls: folder [ " + ls[e] + " ] not found.");
 						return find;
 					} else {
 						terminal_ls(["ls", "NULL"], ID_RESULT,  PWD[f]);
@@ -107,7 +124,7 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 		if (cd[1] == "NULL") {
 			if (PWD[0] == "~") {
 				if (ID_RESULT != "NULL")
-					ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n" + "cd: You are already at the root.\n";
+					display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "cd: You are already at the root.");
 				return [PWD, true, PATH];
 			}
 			for (; PWD[0] != "~"; ) {
@@ -120,7 +137,7 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 		for (var i = 1; PWD[i] != "NULL"; i++)
 			if (PWD[i][0] == cd[1]) {
 				if (ID_RESULT != "NULL")
-					ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n";
+					display_result(ID_RESULT, "|-> " + COMMAND);
 				if (cd[1] != "..") {
 					PWD = PWD[i];
 					PATH = PATH + "/" + PWD[0];
@@ -140,7 +157,7 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 				return [PWD, true, PATH];
 			}
 		if (ID_RESULT != "NULL")
-			ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n" + "cd: " + cd[1] + " was not found.\n";
+			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "cd: " + cd[1] + " was not found.");
 		return [PWD, true, PATH];
 	}
 	return [PWD, false, PATH];
@@ -150,7 +167,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var mkdir = ARRAY;
 	if (mkdir[0] == "mkdir" && mkdir[1] == "NULL") {
 		if (ID_RESULT != "NULL")
-			ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n" + "mkdir: No arguments.\n";
+			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "mkdir: No arguments.");
 		return [PWD, true];
 	} else if (mkdir[0] == "mkdir") {
 		if (ID_RESULT != "NULL")
@@ -160,7 +177,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 			for (var e = 0; PWD[e] != "NULL"; e++) {
 				if (PWD[e] != "NULL" && is_array(PWD[e]) && PWD[e][0] == mkdir[i]) {
 					if (ID_RESULT != "NULL")
-						ID_RESULT.TEXT = ID_RESULT.TEXT + mkdir[i] + ": Folder already exists.\n";
+						display_result(ID_RESULT, mkdir[i] + ": Folder already exists.");
 					exists_already = true;
 				}
 			}
@@ -175,7 +192,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 			ON_MAIN_SCENE.PATH = save;
 			if (ID_RESULT != "NULL") {
 				terminal_saving(PARENT);
-				ID_RESULT.TEXT = ID_RESULT.TEXT + "[ " + mkdir[i] + " ] was created.\n";
+				display_result(ID_RESULT, "[ " + mkdir[i] + " ] was created.");
 			}
 		}
 		return [PWD, true];
@@ -185,15 +202,15 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var rm = ARRAY;
 	if (rm[0] == "rm" && rm[1] == "NULL") {
-		ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n" + "rm: No arguments.\n";
+		display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "rm: No arguments.");
 		return [PWD, true];
 	} else if (rm[0] == "rm") {
-		ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n";
+		display_result(ID_RESULT, "|-> " + COMMAND);
 		var find = false;
 		var save = ON_MAIN_SCENE.PATH;
 		for (var i = 1; rm[i] != "NULL"; i++) {
 			if (rm[i] == ".." || ((rm[i] == "Desk" || rm[i] == "Documents") && PWD[0] == "~")) {
-				ID_RESULT.TEXT = ID_RESULT.TEXT + "[ " + rm[i] + " ] You do not have permission to delete it.\n";
+				display_result(ID_RESULT, "[ " + rm[i] + " ] You do not have permission to delete it.");
 				find = true;
 				continue;
 			}
@@ -203,14 +220,14 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 					for (; ON_MAIN_SCENE.PATH[e] != "NULL"; e++)
 						ON_MAIN_SCENE.PATH[e] = ON_MAIN_SCENE.PATH[e + 1];
 					terminal_saving(PARENT);
-					ID_RESULT.TEXT = ID_RESULT.TEXT + "[ " + rm[i] + " ] was deleted.\n";
+					display_result(ID_RESULT, "[ " + rm[i] + " ] was deleted.");
 					find = true;
 					break;
 				}
 			}
 		}
 		if (!find)
-			ID_RESULT.TEXT = ID_RESULT.TEXT + "rm: " + rm[1] + " was not found.\n";
+			display_result(ID_RESULT, "rm: " + rm[1] + " was not found.");
 		var copy = PATH;
 		ON_MAIN_SCENE.PATH = save;
 		return [PWD, true];
@@ -219,17 +236,17 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 }
 
 function terminal_history(PARENT) {
-	PARENT.system_write.TEXT = PARENT.system_write.TEXT + "Here is the list of your keyboard commands: \n";
+	display_result(PARENT.system_write, "Here is the list of your keyboard commands: ");
 	for (var e = 0; PARENT.COMMAND_HISTORY[e] != "NULL"; e++) {
-		PARENT.system_write.TEXT = PARENT.system_write.TEXT + "- " + PARENT.COMMAND_HISTORY[e] + "\n";
+		display_result(PARENT.system_write, "- " + PARENT.COMMAND_HISTORY[e]);
 	}
 	if (e == 0)
-		PARENT.system_write.TEXT = PARENT.system_write.TEXT + "Your keyboard command history is empty !\n";
+		display_result(PARENT.system_write, "Your keyboard command history is empty !");
 }
 
 
 function terminal_getpid(PARENT) {
-	PARENT.system_write.TEXT = PARENT.system_write.TEXT + "PID : " + string(PARENT.id) + "\n";
+	display_result(PARENT.system_write, "PID : " + string(PARENT.id));
 }
 
 function terminal_connect(ARRAY, PARENT) {
@@ -248,26 +265,29 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 	var command_find = false;
 	if (ARRAY[0] == "exit" && ARRAY[1] == "NULL") {
 		id.CLOSE = true;
+		id.CATCH = false;
 		id.WINDOW.FADE_END = true;
 		id.WINDOW.CLOSING = true;
 		send.CONNECT = false;
 		DestroyObject(send.TAG + "CONNECT_AT_IMAGE");
 		DestroyText(send.TAG + "CONNECT_AT_TEXT");
-		send.system_write.TEXT = send.system_write.TEXT + "End of connection.\n";
+		display_result(send.system_write, "End of connection.");
 		return;
 	}
 	if (ARRAY[0] == "close" && ARRAY[1] == "NULL") {
 		command_find = true;
 		if (send.CONNECT == false)
-			send.system_write.TEXT = send.system_write.TEXT + "You are not connected to anything.\n";
+			display_result(send.system_write, "You are not connected to anything.");
 		else {
 			DestroyObject(send.TAG + "CONNECT_AT_IMAGE");
 			DestroyText(send.TAG + "CONNECT_AT_TEXT");
 			send.CONNECT = false;
-			send.system_write.TEXT = send.system_write.TEXT + "End of connection.\n";
+			display_result(send.system_write, "End of connection.");
+			var ID = GetObject(send.CONNECT_ID.TAG);
+			id.CATCH = false;
 		}
 	}
-	if (ARRAY[0] == "help" && ARRAY[1] == "NULL") { id.system_write.TEXT = id.system_write.TEXT + HELP_MESSAGE + "\n"; return; }
+	if (ARRAY[0] == "help" && ARRAY[1] == "NULL") { display_result(id.system_write, HELP_MESSAGE); return; }
 	if (ARRAY[0] != "NULL") {
 		if (terminal_ls(ARRAY, id.system_write, id.PWD)) command_find = true;
 		if (terminal_clear(ARRAY, id.system_write)) command_find = true;
@@ -278,8 +298,8 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		if (ARRAY[0] == "getpid" && ARRAY[1] == "NULL") { command_find = true; terminal_getpid(id); }
 		if (terminal_connect(ARRAY, id)) { command_find = true; }
 		if (!command_find)
-			id.system_write.TEXT = id.system_write.TEXT + COMMAND + ": command not found.\n";
+			display_result(id.system_write, COMMAND + ": command not found.");
 	} else
-		id.system_write.TEXT = id.system_write.TEXT + id.pwd.TEXT + "\n";
+		display_result(id.system_write, id.pwd.TEXT);
 }
 

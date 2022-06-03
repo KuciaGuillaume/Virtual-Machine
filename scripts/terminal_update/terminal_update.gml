@@ -2,6 +2,8 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 pour plus d’informations
 function terminal_update(id) {
 
+		y = id.y;
+		x = id.x;
 		id.write_text.ON_WRITE = false;
 		id.system_write.x = x - sprite_width / 2 + 10; id.system_write.y = y + 30; id.system_write.image_alpha = image_alpha;
 		id.pwd.x = x - sprite_width / 2 + 10; id.user_enter.x = x - sprite_width / 2 + 10 + id.pwd.TEXT_WIDTH + 5;
@@ -49,14 +51,6 @@ function terminal_update(id) {
 				id.SAVING_TIMER = random_range(0, 3);
 			}
 		}
-		if (id.pwd.y + id.pwd.TEXT_HEIGHT + 30 >= bbox_bottom) {
-			var replace = "";
-			for (var i = 1; string_char_at(id.system_write.TEXT, i - 1) != "\n";) { i++; }
-			for (; string_char_at(id.system_write.TEXT, i - 1) == "\n";) { i++; }
-			for (; i != string_length(id.system_write.TEXT); i++)
-				replace = replace + string_char_at(id.system_write.TEXT, i);
-			id.system_write.TEXT = replace + "\n";
-		}
 		if (id.CONNECTION) {
 			id.CONNECTION_TIME += delta_time / 1000000;
 			id.write_text.TEXT = ["Connection...", "NULL"];
@@ -71,7 +65,7 @@ function terminal_update(id) {
 					if (string_count("_BK", get.TAG) > 0 && get.image_alpha >= 1)
 						find = true;
 				}
-				if (find) {
+				if (find && (!id.CATCH && !get.CATCH) && !get.CONNECT) {
 					if (id.CONNECT_AT_IMAGE == "NULL") {
 						addtolist(AddText(x, y, "CONNECT ID: " + string(id.CONNECT_ID), Arial10, c_black, id.WINDOW.LAYERS[1], id.TAG + "CONNECT_AT_TEXT", [["CENTERED"], "NULL"]), id.WINDOW.list_objects);
 						addtolist(CreateObjectSprite(x, y, id.WINDOW.LAYERS[0], S_connect_at, OJustGUI, "BUTTON-NO-HAND", id.TAG + "CONNECT_AT_IMAGE" , [["INFO", "This means that your terminal\nis connected to another process,\nthey are now possible for\nyou to control this process\nremotely"], "NULL"]), id.WINDOW.list_objects);
@@ -80,13 +74,18 @@ function terminal_update(id) {
 					id.CONNECTION = false;
 					id.CONNECTION_TIME = 0;
 					id.write_text.TEXT = ["", "NULL"];
-					id.system_write.TEXT = id.system_write.TEXT + "Connect status : true\nConnect at " + string(id.CONNECT_ID) + "\n";
+					get.CATCH = true;
+					display_result(id.system_write, "Connect status : true\nConnect at " + string(id.CONNECT_ID));
 				} else {
 					id.CONNECT = false;
 					id.CONNECTION = false;
 					id.CONNECTION_TIME = 0;
 					id.write_text.TEXT = ["", "NULL"];
-					id.system_write.TEXT = id.system_write.TEXT + "Connect status : false\n" + string(id.CONNECT_ID) + " not found.\n";
+					if (id.CATCH || get.CATCH)
+						 { display_result(id.system_write, "Connect status : false\n" + "A process is connected to your terminal\nor the process you are trying to reach is already connected to another process.\nYou can only connect two processes together"); return; }
+					if (get.CONNECT)
+						{ display_result(id.system_write, "Connect status : false\n" + "The target is already connected to another process."); return; }
+					display_result(id.system_write, "Connect status : false\n" + string(id.CONNECT_ID) + " not found.");
 				}
 			}
 		}

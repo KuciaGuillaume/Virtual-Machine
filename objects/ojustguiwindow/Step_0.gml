@@ -76,6 +76,8 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TER
 		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Help", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HELP", [["CENTERED"], "NULL"]), WINDOW.list_objects);
 		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "History", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HISTORY", [["CENTERED"], "NULL"]), WINDOW.list_objects);
 		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Clear", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_CLEAR", [["CENTERED"], "NULL"]), WINDOW.list_objects);
+		system_write = GetText(TAG + "TERMINAL_SYSTEM_WRITE");
+		system_write.PARENT = id;
 		CREATE = true;
 		
 		

@@ -42,6 +42,7 @@ CONNECT = false;
 CONNECT_ID = 0;
 CONNECTION = false;
 CONNECTION_TIME = 0;
+CATCH = false;
 // TERMINAL HELP MESSAGE
 HELP_MESSAGE = "[HELP] List of commands that may be useful to you:\n\n";
 HELP_MESSAGE = HELP_MESSAGE + "-help : View this post\n";

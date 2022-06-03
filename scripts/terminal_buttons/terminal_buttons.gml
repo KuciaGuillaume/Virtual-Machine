@@ -10,7 +10,7 @@ function terminal_buttons(BUTTON, PARENT, TAG) {
 }
 
 function terminal_help(PARENT) {
-	PARENT.system_write.TEXT = PARENT.system_write.TEXT + PARENT.HELP_MESSAGE + "\n";
+	display_result(PARENT.system_write, PARENT.HELP_MESSAGE);
 }
 
 function terminal_btn_clear(PARENT) {

@@ -10,6 +10,7 @@ TAG = "NULL";
 TEXT_CONNECT = "NULL";
 TYPE = "NULL";
 DESTROY = DestroyText;
+PARENT = "NULL";
 image_alpha = 0;
 
 

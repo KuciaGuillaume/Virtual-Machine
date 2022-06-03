@@ -7,4 +7,7 @@ TYPE = "NULL";
 INFO = false;
 INFO_NAME = "NULL";
 
+// PRESS_TIME
+PRESS_TIME = 0;
+
 

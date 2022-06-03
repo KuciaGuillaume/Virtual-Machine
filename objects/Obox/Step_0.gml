@@ -106,8 +106,20 @@ if (string_count("PIN", TAG) > 0) {
 if (string_count("WINDOW_ME", TAG) > 0)
 	CreateWindow(PARENT.CREATE_WINDOW_IMAGE, PARENT.CREATE_WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME);
 
-if (PARENT != "NULL" && string_count("VISIO_BUTTON", TAG))
-	showmywindow(PARENT.id, PARENT.id, PARENT.depth, PARENT.MAIN_LAYER_ID);
+if (PARENT != "NULL" && string_count("VISIO_BUTTON", TAG)) {
+	if (!PARENT.IS_REDUCE)
+		showmywindow(PARENT.id, PARENT.id, PARENT.depth, PARENT.MAIN_LAYER_ID);
+	else {
+		PARENT.FADE_MOVEMENT = false;
+		PARENT.IS_REDUCE = false;
+		PARENT.y = PARENT.Y_TARGET + 20;
+		PARENT.FADE_END = false;
+		PARENT.FADE_IN = true;
+		PARENT.ON = false;
+		PARENT.FIRST_TAKE = false;
+		PARENT.CAN_TAKE = false;
+	}
+}
 if (PARENT != "NULL" && string_count("VISIO_CLOSE", TAG)) {
 	PARENT.FADE_END = true;
 	PARENT.CLOSING = true;

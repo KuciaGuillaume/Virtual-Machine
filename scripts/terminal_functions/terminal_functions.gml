@@ -188,6 +188,8 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 			for (var e = 0; ON_MAIN_SCENE.PATH [e] != "NULL"; ) { e++; }
 			ON_MAIN_SCENE.PATH[e] = [mkdir[i], ["..", "*", "NULL"],"NULL"];
 			ON_MAIN_SCENE.PATH[e + 1] = "NULL";
+			if (ON_MAIN_SCENE.PATH[0] == "Desk")
+				AddFolders(mkdir[i], "NULL");
 			var copy = PATH;
 			ON_MAIN_SCENE.PATH = save;
 			if (ID_RESULT != "NULL") {
@@ -217,6 +219,12 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 			ON_MAIN_SCENE.PATH = go_to_path(ON_MAIN_SCENE.PATH, PATH);
 			for (var e = 0; ON_MAIN_SCENE.PATH[e] != "NULL"; e++) { 
 				if (is_array(ON_MAIN_SCENE.PATH[e]) && ON_MAIN_SCENE.PATH[e][0] == rm[i]) {
+					if (ON_MAIN_SCENE.PATH[0] == "Desk") {
+						ON_MAIN_SCENE.FOLDERS = remove_findlist(GetObject(ON_MAIN_SCENE.PATH[e][0] + "FOLDERS"), ON_MAIN_SCENE.FOLDERS);
+						ON_MAIN_SCENE.NAME_FOLDERS = remove_findlist_index(ON_MAIN_SCENE.PATH[e][0], ON_MAIN_SCENE.NAME_FOLDERS, 0);
+						DestroyText(ON_MAIN_SCENE.PATH[e][0] + "FOLDERS_TEXT");
+						DestroyObject(ON_MAIN_SCENE.PATH[e][0] + "FOLDERS");
+					}
 					for (; ON_MAIN_SCENE.PATH[e] != "NULL"; e++)
 						ON_MAIN_SCENE.PATH[e] = ON_MAIN_SCENE.PATH[e + 1];
 					terminal_saving(PARENT);
@@ -296,8 +304,8 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		if (terminal_ls(ARRAY, id.system_write, id.PWD)) command_find = true;
 		if (terminal_clear(ARRAY, id.system_write)) command_find = true;
 		var cd = terminal_cd(ARRAY, id.system_write, id.PWD, id.PATH); id.PWD = cd[0]; id.PATH = cd[2]; if (cd[1]) { command_find = true; }
-		var mkdir = terminal_mkdir(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = mkdir[0]; if (mkdir[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, "NULL"]; savegame_save("USER", SAVE_LIST);}
-		var rm = terminal_rm(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = rm[0]; if (rm[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, "NULL"]; savegame_save("USER", SAVE_LIST);}
+		var mkdir = terminal_mkdir(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = mkdir[0]; if (mkdir[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"]; savegame_save("USER", SAVE_LIST);}
+		var rm = terminal_rm(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = rm[0]; if (rm[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"]; savegame_save("USER", SAVE_LIST);}
 		if (ARRAY[0] == "history" && ARRAY[1] == "NULL") { command_find = true; terminal_history(id); }
 		if (ARRAY[0] == "getpid" && ARRAY[1] == "NULL") { command_find = true; terminal_getpid(id); }
 		if (terminal_connect(ARRAY, id)) { command_find = true; }

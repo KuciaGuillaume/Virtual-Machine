@@ -15,6 +15,26 @@ function remove_list(i, LIST) {
 	return LIST;
 }
 
+function remove_findlist(FIND, LIST) {
+	
+	for (var i = 0; LIST[i] != "NULL" && FIND != LIST[i];) { i++; }
+	if (LIST[i] == "NULL")
+		return LIST;
+	for (; LIST[i] != "NULL"; i++)
+		LIST[i] = LIST[i + 1];
+	return LIST;
+}
+
+function remove_findlist_index(FIND, LIST, index) {
+	
+	for (var i = 0; LIST[i] != "NULL" && FIND != LIST[i][index];) { i++; }
+	if (LIST[i] == "NULL")
+		return LIST;
+	for (; LIST[i] != "NULL"; i++)
+		LIST[i] = LIST[i + 1];
+	return LIST;
+}
+
 function list_n(LIST) {
 	var i = 0;
 	for (; LIST[i] != "NULL";) { i++ }

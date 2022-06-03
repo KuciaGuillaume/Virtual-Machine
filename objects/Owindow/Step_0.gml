@@ -100,6 +100,7 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	DestroyObject(CLOSE.TAG);
 	DestroyObject(REDUCE.TAG);
 	DestroyText(TEXT_TITLE.TAG);
+	ON = false;
 	DestroyObject(TAG);
 	ON_MAIN_SCENE.N_WINDOW -= 1;
 	return;
@@ -110,6 +111,7 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	ON_OBJECT.image_xscale = 1;
 	REDUCING = false;
 	FADE_END = false;
+	ON = false
 	Y_TARGET = y - 20;
 	y += 3000;
 	return;
@@ -170,10 +172,10 @@ for (var e = 0; CLASS[2][e] != "NULL"; e++) {
 if (!FIRST_TAKE)
 	CAN_TAKE = false;
 
-if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(self) || MouseInsideObject(WINDOW_BK)) && CAN_TAKE) {
+if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(id) || MouseInsideObject(WINDOW_BK)) && CAN_TAKE) {
 	ON = true;
 	ON_CLASS[1] = true;
-} else if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (!MouseInsideObject(self) && !MouseInsideObject(WINDOW_BK)) || !FIRST_TAKE) {
+} else if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (!MouseInsideObject(id) && !MouseInsideObject(WINDOW_BK)) || !FIRST_TAKE) {
 	ON = false;
 	ON_CLASS[1] = false;
 }

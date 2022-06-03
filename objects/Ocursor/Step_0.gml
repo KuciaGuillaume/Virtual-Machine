@@ -17,6 +17,12 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 			image_index = 1;
 		if (class[1] == "TEXT_BUTTON")
 			image_index = 2;
+		if (class[1] == "BUTTON-NO-HAND" && mouse_check_button(mb_left) && PRESS_TIME >= 0.2)
+			image_index = 3;
+		else if (class[1] == "BUTTON-NO-HAND" && mouse_check_button(mb_left))
+			PRESS_TIME +=  delta_time / 1000000;
+		else
+			PRESS_TIME = 0;
 
 		// INFO
 		if (class[0].INFO) {

@@ -41,6 +41,13 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL" && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
 	
 	if (ON_MAIN_SCENE.TASKS[i] != "NULL") {
+		for (var k = 0; ON_MAIN_SCENE.TASKS[k] != "NULL"; k++) {
+			for (var l = 0; ON_MAIN_SCENE.TASKS[k][3][l] != "NULL"; l++) {
+				ON_MAIN_SCENE.TASKS[k][3][l].ON = false;
+				ON_MAIN_SCENE.TASKS[k][3][l].FIRST_TAKE = false;
+			}
+				
+		}
 		ON_MAIN_SCENE.TASKS[i][1] += 1;
 		for (var e = 0; ON_MAIN_SCENE.TASKS[i][2][e] != "NULL"; ) { e++; }
 		ON_MAIN_SCENE.TASKS[i][2][e] = [ID, true];

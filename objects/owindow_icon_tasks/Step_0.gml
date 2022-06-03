@@ -116,6 +116,8 @@ if (right_option != "NULL") {
 }
 
 if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_count("_TASK_ICON", TAG) >= 1) {
+	setforfolders(ON_MAIN_SCENE.FOLDERS, false);
+	ON_MAIN_SCENE.ON_DESK = false;
 	if (right_option != "NULL")
 		DestroyObject(TAG + "RIGHT_OPT");
 	
@@ -160,17 +162,21 @@ if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count
 		all_closed = false;
 		if (obj.IS_REDUCE)
 			all_open = false;
-		if (obj.IS_REDUCE && obj.image_alpha <= 0) {
+		if (obj.IS_REDUCE) {
 			obj.FADE_MOVEMENT = false;
 			obj.IS_REDUCE = false;
 			obj.y = obj.Y_TARGET + 20;
+			obj.FADE_END = false;
 			obj.FADE_IN = true;
+			obj.ON = false;
+			obj.FIRST_TAKE = false;
+			obj.CAN_TAKE = false;
 		}
 	}
 	if (all_open) {
 		for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
 			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
-			if (obj.image_alpha >= 1) {
+			if (!obj.IS_REDUCE) {
 				obj.REDUCING = true;
 				obj.FADE_END = true;
 			}
@@ -178,5 +184,7 @@ if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count
 	}
 	if (all_closed)
 		CreateWindow(CREATE_WINDOW_IMAGE, CREATE_WINDOW_TAG, CREATE_WINDOW_ICON, CREATE_WINDOW_NAME);
+	setforfolders(ON_MAIN_SCENE.FOLDERS, false);
+	ON_MAIN_SCENE.ON_DESK = false;
 	mouse_clear(mb_left);
 }

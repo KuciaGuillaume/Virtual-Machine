@@ -149,3 +149,54 @@ if (OBJECT_LINKED != "NULL") {
 	OBJECT_LINKED.x = x;
 	OBJECT_LINKED.y = y;
 }
+
+// FOLDER MOVEMENT
+if (string_count("FOLDERS", TAG) > 0) {
+	if ((MouseInsideObject(id) || GRABED) && mouse_check_button(mb_left)) {
+		var cursor = GetObject("CURSOR");
+		if (cursor.image_index == 3 || GRABED) {
+			for (var i = 0; ON_MAIN_SCENE.FOLDERS[i] != "NULL"; i++)
+				if (ON_MAIN_SCENE.FOLDERS[i].GRABED == true && ON_MAIN_SCENE.FOLDERS[i] != id) { layer = layer_get_id("Gp0"); TEXT_CONNECT.layer = layer_get_id("Gp1"); GRABED = false; return; }
+			if (!GRABED) {
+				TAKE_POS_X = x;
+				TAKE_POS_Y = y;
+			}
+			GRABED = true;
+			layer = layer_get_id("Gp2");
+			TEXT_CONNECT.layer = layer_get_id("Gp3");
+			x = mouse_x;
+			y = mouse_y;
+		}
+	} else {
+		if (GRABED) {
+			var modulo_x = x; for (; modulo_x > 100; ) { modulo_x -= 100; } 
+			var modulo_y = y; for (; modulo_y > 100; ) { modulo_y -= 100; }
+			if (modulo_x >= 50) { x = x + (100 - modulo_x) }
+			if (modulo_x < 50) { x -= modulo_x }
+			if (modulo_y >= 50) { y = y + (100 - modulo_y) }
+			if (modulo_y < 50) { y -= modulo_y }
+			for (var i = 0; ON_MAIN_SCENE.FOLDERS[i] != "NULL"; i++) {
+				if ((y == ON_MAIN_SCENE.FOLDERS[i].y && x == ON_MAIN_SCENE.FOLDERS[i].x && ON_MAIN_SCENE.FOLDERS[i] != id) ||
+				x > 1800 || x < 100 || y > 900 || y < 100) {
+					x = TAKE_POS_X;
+					y = TAKE_POS_Y;
+				}
+				if (ON_MAIN_SCENE.FOLDERS[i] != id) {
+					ON_MAIN_SCENE.NAME_FOLDERS[i][1] = ON_MAIN_SCENE.FOLDERS[i].x;
+					ON_MAIN_SCENE.NAME_FOLDERS[i][2] = ON_MAIN_SCENE.FOLDERS[i].y;
+				} else {
+					ON_MAIN_SCENE.NAME_FOLDERS[i][1] = x;
+					ON_MAIN_SCENE.NAME_FOLDERS[i][2] = y;
+				}
+			}
+			SAVE_LIST = [global.USER, global.PATH,  global.FOLDERS, "NULL"];
+			savegame_save("USER", SAVE_LIST);
+		}
+		GRABED = false;
+		layer = layer_get_id("Gp0");
+		TEXT_CONNECT.layer = layer_get_id("Gp1");
+	}
+	TEXT_CONNECT.x = x;
+	TEXT_CONNECT.y = y + 40;
+}
+

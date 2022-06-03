@@ -13,6 +13,7 @@ FADE_IN = false;
 FADE_SATE = false;
 FADE_POWER = 0;
 FIRST_PASS = false;
+TEXT_CONNECT = "NULL";
 ON = true;
 
 // BACKGROUNDS
@@ -51,3 +52,8 @@ Y_TARGET = 0;
 OPT_CLOSING = false;
 OBJECT_LINKED = "NULL";
 NUMBER = 0;
+
+// GRAB
+GRABED = false;
+TAKE_POS_X = x;
+TAKE_POS_y = y;

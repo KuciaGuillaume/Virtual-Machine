@@ -201,6 +201,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	}
 	return [PWD, false];
 }
+
 function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var rm = ARRAY;
 	if (rm[0] == "rm" && rm[1] == "NULL") {
@@ -309,9 +310,45 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		if (ARRAY[0] == "history" && ARRAY[1] == "NULL") { command_find = true; terminal_history(id); }
 		if (ARRAY[0] == "getpid" && ARRAY[1] == "NULL") { command_find = true; terminal_getpid(id); }
 		if (terminal_connect(ARRAY, id)) { command_find = true; }
+		if (terminal_rename(ARRAY, id.system_write, id.PWD, id)) { command_find = true; }
 		if (!command_find)
 			display_result(id.system_write, COMMAND + ": command not found.");
 	} else
 		display_result(id.system_write, id.pwd.TEXT);
 }
+
+function array_size(array) {
+	var size = 0;
+	for (; array[size] != "NULL";) { size++; }
+	return size;
+}
+
+function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
+	if (ARRAY[0] == "rename" && array_size(ARRAY) < 3) {
+		display_result(ID_RESULT, "Rename: too few arguments");
+		return true;
+	}
+	if (ARRAY[0] != "rename")
+		return false;
+	for (var i = 1; PWD[i] != "NULL"; i++) {
+		if (is_array(PWD[i]) && PWD[i][0] == ARRAY[1]) {
+			PWD[i][0] = ARRAY[2];
+			display_result(ID_RESULT,  "[" + ARRAY[1] + "] has been successfully renamed to [" + ARRAY[2] + "]");
+			for (var e = 0; ON_MAIN_SCENE.FOLDERS[e] != "NULL"; e++) {
+				if (ON_MAIN_SCENE.NAME_FOLDERS[e][0] == ARRAY[1]) {
+					var text = GetText(ARRAY[1] + "FOLDERS_TEXT");
+					text.TEXT = ARRAY[2];
+					ON_MAIN_SCENE.NAME_FOLDERS[e][0] = ARRAY[2];
+					SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+					savegame_save("USER", SAVE_LIST);
+					terminal_saving(PARENT);
+				}
+			}
+			return true;
+		}
+	}
+	display_result(ID_RESULT,  "[" + ARRAY[1] + "] is not found.");
+	return true;
+}
+
 

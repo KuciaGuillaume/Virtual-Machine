@@ -24,7 +24,7 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 1;
+global.TIMER = 5;
 
 // PATH AND FOLDERS
 
@@ -58,4 +58,4 @@ global.FOLDERS = LOAD_LIST[2];
 
 
 // LOAD GAME
-room = RMainScene;
+room = Rstart;

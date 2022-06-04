@@ -67,3 +67,4 @@ HELP_MESSAGE = HELP_MESSAGE + "-exit : To close the window\n";
 HELP_MESSAGE = HELP_MESSAGE + "-getpid : Informs the process id\n";
 HELP_MESSAGE = HELP_MESSAGE + "-connect : Allows you to connect to a specified id\n";
 HELP_MESSAGE = HELP_MESSAGE + "-close : End of connection\n";
+HELP_MESSAGE = HELP_MESSAGE + "-rename : Allows you to rename a folder or file\n";

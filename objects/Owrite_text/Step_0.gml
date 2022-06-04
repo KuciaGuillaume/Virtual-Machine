@@ -83,16 +83,13 @@ if ((KeyPressed(vk_tab) || KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE
 	return;
 }
 
-if (KeyPress(vk_anykey) && !KeyPressed(vk_anykey))
-	LAST_KEY_PRESSED = keyboard_lastkey;
-
 // CHECK INPUT
-if (KeyPressed(vk_shift) || KeyPress(vk_backspace) || TEXT_INDEX_MAX >= MAX || KeyPressed(vk_alt) || KeyPressed(vk_control) || KeyPressed(vk_shift) ||
-keyboard_lastkey == 20)
+if ((KeyPress(vk_backspace) || TEXT_INDEX_MAX >= MAX || KeyPressed(vk_alt) || KeyPressed(vk_control) ||
+keyboard_lastkey == 20) && keyboard_lastchar != ".")
 	return;
 
 // WRITE ON TEXT
-if (keyboard_check_pressed(vk_anykey) && ON_WRITE && (keyboard_lastkey >= 32 && keyboard_lastkey <= 177) && LAST_KEY_PRESSED != 162) {
+if (keyboard_check_pressed(vk_anykey) && ON_WRITE && ((keyboard_lastkey >= 32 && keyboard_lastkey <= 177) || keyboard_lastchar == ".")) {
 	if (TEXT[0] == INITIAL_TEXT && TEXT_INDEX == 1) {
 		TEXT_INDEX -= 1;
 		TEXT_INDEX_MAX -= 1;

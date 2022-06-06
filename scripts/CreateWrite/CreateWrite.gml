@@ -18,6 +18,7 @@ function CreateWrite(TAG, MAX, LAYER, TEXT) {
 	for (i = 0; global.WRITE[i] != "NULL";) { i++; }
 	global.WRITE[i] = write_class;
 	global.WRITE[i + 1] = "NULL";
+	return write;
 }
 
 function GetWrite(TAG) {

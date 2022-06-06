@@ -15,6 +15,7 @@ FADE_POWER = 0;
 FIRST_PASS = false;
 TEXT_CONNECT = "NULL";
 ON = true;
+WRITE = "NULL";
 
 // BACKGROUNDS
 TARGET_INDEX = 0;
@@ -57,3 +58,7 @@ NUMBER = 0;
 GRABED = false;
 TAKE_POS_X = x;
 TAKE_POS_y = y;
+
+/// FOLDER
+ORIGINAL_NAME = "NULL";
+MASTER_NAME = "NULL";

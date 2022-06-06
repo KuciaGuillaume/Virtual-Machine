@@ -24,11 +24,11 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 5;
+global.TIMER = 0;
 
 // PATH AND FOLDERS
 
-global.PATH = ["~", "NULL"];
+global.PATH = "NULL";
 global.FOLDERS = ["NULL"];
 
 // CREATE USERS VARAIBLES
@@ -51,11 +51,12 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, "NULL"];
 
 // LOAD
-savegame_load("USER", LOAD_LIST);
+LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 global.PATH = LOAD_LIST[1];
 global.FOLDERS = LOAD_LIST[2];
 
 
+
 // LOAD GAME
-room = Rstart;
+room = RMainScene;

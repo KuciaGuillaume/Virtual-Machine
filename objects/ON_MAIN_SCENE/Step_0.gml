@@ -8,5 +8,46 @@ if (CTRL && KeyPressed(ord("T"))) {
 	setforfolders(FOLDERS, false);
 	ON_DESK = false;
 }
-if (mouse_check_button_pressed(mb_left))
+if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right))
 	check_all_off()
+	
+
+// RIGHT CLICK IN EMPTY && SLIDERS
+if (mouse_check_button_pressed(mb_right) && ON_DESK) {
+	
+	// CHECK RIGHT CLICK ON FOLDERS
+	var on_folders = "NULL";
+	for (var i = 0; FOLDERS[i] != "NULL"; i++) {
+		if (FOLDERS[i] != undefined && instance_exists(FOLDERS[i]) && MouseInsideObject(FOLDERS[i])) {
+			on_folders = FOLDERS[i];
+			break;
+		}
+	}
+	DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 5, c_white, 200, 31, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], "NULL"]);
+	var get = GetObject("NEW_FOLDER_SLIDERS");
+	if (get != "NULL")
+		DestroyButtonBox("NEW_FOLDER_SLIDERS");
+	var get = GetObject("RENAME_FOLDER_SLIDERS");
+	if (get != "NULL")
+		DestroyButtonBox("RENAME_FOLDER_SLIDERS");
+	if (on_folders == "NULL")
+		CreateButtonBox(mouse_x + 90, mouse_y + 11, S_new_folder, OboxText, "Create new folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "NEW_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
+	else {
+		var button = CreateButtonBox(mouse_x + 90, mouse_y + 11, S_rename_folder, OboxText, "Rename folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "RENAME_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
+		button.NUM_LINKED = i;
+		button.PARENT = DESK_SLIDER_OBJECT;
+	}
+	DESK_SLIDER = true;
+}
+
+if (DESK_SLIDER_OBJECT != "NULL" && DESK_SLIDER && (!MouseInside(DESK_SLIDER_OBJECT.x, DESK_SLIDER_OBJECT.x + DESK_SLIDER_OBJECT.SIZE_X, DESK_SLIDER_OBJECT.y, DESK_SLIDER_OBJECT.y + DESK_SLIDER_OBJECT.SIZE_Y) || !ON_DESK) && DESK_SLIDER_OBJECT.image_alpha >= 1) {
+	DESK_SLIDER = false;
+	DestroyObject(DESK_SLIDER_OBJECT.TAG);
+	DestroyButtonBox("NEW_FOLDER_SLIDERS");
+	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
+}
+
+if (keyboard_check_pressed(vk_escape)) {
+	savegame_save("USER", [global.USER, PATH, NAME_FOLDERS, "NULL"]);
+	Machine("END");
+}

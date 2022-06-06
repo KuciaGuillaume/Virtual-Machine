@@ -56,3 +56,8 @@ if (PARENT != "NULL") {
 		}
 	}
 }
+
+if (TAG == "DESK_SLIDERS") {
+	if (image_alpha < 1)
+		y -= 0.0001 * delta_time;
+}

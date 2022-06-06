@@ -67,7 +67,7 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TER
 		addtolist(CreateWrite(TAG + "TERMINAL_WRITE", 100, WINDOW.LAYERS[0], ""), WINDOW.list_objects);
 		write_text = GetWrite(TAG + "TERMINAL_WRITE");
 		write_text.BAR.x = x;
-		addtolist(AddText(x, y, "[ " + global.USER[1] + "/" + PWD[0] + " ]", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_PWD", ["NULL"]), WINDOW.list_objects);
+		addtolist(AddText(x, y, "[ " + global.USER[1] + "/" + PWD[0][0][0] + " ]", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_PWD", ["NULL"]), WINDOW.list_objects);
 		addtolist(AddText(x, y, "", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_WRITE", ["NULL"]), WINDOW.list_objects);
 		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Help", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HELP", [["CENTERED"], "NULL"]), WINDOW.list_objects);
 		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "History", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HISTORY", [["CENTERED"], "NULL"]), WINDOW.list_objects);

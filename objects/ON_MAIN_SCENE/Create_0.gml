@@ -7,12 +7,24 @@ N_WINDOW = 0;
 N_WINDOW_LIMITED = 15;
 ON_GUI = false;
 
+// SLIDER
+DESK_SLIDER = false;
+DESK_SLIDER_OBJECT = "NULL";
+
+
+PATH = global.PATH;
 // FOLDERS
 if (global.FOLDERS != undefined) {
 	NAME_FOLDERS = global.FOLDERS;
 	FOLDERS = ["NULL"];
-	for (var i = 0; NAME_FOLDERS[i] != "NULL"; i++)
-		AddFolders(NAME_FOLDERS[i], "START");
+	for (var i = 0; NAME_FOLDERS[i] != "NULL"; i++) {
+		var folder = AddFolders(NAME_FOLDERS[i], "START");
+		FOLDERS[i] = folder;
+		FOLDERS[i + 1] = "NULL";
+		for (var e = 1; PATH[1][e] != "NULL" && PATH[1][e][0][0][0] != NAME_FOLDERS[i][0]; ) { e++;}
+		if (PATH[1][e] != "NULL")
+			PATH[1][e][0][0][2] = folder;
+	}
 } else {
 	NAME_FOLDERS = ["NULL"];
 	FOLDERS = ["NULL"];
@@ -22,9 +34,8 @@ if (global.FOLDERS != undefined) {
 ON_DESK = true;
 
 
-PATH = global.PATH;
-if (PATH == undefined) {
-	PATH = ["~", "NULL"];
+if (PATH == undefined || PATH == "NULL") {
+	PATH = [[["~", "ROOT"]], "NULL"];
 	var get = terminal_mkdir(["mkdir", "Desk", "Documents", "NULL"], "NULL", PATH, "NULL", "/~"); PATH = get[0];
 }
 

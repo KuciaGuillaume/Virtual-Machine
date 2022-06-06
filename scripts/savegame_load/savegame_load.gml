@@ -11,7 +11,8 @@ function savegame_load(PATH, LOAD_LIST) {
 		ds_list_read(list, str); // add vars from string
   
 		// PLACE YOUR VARIABLES HERE IN THE SAME ORDER AS IN THE SAVEGAME_SAVE SCRIPT
-		for (var i = 0; LOAD_LIST[i] != "NULL"; i++)
+		for (var i = 0; i != ds_list_size(list); i++)
 			LOAD_LIST[i] = list[| i];
 	}
+	return LOAD_LIST;
 }

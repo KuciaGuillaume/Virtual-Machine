@@ -16,6 +16,12 @@ else
 if (TAG == "SUTDOWN") { if (y > 980) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
 if (TAG == "RESTART") { if (y > 940) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
 
+if (TAG == "NEW_FOLDER_SLIDERS" || TAG == "RENAME_FOLDER_SLIDERS") {
+	if (image_alpha < 1) {
+		y -= 0.0001 * delta_time;
+		TEXT_CONNECT.y = y;
+	}
+}
 
 // POSITIONS
 if (OPT_POSITIONS && TEXT_CONNECT != "NULL") {TEXT_CONNECT.x = OPT_X; TEXT_CONNECT.y = OPT_Y; }
@@ -232,4 +238,14 @@ if (TAG == "OK") {
 	type.ON_WRITE = true;
 	type.ON_WRITE = true;
 	DestroyButtonBox("OK");
+}
+
+if (TAG == "RENAME_FOLDER_SLIDERS") {
+	mouse_clear(mb_right);
+	mouse_clear(mb_left);
+	ON_MAIN_SCENE.FOLDERS[NUM_LINKED].WRITE.ON_WRITE = true;
+	ON_MAIN_SCENE.FOLDERS[NUM_LINKED].WRITE.BAR.x = ON_MAIN_SCENE.FOLDERS[NUM_LINKED].TEXT_CONNECT.x;
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
+	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = "NULL";
 }

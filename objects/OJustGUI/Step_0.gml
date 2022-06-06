@@ -11,7 +11,7 @@ if (FADE_IN && image_alpha < 1)
 else
 	FADE_IN = false;
 
-// GUI SELECt
+// GUI SELECT
 if (TAG == "GUI_SELECT_BACKGROUNDS") {
 
 	var scroll_bar = GetObject("SCROLL_IMAGE_BAR");
@@ -152,6 +152,41 @@ if (OBJECT_LINKED != "NULL") {
 
 // FOLDER MOVEMENT
 if (string_count("FOLDERS", TAG) > 0) {
+
+	// FOLDER NAME
+	if (WRITE != undefined && instance_exists(WRITE) && WRITE.ON_WRITE) {
+		var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
+		TEXT_CONNECT.TEXT = WRITE.TEXT_OUTPUT;
+		ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
+		var PWD = ON_MAIN_SCENE.PATH[1];
+		terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+		ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
+		WRITE.BAR.y = TEXT_CONNECT.y;
+		CreateEmptyRound(TEXT_CONNECT.x - TEXT_CONNECT.TEXT_WIDTH/2 - 5, TEXT_CONNECT.y - TEXT_CONNECT.TEXT_HEIGHT/2 - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 10, "Gp0", TAG + "RENAME_ON_DESK", ["NULL"]);
+		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x - TEXT_CONNECT.TEXT_WIDTH/2);
+		var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+		savegame_save("USER", SAVE_LIST);
+	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT)) {
+		if (TEXT_CONNECT.TEXT == "") {
+			var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
+			TEXT_CONNECT.TEXT = MASTER_NAME;
+			ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
+			var PWD = ON_MAIN_SCENE.PATH[1];
+			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+			ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			savegame_save("USER", SAVE_LIST);
+		}
+		DestroyObject(TAG + "RENAME_ON_DESK");
+		WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
+		ORIGINAL_NAME = TEXT_CONNECT.TEXT;
+		MASTER_NAME = TEXT_CONNECT.TEXT;
+	}
+	
+	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right))
+		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true)
+			WRITE.ON_WRITE = false;
+
 	if ((MouseInsideObject(id) || GRABED) && mouse_check_button(mb_left)) {
 		var cursor = GetObject("CURSOR");
 		if (cursor.image_index == 3 || GRABED) {
@@ -194,9 +229,12 @@ if (string_count("FOLDERS", TAG) > 0) {
 		}
 		GRABED = false;
 		layer = layer_get_id("Gp0");
-		TEXT_CONNECT.layer = layer_get_id("Gp1");
+		if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT))
+			TEXT_CONNECT.layer = layer_get_id("Gp1");
 	}
-	TEXT_CONNECT.x = x;
-	TEXT_CONNECT.y = y + 40;
+	if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT)) {
+		TEXT_CONNECT.x = x;
+		TEXT_CONNECT.y = y + 40;
+	}
 }
 

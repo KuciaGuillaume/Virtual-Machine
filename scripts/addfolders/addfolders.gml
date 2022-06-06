@@ -15,9 +15,10 @@ function AddFolders(NAME, MODE) {
 	// ICON DESK
 	if (MODE == "START") {
 		var folder = CreateObjectSprite(NAME[1], NAME[2], "Gp0", S_Folder, OJustGUI, "BUTTON-NO-HAND", NAME[0] + "FOLDERS", ["NULL"]);
-		ON_MAIN_SCENE.FOLDERS = addtolist(folder, ON_MAIN_SCENE.FOLDERS);
 		folder.TEXT_CONNECT = AddText(NAME[1], NAME[2] + 30, NAME[0], Arial10, c_white, "Gp1", NAME[0] + "FOLDERS_TEXT", [["CENTERED"], "NULL"]);
-		return;
+		folder.WRITE = CreateWrite(NAME[0] + "WRITE", 20, "Gp2", NAME[0]);
+		folder.WRITE.ON_WRITE = false;
+		return folder;
 	}
 	var path = ON_MAIN_SCENE.FOLDERS;
 	var X = 100;
@@ -28,5 +29,8 @@ function AddFolders(NAME, MODE) {
 	var folder = CreateObjectSprite(X, Y, "Gp0", S_Folder, OJustGUI, "BUTTON-NO-HAND", NAME + "FOLDERS", ["NULL"]);
 	ON_MAIN_SCENE.FOLDERS = addtolist(folder, ON_MAIN_SCENE.FOLDERS);
 	folder.TEXT_CONNECT = AddText(X, Y + 30, NAME, Arial10, c_white, "Gp1", NAME + "FOLDERS_TEXT", [["CENTERED"], "NULL"]);
+	folder.WRITE = CreateWrite(NAME + "WRITE", 20, "Gp2", NAME);
+	folder.WRITE.ON_WRITE = false;
 	ON_MAIN_SCENE.NAME_FOLDERS = addtolist(class, ON_MAIN_SCENE.NAME_FOLDERS);
+	return folder;
 }

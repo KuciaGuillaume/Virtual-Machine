@@ -26,6 +26,8 @@ function CreateEmptyRound(X, Y, COLOR, SIZE_X, SIZE_Y, LAYER, TAG, OPTION) {
 		rounded.COLOR = COLOR;
 		rounded.SIZE_X = SIZE_X;
 		rounded.SIZE_Y = SIZE_Y;
+		rounded.image_alpha = 0;
+		rounded.FIRST_PASS = false;
 		return rounded;
 	}
 	rounded = CreateObjects(X, Y, LAYER, OEmptyRound, "IMAGE", TAG, OPTION);

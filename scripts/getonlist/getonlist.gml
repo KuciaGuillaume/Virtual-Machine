@@ -8,3 +8,8 @@ function getonlist(ARGUMENT, LIST) {
 	}
 	return "NULL";
 }
+
+function get_index_list(ARGUMENT, LIST) {
+	for (var i = 0; LIST[i][0] != ARGUMENT; ) { i++; }
+	return i;
+}

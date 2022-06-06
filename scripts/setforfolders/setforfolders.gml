@@ -17,7 +17,7 @@ function check_all_off() {
 			if (visio == "NULL")
 				continue;
 			for (var d = 0; visio.COMPONENTS[d] != "NULL"; d++)
-				if (MouseInsideObject(visio.COMPONENTS[d]))
+				if (visio.COMPONENTS[d] != undefined && instance_exists(visio.COMPONENTS[d]) && MouseInsideObject(visio.COMPONENTS[d]))
 					all_off = false;
 		}
 	}

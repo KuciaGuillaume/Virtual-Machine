@@ -79,19 +79,19 @@ function terminal_ls(ARRAY, ID_RESULT, PWD) {
 		find = true;
 		if (PWD[1] != "NULL" && ls[1] == "NULL")
 			display_result(ID_RESULT, "|->" + COMMAND);
-		if (PWD[1] == "NULL" || (PWD[1][0] == ".." && PWD[2] == "NULL")) {
+		if (PWD[1] == "NULL" || (PWD[1][0][0][0] == ".." && PWD[2] == "NULL")) {
 			display_result(ID_RESULT, "Folder is empty");
 			return find;
 		}
 		for (var i = 1; PWD[i] != "NULL"; i++) {
 			if (ls[1] == "NULL") {
 				if (PWD[i] != "NULL")
-					display_result(ID_RESULT, PWD[i][0]);
+					display_result(ID_RESULT, PWD[i][0][0][0]);
 			} else {
 				for (var e = 1; ls[e] != "NULL"; e++) {
 					for (var f = 0; PWD[f] != "NULL"; f++) {
-						if (PWD[f] == "~") { continue; }
-						if (is_array(PWD[f]) && PWD[f][0] == ls[e]) { break; }
+						if (PWD[f][0][0] == "~") { continue; }
+						if (is_array(PWD[f]) && PWD[f][0][0][0] == ls[e]) { break; }
 					}
 					if (PWD[f] == "NULL") {
 						display_result(ID_RESULT, "ls: folder [ " + ls[e] + " ] not found.");
@@ -122,12 +122,12 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 	var cd = ARRAY;
 	if (cd[0] == "cd") {
 		if (cd[1] == "NULL") {
-			if (PWD[0] == "~") {
+			if (PWD[0][0][0] == "~") {
 				if (ID_RESULT != "NULL")
 					display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "cd: You are already at the root.");
 				return [PWD, true, PATH];
 			}
-			for (; PWD[0] != "~"; ) {
+			for (; PWD[0][0][0] != "~"; ) {
 				var get = terminal_cd(["cd", "..", "NULL"], ID_RESULT, PWD, PATH);
 				PWD = get[0];
 				PATH = get[2];
@@ -135,12 +135,12 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 			return [PWD, true, PATH];
 		}
 		for (var i = 1; PWD[i] != "NULL"; i++)
-			if (PWD[i][0] == cd[1]) {
+			if (PWD[i][0][0][0] == cd[1]) {
 				if (ID_RESULT != "NULL")
 					display_result(ID_RESULT, "|-> " + COMMAND);
 				if (cd[1] != "..") {
 					PWD = PWD[i];
-					PATH = PATH + "/" + PWD[0];
+					PATH = PATH + "/" + PWD[0][0][0];
 				} else {
 					var slash = string_count("/", PATH);
 					var new_path = "";
@@ -175,7 +175,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 		for (var i = 1; mkdir[i] != "NULL"; i++) {
 			var exists_already = false;
 			for (var e = 0; PWD[e] != "NULL"; e++) {
-				if (PWD[e] != "NULL" && is_array(PWD[e]) && PWD[e][0] == mkdir[i]) {
+				if (PWD[e] != "NULL" && is_array(PWD[e]) && PWD[e][0][0] == mkdir[i]) {
 					if (ID_RESULT != "NULL")
 						display_result(ID_RESULT, mkdir[i] + ": Folder already exists.");
 					exists_already = true;
@@ -185,13 +185,17 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 				continue;
 			var save = ON_MAIN_SCENE.PATH;
 			ON_MAIN_SCENE.PATH = go_to_path(ON_MAIN_SCENE.PATH, PATH);
-			for (var e = 0; ON_MAIN_SCENE.PATH [e] != "NULL"; ) { e++; }
-			ON_MAIN_SCENE.PATH[e] = [mkdir[i], ["..", "*", "NULL"],"NULL"];
+			for (var e = 0; ON_MAIN_SCENE.PATH[e] != "NULL"; ) { e++; }
 			ON_MAIN_SCENE.PATH[e + 1] = "NULL";
-			if (ON_MAIN_SCENE.PATH[0] == "Desk")
-				AddFolders(mkdir[i], "NULL");
+			if (ON_MAIN_SCENE.PATH[0][0][0] == "Desk") {
+				var folder = AddFolders(mkdir[i], "NULL");
+				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", folder]], [[["..", "PREVIOUS"], "*", "NULL"]],"NULL"];
+			} else
+				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", "NULL"]], [[["..", "PREVIOUS"], "*", "NULL"]],"NULL"];
 			var copy = PATH;
 			ON_MAIN_SCENE.PATH = save;
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			savegame_save("USER", SAVE_LIST);
 			if (ID_RESULT != "NULL") {
 				terminal_saving(PARENT);
 				display_result(ID_RESULT, "[ " + mkdir[i] + " ] was created.");
@@ -212,19 +216,21 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 		var find = false;
 		var save = ON_MAIN_SCENE.PATH;
 		for (var i = 1; rm[i] != "NULL"; i++) {
-			if (rm[i] == ".." || ((rm[i] == "Desk" || rm[i] == "Documents") && PWD[0] == "~")) {
+			if (rm[i] == ".." || ((rm[i] == "Desk" || rm[i] == "Documents") && PWD[0][0][0] == "~")) {
 				display_result(ID_RESULT, "[ " + rm[i] + " ] You do not have permission to delete it.");
 				find = true;
 				continue;
 			}
 			ON_MAIN_SCENE.PATH = go_to_path(ON_MAIN_SCENE.PATH, PATH);
 			for (var e = 0; ON_MAIN_SCENE.PATH[e] != "NULL"; e++) { 
-				if (is_array(ON_MAIN_SCENE.PATH[e]) && ON_MAIN_SCENE.PATH[e][0] == rm[i]) {
-					if (ON_MAIN_SCENE.PATH[0] == "Desk") {
-						ON_MAIN_SCENE.FOLDERS = remove_findlist(GetObject(ON_MAIN_SCENE.PATH[e][0] + "FOLDERS"), ON_MAIN_SCENE.FOLDERS);
-						ON_MAIN_SCENE.NAME_FOLDERS = remove_findlist_index(ON_MAIN_SCENE.PATH[e][0], ON_MAIN_SCENE.NAME_FOLDERS, 0);
-						DestroyText(ON_MAIN_SCENE.PATH[e][0] + "FOLDERS_TEXT");
-						DestroyObject(ON_MAIN_SCENE.PATH[e][0] + "FOLDERS");
+				if (is_array(ON_MAIN_SCENE.PATH[e]) && is_array(ON_MAIN_SCENE.PATH[e][0][0]) && ON_MAIN_SCENE.PATH[e][0][0][0] == rm[i]) {
+					if (ON_MAIN_SCENE.PATH[0][0][0] == "Desk") {
+						ON_MAIN_SCENE.FOLDERS = remove_findlist(ON_MAIN_SCENE.PATH[e][0][0][2], ON_MAIN_SCENE.FOLDERS);
+						ON_MAIN_SCENE.NAME_FOLDERS = remove_findlist_index(ON_MAIN_SCENE.PATH[e][0][0][0], ON_MAIN_SCENE.NAME_FOLDERS, 0);
+						var folder = ON_MAIN_SCENE.PATH[e][0][0][2];
+						DestroyWrite(folder.WRITE.TAG);
+						DestroyText(folder.TEXT_CONNECT.TAG);
+						DestroyObject(folder.TAG);
 					}
 					for (; ON_MAIN_SCENE.PATH[e] != "NULL"; e++)
 						ON_MAIN_SCENE.PATH[e] = ON_MAIN_SCENE.PATH[e + 1];
@@ -325,29 +331,46 @@ function array_size(array) {
 
 function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
 	if (ARRAY[0] == "rename" && array_size(ARRAY) < 3) {
-		display_result(ID_RESULT, "Rename: too few arguments");
+		if (ID_RESULT != "NULL")
+			display_result(ID_RESULT, "Rename: too few arguments");
 		return true;
 	}
 	if (ARRAY[0] != "rename")
 		return false;
 	for (var i = 1; PWD[i] != "NULL"; i++) {
-		if (is_array(PWD[i]) && PWD[i][0] == ARRAY[1]) {
-			PWD[i][0] = ARRAY[2];
-			display_result(ID_RESULT,  "[" + ARRAY[1] + "] has been successfully renamed to [" + ARRAY[2] + "]");
+		if (is_array(PWD[i]) && PWD[i][0][0][0] == ARRAY[1]) {
+			if ((ARRAY[1] == "Desk" || ARRAY[1] == "Documents") && PWD[0][0][0] == "~") {
+				if (ID_RESULT != "NULL")
+					display_result(ID_RESULT,  "[" + ARRAY[1] + "] You don't have permission to rename it.");
+				return true;
+			}
+			PWD[i][0][0][0] = ARRAY[2];
+			if (ID_RESULT != "NULL")
+				display_result(ID_RESULT,  "[" + ARRAY[1] + "] has been successfully renamed to [" + ARRAY[2] + "]");
 			for (var e = 0; ON_MAIN_SCENE.FOLDERS[e] != "NULL"; e++) {
 				if (ON_MAIN_SCENE.NAME_FOLDERS[e][0] == ARRAY[1]) {
-					var text = GetText(ARRAY[1] + "FOLDERS_TEXT");
-					text.TEXT = ARRAY[2];
+					var folder = ON_MAIN_SCENE.FOLDERS[e];
+					if (folder != "NULL") {
+						folder.TEXT_CONNECT.TEXT = ARRAY[2];
+						if (!folder.WRITE.ON_WRITE) {
+							folder.WRITE.TEXT_INDEX_MAX = 1;
+							folder.WRITE.TEXT_INDEX = 1;
+							folder.WRITE.INITIAL_TEXT = ARRAY[2];
+							folder.WRITE.TEXT = [ARRAY[2], "", "NULL"];
+						}
+					}
 					ON_MAIN_SCENE.NAME_FOLDERS[e][0] = ARRAY[2];
 					SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
 					savegame_save("USER", SAVE_LIST);
-					terminal_saving(PARENT);
+					if (PARENT != "NULL")
+						terminal_saving(PARENT);
 				}
 			}
 			return true;
 		}
 	}
-	display_result(ID_RESULT,  "[" + ARRAY[1] + "] is not found.");
+	if (ID_RESULT != "NULL")
+		display_result(ID_RESULT,  "[" + ARRAY[1] + "] is not found.");
 	return true;
 }
 

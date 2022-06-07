@@ -125,6 +125,7 @@
     {"id":{"name":"Simple35","path":"fonts/Simple35/Simple35.yy",},"order":2,},
     {"id":{"name":"Sbox_active","path":"sprites/Sbox_active/Sbox_active.yy",},"order":3,},
     {"id":{"name":"string_load_encrypted","path":"scripts/string_load_encrypted/string_load_encrypted.yy",},"order":4,},
+    {"id":{"name":"S_delete_folder","path":"sprites/S_delete_folder/S_delete_folder.yy",},"order":3,},
     {"id":{"name":"Srestart","path":"sprites/Srestart/Srestart.yy",},"order":1,},
     {"id":{"name":"savegame_save","path":"scripts/savegame_save/savegame_save.yy",},"order":0,},
     {"id":{"name":"Sbox","path":"sprites/Sbox/Sbox.yy",},"order":2,},

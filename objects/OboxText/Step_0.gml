@@ -16,7 +16,7 @@ else
 if (TAG == "SUTDOWN") { if (y > 980) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
 if (TAG == "RESTART") { if (y > 940) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
 
-if (TAG == "NEW_FOLDER_SLIDERS" || TAG == "RENAME_FOLDER_SLIDERS") {
+if (TAG == "NEW_FOLDER_SLIDERS" || TAG == "RENAME_FOLDER_SLIDERS" || TAG == "DELETE_FOLDER_SLIDERS") {
 	if (image_alpha < 1) {
 		y -= 0.0001 * delta_time;
 		TEXT_CONNECT.y = y;
@@ -246,6 +246,34 @@ if (TAG == "RENAME_FOLDER_SLIDERS") {
 	ON_MAIN_SCENE.FOLDERS[NUM_LINKED].WRITE.ON_WRITE = true;
 	ON_MAIN_SCENE.FOLDERS[NUM_LINKED].WRITE.BAR.x = ON_MAIN_SCENE.FOLDERS[NUM_LINKED].TEXT_CONNECT.x;
 	DestroyObject(PARENT.TAG);
+	DestroyButtonBox("DELETE_FOLDER_SLIDERS");
 	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
+	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = "NULL";
+}
+
+if (TAG == "NEW_FOLDER_SLIDERS") {
+	var PWD = ON_MAIN_SCENE.PATH[1];
+	var ID = 0;
+	for (var i = 1; PWD[i] != "NULL"; i++) {
+		if (is_array(PWD[i]) &&string_count("Newfolder", PWD[i][0][0][0]) > 0)
+			ID += 1;
+	}
+	if (ID <= 0)
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder", "NULL"], "NULL", PWD, "NULL", "/~/Desk", "NULL");
+	else
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), "NULL"], "NULL", PWD, "NULL", "/~/Desk", "NULL");
+	var folder = mkdir[2];
+	folder.WRITE.ON_WRITE = true;
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox("NEW_FOLDER_SLIDERS");
+	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = "NULL";
+}
+
+if (TAG == "DELETE_FOLDER_SLIDERS") {
+	var PWD = ON_MAIN_SCENE.PATH[1];
+	terminal_rm(["rm", ON_MAIN_SCENE.FOLDERS[NUM_LINKED].TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL", "/~/Desk", "NULL");
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
+	DestroyButtonBox("DELETE_FOLDER_SLIDERS");
 	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = "NULL";
 }

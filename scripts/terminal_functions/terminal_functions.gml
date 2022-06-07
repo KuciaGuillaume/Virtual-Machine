@@ -165,10 +165,11 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 
 function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var mkdir = ARRAY;
+	var folder = "NULL";
 	if (mkdir[0] == "mkdir" && mkdir[1] == "NULL") {
 		if (ID_RESULT != "NULL")
 			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "mkdir: No arguments.");
-		return [PWD, true];
+		return [PWD, true, folder];
 	} else if (mkdir[0] == "mkdir") {
 		if (ID_RESULT != "NULL")
 			ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n";
@@ -201,18 +202,20 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 				display_result(ID_RESULT, "[ " + mkdir[i] + " ] was created.");
 			}
 		}
-		return [PWD, true];
+		return [PWD, true, folder];
 	}
-	return [PWD, false];
+	return [PWD, false, folder];
 }
 
 function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var rm = ARRAY;
 	if (rm[0] == "rm" && rm[1] == "NULL") {
-		display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "rm: No arguments.");
+		if (ID_RESULT != "NULL")
+			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "rm: No arguments.");
 		return [PWD, true];
 	} else if (rm[0] == "rm") {
-		display_result(ID_RESULT, "|-> " + COMMAND);
+		if (ID_RESULT != "NULL")
+			display_result(ID_RESULT, "|-> " + COMMAND);
 		var find = false;
 		var save = ON_MAIN_SCENE.PATH;
 		for (var i = 1; rm[i] != "NULL"; i++) {
@@ -234,15 +237,19 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 					}
 					for (; ON_MAIN_SCENE.PATH[e] != "NULL"; e++)
 						ON_MAIN_SCENE.PATH[e] = ON_MAIN_SCENE.PATH[e + 1];
-					terminal_saving(PARENT);
-					display_result(ID_RESULT, "[ " + rm[i] + " ] was deleted.");
+					if (PARENT != "NULL")
+						terminal_saving(PARENT);
+					if (ID_RESULT != "NULL")
+						display_result(ID_RESULT, "[ " + rm[i] + " ] was deleted.");
 					find = true;
 					break;
 				}
 			}
 		}
-		if (!find)
-			display_result(ID_RESULT, "rm: " + rm[1] + " was not found.");
+		if (!find) {
+			if (ID_RESULT != "NULL")
+				display_result(ID_RESULT, "rm: " + rm[1] + " was not found.");
+		}
 		var copy = PATH;
 		ON_MAIN_SCENE.PATH = save;
 		return [PWD, true];
@@ -360,8 +367,10 @@ function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
 						}
 					}
 					ON_MAIN_SCENE.NAME_FOLDERS[e][0] = ARRAY[2];
-					SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
-					savegame_save("USER", SAVE_LIST);
+					if (ID_RESULT != "NULL") {
+						SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+						savegame_save("USER", SAVE_LIST);
+					}
 					if (PARENT != "NULL")
 						terminal_saving(PARENT);
 				}

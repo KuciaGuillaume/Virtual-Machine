@@ -10,7 +10,7 @@ function check_all_off() {
 	var all_off = true;
 	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
 		for (var e = 0; ON_MAIN_SCENE.TASKS[i][3][e] != "NULL"; e++)
-			if (ON_MAIN_SCENE.TASKS[i][3][e].ON == true || MouseInsideObject(ON_MAIN_SCENE.TASKS[i][3][e].ICON))
+			if (ON_MAIN_SCENE.TASKS[i][3][e].ON == true || MouseInsideObject(ON_MAIN_SCENE.TASKS[i][3][e].ICON) || ON_MAIN_SCENE.TASKS[i][3][e].image_alpha < 1)
 				all_off = false;
 		if (ON_MAIN_SCENE.TASKS[i][3][0] != "NULL" && ON_MAIN_SCENE.TASKS[i][3][0].ICON != "NULL") {
 			var visio = GetObject(ON_MAIN_SCENE.TASKS[i][3][0].ICON.TAG + "VISIO");

@@ -31,6 +31,10 @@ global.TIMER = 0;
 global.PATH = "NULL";
 global.FOLDERS = ["NULL"];
 
+// WINDOW'S PIN
+
+global.WINDOWS_PIN = ["NULL"];
+
 // CREATE USERS VARAIBLES
 
 STATE = "NULL";
@@ -48,13 +52,14 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 
 // CREATE LOAD_LIST
 
-LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, "NULL"];
+LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, "NULL"];
 
 // LOAD
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 global.PATH = undefined;
 global.FOLDERS = undefined;
+global.WINDOWS_PIN = LOAD_LIST[3];
 
 
 

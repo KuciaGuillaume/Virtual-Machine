@@ -23,6 +23,9 @@ if (mouse_check_button_pressed(mb_right) && ON_DESK) {
 			break;
 		}
 	}
+	var task_bar = GetObject("MAIN_TASKBAR");
+	if (MouseInsideObject(task_bar))
+		return;
 	var get = GetObject("NEW_FOLDER_SLIDERS");
 	if (get != "NULL")
 		DestroyButtonBox("NEW_FOLDER_SLIDERS");
@@ -57,6 +60,6 @@ if (DESK_SLIDER_OBJECT != "NULL" && DESK_SLIDER && (!MouseInside(DESK_SLIDER_OBJ
 }
 
 if (keyboard_check_pressed(vk_escape)) {
-	savegame_save("USER", [global.USER, PATH, NAME_FOLDERS, "NULL"]);
+	savegame_save("USER", [global.USER, PATH, NAME_FOLDERS, global.WINDOWS_PIN, "NULL"]);
 	Machine("END");
 }

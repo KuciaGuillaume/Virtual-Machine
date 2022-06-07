@@ -86,13 +86,19 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
 		icon.image_xscale = 0;
 		icon.image_yscale = 0;
-	} else
+	} else {
 		window.ON_OBJECT = GetObject(TAG + "ON_TASK");
+		if (window.ON_OBJECT == "NULL") {
+			window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
+			icon.WINDOW = i;
+		}
+	}
 	icon.CREATE_WINDOW_IMAGE = WINDOW_BK;
 	icon.CREATE_WINDOW_TAG = TAG;
 	icon.CREATE_WINDOW_ICON = ICON;
 	icon.CREATE_WINDOW_NAME = NAME;
 	icon.ON_TASK = window.ON_OBJECT;
+	icon.WINDOW_TAG = TAG;
 	window.image_alpha = 0;
 	window.WINDOW_BK.image_alpha = 0;
 	window.WINDOW_BK.WINDOW_TAG = window.TAG;
@@ -103,5 +109,38 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	window.WINDOW_BK.WINDOW = window;
 	window.INDEX = i;
 	window.NUMBER = ON_MAIN_SCENE.TASKS[i][4];
+	ID += 1;
+}
+
+function CreateWindowIcon(WINDOW_BK, TAG, ICON, NAME) {
+	static ID = 500;
+	
+	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL" && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
+	
+	var new_class = ["NULL", 1, ["NULL"], ["NULL"]];
+	ON_MAIN_SCENE.TASKS[i] = new_class;
+	ON_MAIN_SCENE.TASKS[i + 1] = "NULL";
+	ON_MAIN_SCENE.TASKS[i][4] = 0;
+	var new_name = "";
+	for (var g = 1; g < string_byte_length(NAME) && string_char_at(NAME, g) != "-"; g++)
+		new_name = new_name + string_char_at(NAME, g);
+	NAME = new_name;
+
+	var ORIGINAL_NAME = "";
+	for (var e = 0; string_char_at(NAME, e + 1) != " "; e++)
+		ORIGINAL_NAME += string_char_at(NAME, e + 1);
+	var task_bar = GetObject("MAIN_TASKBAR");
+	// ICON
+	var icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], "NULL"]);
+	icon.WINDOW = i;
+	icon.image_xscale = 1;
+	icon.image_yscale = 1;
+	icon.CREATE_WINDOW_IMAGE = WINDOW_BK;
+	icon.CREATE_WINDOW_TAG = TAG;
+	icon.CREATE_WINDOW_ICON = ICON;
+	icon.CREATE_WINDOW_NAME = NAME;
+	icon.ON_TASK = "NULL";
+	icon.PIN = true;
+	icon.WINDOW_TAG = TAG; 
 	ID += 1;
 }

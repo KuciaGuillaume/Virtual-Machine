@@ -89,7 +89,7 @@ function terminal_ls(ARRAY, ID_RESULT, PWD) {
 					display_result(ID_RESULT, PWD[i][0][0][0]);
 			} else {
 				for (var e = 1; ls[e] != "NULL"; e++) {
-					for (var f = 0; PWD[f] != "NULL"; f++) {
+					for (var f = 1; PWD[f] != "NULL"; f++) {
 						if (PWD[f][0][0] == "~") { continue; }
 						if (is_array(PWD[f]) && PWD[f][0][0][0] == ls[e]) { break; }
 					}
@@ -195,7 +195,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", "NULL"]], [[["..", "PREVIOUS"], "*", "NULL"]],"NULL"];
 			var copy = PATH;
 			ON_MAIN_SCENE.PATH = save;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN,"NULL"];
 			savegame_save("USER", SAVE_LIST);
 			if (ID_RESULT != "NULL") {
 				terminal_saving(PARENT);
@@ -318,8 +318,8 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		if (terminal_ls(ARRAY, id.system_write, id.PWD)) command_find = true;
 		if (terminal_clear(ARRAY, id.system_write)) command_find = true;
 		var cd = terminal_cd(ARRAY, id.system_write, id.PWD, id.PATH); id.PWD = cd[0]; id.PATH = cd[2]; if (cd[1]) { command_find = true; }
-		var mkdir = terminal_mkdir(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = mkdir[0]; if (mkdir[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"]; savegame_save("USER", SAVE_LIST);}
-		var rm = terminal_rm(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = rm[0]; if (rm[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"]; savegame_save("USER", SAVE_LIST);}
+		var mkdir = terminal_mkdir(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = mkdir[0]; if (mkdir[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN,"NULL"]; savegame_save("USER", SAVE_LIST);}
+		var rm = terminal_rm(ARRAY, id.system_write, id.PWD, COMMAND, id.PATH, id); id.PWD = rm[0]; if (rm[1]) { command_find = true; var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN,"NULL"]; savegame_save("USER", SAVE_LIST);}
 		if (ARRAY[0] == "history" && ARRAY[1] == "NULL") { command_find = true; terminal_history(id); }
 		if (ARRAY[0] == "getpid" && ARRAY[1] == "NULL") { command_find = true; terminal_getpid(id); }
 		if (terminal_connect(ARRAY, id)) { command_find = true; }
@@ -368,7 +368,7 @@ function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
 					}
 					ON_MAIN_SCENE.NAME_FOLDERS[e][0] = ARRAY[2];
 					if (ID_RESULT != "NULL") {
-						SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+						SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, "NULL"];
 						savegame_save("USER", SAVE_LIST);
 					}
 					if (PARENT != "NULL")

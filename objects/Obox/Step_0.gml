@@ -101,6 +101,11 @@ if (string_count("PIN", TAG) > 0) {
 		PARENT.PIN = true;
 	else
 		PARENT.PIN = false;
+	for (var i = 0; global.WINDOWS_PIN[i] != "NULL" && global.WINDOWS_PIN[i][2] != PARENT.WINDOW_TAG; ) { i++; }
+	var class = [PARENT.PIN, PARENT.CREATE_WINDOW_IMAGE, PARENT.WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME];
+	if (global.WINDOWS_PIN[i] == "NULL")
+		global.WINDOWS_PIN[i + 1] = "NULL";
+	global.WINDOWS_PIN[i] = class;
 }
 
 if (string_count("WINDOW_ME", TAG) > 0)

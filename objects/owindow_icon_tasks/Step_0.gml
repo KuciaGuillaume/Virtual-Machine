@@ -108,7 +108,8 @@ if (right_option != "NULL") {
 			NBAR = 0;
 			if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == "NULL") {
 				DestroyObject(TAG);
-				DestroyObject(ON_TASK.TAG);
+				if (ON_TASK != "NULL")
+					DestroyObject(ON_TASK.TAG);
 			}
 		}
 	} else if (info != "NULL")

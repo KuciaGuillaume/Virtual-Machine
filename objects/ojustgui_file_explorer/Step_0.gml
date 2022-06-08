@@ -13,6 +13,11 @@ else
 	FADE_IN = false;
 
 if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
+	
+	for (var i = 0; FOLDER_LIST[i] != "NULL"; i++) {
+		DestroyText(FOLDER_LIST[i].TEXT_CONNECT.TAG);
+		DestroyObject(FOLDER_LIST[i].TAG);
+	}
 	DestroyTextButton(SEARCH.TAG);
 	DestroyText(PATH.TAG);
 	DestroyObject(TAG);
@@ -39,6 +44,9 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 		// CREATE PATH
 		PATH = AddText(x + 110, y + 47, PWD_PATH, Arial10, c_black, WINDOW.LAYERS[0], TAG + "PATH", [["CENTERED"], "NULL"]); addtolist(PATH, WINDOW.list_objects);
 		CREATE = true;
+		
+		// CREATE FOLDER
+		FOLDER_LIST = UpdateFileExplorer(PWD, PWD_PATH, FOLDER_LIST, id);
 	} else if (CREATE && (WINDOW.ON || WINDOW.REDUCING || !WINDOW.FADE_MOVEMENT)) {
 		
 		// UPDTAE SEARCH

@@ -215,7 +215,7 @@
     {"folderPath":"folders/MainScene/Objects/Objects/Window.yy","order":1,"resourceVersion":"1.0","name":"Window","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Global/Scripts/Window.yy","order":4,"resourceVersion":"1.0","name":"Window","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Global/Objects/Window.yy","order":12,"resourceVersion":"1.0","name":"Window","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Global/Scripts/Terminal.yy","order":5,"resourceVersion":"1.0","name":"Terminal","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Global/Objects/Terminal.yy","order":14,"resourceVersion":"1.0","name":"Terminal","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/MainScene/Objects/Sprites/Desk.yy","order":4,"resourceVersion":"1.0","name":"Desk","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Global/Scripts/Folders.yy","order":6,"resourceVersion":"1.0","name":"Folders","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/MainScene/Objects/Sprites/File_explorer.yy","order":5,"resourceVersion":"1.0","name":"File_explorer","tags":[],"resourceType":"GMFolder",},

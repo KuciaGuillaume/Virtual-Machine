@@ -37,3 +37,44 @@ function AddFolders(NAME, MODE) {
 	ID += 1;
 	return folder;
 }
+
+function AddFileEplorerFloder(NAME, LIST, PARENT) {
+	static ID = 500;
+	X = PARENT.x - 90;
+	Y = PARENT.y + 110;
+	LAYER1 = PARENT.WINDOW.LAYERS[0];
+	LAYER2 = PARENT.WINDOW.LAYERS[1];
+	var path = LIST;
+	for (var i = 0; !no_one_here(X, Y, path); i++)
+		if (Y >= 900) {Y = 100; X += 100; } else { Y += 90; }
+	var folder = CreateObjectSprite(X, Y, LAYER1, S_Folder, OJustGUI, "BUTTON-NO-HAND", NAME + "FILE_EXPLORER" + string(ID), ["NULL"]);
+	addtolist(folder, LIST);
+	folder.TEXT_CONNECT = AddText(X, Y + 30, NAME, Arial10, c_black, LAYER1, NAME + "FILE_EXPLORER_TEXT" + string(ID), [["CENTERED"], "NULL"]);
+	folder.WRITE = CreateWrite(NAME + "FILE_EXPLORER_WRITE" + string(ID), 20, LAYER2, NAME);
+	folder.WRITE.ON_WRITE = false;
+	folder.NAME = NAME;
+	folder.PARENT = PARENT;
+	if (X > PARENT.x)
+		folder.PARENT_DIFF_X = X - PARENT.x;
+	else
+		folder.PARENT_DIFF_X = (PARENT.x - X) * (-1);
+	if (Y > PARENT.y)
+		folder.PARENT_DIFF_Y = Y - PARENT.y;
+	else
+		folder.PARENT_DIFF_Y = (PARENT.y - Y) * (-1);
+	addtolist(folder, PARENT.WINDOW.list_objects);
+	return LIST;
+}
+
+function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
+	PWD = go_to_path(ON_MAIN_SCENE.PATH, PATH);
+	
+	for (var i = 1; PWD[i] != "NULL"; i++) {
+		for (var e = 0; LIST[e] != "NULL"; e++) {
+			if (PWD[i][0][0][0] == LIST[e].NAME)
+				continue;
+		}
+		LIST = AddFileEplorerFloder(PWD[i][0][0][0], LIST, PARENT);
+	}
+	return LIST;
+}

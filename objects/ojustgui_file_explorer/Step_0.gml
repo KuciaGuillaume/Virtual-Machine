@@ -13,11 +13,17 @@ else
 	FADE_IN = false;
 
 if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
+	DestroyTextButton(SEARCH.TAG);
+	DestroyText(PATH.TAG);
 	DestroyObject(TAG);
 }
 
 if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FILE_EXPLORER", WINDOW.TAG) ) {
 	
+	if (SEARCH != "NULL") {
+		SEARCH.ON = WINDOW.ON;
+		if (!WINDOW.ON) SEARCH.write.ON_WRITE = false;
+	}
 	if (CREATE) {
 
 	}
@@ -25,8 +31,25 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 		
 		// ON CREATE
 		
+		// CREATE SEARCH
+		SEARCH = CreateTextButton(x - 259, y + 46, S_search_file, "Search", WINDOW.LAYERS[0], WINDOW.LAYERS[1], c_black, Segoe10, 20, TAG + "Search", ["NULL"]); addtolist(SEARCH, WINDOW.list_objects);
+		SEARCH.MORE_X += 35;
+		SEARCH.write.BAR.image_index = 1;
+		
+		// CREATE PATH
+		PATH = AddText(x + 110, y + 47, PWD_PATH, Arial10, c_black, WINDOW.LAYERS[0], TAG + "PATH", [["CENTERED"], "NULL"]); addtolist(PATH, WINDOW.list_objects);
+		CREATE = true;
 	} else if (CREATE && (WINDOW.ON || WINDOW.REDUCING || !WINDOW.FADE_MOVEMENT)) {
 		
-	}
+		// UPDTAE SEARCH
+		if (SEARCH != "NULL")
+			SEARCH.image_alpha = image_alpha; SEARCH.x = x - 259; SEARCH.y = y + 46;
+
+		// UPDTAE PATH
+		if (PATH != "NULL")
+			PATH.image_alpha = image_alpha; PATH.x = x + 110; PATH.y = y + 47;
+		if (KeyPressed(vk_tab) && !SEARCH.write.ON_WRITE)
+			SEARCH.write.ON_WRITE = true;
+	}	
 	return;
 }

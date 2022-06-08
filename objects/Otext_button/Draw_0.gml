@@ -5,6 +5,7 @@ draw_self();
 // DRAW TEXT
 draw_set_font(FONT);
 draw_set_color(COLOR);
+draw_set_alpha(image_alpha);
 TEXT_SIZE = string_width(TEXT);
 TEXT_HEIGHT = string_height(TEXT);
 
@@ -20,3 +21,4 @@ if (SECRET && write != "NULL" && write.TEXT_OUTPUT != write.INITIAL_TEXT) {
 	return;
 }
 draw_text(X, Y, TEXT);
+draw_set_alpha(1);

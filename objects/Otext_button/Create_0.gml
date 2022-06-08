@@ -31,3 +31,5 @@ FADE_POWER = 0;
 FIRST_PASS = false;
 image_alpha = 0;
 ON = true;
+MORE_X = 10;
+MORE_Y = 0;

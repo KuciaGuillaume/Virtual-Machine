@@ -11,6 +11,9 @@ ON_GUI = false;
 DESK_SLIDER = false;
 DESK_SLIDER_OBJECT = "NULL";
 
+// ICONS
+ICONS = ["NULL"];
+
 
 PATH = global.PATH;
 // FOLDERS
@@ -41,13 +44,12 @@ if (PATH == undefined || PATH == "NULL") {
 
 CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", ["NULL"]);
 CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["INDEX_IMAGE", global.USER[7]], ["FADE_IN", 0.00001], "NULL"]);
-var task_bar = CreateObjectSprite(960, 1040, "TaskBar_Gp0", S_taskbar, OJustGUI, "IMAGE", "MAIN_TASKBAR", [["FADE_IN", 0.00001], "NULL"]);
-
+TASKBAR = CreateObjectSprite(960, 1040, "TaskBar_Gp0", S_taskbar, OJustGUI, "IMAGE", "MAIN_TASKBAR", [["FADE_IN", 0.00001], "NULL"]);
 
 // PIN
 for (var i = 0; global.WINDOWS_PIN[i] != "NULL"; i++) {
 	var class = global.WINDOWS_PIN[i];
 	if (!class[0])
 		continue;
-	CreateWindowIcon(class[1], class[2], class[3], class[4]);
+	CreateWindowIcon(class[1], class[2], class[3], class[4], class[5]);
 }

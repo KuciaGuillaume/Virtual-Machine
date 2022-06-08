@@ -22,6 +22,29 @@ for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != "NULL"; i++) {
 		windows_n += 1;
 }
 
+// ICONS POSITIOB
+for (var i = 0; ON_MAIN_SCENE.ICONS[i] != id; ) { i++ };
+
+if (i != 0 && instance_exists(ON_MAIN_SCENE.ICONS[i - 1])) {
+	var diff = x - ON_MAIN_SCENE.ICONS[i - 1].x;
+	if (diff <= 0 || diff < 50)
+		x += 0.0001 * delta_time;
+} else if (i == 0 && x != ON_MAIN_SCENE.TASKBAR.x && ON_MAIN_SCENE.ICONS[i + 1] == "NULL") {
+	if (x > ON_MAIN_SCENE.TASKBAR.x)
+		x -= (0.0001 * delta_time) * ((x - ON_MAIN_SCENE.TASKBAR.x) / 10);
+	else if (x < ON_MAIN_SCENE.TASKBAR.x)
+		x += (0.0001 * delta_time) * ((ON_MAIN_SCENE.TASKBAR.x - x) / 10);
+}
+
+if (ON_MAIN_SCENE.ICONS[i + 1] != "NULL" && instance_exists(ON_MAIN_SCENE.ICONS[i + 1])) {
+var diff = ON_MAIN_SCENE.ICONS[i + 1].x - x;
+	if (diff <= 0 || diff < 50)
+		x -= 0.0001 * delta_time;
+}
+
+if (ON_TASK != "NULL")
+	ON_TASK.x = x;
+
 var visio = GetObject(TAG + "VISIO");
 var right_option = GetObject(TAG + "RIGHT_OPT");
 if (MouseInsideObject(id) && right_option == "NULL") {
@@ -107,6 +130,7 @@ if (right_option != "NULL") {
 			OPT_CLOSING = false;
 			NBAR = 0;
 			if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == "NULL") {
+				remove_findlist(id, ON_MAIN_SCENE.ICONS);
 				DestroyObject(TAG);
 				if (ON_TASK != "NULL")
 					DestroyObject(ON_TASK.TAG);
@@ -184,7 +208,7 @@ if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count
 		}
 	}
 	if (all_closed)
-		CreateWindow(CREATE_WINDOW_IMAGE, CREATE_WINDOW_TAG, CREATE_WINDOW_ICON, CREATE_WINDOW_NAME);
+		CreateWindow(CREATE_WINDOW_IMAGE,  CREATE_WINDOW_OBJECT, CREATE_WINDOW_TAG, CREATE_WINDOW_ICON, CREATE_WINDOW_NAME);
 	setforfolders(ON_MAIN_SCENE.FOLDERS, false);
 	ON_MAIN_SCENE.ON_DESK = false;
 	mouse_clear(mb_left);

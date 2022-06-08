@@ -57,8 +57,8 @@ LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, "NULL
 // LOAD
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
-global.PATH = undefined;
-global.FOLDERS = undefined;
+global.PATH = LOAD_LIST[1];
+global.FOLDERS = LOAD_LIST[2];
 global.WINDOWS_PIN = LOAD_LIST[3];
 
 

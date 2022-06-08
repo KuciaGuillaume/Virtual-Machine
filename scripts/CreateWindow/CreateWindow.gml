@@ -1,6 +1,6 @@
 
 
-function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
+function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	static ID = 0;
 	
 	if (ON_MAIN_SCENE.N_WINDOW >= ON_MAIN_SCENE.N_WINDOW_LIMITED) {
@@ -28,9 +28,12 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	global.last_layer_id -= 7;
 
 	var window = CreateObjectSprite(960, 260, LAYER_1, Swindow_top, Owindow, "TOP_WINDOW", TAG + string(ID), OPTION);
-	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, OJustGUIWindow, "WINDOW_BK", TAG + "_BK" + string(ID), OPTION);
+	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, WINDOW_BK_OBJECT, "WINDOW_BK", TAG + "_BK" + string(ID), OPTION);
 	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5 + 10, window.y + 3, LAYER_2 , Swindow_close, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
 	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5 + 10, window.y + 3, LAYER_2 , Swindow_reduce, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
+	window.WINDOW_TOP_ICON = CreateObjectSprite(window.bbox_right - 17.5 - 10, window.y + 3, LAYER_2 , ICON, OJustGUI, "IMAGE", TAG + "TOP_ICON" + string(ID), OPTION);
+	window.WINDOW_TOP_ICON.image_xscale = 0.7;
+	window.WINDOW_TOP_ICON.image_yscale = 0.7;
 	window.ID = ID;
 	window.WINDOW_TAG = TAG;
 	window.MAIN_LAYER_ID = i;
@@ -83,6 +86,7 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	if (icon == "NULL") {
 		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], "NULL"]);
 		icon.WINDOW = i;
+		addtolist(icon, ON_MAIN_SCENE.ICONS);
 		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
 		icon.image_xscale = 0;
 		icon.image_yscale = 0;
@@ -99,6 +103,7 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	icon.CREATE_WINDOW_NAME = NAME;
 	icon.ON_TASK = window.ON_OBJECT;
 	icon.WINDOW_TAG = TAG;
+	icon.CREATE_WINDOW_OBJECT = WINDOW_BK_OBJECT;
 	window.image_alpha = 0;
 	window.WINDOW_BK.image_alpha = 0;
 	window.WINDOW_BK.WINDOW_TAG = window.TAG;
@@ -112,7 +117,7 @@ function CreateWindow(WINDOW_BK, TAG, ICON, NAME) {
 	ID += 1;
 }
 
-function CreateWindowIcon(WINDOW_BK, TAG, ICON, NAME) {
+function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	static ID = 500;
 	
 	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL" && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
@@ -132,6 +137,7 @@ function CreateWindowIcon(WINDOW_BK, TAG, ICON, NAME) {
 	var task_bar = GetObject("MAIN_TASKBAR");
 	// ICON
 	var icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], "NULL"]);
+	addtolist(icon, ON_MAIN_SCENE.ICONS);
 	icon.WINDOW = i;
 	icon.image_xscale = 1;
 	icon.image_yscale = 1;
@@ -141,6 +147,7 @@ function CreateWindowIcon(WINDOW_BK, TAG, ICON, NAME) {
 	icon.CREATE_WINDOW_NAME = NAME;
 	icon.ON_TASK = "NULL";
 	icon.PIN = true;
-	icon.WINDOW_TAG = TAG; 
+	icon.WINDOW_TAG = TAG;
+	icon.CREATE_WINDOW_OBJECT = WINDOW_BK_OBJECT;
 	ID += 1;
 }

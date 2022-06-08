@@ -4,10 +4,14 @@
 var CTRL = KeyPress(vk_control);
 
 if (CTRL && KeyPressed(ord("T"))) {
-	CreateWindow(Sterminal_bk, "TERMINAL", S_terminal_icon, "Terminal");
+	CreateWindow(Sterminal_bk, OJustGUITerminal, "TERMINAL", S_terminal_icon, "Terminal");
 	setforfolders(FOLDERS, false);
 	ON_DESK = false;
 }
+
+if (CTRL && KeyPressed(ord("E")))
+	CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+
 if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right))
 	check_all_off()
 	

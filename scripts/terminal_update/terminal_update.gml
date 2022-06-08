@@ -33,9 +33,9 @@ function terminal_update(id) {
 
 		//CONNECT_AT
 		if (id.CONNECT_AT_IMAGE != "NULL") {
-			id.CONNECT_AT_IMAGE.x = x + 300; id.CONNECT_AT_IMAGE.y = y - 15;
+			id.CONNECT_AT_IMAGE.x = x + 250; id.CONNECT_AT_IMAGE.y = y - 15;
 			id.CONNECT_AT_IMAGE.image_alpha = image_alpha;
-			id.CONNECT_AT_TEXT.x = x + 300; id.CONNECT_AT_TEXT.y = y - 15;
+			id.CONNECT_AT_TEXT.x = x + 250; id.CONNECT_AT_TEXT.y = y - 15;
 			id.CONNECT_AT_TEXT.image_alpha = image_alpha;
 		}
 

@@ -31,6 +31,9 @@ CLOSE.x = bbox_left + 17.5 + 10;
 CLOSE.y = y + 3;
 REDUCE.x = bbox_left + 42.5 + 10;
 REDUCE.y = y + 3;
+WINDOW_TOP_ICON.x =  bbox_right - 17.5 - 10;
+WINDOW_TOP_ICON.y = y + 3;
+WINDOW_TOP_ICON.image_alpha = image_alpha;
 TEXT_TITLE.y = y + 3;
 TEXT_TITLE.x = x + 10;
 CLOSE.image_alpha = image_alpha; REDUCE.image_alpha = image_alpha; TEXT_TITLE.image_alpha = image_alpha;
@@ -91,6 +94,7 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 		if (!ICON.PIN) {
 			if (visio != "NULL")
 				DestroyObject(visio.TAG);
+			remove_findlist(ICON.id, ON_MAIN_SCENE.ICONS);
 			DestroyObject(ICON.TAG);
 			DestroyObject(ON_OBJECT.TAG);
 		}	
@@ -99,6 +103,7 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 		ON_MAIN_SCENE.TASKS[INDEX][4] -= 1;
 	DestroyObject(CLOSE.TAG);
 	DestroyObject(REDUCE.TAG);
+	DestroyObject(WINDOW_TOP_ICON.TAG);
 	DestroyText(TEXT_TITLE.TAG);
 	ON = false;
 	DestroyObject(TAG);
@@ -210,7 +215,7 @@ if ((MouseInside(bbox_left, bbox_right, bbox_top, bbox_bottom) || SELECT) && mou
 	
 
 // FERMETURE DE LA WINDOW
-if ((MouseInsideObject(CLOSE) || MouseInsideObject(REDUCE)) && mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI) {
+if ((MouseInsideObject(CLOSE) || MouseInsideObject(REDUCE)) && mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && image_alpha >= 1) {
 	FADE_END = true;
 	if (MouseInsideObject(CLOSE))
 		CLOSING = true;
@@ -227,6 +232,9 @@ CLOSE.x = bbox_left + 17.5 + 10;
 CLOSE.y = y + 3;
 REDUCE.x = bbox_left + 42.5 + 10;
 REDUCE.y = y + 3;
+WINDOW_TOP_ICON.x =  bbox_right - 17.5 - 10;
+WINDOW_TOP_ICON.y = y + 3;
+WINDOW_TOP_ICON.image_alpha = image_alpha;
 TEXT_TITLE.y = y + 3;
 TEXT_TITLE.x = x + 10;
 CLOSE.image_alpha = image_alpha; REDUCE.image_alpha = image_alpha; TEXT_TITLE.image_alpha = image_alpha;

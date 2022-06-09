@@ -34,6 +34,24 @@ if (string_count("PIN", TAG) > 0) {
 	}
 }
 
+if (GET_EXPLORER == "NULL" && string_count("FILE_EXPLORER", TAG) > 0)
+	GET_EXPLORER = TAG;
+if (GET_EXPLORER != "NULL") {
+	if (PARENT != "NULL") {
+		x = PARENT.x + PARENT_DIFF_X;
+		y = PARENT.y + PARENT_DIFF_Y;
+		if (TEXT_CONNECT != "NULL") {
+			TEXT_CONNECT.x = x - 220; DOCK_TYPE_TEXT.x = x + 180;
+			TEXT_CONNECT.y = (y - TEXT_CONNECT.TEXT_HEIGHT/2) + 1; DOCK_TYPE_TEXT.y = (y - TEXT_CONNECT.TEXT_HEIGHT/2) + 1;
+			image_alpha = PARENT.image_alpha;
+			TEXT_CONNECT.image_alpha = image_alpha; DOCK_TYPE_TEXT.image_alpha = image_alpha;
+		}
+		OBJECT_LINKED.x = x - 235; OBJECT_LINKED.image_alpha = image_alpha;
+		OBJECT_LINKED.y = y;
+	}
+}
+
+
 
 if (mouse_x < bbox_left || mouse_x > bbox_right)
 	return;
@@ -101,11 +119,17 @@ if (string_count("PIN", TAG) > 0) {
 		PARENT.PIN = true;
 	else
 		PARENT.PIN = false;
-	for (var i = 0; global.WINDOWS_PIN[i] != "NULL" && global.WINDOWS_PIN[i][2] != PARENT.WINDOW_TAG; ) { i++; }
-	var class = [PARENT.PIN, PARENT.CREATE_WINDOW_IMAGE, PARENT.CREATE_WINDOW_OBJECT, PARENT.WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME];
-	if (global.WINDOWS_PIN[i] == "NULL")
-		global.WINDOWS_PIN[i + 1] = "NULL";
-	global.WINDOWS_PIN[i] = class;
+	if (PARENT.PIN) {
+		for (var i = 0; global.WINDOWS_PIN[i] != "NULL" && global.WINDOWS_PIN[i][2] != PARENT.WINDOW_TAG; ) { i++; }
+		var class = [PARENT.PIN, PARENT.CREATE_WINDOW_IMAGE, PARENT.CREATE_WINDOW_OBJECT, PARENT.WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME];
+		if (global.WINDOWS_PIN[i] == "NULL")
+			global.WINDOWS_PIN[i + 1] = "NULL";
+		global.WINDOWS_PIN[i] = class;
+		return;
+	}
+	for (var i = 0; global.WINDOWS_PIN[i][3] != PARENT.WINDOW_TAG;) { i++; }
+	for (; global.WINDOWS_PIN[i] != "NULL"; i++)
+		global.WINDOWS_PIN[i] = global.WINDOWS_PIN[i + 1];
 }
 
 if (string_count("WINDOW_ME", TAG) > 0)
@@ -150,4 +174,3 @@ if (PARENT != "NULL" && string_count("VISIO_CLOSE", TAG)) {
 	DestroyButtonBox(OTHER_PARENT.TAG);
 	mouse_clear(mb_left);
 }
-

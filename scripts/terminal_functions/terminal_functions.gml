@@ -188,11 +188,14 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 			ON_MAIN_SCENE.PATH = go_to_path(ON_MAIN_SCENE.PATH, PATH);
 			for (var e = 0; ON_MAIN_SCENE.PATH[e] != "NULL"; ) { e++; }
 			ON_MAIN_SCENE.PATH[e + 1] = "NULL";
+			if (current_day < 10) var day = "0" + string(current_day); else var day = string(current_day);
+			if (current_month < 10) var month = "0" + string(current_month); else var month = string(current_month);
+			var DateOfCreation = day + "/" + month + "/" + string(current_year);
 			if (ON_MAIN_SCENE.PATH[0][0][0] == "Desk") {
 				var folder = AddFolders(mkdir[i], "NULL");
-				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", folder]], [[["..", "PREVIOUS"], "*", "NULL"]],"NULL"];
+				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", folder, DateOfCreation]], [[["..", "PREVIOUS"], "*", "NULL"]],"NULL"];
 			} else
-				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", "NULL"]], [[["..", "PREVIOUS"], "*", "NULL"]],"NULL"];
+				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", "NULL", DateOfCreation]], [[["..", "PREVIOUS"], "*", "NULL"]],"NULL"];
 			var copy = PATH;
 			ON_MAIN_SCENE.PATH = save;
 			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN,"NULL"];

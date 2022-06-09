@@ -250,17 +250,3 @@ if (GET_FOLDER != "NULL") {
 	}
 	return;
 }
-
-if (GET_EXPLORER == "NULL" && string_count("FILE_EXPLORER", TAG) > 0)
-	GET_EXPLORER = TAG;
-if (GET_EXPLORER != "NULL") {
-	if (PARENT != "NULL") {
-		x = PARENT.x + PARENT_DIFF_X;
-		y = PARENT.y + PARENT_DIFF_Y;
-		TEXT_CONNECT.x = x;
-		TEXT_CONNECT.y = y + 30;
-		image_alpha = PARENT.image_alpha;
-		TEXT_CONNECT.image_alpha = image_alpha;
-	}
-}
-

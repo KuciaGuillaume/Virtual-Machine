@@ -16,6 +16,8 @@ if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
 	
 	for (var i = 0; FOLDER_LIST[i] != "NULL"; i++) {
 		DestroyText(FOLDER_LIST[i].TEXT_CONNECT.TAG);
+		DestroyText(FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
+		DestroyObject(FOLDER_LIST[i].OBJECT_LINKED);
 		DestroyObject(FOLDER_LIST[i].TAG);
 	}
 	DestroyTextButton(SEARCH.TAG);
@@ -25,12 +27,14 @@ if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
 
 if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FILE_EXPLORER", WINDOW.TAG) ) {
 	
-	if (SEARCH != "NULL") {
-		SEARCH.ON = WINDOW.ON;
-		if (!WINDOW.ON) SEARCH.write.ON_WRITE = false;
-	}
 	if (CREATE) {
-
+		if (SEARCH != "NULL") {
+			SEARCH.ON = WINDOW.ON;
+			if (!WINDOW.ON) SEARCH.write.ON_WRITE = false;
+		}
+		// UPDATE LIST
+		for (var i = 0; FOLDER_LIST[i] != "NULL"; i++)
+			FOLDER_LIST[i].ON = false;
 	}
 	if (!CREATE) {
 		
@@ -50,14 +54,22 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 	} else if (CREATE && (WINDOW.ON || WINDOW.REDUCING || !WINDOW.FADE_MOVEMENT)) {
 		
 		// UPDTAE SEARCH
-		if (SEARCH != "NULL")
-			SEARCH.image_alpha = image_alpha; SEARCH.x = x - 259; SEARCH.y = y + 46;
+		if (SEARCH != "NULL") {
+			if (!WINDOW.REDUCING) {
+				SEARCH.image_alpha = image_alpha; SEARCH.x = x - 259; SEARCH.y = y + 46;
+			} else {
+				SEARCH.image_alpha = 0; SEARCH.x = x - 259; SEARCH.y = y + 46; }
+		}
 
 		// UPDTAE PATH
 		if (PATH != "NULL")
 			PATH.image_alpha = image_alpha; PATH.x = x + 110; PATH.y = y + 47;
 		if (KeyPressed(vk_tab) && !SEARCH.write.ON_WRITE)
 			SEARCH.write.ON_WRITE = true;
+		
+		// UPDATE LIST
+		for (var i = 0; FOLDER_LIST[i] != "NULL"; i++)
+			FOLDER_LIST[i].ON = true;
 	}	
 	return;
 }

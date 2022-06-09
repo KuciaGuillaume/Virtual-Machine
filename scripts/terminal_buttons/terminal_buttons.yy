@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Terminal",
-    "path": "folders/Global/Objects/Terminal.yy",
+    "path": "folders/Global/Scripts/Terminal.yy",
   },
   "resourceVersion": "1.0",
   "name": "Terminal_buttons",

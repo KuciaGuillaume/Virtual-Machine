@@ -51,7 +51,9 @@ function AddFileEplorerFloder(NAME, LIST, PARENT, CreationDate) {
 	LAYER2 = PARENT.WINDOW.LAYERS[1];
 	var type_name = "file folder";
 	var path = LIST;
-	for (var i = 0; path[i] != "NULL"; i++)
+	show_debug_message(path);
+	for (var i = 0; path[i] != "NULL" && !instance_exists(path[i]);) { i++; }
+	for (; path[i] != "NULL"; i++)
 		Y += 24;
 	var folder = CreateObjectSprite(X, Y, LAYER1, S_FILES_buton, Obox, "BUTTON-NO-HAND", NAME + "FILE_EXPLORERS" + string(ID) + PARENT.TAG, [["INFO", "Creation date: " + CreationDate], "NULL"]);
 	addtolist(folder, LIST);
@@ -77,18 +79,6 @@ function AddFileEplorerFloder(NAME, LIST, PARENT, CreationDate) {
 function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 	PWD = go_to_path(ON_MAIN_SCENE.PATH, PATH);
 	
-	// CREATE
-	for (var i = 1; PWD[i] != "NULL"; i++) {
-		var check = true;
-		for (var e = 0; LIST[e] != "NULL"; e++) {
-			if (PWD[i][0][0][0] == LIST[e].NAME)
-				check = false;
-		}
-		if (check && PWD[i][0][0][0] != "..") {
-			LIST = AddFileEplorerFloder(PWD[i][0][0][0], LIST, PARENT, PWD[i][0][0][3]);
-			PARENT.N_ELEMENTS += 1;
-		}
-	}
 	
 	// DELETE
 	var deleted = ["NULL"];
@@ -107,6 +97,19 @@ function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 			for (; LIST[e] != "NULL"; e++)
 				LIST[e] = LIST[e + 1];
 			e = save - 1;
+		}
+	}
+
+	// CREATE
+	for (var i = 1; PWD[i] != "NULL"; i++) {
+		var check = true;
+		for (var e = 0; LIST[e] != "NULL"; e++) {
+			if (PWD[i][0][0][0] == LIST[e].NAME)
+				check = false;
+		}
+		if (check && PWD[i][0][0][0] != "..") {
+			LIST = AddFileEplorerFloder(PWD[i][0][0][0], LIST, PARENT, PWD[i][0][0][3]);
+			PARENT.N_ELEMENTS += 1;
 		}
 	}
 	return LIST;

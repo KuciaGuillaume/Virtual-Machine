@@ -66,7 +66,7 @@ if (REFRESH) {
 }
 
 // FILE EXPLORER FOLDER
-if (GET_FOLDER == "NULL" && (string_count("FILE_EXPLORERS", TAG) > 0))
+if (GET_FOLDER == "NULL" && string_count("FILE_EXPLORERS", TAG) > 0)
 	GET_FOLDER = TAG;
 if (GET_FOLDER != "NULL") {
 
@@ -110,7 +110,6 @@ if (GET_FOLDER != "NULL") {
 			savegame_save("USER", SAVE_LIST);
 		}
 	}
-	return;
 }
 
 if (mouse_x < bbox_left || mouse_x > bbox_right)
@@ -240,4 +239,36 @@ if (string_count("EXPLORER_RELOAD", TAG) > 0 && visible = true) {
 	visible = false;
 	REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", TAG + "LOAD", ["NULL"]);
 	REFRESH_TIME = 0;
+}
+
+if (string_count("FILE_EXPLORERS", TAG) > 0) {
+	var get = GetObject(INFO_NAME + TAG);
+	if (get != "NULL") DestroyRound(get.TAG);
+	PARENT.PWD_PATH = PARENT.PWD_PATH + "/" + NAME;
+	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PWD_PATH);
+	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+}
+
+if (string_count("GO_ROOT", TAG) > 0) {
+	if (PARENT.PWD_PATH == "/~")
+		return;
+	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~");
+	PARENT.PWD_PATH = "/~";
+	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+}
+
+if (string_count("GO_BACK", TAG) > 0) {
+	if (PARENT.PWD_PATH == "/~")
+		return;
+	var path = "";
+	var count = 0;
+	var target = string_count("/", PARENT.PWD_PATH);
+	for (var i = 0; count != target; i++) {
+		if (string_char_at(PARENT.PWD_PATH, i + 1) == "/") count += 1
+		if (count == target) break;
+		path = path + string_char_at(PARENT.PWD_PATH, i + 1);
+	}
+	PARENT.PWD_PATH = path;
+	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PWD_PATH);
+	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 }

@@ -49,12 +49,24 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 		}
 
 		// UPDTAE PATH
-		if (PATH != "NULL")
+		if (PATH != "NULL") {
 			PATH.image_alpha = image_alpha; PATH.x = x + 110; PATH.y = y + 47;
+			PATH.TEXT = PWD_PATH;
+		}
 		
 		// UPDATE EXPLORER RELOAD
 		if (EXPLORER_RELOAD != "NULL") {
 			EXPLORER_RELOAD.image_alpha = image_alpha; EXPLORER_RELOAD.x = x + 348; EXPLORER_RELOAD.y = y + 46;
+		}
+
+		// UPDATE GO ROOT
+		if (GO_ROOT != "NULL") {
+			GO_ROOT.image_alpha = image_alpha; GO_ROOT.x = x - 113; GO_ROOT.y = y + 46;
+		}
+
+		// UPDATE GO BACK
+		if (GO_BACK != "NULL") {
+			GO_BACK.image_alpha = image_alpha; GO_BACK.x = x - 75; GO_BACK.y = y + 46;
 		}
 
 		// UPDATE LIST
@@ -68,6 +80,12 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 			DestroyButtonBox(TAG + "DELETE_EXPLORERS_FOLDERS");
 			DestroyObject(EXPLORER_SLIDER.TAG);
 			EXPLORER_SLIDER = "NULL";
+		}
+		
+		//UPDATE ELEMENTS
+		if (ELEMENTS != "NULL") {
+			ELEMENTS.image_alpha = image_alpha; ELEMENTS.x = bbox_left + 10; ELEMENTS.y = bbox_bottom - 20;
+			ELEMENTS.TEXT =  string(N_ELEMENTS) + " Item(s)  | ";
 		}
 	}
 	if (!CREATE) {
@@ -89,6 +107,17 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 		EXPLORER_RELOAD = CreateObjectSprite(x + 347, y + 46, WINDOW.LAYERS[0], S_File_Explorer_Reload, Obox, "BUTTON", TAG + "EXPLORER_RELOAD", [["INFO", "Refresh"], "NULL"]); WINDOW.list_objects = addtolist(EXPLORER_RELOAD, WINDOW.list_objects);
 		EXPLORER_RELOAD.PARENT = id;
 		
+		// CREATE ELEMENTS
+		ELEMENTS = AddText(bbox_left + 10, bbox_bottom - 10, string(N_ELEMENTS) + " Item(s)  | ", Arial10, c_black, WINDOW.LAYERS[0], TAG + "ELEMENTS", ["NULL"]);
+		
+		// CREATE GO_ROOT
+		GO_ROOT = CreateObjectSprite(x - 130, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_root, Obox, "BUTTON", TAG + "GO_ROOT", [["INFO", "Back to root"], "NULL"]);
+		GO_ROOT.PARENT = id;
+		
+		// CREATE GO BACK
+		GO_BACK = CreateObjectSprite(x - 110, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_back, Obox, "BUTTON", TAG + "GO_BACK", [["INFO", "Back to previous path"], "NULL"]);
+		GO_BACK.PARENT = id;
+	
 		CREATE = true;
 	} else if (CREATE && (WINDOW.ON || WINDOW.REDUCING || !WINDOW.FADE_MOVEMENT)) {
 		

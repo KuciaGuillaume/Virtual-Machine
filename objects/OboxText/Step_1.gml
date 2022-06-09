@@ -8,4 +8,5 @@ for (var i = 0; OPTION[i] != "NULL"; i++) {
 		FADE_IN = true; FADE_POWER = OPTION[i][1];
 		FADE_SATE = true; image_alpha = 0;
 	}
+	if (OPTION[i][0] == "SLIDE") {SLIDE = true; SLIDE_POWER = OPTION[i][1]; }
 }

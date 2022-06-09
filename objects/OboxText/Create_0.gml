@@ -8,6 +8,8 @@ TEXT_CONNECT = "NULL";
 OBJECT_LINKED = "NULL";
 DESTROY = DestroyButtonBox;
 NUM_LINKED = "NULL";
+SLIDE = false;
+SLIDE_POWER = 0;
 
 // INIT ALL OPTION;
 LOCK = ["NULL", "NULL"];

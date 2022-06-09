@@ -10,6 +10,11 @@ function getonlist(ARGUMENT, LIST) {
 }
 
 function get_index_list(ARGUMENT, LIST) {
-	for (var i = 0; LIST[i][0] != ARGUMENT; ) { i++; }
+	for (var i = 0; LIST[i] != "NULL" && LIST[i][0] != ARGUMENT; ) { i++; }
+	return i;
+}
+
+function get_index_list_explorer(ARGUMENT, LIST) {
+	for (var i = 0; LIST[i] != "NULL" && LIST[i].NAME != ARGUMENT; ) { i++; }
 	return i;
 }

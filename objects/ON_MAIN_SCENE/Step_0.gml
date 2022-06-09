@@ -40,13 +40,13 @@ if (mouse_check_button_pressed(mb_right) && ON_DESK) {
 	if (get != "NULL")
 		DestroyButtonBox("DELETE_FOLDER_SLIDERS");
 	if (on_folders == "NULL") {
-		DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 5, c_white, 200, 31, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], "NULL"]);
-		var button = CreateButtonBox(mouse_x + 90, mouse_y + 11, S_new_folder, OboxText, "Create new folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "NEW_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
+		DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 5, c_white, 200, 31, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], "NULL"]);
+		var button = CreateButtonBox(mouse_x + 90, mouse_y + 11, S_new_folder, OboxText, "Create new folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "NEW_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  "NULL"]);
 		button.PARENT = DESK_SLIDER_OBJECT;
 	} else {
 		DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 25, c_white, 200, 56, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], "NULL"]);
-		var button = CreateButtonBox(mouse_x + 90, mouse_y + 16, S_rename_folder, OboxText, "Rename folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "RENAME_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
-		var deleted = CreateButtonBox(mouse_x + 90, mouse_y - 8, S_delete_folder, OboxText, "Delete folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DELETE_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
+		var button = CreateButtonBox(mouse_x + 90, mouse_y + 16, S_rename_folder, OboxText, "Rename folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "RENAME_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  "NULL"]);
+		var deleted = CreateButtonBox(mouse_x + 90, mouse_y - 8, S_delete_folder, OboxText, "Delete folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DELETE_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  "NULL"]);
 		button.NUM_LINKED = i;
 		button.PARENT = DESK_SLIDER_OBJECT;
 		deleted.PARENT = DESK_SLIDER_OBJECT;

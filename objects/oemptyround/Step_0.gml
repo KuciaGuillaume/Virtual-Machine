@@ -12,6 +12,10 @@ if (FADE_IN && image_alpha < 1)
 else
 	FADE_IN = false;
 
+if (SLIDE && image_alpha < 1) {
+	y -= SLIDE_POWER * delta_time;
+}
+
 if (PARENT != "NULL") {
 	if (instance_exists(PARENT) && PARENT.TAG + "VISIO" == TAG) {
 		if (y > Y_TARGET && !CLOSE) {
@@ -55,9 +59,4 @@ if (PARENT != "NULL") {
 			}
 		}
 	}
-}
-
-if (TAG == "DESK_SLIDERS") {
-	if (image_alpha < 1)
-		y -= 0.0001 * delta_time;
 }

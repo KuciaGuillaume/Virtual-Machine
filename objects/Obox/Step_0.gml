@@ -34,24 +34,84 @@ if (string_count("PIN", TAG) > 0) {
 	}
 }
 
-if (GET_EXPLORER == "NULL" && string_count("FILE_EXPLORER", TAG) > 0)
+if (GET_EXPLORER == "NULL" && string_count("FILE_EXPLORERS", TAG) > 0)
 	GET_EXPLORER = TAG;
 if (GET_EXPLORER != "NULL") {
 	if (PARENT != "NULL") {
-		x = PARENT.x + PARENT_DIFF_X;
+	    x = PARENT.x + PARENT_DIFF_X;
 		y = PARENT.y + PARENT_DIFF_Y;
-		if (TEXT_CONNECT != "NULL") {
+		if (TEXT_CONNECT != "NULL" && DOCK_TYPE_TEXT != "NULL" && OBJECT_LINKED != "NULL") {
 			TEXT_CONNECT.x = x - 220; DOCK_TYPE_TEXT.x = x + 180;
 			TEXT_CONNECT.y = (y - TEXT_CONNECT.TEXT_HEIGHT/2) + 1; DOCK_TYPE_TEXT.y = (y - TEXT_CONNECT.TEXT_HEIGHT/2) + 1;
 			image_alpha = PARENT.image_alpha;
 			TEXT_CONNECT.image_alpha = image_alpha; DOCK_TYPE_TEXT.image_alpha = image_alpha;
+			OBJECT_LINKED.x = x - 235; OBJECT_LINKED.image_alpha = image_alpha;
+			OBJECT_LINKED.y = y;
 		}
-		OBJECT_LINKED.x = x - 235; OBJECT_LINKED.image_alpha = image_alpha;
-		OBJECT_LINKED.y = y;
 	}
 }
 
+if (REFRESH) {
+	REFRESH_LOAD.image_angle -= 0.0007 * delta_time;
+	REFRESH_LOAD.x = x;
+	REFRESH_LOAD.y = y;
+	REFRESH_LOAD.image_alpha = image_alpha;
+	REFRESH_TIME += delta_time / 1000000;
+	if (REFRESH_TIME >= 1) {
+		PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+		visible = true;
+		DestroyObject(REFRESH_LOAD.TAG);
+		REFRESH = false;
+	}
+}
 
+// FILE EXPLORER FOLDER
+if (GET_FOLDER == "NULL" && (string_count("FILE_EXPLORERS", TAG) > 0))
+	GET_FOLDER = TAG;
+if (GET_FOLDER != "NULL") {
+
+	// FOLDER NAME
+	if (WRITE != undefined && instance_exists(WRITE) && WRITE.ON_WRITE) {
+		var i = get_index_list_explorer(TEXT_CONNECT.TEXT, PARENT.FOLDER_LIST);
+		TEXT_CONNECT.TEXT = WRITE.TEXT_OUTPUT;
+		PARENT.FOLDER_LIST[i].NAME = TEXT_CONNECT.TEXT;
+		var PWD = PARENT.PWD;
+		terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+		ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
+		WRITE.BAR.y = TEXT_CONNECT.y + 6;
+		TEXT_CONNECT.COLOR = c_white;
+		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - 5, TEXT_CONNECT.y - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 5, PARENT.WINDOW.LAYERS[1], TAG + "RENAME_ON_DESK", ["NULL"]);
+		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x);
+	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT)) {
+		if (TEXT_CONNECT.TEXT == "") {
+			var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
+			TEXT_CONNECT.TEXT = MASTER_NAME;
+			ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
+			var PWD = ON_MAIN_SCENE.PATH[1];
+			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+			ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			savegame_save("USER", SAVE_LIST);
+		}
+		if (RENAME_OBJECT != "NULL") {
+			DestroyObject(TAG + "RENAME_ON_DESK");
+			RENAME_OBJECT = "NULL";
+		}
+		TEXT_CONNECT.COLOR = c_black;
+		WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
+		ORIGINAL_NAME = TEXT_CONNECT.TEXT;
+		MASTER_NAME = TEXT_CONNECT.TEXT;
+	}
+	
+	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) {
+		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true) {
+			WRITE.ON_WRITE = false;
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			savegame_save("USER", SAVE_LIST);
+		}
+	}
+	return;
+}
 
 if (mouse_x < bbox_left || mouse_x > bbox_right)
 	return;
@@ -173,4 +233,11 @@ if (PARENT != "NULL" && string_count("VISIO_CLOSE", TAG)) {
 	DestroyObject(TAG);
 	DestroyButtonBox(OTHER_PARENT.TAG);
 	mouse_clear(mb_left);
+}
+
+if (string_count("EXPLORER_RELOAD", TAG) > 0 && visible = true) {
+	REFRESH = true;
+	visible = false;
+	REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", TAG + "LOAD", ["NULL"]);
+	REFRESH_TIME = 0;
 }

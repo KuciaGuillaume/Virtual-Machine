@@ -31,3 +31,5 @@ Y_TARGET = 0;
 PARENT = "NULL";
 CLOSE = false;
 COMPONENTS = "NULL";
+SLIDE = false;
+SLIDE_POWER = 0;

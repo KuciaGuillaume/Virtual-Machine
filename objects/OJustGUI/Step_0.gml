@@ -156,7 +156,7 @@ if (OBJECT_LINKED != "NULL") {
 }
 
 // FOLDER MOVEMENT
-if (GET_FOLDER == "NULL" && string_count("FOLDERS", TAG) > 0)
+if (GET_FOLDER == "NULL" && (string_count("FOLDERS", TAG) > 0))
 	GET_FOLDER = TAG;
 if (GET_FOLDER != "NULL") {
 

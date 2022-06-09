@@ -12,16 +12,15 @@ if (FADE_IN && image_alpha < 1)
 else
 	FADE_IN = false;
 	
-	
+
+if (SLIDE && image_alpha < 1) {
+	if (TEXT_CONNECT != "NULL")
+		TEXT_CONNECT.y -= SLIDE_POWER * delta_time;
+	y -= SLIDE_POWER * delta_time;
+}
+
 if (TAG == "SUTDOWN") { if (y > 980) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
 if (TAG == "RESTART") { if (y > 940) { y -= 0.0001 * delta_time; TEXT_CONNECT.y = y; } }
-
-if (TAG == "NEW_FOLDER_SLIDERS" || TAG == "RENAME_FOLDER_SLIDERS" || TAG == "DELETE_FOLDER_SLIDERS") {
-	if (image_alpha < 1) {
-		y -= 0.0001 * delta_time;
-		TEXT_CONNECT.y = y;
-	}
-}
 
 // POSITIONS
 if (OPT_POSITIONS && TEXT_CONNECT != "NULL") {TEXT_CONNECT.x = OPT_X; TEXT_CONNECT.y = OPT_Y; }
@@ -251,6 +250,16 @@ if (TAG == "RENAME_FOLDER_SLIDERS") {
 	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = "NULL";
 }
 
+if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
+	mouse_clear(mb_right);
+	mouse_clear(mb_left);
+	PARENT.PARENT.FOLDER_LIST[NUM_LINKED].WRITE.ON_WRITE = true;
+	PARENT.PARENT.FOLDER_LIST[NUM_LINKED].WRITE.BAR.x = PARENT.PARENT.FOLDER_LIST[NUM_LINKED].TEXT_CONNECT.x;
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox(PARENT.PARENT.TAG + "DELETE_EXPLORERS_FOLDERS");
+	DestroyButtonBox(PARENT.PARENT.TAG + "RENAME_EXPLORERS_FOLDERS");
+}
+
 if (TAG == "NEW_FOLDER_SLIDERS") {
 	var PWD = ON_MAIN_SCENE.PATH[1];
 	var ID = 0;
@@ -269,6 +278,26 @@ if (TAG == "NEW_FOLDER_SLIDERS") {
 	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = "NULL";
 }
 
+if (string_count("NEW_EXPLORERS_FOLDERS", TAG) > 0) {
+	var PWD = PARENT.PARENT.PWD;
+	var ID = 0;
+	for (var i = 1; PWD[i] != "NULL"; i++) {
+		if (is_array(PWD[i]) && string_count("Newfolder", PWD[i][0][0][0]) > 0)
+			ID += 1;
+	}
+	if (ID <= 0)
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder", "NULL"], "NULL", PWD, "NULL", PARENT.PARENT.PWD_PATH, "NULL");
+	else
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), "NULL"], "NULL", PWD, "NULL", PARENT.PARENT.PWD_PATH, "NULL");
+	PARENT.PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PARENT.PWD, PARENT.PARENT.PWD_PATH, PARENT.PARENT.FOLDER_LIST, PARENT.PARENT.id);
+	for (var e = 0; PARENT.PARENT.FOLDER_LIST[e] != "NULL"; ) { e++; }
+	e -= 1;
+	PARENT.PARENT.FOLDER_LIST[e].WRITE.ON_WRITE = true;
+	PARENT.PARENT.FOLDER_LIST[e].WRITE.BAR.x = PARENT.PARENT.FOLDER_LIST[e].TEXT_CONNECT.x;
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox(PARENT.PARENT.TAG + "NEW_EXPLORERS_FOLDERS");
+}
+
 if (TAG == "DELETE_FOLDER_SLIDERS") {
 	var PWD = ON_MAIN_SCENE.PATH[1];
 	terminal_rm(["rm", ON_MAIN_SCENE.FOLDERS[NUM_LINKED].TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL", "/~/Desk", "NULL");
@@ -276,4 +305,13 @@ if (TAG == "DELETE_FOLDER_SLIDERS") {
 	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
 	DestroyButtonBox("DELETE_FOLDER_SLIDERS");
 	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = "NULL";
+}
+
+if (string_count("DELETE_EXPLORERS_FOLDERS", TAG) > 0) {
+	var PWD = PARENT.PARENT.PWD;
+	terminal_rm(["rm", PARENT.PARENT.FOLDER_LIST[NUM_LINKED].TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL", PARENT.PARENT.PWD_PATH, "NULL");
+	PARENT.PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PARENT.PWD, PARENT.PARENT.PWD_PATH, PARENT.PARENT.FOLDER_LIST, PARENT.PARENT.id);
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox(PARENT.PARENT.TAG + "RENAME_EXPLORERS_FOLDERS");
+	DestroyButtonBox(PARENT.PARENT.TAG + "DELETE_EXPLORERS_FOLDERS");
 }

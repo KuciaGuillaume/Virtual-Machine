@@ -40,15 +40,20 @@ function AddFolders(NAME, MODE) {
 
 function AddFileEplorerFloder(NAME, LIST, PARENT, CreationDate) {
 	static ID = 500;
-	X = PARENT.x + 117;
-	Y = PARENT.y + 90;
+	if (LIST[0] == "NULL") {
+		X = PARENT.x + 117;
+		Y = PARENT.y + 90;
+	} else {
+		X = LIST[0].x;
+		Y = LIST[0].y;
+	}
 	LAYER1 = PARENT.WINDOW.LAYERS[0];
 	LAYER2 = PARENT.WINDOW.LAYERS[1];
 	var type_name = "file folder";
 	var path = LIST;
-	for (var i = 0; !no_one_here(X, Y, path); i++)
+	for (var i = 0; path[i] != "NULL"; i++)
 		Y += 24;
-	var folder = CreateObjectSprite(X, Y, LAYER1, S_FILES_buton, Obox, "BUTTON-NO-HAND", NAME + "FILE_EXPLORER" + string(ID) + PARENT.TAG, [["INFO", "Creation date: " + CreationDate], "NULL"]);
+	var folder = CreateObjectSprite(X, Y, LAYER1, S_FILES_buton, Obox, "BUTTON-NO-HAND", NAME + "FILE_EXPLORERS" + string(ID) + PARENT.TAG, [["INFO", "Creation date: " + CreationDate], "NULL"]);
 	addtolist(folder, LIST);
 	folder.TEXT_CONNECT = AddText(X, Y, NAME, Arial10, c_black, LAYER2, NAME + "FILE_EXPLORER_TEXT" + string(ID) + PARENT.TAG, ["NULL"]);
 	folder.DOCK_TYPE_TEXT = AddText(X, Y, type_name, Arial10, c_black, LAYER2, NAME + "FILE_TYPE" + type_name + string(ID) + PARENT.TAG, ["NULL"]);
@@ -72,12 +77,37 @@ function AddFileEplorerFloder(NAME, LIST, PARENT, CreationDate) {
 function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 	PWD = go_to_path(ON_MAIN_SCENE.PATH, PATH);
 	
+	// CREATE
 	for (var i = 1; PWD[i] != "NULL"; i++) {
+		var check = true;
 		for (var e = 0; LIST[e] != "NULL"; e++) {
 			if (PWD[i][0][0][0] == LIST[e].NAME)
-				continue;
+				check = false;
 		}
-		LIST = AddFileEplorerFloder(PWD[i][0][0][0], LIST, PARENT, PWD[i][0][0][3]);
+		if (check && PWD[i][0][0][0] != "..") {
+			LIST = AddFileEplorerFloder(PWD[i][0][0][0], LIST, PARENT, PWD[i][0][0][3]);
+			PARENT.N_ELEMENTS += 1;
+		}
+	}
+	
+	// DELETE
+	var deleted = ["NULL"];
+	for (var e = 0; LIST[e] != "NULL"; e++) {
+		for (var i = 1; PWD[i] != "NULL"; i++) {
+			if (PWD[i][0][0][0] == LIST[e].NAME)
+				break;
+		}
+		if (PWD[i] == "NULL") {
+			DestroyText(LIST[e].TEXT_CONNECT.TAG);
+			DestroyText(LIST[e].DOCK_TYPE_TEXT.TAG);
+			DestroyObject(LIST[e].OBJECT_LINKED.TAG);
+			DestroyObject(LIST[e].TAG);
+			PARENT.N_ELEMENTS -= 1;
+			var save = e;
+			for (; LIST[e] != "NULL"; e++)
+				LIST[e] = LIST[e + 1];
+			e = save - 1;
+		}
 	}
 	return LIST;
 }

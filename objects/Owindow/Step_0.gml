@@ -177,10 +177,10 @@ for (var e = 0; CLASS[2][e] != "NULL"; e++) {
 if (!FIRST_TAKE)
 	CAN_TAKE = false;
 
-if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(id) || MouseInsideObject(WINDOW_BK)) && CAN_TAKE) {
+if ((mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(id) || MouseInsideObject(WINDOW_BK)) && CAN_TAKE) {
 	ON = true;
 	ON_CLASS[1] = true;
-} else if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (!MouseInsideObject(id) && !MouseInsideObject(WINDOW_BK)) || !FIRST_TAKE) {
+} else if ((mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) && !ON_MAIN_SCENE.ON_GUI && (!MouseInsideObject(id) && !MouseInsideObject(WINDOW_BK)) || !FIRST_TAKE) {
 	ON = false;
 	ON_CLASS[1] = false;
 }

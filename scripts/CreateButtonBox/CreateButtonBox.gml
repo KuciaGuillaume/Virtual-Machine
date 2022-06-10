@@ -25,7 +25,7 @@ function CreateButtonImage(X, Y, IMAGE1, OBJECT1, LAYER1, LAYER2, IMAGE2, OBJECT
 
 function CreateButton_Image_Text(X, Y, IMAGE, IMAGE_LINK, X2, Y2, OBJECT, TEXT, LAYER1, LAYER2, FONT, COLOR, TAG, OPTION)
 {
-	var btn = CreateObjectSprite(X, Y, LAYER1, IMAGE, OBJECT, "BUTTON", TAG, OPTION);
+	var btn = CreateObjectSprite(X, Y, LAYER1, IMAGE, OBJECT, "BUTTON-NO-HAND", TAG, OPTION);
 	btn.TAG = TAG;
 	btn.OPTION = OPTION;
 	var text = AddText(X, Y, TEXT, FONT, COLOR, LAYER2, TAG, OPTION);

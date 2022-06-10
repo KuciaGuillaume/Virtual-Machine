@@ -82,7 +82,7 @@ if (GET_FOLDER != "NULL") {
 		TEXT_CONNECT.COLOR = c_white;
 		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - 5, TEXT_CONNECT.y - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 5, PARENT.WINDOW.LAYERS[1], TAG + "RENAME_ON_DESK", ["NULL"]);
 		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x);
-	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT)) {
+	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT) && TEXT_CONNECT.COLOR == c_white) {
 		if (TEXT_CONNECT.TEXT == "") {
 			var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
 			TEXT_CONNECT.TEXT = MASTER_NAME;
@@ -112,13 +112,24 @@ if (GET_FOLDER != "NULL") {
 	}
 }
 
-if (mouse_x < bbox_left || mouse_x > bbox_right)
+if ((mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) && !MouseInsideObject(id))
+	EXPLORER_SELECT = false;
+
+// MOUSE
+if (!MouseInsideObject(id))
 	return;
-if (mouse_y < bbox_top || mouse_y > bbox_bottom)
-	return;
-	
-if (!mouse_check_button_pressed(mb_left) || !ON)
-	return;
+if (sprite_index != S_FILES_buton) {
+	if (!mouse_check_button_pressed(mb_left) || !ON)
+		return;
+} else {
+	if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && !EXPLORER_SELECT) {
+		EXPLORER_SELECT = true;
+		image_index = 1
+		return;
+	}
+	if (!mouse_check_button_pressed(mb_left) || !ON)
+		return;
+}
 
 if (TAG == "EDIT_ICON_1" || TAG == "EDIT_ICON_2" || TAG == "EDIT_ICON_3" || TAG == "EDIT_ICON_4" ||
 	 TAG == "EDIT_ICON_5" || TAG == "EDIT_ICON_6" || TAG == "EDIT_ICON_7" || TAG == "EDIT_ICON_8")
@@ -241,7 +252,7 @@ if (string_count("EXPLORER_RELOAD", TAG) > 0 && visible = true) {
 	REFRESH_TIME = 0;
 }
 
-if (string_count("FILE_EXPLORERS", TAG) > 0) {
+if (string_count("FILE_EXPLORERS", TAG) > 0 && EXPLORER_SELECT) {
 	var get = GetObject(INFO_NAME + TAG);
 	if (get != "NULL") DestroyRound(get.TAG);
 	PARENT.PWD_PATH = PARENT.PWD_PATH + "/" + NAME;

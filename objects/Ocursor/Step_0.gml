@@ -2,8 +2,15 @@
 
 
 // BUTTON STATE
-
 image_index = 0;
+
+// UPDATE POSITION
+
+if (image_index == 0)
+	x = mouse_x;
+else
+	x = mouse_x - 10;
+y = mouse_y;
 
 if (room == RMainScene)
 	ON_MAIN_SCENE.ON_GUI = false;
@@ -12,7 +19,7 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 	
 	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
 		continue;
-	if (MouseInside(class[0].bbox_left, class[0].bbox_right, class[0].bbox_top, class[0].bbox_bottom) && class[0].image_index < 2 && class[0].ON) {
+	if (MouseInsideObject(class[0]) && class[0].image_index < 2 && class[0].ON) {
 		if (class[1] == "BUTTON")
 			image_index = 1;
 		if (class[1] == "TEXT_BUTTON")
@@ -45,8 +52,12 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 	} else if ((class[0].image_index == 1 && class[0].image_index != 0) || class[0].FADE_ON || class[0].INFO) {
 	
 		if (class[0].TYPE != "TEXT_BUTTON" || (class[0].TYPE == "TEXT_BUTTON" && !class[0].write.ON_WRITE)) {
-			if (class[0].FADE_ON == false)
-				class[0].image_index = 0;
+			if (class[0].FADE_ON == false) {
+				if (class[0].sprite_index == S_FILES_buton && !class[0].EXPLORER_SELECT)
+					class[0].image_index = 0;
+				else if (class[0].sprite_index != S_FILES_buton)
+					class[0].image_index = 0;
+			}
 			else if (class[0].image_alpha > 0 && class[0].FADE_ON)
 				class[0].image_alpha -= class[0].FADE_ON_POWER * delta_time;
 		}

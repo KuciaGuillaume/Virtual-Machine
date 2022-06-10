@@ -22,6 +22,11 @@ if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
 	}
 	if (EXPLORER_RELOAD.REFRESH)
 		DestroyObject(EXPLORER_RELOAD.REFRESH_LOAD.TAG);
+	if (EMPTY_FOLDER != "NULL")
+		DestroyText(EMPTY_FOLDER.TAG);
+	DestroyText(ELEMENTS.TAG);
+	DestroyObject(GO_ROOT.TAG);
+	DestroyObject(GO_BACK.TAG);
 	DestroyObject(EXPLORER_RELOAD.TAG);
 	DestroyTextButton(SEARCH.TAG);
 	DestroyText(PATH.TAG);
@@ -87,6 +92,19 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 			ELEMENTS.image_alpha = image_alpha; ELEMENTS.x = bbox_left + 10; ELEMENTS.y = bbox_bottom - 20;
 			ELEMENTS.TEXT =  string(N_ELEMENTS) + " Item(s)  | ";
 		}
+		
+		//UPDATE EMPTY FOLDER
+		if (N_ELEMENTS <= 0) {
+			if (EMPTY_FOLDER == "NULL") {
+				EMPTY_FOLDER = AddText(x + 110, y + 300, "Folder is empty.", Arial10, c_black, WINDOW.LAYERS[0], "TEXT", [["CENTERED"], "NULL"]);
+				WINDOW.list_objects = addtolist(EMPTY_FOLDER, WINDOW.list_objects);
+			}
+			EMPTY_FOLDER.image_alpha = image_alpha; EMPTY_FOLDER.x = x + 110; EMPTY_FOLDER.y = y + 300;
+		} else if (N_ELEMENTS > 0 && EMPTY_FOLDER != "NULL") {
+			WINDOW.list_objects = remove_findlist(EMPTY_FOLDER, WINDOW.list_objects);
+			DestroyText(EMPTY_FOLDER.TAG);
+			EMPTY_FOLDER = "NULL";
+		}
 	}
 	if (!CREATE) {
 		
@@ -126,7 +144,7 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("FIL
 			SEARCH.write.ON_WRITE = true;
 		
 		// RIGHT CLICK
-		if (mouse_check_button_pressed(mb_right) && MouseInside(x - 150, bbox_right - 40, y + 50, bbox_bottom - 40))
+		if (mouse_check_button_pressed(mb_right) && MouseInside(x - 140, bbox_right - 40, y + 70, bbox_bottom - 40))
 			rightclick_explorer(id, FOLDER_LIST, WINDOW.LAYERS);
 		
 		// UPDATE LIST

@@ -2,9 +2,9 @@
 
 
 // CREATE VARIABLES
-TYPE = "NULL";
-OPTION = "NULL";
-TAG = "NULL";
+TYPE = undefined;
+OPTION = undefined;
+TAG = undefined;
 image_alpha = 0;
 CLOSE = false;
 
@@ -20,22 +20,22 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 // window
-WINDOW = "NULL";
+WINDOW = undefined;
 Y_TARGET = 0;
 OPT_CLOSING = false;
-OBJECT_LINKED = "NULL";
+OBJECT_LINKED = undefined;
 CREATE = false;
 
 // VARIABLES FOR TERMINAL
 USER_WRITE_POSITION = 16;
 PWD = ON_MAIN_SCENE.PATH;
-COMMAND = "NULL";
-WINDOW_TAG = "NULL";
+COMMAND = undefined;
+WINDOW_TAG = undefined;
 PATH = "/~";
-COMMAND_HISTORY =   ["NULL"];
+COMMAND_HISTORY =   [undefined];
 SAVING_TIME = 0;
 SAVING_TIMER = 1.5;
 CONNECT = false;
@@ -43,18 +43,18 @@ CONNECT_ID = 0;
 CONNECTION = false;
 CONNECTION_TIME = 0;
 CATCH = false;
-user_enter = "NULL";
-write_text = "NULL";
-pwd = "NULL";
-system_write = "NULL";
-BTN_HELP = "NULL";
-BTN_HISTORY = "NULL";
-BTN_CLEAR = "NULL";
-SAVING_LOAD = "NULL";
-CONNECT_AT_IMAGE = "NULL";
-CONNECT_AT_TEXT = "NULL";
-CONNECT_TO_YOU = "NULL";
-CONNECT_TO_YOU_TEXT = "NULL";
+user_enter = undefined;
+write_text = undefined;
+pwd = undefined;
+system_write = undefined;
+BTN_HELP = undefined;
+BTN_HISTORY = undefined;
+BTN_CLEAR = undefined;
+SAVING_LOAD = undefined;
+CONNECT_AT_IMAGE = undefined;
+CONNECT_AT_TEXT = undefined;
+CONNECT_TO_YOU = undefined;
+CONNECT_TO_YOU_TEXT = undefined;
 // TERMINAL HELP MESSAGE
 HELP_MESSAGE = "[HELP] List of commands that may be useful to you:\n\n";
 HELP_MESSAGE = HELP_MESSAGE + "-help : View this post\n";

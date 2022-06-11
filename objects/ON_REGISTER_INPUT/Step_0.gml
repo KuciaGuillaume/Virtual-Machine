@@ -15,11 +15,11 @@ if (KeyPressed(vk_insert)) {
 	var g_password2 = GetWrite("Password 2");
 	var g_help = GetWrite("HELP TEXT");
 	
-	g_name.TEXT = ["ADMIN", "NULL"];
-	g_last.TEXT = ["ADMIN", "NULL"];
-	g_email.TEXT = ["ADMIN@gmail.com", "NULL"];
-	g_age.TEXT = ["55", "NULL"];
-	g_password.TEXT = ["ADMIN55", "NULL"];
-	g_password2.TEXT = ["ADMIN55", "NULL"];
-	g_help.TEXT = ["ADMIN PASSWORD", "NULL"];
+	g_name.TEXT = ["ADMIN", undefined];
+	g_last.TEXT = ["ADMIN", undefined];
+	g_email.TEXT = ["ADMIN@gmail.com", undefined];
+	g_age.TEXT = ["55", undefined];
+	g_password.TEXT = ["ADMIN55", undefined];
+	g_password2.TEXT = ["ADMIN55", undefined];
+	g_help.TEXT = ["ADMIN PASSWORD", undefined];
 }

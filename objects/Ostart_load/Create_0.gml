@@ -1,21 +1,21 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE TYPE
-TYPE = "NULL";
+TYPE = undefined;
 
 // CREATE TIMER
 
 TIME = 0;
 TIMER = global.TIMER
 MODE = global.RstartMode;
-LOADING_TEXT = "NULL";
+LOADING_TEXT = undefined;
 REGISTER = false;
 
 
 // SELECT MODE TYPE
 
 if (MODE == "START") {
-	if (global.USER[0] == "NULL") {
+	if (global.USER[0] == undefined) {
 		LOADING_TEXT = "Your machine is being initialized...";
 		REGISTER = false;
 	} else {

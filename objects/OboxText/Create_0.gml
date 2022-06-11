@@ -1,18 +1,18 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE VARIABLEs
-TYPE = "NULL";
-TAG = "NULL";
-OPTION = ["NULL"];
-TEXT_CONNECT = "NULL";
-OBJECT_LINKED = "NULL";
+TYPE = undefined;
+TAG = undefined;
+OPTION = [undefined];
+TEXT_CONNECT = undefined;
+OBJECT_LINKED = undefined;
 DESTROY = DestroyButtonBox;
-NUM_LINKED = "NULL";
+NUM_LINKED = undefined;
 SLIDE = false;
 SLIDE_POWER = 0;
 
 // INIT ALL OPTION;
-LOCK = ["NULL", "NULL"];
+LOCK = [undefined, undefined];
 WALLPAPER_INDEX = -1;
 WALLPAPER = false;
 ON = true;
@@ -39,4 +39,4 @@ DISLIKE_TIME = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;

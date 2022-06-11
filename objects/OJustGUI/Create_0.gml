@@ -2,9 +2,9 @@
 
 
 // CREATE VARIABLES
-TYPE = "NULL";
-OPTION = "NULL";
-TAG = "NULL";
+TYPE = undefined;
+OPTION = undefined;
+TAG = undefined;
 image_alpha = 0;
 DESTROY = DestroyObject;
 
@@ -13,9 +13,9 @@ FADE_IN = false;
 FADE_SATE = false;
 FADE_POWER = 0;
 FIRST_PASS = false;
-TEXT_CONNECT = "NULL";
+TEXT_CONNECT = undefined;
 ON = true;
-WRITE = "NULL";
+WRITE = undefined;
 
 // BACKGROUNDS
 TARGET_INDEX = 0;
@@ -36,7 +36,7 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 // BACKGROUND
 SKIP = false;
@@ -48,10 +48,10 @@ SYSTEM_LOAD_TIME = 0;
 CLOSE = false;
 
 // window
-WINDOW = "NULL";
+WINDOW = undefined;
 Y_TARGET = 0;
 OPT_CLOSING = false;
-OBJECT_LINKED = "NULL";
+OBJECT_LINKED = undefined;
 NUMBER = 0;
 
 // GRAB
@@ -60,8 +60,8 @@ TAKE_POS_X = x;
 TAKE_POS_y = y;
 
 /// FOLDER
-ORIGINAL_NAME = "NULL";
-MASTER_NAME = "NULL";
-RENAME_OBJECT = "NULL";
-GET_FOLDER = "NULL";
-NAME = "NULL";
+ORIGINAL_NAME = undefined;
+MASTER_NAME = undefined;
+RENAME_OBJECT = undefined;
+GET_FOLDER = undefined;
+NAME = undefined;

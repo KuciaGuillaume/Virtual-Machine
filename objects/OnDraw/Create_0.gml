@@ -1,11 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-TYPE = "NULL";
-OPTION = "NULL";
-TAG = "NULL";
+TYPE = undefined;
+OPTION = undefined;
+TAG = undefined;
 DESTROY = DestroyObject;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;

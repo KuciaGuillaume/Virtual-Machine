@@ -1,6 +1,6 @@
 /// @Project by Kucia Guillaume* ///
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 
 if (!FIRST_PASS && !FADE_IN) {image_alpha = 2; FIRST_PASS = true; } 
@@ -30,20 +30,20 @@ if (CLOSE && string_count("TERMINAL", WINDOW_TAG)) {
 	DestroyObject(TAG);
 }
 
-if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TERMINAL", WINDOW.TAG) ) {
+if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("TERMINAL", WINDOW.TAG) ) {
 
-	if (user_enter == "NULL") user_enter = GetText(TAG + "TERMINAL_TEXT");
-	if (write_text == "NULL") write_text = GetWrite(TAG + "TERMINAL_WRITE");
-	if (pwd == "NULL") pwd = GetText(TAG + "TERMINAL_SYSTEM_PWD");
-	if (system_write == "NULL") system_write = GetText(TAG + "TERMINAL_SYSTEM_WRITE");
-	if (BTN_HELP == "NULL") BTN_HELP = GetObject(TAG + "TERMINAL_HELP"); if (BTN_HELP != "NULL") BTN_HELP.ON = WINDOW.ON;
-	if (BTN_HISTORY == "NULL") BTN_HISTORY = GetObject(TAG + "TERMINAL_HISTORY"); if (BTN_HISTORY != "NULL") BTN_HISTORY.ON = WINDOW.ON;
-	if (BTN_CLEAR == "NULL") BTN_CLEAR = GetObject(TAG + "TERMINAL_CLEAR"); if (BTN_CLEAR != "NULL") BTN_CLEAR.ON = WINDOW.ON;
-	if (SAVING_LOAD == "NULL") SAVING_LOAD = GetObject(TAG + "SAVING");
-	if (CONNECT_AT_IMAGE == "NULL") CONNECT_AT_IMAGE = GetObject(TAG + "CONNECT_AT_IMAGE");
-	if (CONNECT_AT_TEXT == "NULL") CONNECT_AT_TEXT = GetText(TAG + "CONNECT_AT_TEXT");
-	if (CONNECT_TO_YOU == "NULL") CONNECT_TO_YOU = GetObject(TAG + "CONNECT_TO_YOU");
-	if (CONNECT_TO_YOU_TEXT == "NULL") CONNECT_TO_YOU_TEXT = GetText(TAG + "CONNECT_TO_YOU_TEXT");
+	if (user_enter == undefined) user_enter = GetText(TAG + "TERMINAL_TEXT");
+	if (write_text == undefined) write_text = GetWrite(TAG + "TERMINAL_WRITE");
+	if (pwd == undefined) pwd = GetText(TAG + "TERMINAL_SYSTEM_PWD");
+	if (system_write == undefined) system_write = GetText(TAG + "TERMINAL_SYSTEM_WRITE");
+	if (BTN_HELP == undefined) BTN_HELP = GetObject(TAG + "TERMINAL_HELP"); if (BTN_HELP != undefined) BTN_HELP.ON = WINDOW.ON;
+	if (BTN_HISTORY == undefined) BTN_HISTORY = GetObject(TAG + "TERMINAL_HISTORY"); if (BTN_HISTORY != undefined) BTN_HISTORY.ON = WINDOW.ON;
+	if (BTN_CLEAR == undefined) BTN_CLEAR = GetObject(TAG + "TERMINAL_CLEAR"); if (BTN_CLEAR != undefined) BTN_CLEAR.ON = WINDOW.ON;
+	if (SAVING_LOAD == undefined) SAVING_LOAD = GetObject(TAG + "SAVING");
+	if (CONNECT_AT_IMAGE == undefined) CONNECT_AT_IMAGE = GetObject(TAG + "CONNECT_AT_IMAGE");
+	if (CONNECT_AT_TEXT == undefined) CONNECT_AT_TEXT = GetText(TAG + "CONNECT_AT_TEXT");
+	if (CONNECT_TO_YOU == undefined) CONNECT_TO_YOU = GetObject(TAG + "CONNECT_TO_YOU");
+	if (CONNECT_TO_YOU_TEXT == undefined) CONNECT_TO_YOU_TEXT = GetText(TAG + "CONNECT_TO_YOU_TEXT");
 	
 	if (CREATE) {
 		if (CONNECT) {
@@ -53,8 +53,8 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TER
 				CONNECT = false;
 				DestroyObject(TAG + "CONNECT_AT_IMAGE");
 				DestroyText(TAG + "CONNECT_AT_TEXT");
-				CONNECT_AT_IMAGE = "NULL";
-				CONNECT_AT_TEXT = "NULL";
+				CONNECT_AT_IMAGE = undefined;
+				CONNECT_AT_TEXT = undefined;
 				}
 			}
 		}
@@ -63,15 +63,15 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TER
 	if (!CREATE) {
 		
 		// ON CREATE
-		addtolist(AddText(x, y, "Je suis une phrase de test", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_TEXT", ["NULL"]), WINDOW.list_objects);
+		addtolist(AddText(x, y, "Je suis une phrase de test", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_TEXT", [undefined]), WINDOW.list_objects);
 		addtolist(CreateWrite(TAG + "TERMINAL_WRITE", 100, WINDOW.LAYERS[0], ""), WINDOW.list_objects);
 		write_text = GetWrite(TAG + "TERMINAL_WRITE");
 		write_text.BAR.x = x;
-		addtolist(AddText(x, y, "[ " + global.USER[1] + "/" + PWD[0][0][0] + " ]", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_PWD", ["NULL"]), WINDOW.list_objects);
-		addtolist(AddText(x, y, "", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_WRITE", ["NULL"]), WINDOW.list_objects);
-		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Help", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HELP", [["CENTERED"], "NULL"]), WINDOW.list_objects);
-		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "History", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HISTORY", [["CENTERED"], "NULL"]), WINDOW.list_objects);
-		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Clear", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_CLEAR", [["CENTERED"], "NULL"]), WINDOW.list_objects);
+		addtolist(AddText(x, y, "[ " + global.USER[1] + "/" + PWD[0][0][0] + " ]", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_PWD", [undefined]), WINDOW.list_objects);
+		addtolist(AddText(x, y, "", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_WRITE", [undefined]), WINDOW.list_objects);
+		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Help", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HELP", [["CENTERED"], undefined]), WINDOW.list_objects);
+		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "History", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HISTORY", [["CENTERED"], undefined]), WINDOW.list_objects);
+		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Clear", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_CLEAR", [["CENTERED"], undefined]), WINDOW.list_objects);
 		system_write = GetText(TAG + "TERMINAL_SYSTEM_WRITE");
 		system_write.PARENT = id;
 		CREATE = true;
@@ -104,14 +104,14 @@ if ((WINDOW != "NULL" && instance_exists(WINDOW)) && !CLOSE && string_count("TER
 		if (KeyPressed(vk_enter) && write_text.ON_WRITE && write_text.TEXT != write_text.INITIAL_TEXT) {
 			COMMAND = user_enter.TEXT;
 			addtolist_limited(COMMAND, COMMAND_HISTORY, 10);
-			write_text.TEXT = ["", "NULL"];
+			write_text.TEXT = ["", undefined];
 			write_text.TEXT_INDEX = 1;
 			write_text.TEXT_INDEX_MAX = 1;
 			var command_find = false;
 			var ARRAY = get_array(COMMAND, " ");
 			if (CONNECT) {
 				var get = GetObject(CONNECT_ID.TAG);
-				if (get == "NULL") { CONNECT = false; terminal_execute(id, ARRAY, COMMAND, id); } else { terminal_execute(get.id, ARRAY, COMMAND, id); if (CONNECT) {system_write.TEXT = get.system_write.TEXT; }}
+				if (get == undefined) { CONNECT = false; terminal_execute(id, ARRAY, COMMAND, id); } else { terminal_execute(get.id, ARRAY, COMMAND, id); if (CONNECT) {system_write.TEXT = get.system_write.TEXT; }}
 			} else
 				terminal_execute(id, ARRAY, COMMAND, id);
 		}

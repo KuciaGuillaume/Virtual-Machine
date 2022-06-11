@@ -14,7 +14,7 @@ y = mouse_y;
 
 if (room == RMainScene)
 	ON_MAIN_SCENE.ON_GUI = false;
-for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
+for (var i = 0; global.OBJECTS[i] != undefined; i++) {
 	var class = global.OBJECTS[i];
 	
 	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
@@ -33,12 +33,11 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 
 		// INFO
 		if (class[0].INFO) {
-			var get_info = GetObject(class[0].INFO_NAME + class[0].TAG);
-			if (get_info == "NULL") {
+			if (class[4] == undefined) {
 				if (room != RMainScene)
-					CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], "NULL"]);
+					class[4] = CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], undefined]);
 				else
-					CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Notifications_Gp0", "Notifications_Gp1", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], "NULL"]);
+					class[4] = CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Notifications_Gp0", "Notifications_Gp1", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], undefined]);
 			}
 		}
 		//
@@ -64,16 +63,17 @@ for (var i = 0; global.OBJECTS[i] != "NULL"; i++) {
 			
 		// INFO
 		if (class[0].INFO) {
-			var get_info = GetObject(class[0].INFO_NAME + class[0].TAG);
-			if (get_info != "NULL")
-				DestroyRound(class[0].INFO_NAME + class[0].TAG);
+			if (class[4] != undefined) {
+				DestroyRound(class[4].TAG);
+				class[4] = undefined;
+			}
 		}
 		//
 	}
 }
 
 
-for (var i = 0; global.TEXT[i] != "NULL"; i++) {
+for (var i = 0; global.TEXT[i] != undefined; i++) {
 	if (global.TEXT[i][2] != room || global.TEXT[i][1].LINK_BTN_TEXT == false)
 		continue;
 	var text = global.TEXT[i][1];

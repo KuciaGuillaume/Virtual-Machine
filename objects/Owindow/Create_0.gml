@@ -1,17 +1,17 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE VARIABLEs
-TYPE = "NULL";
-TAG = "NULL";
-OPTION = ["NULL"];
+TYPE = undefined;
+TAG = undefined;
+OPTION = [undefined];
 
 // INIT ALL OPTION;
-LOCK = ["NULL", "NULL"];
+LOCK = [undefined, undefined];
 LOCK_STATE = false;
-OBJECT_LINKED = "NULL";
+OBJECT_LINKED = undefined;
 
 // SLEF
-SELF = "NULL";
+SELF = undefined;
 
 // INIT OPTION VARIABLES
 FADE_IN = false;
@@ -26,13 +26,13 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 //WINDOW
-WINDOW_BK = "NULL";
-CLOSE = "NULL";
-REDUCE = "NULL";
-ON_OBJECT = "NULL";
+WINDOW_BK = undefined;
+CLOSE = undefined;
+REDUCE = undefined;
+ON_OBJECT = undefined;
 SELECT = false;
 X = 0;
 Y = 0;
@@ -40,23 +40,24 @@ BASE_X = 0;
 BASE_Y = 0;
 ON = true;
 ID = 0;
-WINDOW_TAG = "NULL";
-CLASS = "NULL";
-ON_CLASS = "NULL";
-MAIN_LAYER_ID = "NULL";
+WINDOW_TAG = undefined;
+CLASS = undefined;
+ON_CLASS = undefined;
+MAIN_LAYER_ID = undefined;
 CAN_TAKE = true;
 FIRST_TAKE = false;
 FADE_MOVEMENT = false
 FADE_END = false;
-ICON = "NULL";
+ICON = undefined;
 ON_THIS_WINDOW = true;
-list_objects = ["NULL"];
-TEXT_TITLE = "NULL";
-LAYERS =  ["NULL"];
+list_objects = [undefined];
+TEXT_TITLE = undefined;
+LAYERS =  [undefined];
 CLOSING = false;
 REDUCING = false;
 IS_REDUCE = false;
 Y_TARGET = 240;
-NAME = "NULL";
+NAME = undefined;
 INDEX = 0;
-WINDOW_TOP_ICON = "NULL";
+WINDOW_TOP_ICON = undefined;
+visio = undefined;

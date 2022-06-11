@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 BBOX_X = (x + TEXT_CONNECT.TEXT_WIDTH) + (MARGE * 2);
 BBOX_Y = (y + TEXT_CONNECT.TEXT_HEIGHT) + (MARGE);

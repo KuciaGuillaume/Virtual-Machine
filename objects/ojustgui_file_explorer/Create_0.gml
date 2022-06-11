@@ -2,9 +2,9 @@
 
 
 // CREATE VARIABLES
-TYPE = "NULL";
-OPTION = "NULL";
-TAG = "NULL";
+TYPE = undefined;
+OPTION = undefined;
+TAG = undefined;
 image_alpha = 0;
 CLOSE = false;
 
@@ -20,25 +20,27 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 // window
-WINDOW = "NULL";
+WINDOW = undefined;
 Y_TARGET = 0;
 OPT_CLOSING = false;
-OBJECT_LINKED = "NULL";
+OBJECT_LINKED = undefined;
 CREATE = false;
 
 // VARIABLES FOR FILE EXPLORER
-SEARCH = "NULL";
+SEARCH = undefined;
 PWD = ON_MAIN_SCENE.PATH;
 PWD_PATH = "/~";
-PATH = "NULL";
-FOLDER_LIST = ["NULL"];
-EXPLORER_RELOAD = "NULL";
-EXPLORER_SLIDER = "NULL";
+PATH = undefined;
+FOLDER_LIST = [undefined];
+EXPLORER_RELOAD = undefined;
+EXPLORER_SLIDER = undefined;
 N_ELEMENTS = 0;
-ELEMENTS = "NULL";
-GO_ROOT = "NULL";
-GO_BACK = "NULL";
-EMPTY_FOLDER = "NULL";
+ELEMENTS = undefined;
+GO_ROOT = undefined;
+GO_BACK = undefined;
+EMPTY_FOLDER = undefined;
+ON = false;
+SLIDER_STATE = false;

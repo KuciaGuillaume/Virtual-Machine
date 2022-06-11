@@ -1,5 +1,5 @@
 //GET OPTIONS
-for (var i = 0; OPTION[i] != "NULL"; i++) {
+for (var i = 0; OPTION[i] != undefined; i++) {
 	if (OPTION[i][0] == "LOCK")
 		LOCK = OPTION[i];
 	if (OPTION[i][0] == "POSITIONS") {OPT_POSITIONS = true; OPT_X = OPTION[i][1]; OPT_Y = OPTION[i][2]; }

@@ -20,8 +20,8 @@ if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right))
 if (mouse_check_button_pressed(mb_right) && ON_DESK) {
 	
 	// CHECK RIGHT CLICK ON FOLDERS
-	var on_folders = "NULL";
-	for (var i = 0; FOLDERS[i] != "NULL"; i++) {
+	var on_folders = undefined;
+	for (var i = 0; FOLDERS[i] != undefined; i++) {
 		if (FOLDERS[i] != undefined && instance_exists(FOLDERS[i]) && MouseInsideObject(FOLDERS[i])) {
 			on_folders = FOLDERS[i];
 			break;
@@ -31,22 +31,22 @@ if (mouse_check_button_pressed(mb_right) && ON_DESK) {
 	if (MouseInsideObject(task_bar))
 		return;
 	var get = GetObject("NEW_FOLDER_SLIDERS");
-	if (get != "NULL")
+	if (get != undefined)
 		DestroyButtonBox("NEW_FOLDER_SLIDERS");
 	var get = GetObject("RENAME_FOLDER_SLIDERS");
-	if (get != "NULL")
+	if (get != undefined)
 		DestroyButtonBox("RENAME_FOLDER_SLIDERS");
 	var get = GetObject("DELETE_FOLDER_SLIDERS");
-	if (get != "NULL")
+	if (get != undefined)
 		DestroyButtonBox("DELETE_FOLDER_SLIDERS");
-	if (on_folders == "NULL") {
-		DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 5, c_white, 200, 31, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], "NULL"]);
-		var button = CreateButtonBox(mouse_x + 90, mouse_y + 11, S_new_folder, OboxText, "Create new folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "NEW_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  "NULL"]);
+	if (on_folders == undefined) {
+		DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 5, c_white, 200, 31, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], undefined]);
+		var button = CreateButtonBox(mouse_x + 90, mouse_y + 11, S_new_folder, OboxText, "Create new folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "NEW_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined]);
 		button.PARENT = DESK_SLIDER_OBJECT;
 	} else {
-		DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 25, c_white, 200, 56, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], ["SLIDE", 0.0001],  "NULL"]);
-		var button = CreateButtonBox(mouse_x + 90, mouse_y + 16, S_rename_folder, OboxText, "Rename folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "RENAME_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  "NULL"]);
-		var deleted = CreateButtonBox(mouse_x + 90, mouse_y - 8, S_delete_folder, OboxText, "Delete folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DELETE_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  "NULL"]);
+		DESK_SLIDER_OBJECT = CreateEmptyRound(mouse_x - 10, mouse_y - 25, c_white, 200, 56, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined]);
+		var button = CreateButtonBox(mouse_x + 90, mouse_y + 16, S_rename_folder, OboxText, "Rename folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "RENAME_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined]);
+		var deleted = CreateButtonBox(mouse_x + 90, mouse_y - 8, S_delete_folder, OboxText, "Delete folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DELETE_FOLDER_SLIDERS", [["CENTERED"], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined]);
 		button.NUM_LINKED = i;
 		button.PARENT = DESK_SLIDER_OBJECT;
 		deleted.PARENT = DESK_SLIDER_OBJECT;
@@ -55,7 +55,7 @@ if (mouse_check_button_pressed(mb_right) && ON_DESK) {
 	DESK_SLIDER = true;
 }
 
-if (DESK_SLIDER_OBJECT != "NULL" && DESK_SLIDER && (!MouseInside(DESK_SLIDER_OBJECT.x, DESK_SLIDER_OBJECT.x + DESK_SLIDER_OBJECT.SIZE_X, DESK_SLIDER_OBJECT.y, DESK_SLIDER_OBJECT.y + DESK_SLIDER_OBJECT.SIZE_Y) || !ON_DESK) && DESK_SLIDER_OBJECT.image_alpha >= 1) {
+if (DESK_SLIDER_OBJECT != undefined && DESK_SLIDER && (!MouseInside(DESK_SLIDER_OBJECT.x, DESK_SLIDER_OBJECT.x + DESK_SLIDER_OBJECT.SIZE_X, DESK_SLIDER_OBJECT.y, DESK_SLIDER_OBJECT.y + DESK_SLIDER_OBJECT.SIZE_Y) || !ON_DESK) && DESK_SLIDER_OBJECT.image_alpha >= 1) {
 	DESK_SLIDER = false;
 	DestroyObject(DESK_SLIDER_OBJECT.TAG);
 	DestroyButtonBox("DELETE_FOLDER_SLIDERS");
@@ -64,6 +64,6 @@ if (DESK_SLIDER_OBJECT != "NULL" && DESK_SLIDER && (!MouseInside(DESK_SLIDER_OBJ
 }
 
 if (keyboard_check_pressed(vk_escape)) {
-	savegame_save("USER", [global.USER, PATH, NAME_FOLDERS, global.WINDOWS_PIN, "NULL"]);
+	savegame_save("USER", [global.USER, PATH, NAME_FOLDERS, global.WINDOWS_PIN, undefined]);
 	Machine("END");
 }

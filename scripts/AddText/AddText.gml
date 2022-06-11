@@ -8,33 +8,33 @@ function AddText(X, Y, TEXT, FONT, COLOR, LAYER, TAG, OPTION){
 	text.TAG = TAG;
 	var class = [TAG, text, room];
 	var i = 0;
-	for (; global.TEXT[i] != "NULL";) { i++; }
+	for (; global.TEXT[i] != undefined;) { i++; }
 	global.TEXT[i] = class;
-	global.TEXT[i + 1] = "NULL";
+	global.TEXT[i + 1] = undefined;
 	return text;
 }
 
 function GetText(TAG) {
 
-	if (global.TEXT[0] == "NULL")
-		return "NULL";
+	if (global.TEXT[0] == undefined)
+		return undefined;
 	var i = 0;
-	for (; global.TEXT[i] != "NULL" && global.TEXT[i][0] != TAG;)
+	for (; global.TEXT[i] != undefined && global.TEXT[i][0] != TAG;)
 		i++;
-	if (global.TEXT[i] != "NULL" && global.TEXT[i][2] == room)
+	if (global.TEXT[i] != undefined && global.TEXT[i][2] == room)
 		return global.TEXT[i][1]
 	else
-		return "NULL";
+		return undefined;
 }
 
 function DestroyText(TAG) {
 	
 	var i = 0;
-	for (; global.TEXT[i] != "NULL" && global.TEXT[i][0] != TAG;) { i++ };
-	if (global.TEXT[i] == "NULL" || global.TEXT[i][2] != room)
+	for (; global.TEXT[i] != undefined && global.TEXT[i][0] != TAG;) { i++ };
+	if (global.TEXT[i] == undefined || global.TEXT[i][2] != room)
 		return;
 	instance_destroy(global.TEXT[i][1]);
-	for (; global.TEXT[i] != "NULL"; i++)
+	for (; global.TEXT[i] != undefined; i++)
 		global.TEXT[i] = global.TEXT[i + 1];
 }
 

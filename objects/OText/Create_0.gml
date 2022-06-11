@@ -1,16 +1,16 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE VARIABLES
-FONT = "NULL";
-COLOR = "NULL";
-TEXT = "NULL";
-OPTION = "NULL";
+FONT = undefined;
+COLOR = undefined;
+TEXT = undefined;
+OPTION = undefined;
 FIRST_PASS = false;
-TAG = "NULL";
-TEXT_CONNECT = "NULL";
-TYPE = "NULL";
+TAG = undefined;
+TEXT_CONNECT = undefined;
+TYPE = undefined;
 DESTROY = DestroyText;
-PARENT = "NULL";
+PARENT = undefined;
 image_alpha = 0;
 
 
@@ -40,8 +40,8 @@ TEXT_WIDTH = 0;
 TEXT_HEIGHT = 0;
 
 // BNT_LINKED
-LINK_COLOR = "NULL";
-LINK_FIRST_COLOR = "NULL";
+LINK_COLOR = undefined;
+LINK_FIRST_COLOR = undefined;
 LINK_BTN_TEXT = false;
 
 

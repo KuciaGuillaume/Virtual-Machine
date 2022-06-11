@@ -1,6 +1,6 @@
 /// @Project by Kucia Guillaume* ///
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 
 if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 
@@ -38,8 +38,6 @@ TEXT_TITLE.y = y + 3;
 TEXT_TITLE.x = x + 10;
 CLOSE.image_alpha = image_alpha; REDUCE.image_alpha = image_alpha; TEXT_TITLE.image_alpha = image_alpha;
 
-var visio = GetObject(ICON.TAG + "VISIO");
-
 if (IS_REDUCE)
 	return;
 
@@ -65,26 +63,26 @@ if (FADE_END) {
 // CLOSING
 if (image_alpha <= 0 && FADE_END && CLOSING) {
 	// delete layer index
-	for (var i = 0; global.layer_depth[MAIN_LAYER_ID + i] != "NULL"; i++) {
+	for (var i = 0; global.layer_depth[MAIN_LAYER_ID + i] != undefined; i++) {
 		global.layer_depth[MAIN_LAYER_ID + i] = global.layer_depth[MAIN_LAYER_ID + (i + 1)];
-		if (global.layer_depth[MAIN_LAYER_ID + i] != "NULL") {
+		if (global.layer_depth[MAIN_LAYER_ID + i] != undefined) {
 			var object = global.layer_depth[MAIN_LAYER_ID + i][2];
 			object.MAIN_LAYER_ID -= 1;
 		}
 	}
 	// delete bool
 	for (var d = 0; CLASS[2][d][0] != ID;) { d++; }
-	for (; CLASS[2][d] != "NULL"; d++)
+	for (; CLASS[2][d] != undefined; d++)
 		CLASS[2][d] = CLASS[2][d + 1];
-	for (var i = 0; global.layer_depth[i] != "NULL"; i++) {
+	for (var i = 0; global.layer_depth[i] != undefined; i++) {
 		var actual = global.layer_depth[i][1];
-		for (var e = 0; actual[e] != "NULL"; e++) {
+		for (var e = 0; actual[e] != undefined; e++) {
 			var get = layer_get_id(actual[e]);
 			layer_depth(get, layer_get_depth(get) + 7);
 		}
 	}
 	for (var i = 0; CLASS[3][i] != id;) { i++; }
-	for (; CLASS[3][i] != "NULL"; i++)
+	for (; CLASS[3][i] != undefined; i++)
 		CLASS[3][i] = CLASS[3][i + 1];
 	global.last_layer_id += 7;
 	if (WINDOW_BK != undefined && instance_exists(WINDOW_BK))
@@ -92,7 +90,7 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	CLASS[1] -= 1;
 	if (CLASS[1] <= 0) {
 		if (!ICON.PIN) {
-			if (visio != "NULL")
+			if (GetObject(ICON.TAG + "VISIO") != undefined)
 				DestroyObject(visio.TAG);
 			remove_findlist(ICON.id, ON_MAIN_SCENE.ICONS);
 			DestroyObject(ICON.TAG);
@@ -124,10 +122,10 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 
 if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (!MouseInsideObject(id) || !MouseInsideObject(WINDOW_BK)))
 	ON_THIS_WINDOW = false;
-for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
+for (var i = 0; ON_MAIN_SCENE.TASKS[i] != undefined; i++) {
 	if ( ON_MAIN_SCENE.TASKS[i][0] == WINDOW_TAG)
 		CLASS = ON_MAIN_SCENE.TASKS[i];
-	for (var e = 0; ON_MAIN_SCENE.TASKS[i][3][e] != "NULL"; e++) {
+	for (var e = 0; ON_MAIN_SCENE.TASKS[i][3][e] != undefined; e++) {
 		var object = ON_MAIN_SCENE.TASKS[i][3][e];
 		var get = layer_get_depth(object.layer);
 		
@@ -155,8 +153,8 @@ if (ON_THIS_WINDOW && !FADE_END) {
 
 
 if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInsideObject(self) || MouseInsideObject(WINDOW_BK))) {
-	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL"; i++) {
-		for (var g = 0; ON_MAIN_SCENE.TASKS[i][3][g] != "NULL"; g++) {
+	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != undefined; i++) {
+		for (var g = 0; ON_MAIN_SCENE.TASKS[i][3][g] != undefined; g++) {
 			var obj = ON_MAIN_SCENE.TASKS[i][3][g];
 			var get = layer_get_depth(obj.layer);
 			if (get < depth || ((!MouseInsideObject(obj) && !MouseInsideObject(obj.WINDOW_BK)))) {
@@ -167,7 +165,7 @@ if (mouse_check_button_pressed(mb_left) && !ON_MAIN_SCENE.ON_GUI && (MouseInside
 }
 
 CAN_TAKE = true;
-for (var e = 0; CLASS[2][e] != "NULL"; e++) {
+for (var e = 0; CLASS[2][e] != undefined; e++) {
 	if (CLASS[2][e][0] == ID)
 		ON_CLASS = CLASS[2][e];
 	else if (CLASS[2][e][1] == true)

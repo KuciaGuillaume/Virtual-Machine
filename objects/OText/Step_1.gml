@@ -1,5 +1,5 @@
 // GET OPTION
-for (var i = 0; OPTION[i] != "NULL"; i++) {
+for (var i = 0; OPTION[i] != undefined; i++) {
 	if (OPTION[i][0] == "CENTERED")
 		CENTERED = true;
 	if (OPTION[i][0] == "BACK") { BACK = true; BACK_POWER = OPTION[i][1]; }

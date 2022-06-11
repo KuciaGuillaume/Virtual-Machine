@@ -19,8 +19,8 @@ function terminal_btn_clear(PARENT) {
 
 function terminal_saving(PARENT) {
 	var saving = GetObject(PARENT.TAG + "SAVING");
-	if (saving == "NULL") {
-		saving = CreateObjectSprite(PARENT.x, PARENT.y, PARENT.WINDOW.LAYERS[0], Sstart_load, OJustGUI, "IMAGE", PARENT.TAG + "SAVING", ["NULL"]);
+	if (saving == undefined) {
+		saving = CreateObjectSprite(PARENT.x, PARENT.y, PARENT.WINDOW.LAYERS[0], Sstart_load, OJustGUI, "IMAGE", PARENT.TAG + "SAVING", [undefined]);
 		saving.image_xscale = 0.3;
 		saving.image_yscale = 0.3;
 	}

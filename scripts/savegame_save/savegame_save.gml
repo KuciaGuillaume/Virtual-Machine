@@ -5,7 +5,7 @@ function savegame_save(PATH, SAVE_LIST) {
 
 	// PLACE YOUR VARIABLES HERE
 
-	for (var i = 0; SAVE_LIST[i] != "NULL"; i++)
+	for (var i = 0; SAVE_LIST[i] != undefined; i++)
 		list[| i] = SAVE_LIST[i];
 
 	// ARRAYS CAN BE SAVED TOO

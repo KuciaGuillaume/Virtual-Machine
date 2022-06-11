@@ -1,6 +1,6 @@
 /// @Project by Kucia Guillaume* ///
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 
 if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 

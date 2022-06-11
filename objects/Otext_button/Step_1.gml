@@ -1,5 +1,5 @@
 //GET OPTIONS
-for (var i = 0; OPTION[i] != "NULL"; i++) {
+for (var i = 0; OPTION[i] != undefined; i++) {
 	if (OPTION[i][0] == "SECRET")
 		SECRET = true;
 	if (OPTION[i][0] == "CENTERED")

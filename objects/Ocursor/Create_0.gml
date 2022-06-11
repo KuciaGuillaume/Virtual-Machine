@@ -1,11 +1,11 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE TYPE
-TYPE = "NULL";
+TYPE = undefined;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 // PRESS_TIME
 PRESS_TIME = 0;

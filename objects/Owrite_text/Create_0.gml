@@ -2,15 +2,15 @@
 
 // TEXT
 
-TEXT = ["NULL"];
+TEXT = [undefined];
 TEXT_INDEX = 1;
 TEXT_INDEX_MAX = 1;
-INITIAL_TEXT = ["NULL"];
+INITIAL_TEXT = [undefined];
 ON_WRITE = false;
 TEXT_OUTPUT = "";
-TAG = "NULL";
+TAG = undefined;
 TAB = false;
-TYPE = "NULL";
+TYPE = undefined;
 DESTROY = DestroyWrite;
 // CREATE BAR
 BAR = "NONE";

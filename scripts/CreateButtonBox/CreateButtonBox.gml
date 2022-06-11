@@ -37,7 +37,7 @@ function CreateButton_Image_Text(X, Y, IMAGE, IMAGE_LINK, X2, Y2, OBJECT, TEXT, 
 function DestroyButtonBox(TAG) {
 	
 	var get = GetObject(TAG);
-	if (get != "NULL" && get.OBJECT_LINKED != "NULL")
+	if (get != undefined && get.OBJECT_LINKED != undefined)
 		DestroyObject(get.OBJECT_LINKED.TAG);
 	DestroyObject(TAG);
 	DestroyText(TAG);

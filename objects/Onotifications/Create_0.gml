@@ -1,18 +1,18 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE VARIABLEs
-TYPE = "NULL";
-TAG = "NULL";
-OPTION = ["NULL"];
-TITLE_CONNECT = "NULL";
-DESCRIPTION_CONNECT = "NULL";
-ICON_CONNECT = "NULL";
+TYPE = undefined;
+TAG = undefined;
+OPTION = [undefined];
+TITLE_CONNECT = undefined;
+DESCRIPTION_CONNECT = undefined;
+ICON_CONNECT = undefined;
 NOTIF_TIME = 0;
 CLOSE_CONNECT = "NULL;"
 DESTROY = DestroyObject;
 
 // INIT ALL OPTION;
-LOCK = ["NULL", "NULL"];
+LOCK = [undefined, undefined];
 WALLPAPER_INDEX = -1;
 WALLPAPER = false;
 ON = true;
@@ -35,4 +35,4 @@ image_alpha = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;

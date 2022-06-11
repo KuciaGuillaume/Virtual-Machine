@@ -1,6 +1,6 @@
 /// @Project by Kucia Guillaume* ///
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 if (!FIRST_PASS && !FADE_IN) {image_alpha = 2; FIRST_PASS = true; } 
 
@@ -107,11 +107,11 @@ if (TAG == "USER_BACKGROUND" && !SKIP) {
 				
 		}
 		image_index = i;
-		SAVE_LIST = [global.USER, "NULL"];
+		SAVE_LIST = [global.USER, undefined];
 		savegame_save("USER", SAVE_LIST);
 		var like = GetObject("LIKE");
 		var dislike = GetObject("DISLIKE");
-		if (like != "NULL" && dislike != "NULL") {
+		if (like != undefined && dislike != undefined) {
 			like.image_index = 0;
 			dislike.image_index = 0;
 		}
@@ -127,8 +127,8 @@ if (TAG == "IMAGE_WIFI" && ON_USER_INPUT.MODE == 1) {
 	var power_off = GetObject("POWER_OFF");
 	if (x > 1815)
 		x -= 0.0001 * delta_time;
-	else if (power_off == "NULL")
-		CreateObjectSprite(1866, 1041.15, "Gp2", Spower_off, Obox, "BUTTON-NO-HAND", "POWER_OFF", [["INFO", "Power-off"], ["FADE_IN", 0.000001], "NULL"]);
+	else if (power_off == undefined)
+		CreateObjectSprite(1866, 1041.15, "Gp2", Spower_off, Obox, "BUTTON-NO-HAND", "POWER_OFF", [["INFO", "Power-off"], ["FADE_IN", 0.000001], undefined]);
 	return;
 }
 
@@ -150,15 +150,15 @@ if (TAG == "SYSTEM_LOAD") {
 
 if (CLOSE) DestroyObject(TAG);
 
-if (OBJECT_LINKED != "NULL") {
+if (OBJECT_LINKED != undefined) {
 	OBJECT_LINKED.x = x;
 	OBJECT_LINKED.y = y;
 }
 
 // FOLDER MOVEMENT
-if (GET_FOLDER == "NULL" && (string_count("FOLDERS", TAG) > 0))
+if (GET_FOLDER == undefined && (string_count("FOLDERS", TAG) > 0))
 	GET_FOLDER = TAG;
-if (GET_FOLDER != "NULL") {
+if (GET_FOLDER != undefined) {
 
 	// FOLDER NAME
 	if (WRITE != undefined && instance_exists(WRITE) && WRITE.ON_WRITE) {
@@ -166,10 +166,10 @@ if (GET_FOLDER != "NULL") {
 		TEXT_CONNECT.TEXT = WRITE.TEXT_OUTPUT;
 		ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
 		var PWD = ON_MAIN_SCENE.PATH[1];
-		terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+		terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
 		ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
 		WRITE.BAR.y = TEXT_CONNECT.y;
-		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - TEXT_CONNECT.TEXT_WIDTH/2 - 5, TEXT_CONNECT.y - TEXT_CONNECT.TEXT_HEIGHT/2 - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 10, "Gp0", TAG + "RENAME_ON_DESK", ["NULL"]);
+		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - TEXT_CONNECT.TEXT_WIDTH/2 - 5, TEXT_CONNECT.y - TEXT_CONNECT.TEXT_HEIGHT/2 - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 10, "Gp0", TAG + "RENAME_ON_DESK", [undefined]);
 		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x - TEXT_CONNECT.TEXT_WIDTH/2);
 	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT)) {
 		if (TEXT_CONNECT.TEXT == "") {
@@ -177,14 +177,14 @@ if (GET_FOLDER != "NULL") {
 			TEXT_CONNECT.TEXT = MASTER_NAME;
 			ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
 			var PWD = ON_MAIN_SCENE.PATH[1];
-			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
 			ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
 			savegame_save("USER", SAVE_LIST);
 		}
-		if (RENAME_OBJECT != "NULL") {
+		if (RENAME_OBJECT != undefined) {
 			DestroyObject(TAG + "RENAME_ON_DESK");
-			RENAME_OBJECT = "NULL";
+			RENAME_OBJECT = undefined;
 		}
 		WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
 		ORIGINAL_NAME = TEXT_CONNECT.TEXT;
@@ -194,7 +194,7 @@ if (GET_FOLDER != "NULL") {
 	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) {
 		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true) {
 			WRITE.ON_WRITE = false;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
 			savegame_save("USER", SAVE_LIST);
 		}
 	}
@@ -202,7 +202,7 @@ if (GET_FOLDER != "NULL") {
 	if (mouse_check_button(mb_left) && (MouseInsideObject(id) || GRABED)) {
 		var cursor = GetObject("CURSOR");
 		if (cursor.image_index == 3 || GRABED) {
-			for (var i = 0; ON_MAIN_SCENE.FOLDERS[i] != "NULL"; i++)
+			for (var i = 0; ON_MAIN_SCENE.FOLDERS[i] != undefined; i++)
 				if (ON_MAIN_SCENE.FOLDERS[i].GRABED == true && ON_MAIN_SCENE.FOLDERS[i] != id) { layer = layer_get_id("Gp0"); TEXT_CONNECT.layer = layer_get_id("Gp1"); GRABED = false; return; }
 			if (!GRABED) {
 				TAKE_POS_X = x;
@@ -222,7 +222,7 @@ if (GET_FOLDER != "NULL") {
 			if (modulo_x < 50) { x -= modulo_x }
 			if (modulo_y >= 50) { y = y + (100 - modulo_y) }
 			if (modulo_y < 50) { y -= modulo_y }
-			for (var i = 0; ON_MAIN_SCENE.FOLDERS[i] != "NULL"; i++) {
+			for (var i = 0; ON_MAIN_SCENE.FOLDERS[i] != undefined; i++) {
 				if ((y == ON_MAIN_SCENE.FOLDERS[i].y && x == ON_MAIN_SCENE.FOLDERS[i].x && ON_MAIN_SCENE.FOLDERS[i] != id) ||
 				x > 1800 || x < 100 || y > 900 || y < 100) {
 					x = TAKE_POS_X;
@@ -236,7 +236,7 @@ if (GET_FOLDER != "NULL") {
 					ON_MAIN_SCENE.NAME_FOLDERS[i][2] = y;
 				}
 			}
-			SAVE_LIST = [global.USER, global.PATH,  global.FOLDERS, "NULL"];
+			SAVE_LIST = [global.USER, global.PATH,  global.FOLDERS, undefined];
 			savegame_save("USER", SAVE_LIST);
 		}
 		GRABED = false;

@@ -15,20 +15,20 @@ function CreateWrite(TAG, MAX, LAYER, TEXT) {
 	write.TAG = TAG;
 	write.TYPE = "WRITE";
 	write_class = [TAG, room, write];
-	for (i = 0; global.WRITE[i] != "NULL";) { i++; }
+	for (i = 0; global.WRITE[i] != undefined;) { i++; }
 	global.WRITE[i] = write_class;
-	global.WRITE[i + 1] = "NULL";
+	global.WRITE[i + 1] = undefined;
 	return write;
 }
 
 function GetWrite(TAG) {
 	
 	i = 0;
-	for (; global.WRITE[i] != "NULL" && global.WRITE[i][0] != TAG; ) i++;
-	if (global.WRITE[i] != "NULL" && global.WRITE[i][1] == room)
+	for (; global.WRITE[i] != undefined && global.WRITE[i][0] != TAG; ) i++;
+	if (global.WRITE[i] != undefined && global.WRITE[i][1] == room)
 		return global.WRITE[i][2];
 	else
-		return "NULL";
+		return undefined;
 }
 
 function UpdateBar(BAR, STEXT, X) {
@@ -51,12 +51,12 @@ function UpdateBar(BAR, STEXT, X) {
 
 function DestroyWrite(TAG) {
 	
-	for (var i = 0; global.WRITE[i] != "NULL" && global.WRITE[i][0] != TAG;) { i++ };
-	if (global.WRITE[i] == "NULL" || global.WRITE[i][1] != room)
+	for (var i = 0; global.WRITE[i] != undefined && global.WRITE[i][0] != TAG;) { i++ };
+	if (global.WRITE[i] == undefined || global.WRITE[i][1] != room)
 		return;
 	instance_destroy(global.WRITE[i][2].BAR);
 	instance_destroy(global.WRITE[i][2]);
-	for (; global.WRITE[i] != "NULL"; i++)
+	for (; global.WRITE[i] != undefined; i++)
 		global.WRITE[i] = global.WRITE[i + 1];
 }
 

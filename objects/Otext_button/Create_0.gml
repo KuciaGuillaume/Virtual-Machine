@@ -1,17 +1,17 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE VARIABLES
-TYPE = "NULL";
+TYPE = undefined;
 TEXT = "";
 TEXT_SIZE = 0;
 TEXT_HEIGHT = 0;
-NAME = "NULL";
-FONT = "NULL";
-COLOR = "NULL";
-OPTION = ["NULL"];
+NAME = undefined;
+FONT = undefined;
+COLOR = undefined;
+OPTION = [undefined];
 CENTERED = false;
 SECRET = false;
-write = "NULL";
+write = undefined;
 X = 0;
 Y = 0;
 DESTROY = DestroyTextButton;
@@ -22,7 +22,7 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 // INIT OPTION VARIABLES
 FADE_IN = false;

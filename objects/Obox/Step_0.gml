@@ -1,6 +1,6 @@
 /// @Project by Kucia Guillaume* ///
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 
 if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 
@@ -13,18 +13,20 @@ else
 	FADE_IN = false;
 
 // ICON BUTTON
-if (OBJECT_LINKED != "NULL") {
+if (OBJECT_LINKED != undefined) {
 	if (((global.USER[6][0] == 0 && OBJECT_LINKED.sprite_index == Shomme) || (global.USER[6][0] == 1 && OBJECT_LINKED.sprite_index == Sfemme)) && global.USER[6][1] == OBJECT_LINKED.image_index) { image_index = 2; }
 	else if (image_index == 2) { image_index = 0; LOCK_STATE = true; }
 }
 
 // LOCK BUTTON
-if ((LOCK[0] != "NULL" && !LOCK[1].LOCK_STATE)) {
+if ((LOCK[0] != undefined && !LOCK[1].LOCK_STATE)) {
 	image_index = 2;
 	return;
 } else if (image_index == 2) { image_index = 0; }
 
-if (string_count("PIN", TAG) > 0) {
+if (GET_PIN == undefined && string_count("PIN", TAG) > 0)
+	GET_PIN = TAG;
+if (GET_PIN == TAG) {
 	if (!PARENT.PIN) {
 		OBJECT_LINKED.image_index = 0;
 		TEXT_CONNECT.TEXT = "Pin from taskbar";
@@ -34,13 +36,13 @@ if (string_count("PIN", TAG) > 0) {
 	}
 }
 
-if (GET_EXPLORER == "NULL" && string_count("FILE_EXPLORERS", TAG) > 0)
+if (GET_EXPLORER == undefined && string_count("FILE_EXPLORERS", TAG) > 0)
 	GET_EXPLORER = TAG;
-if (GET_EXPLORER != "NULL") {
-	if (PARENT != "NULL") {
+if (GET_EXPLORER != undefined) {
+	if (PARENT != undefined) {
 	    x = PARENT.x + PARENT_DIFF_X;
 		y = PARENT.y + PARENT_DIFF_Y;
-		if (TEXT_CONNECT != "NULL" && DOCK_TYPE_TEXT != "NULL" && OBJECT_LINKED != "NULL") {
+		if (TEXT_CONNECT != undefined && DOCK_TYPE_TEXT != undefined && OBJECT_LINKED != undefined) {
 			TEXT_CONNECT.x = x - 220; DOCK_TYPE_TEXT.x = x + 180;
 			TEXT_CONNECT.y = (y - TEXT_CONNECT.TEXT_HEIGHT/2) + 1; DOCK_TYPE_TEXT.y = (y - TEXT_CONNECT.TEXT_HEIGHT/2) + 1;
 			image_alpha = PARENT.image_alpha;
@@ -66,9 +68,9 @@ if (REFRESH) {
 }
 
 // FILE EXPLORER FOLDER
-if (GET_FOLDER == "NULL" && string_count("FILE_EXPLORERS", TAG) > 0)
+if (GET_FOLDER == undefined && string_count("FILE_EXPLORERS", TAG) > 0)
 	GET_FOLDER = TAG;
-if (GET_FOLDER != "NULL") {
+if (GET_FOLDER != undefined) {
 
 	// FOLDER NAME
 	if (WRITE != undefined && instance_exists(WRITE) && WRITE.ON_WRITE) {
@@ -76,11 +78,11 @@ if (GET_FOLDER != "NULL") {
 		TEXT_CONNECT.TEXT = WRITE.TEXT_OUTPUT;
 		PARENT.FOLDER_LIST[i].NAME = TEXT_CONNECT.TEXT;
 		var PWD = PARENT.PWD;
-		terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+		terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
 		ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
 		WRITE.BAR.y = TEXT_CONNECT.y + 6;
 		TEXT_CONNECT.COLOR = c_white;
-		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - 5, TEXT_CONNECT.y - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 5, PARENT.WINDOW.LAYERS[1], TAG + "RENAME_ON_DESK", ["NULL"]);
+		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - 5, TEXT_CONNECT.y - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 5, PARENT.WINDOW.LAYERS[1], TAG + "RENAME_ON_DESK", [undefined]);
 		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x);
 	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT) && TEXT_CONNECT.COLOR == c_white) {
 		if (TEXT_CONNECT.TEXT == "") {
@@ -88,14 +90,14 @@ if (GET_FOLDER != "NULL") {
 			TEXT_CONNECT.TEXT = MASTER_NAME;
 			ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
 			var PWD = ON_MAIN_SCENE.PATH[1];
-			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, "NULL"], "NULL", PWD, "NULL");
+			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
 			ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
 			savegame_save("USER", SAVE_LIST);
 		}
-		if (RENAME_OBJECT != "NULL") {
+		if (RENAME_OBJECT != undefined) {
 			DestroyObject(TAG + "RENAME_ON_DESK");
-			RENAME_OBJECT = "NULL";
+			RENAME_OBJECT = undefined;
 		}
 		TEXT_CONNECT.COLOR = c_black;
 		WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
@@ -106,7 +108,7 @@ if (GET_FOLDER != "NULL") {
 	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) {
 		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true) {
 			WRITE.ON_WRITE = false;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, "NULL"];
+			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
 			savegame_save("USER", SAVE_LIST);
 		}
 	}
@@ -122,7 +124,7 @@ if (sprite_index != S_FILES_buton) {
 	if (!mouse_check_button_pressed(mb_left) || !ON)
 		return;
 } else {
-	if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && !EXPLORER_SELECT) {
+	if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && !EXPLORER_SELECT && ON) {
 		EXPLORER_SELECT = true;
 		image_index = 1
 		return;
@@ -146,10 +148,10 @@ if (TAG == "EDIT_ICON_1" || TAG == "EDIT_ICON_2" || TAG == "EDIT_ICON_3" || TAG 
 
 if (TAG == "POWER_OFF") {
 	var get = GetObject("POWER_OPTION")
-	if (get == "NULL") {
-		CreateObjectSprite(1820, 935, "Gp2", Spower_option, OJustGUI, "IMAGE", "POWER_OPTION", [["FADE_IN", 0.000001], "NULL"]);
-		CreateButtonBox(1820, 1000, Sshutdown, OboxText, "Stop", "Gp3", "Gp4", Arial10, c_white, "SUTDOWN", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
-		CreateButtonBox(1820, 960, Srestart, OboxText, "Restart", "Gp3", "Gp4", Arial10, c_white, "RESTART", [["FADE_IN", 0.000001], ["CENTERED"], "NULL"]);
+	if (get == undefined) {
+		CreateObjectSprite(1820, 935, "Gp2", Spower_option, OJustGUI, "IMAGE", "POWER_OPTION", [["FADE_IN", 0.000001], undefined]);
+		CreateButtonBox(1820, 1000, Sshutdown, OboxText, "Stop", "Gp3", "Gp4", Arial10, c_white, "SUTDOWN", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
+		CreateButtonBox(1820, 960, Srestart, OboxText, "Restart", "Gp3", "Gp4", Arial10, c_white, "RESTART", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
 	} else {
 		DestroyObject("POWER_OPTION");
 		DestroyButtonBox("SUTDOWN");
@@ -168,7 +170,7 @@ if (TAG == "CLOSE_NOTIF") {
 if (string_count("CLOSE_ALL_WINDOW", TAG) > 0) {
 	if (!PARENT.PIN)
 		PARENT.OPT_CLOSING = true;
-	for (var i = 0; ON_MAIN_SCENE.TASKS[PARENT.WINDOW][3][i] != "NULL"; i++) {
+	for (var i = 0; ON_MAIN_SCENE.TASKS[PARENT.WINDOW][3][i] != undefined; i++) {
 		var obj = ON_MAIN_SCENE.TASKS[PARENT.WINDOW][3][i];
 		if (obj.IS_REDUCE) {
 			obj.IS_REDUCE = false;
@@ -190,22 +192,22 @@ if (string_count("PIN", TAG) > 0) {
 	else
 		PARENT.PIN = false;
 	if (PARENT.PIN) {
-		for (var i = 0; global.WINDOWS_PIN[i] != "NULL" && global.WINDOWS_PIN[i][2] != PARENT.WINDOW_TAG; ) { i++; }
+		for (var i = 0; global.WINDOWS_PIN[i] != undefined && global.WINDOWS_PIN[i][2] != PARENT.WINDOW_TAG; ) { i++; }
 		var class = [PARENT.PIN, PARENT.CREATE_WINDOW_IMAGE, PARENT.CREATE_WINDOW_OBJECT, PARENT.WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME];
-		if (global.WINDOWS_PIN[i] == "NULL")
-			global.WINDOWS_PIN[i + 1] = "NULL";
+		if (global.WINDOWS_PIN[i] == undefined)
+			global.WINDOWS_PIN[i + 1] = undefined;
 		global.WINDOWS_PIN[i] = class;
 		return;
 	}
 	for (var i = 0; global.WINDOWS_PIN[i][3] != PARENT.WINDOW_TAG;) { i++; }
-	for (; global.WINDOWS_PIN[i] != "NULL"; i++)
+	for (; global.WINDOWS_PIN[i] != undefined; i++)
 		global.WINDOWS_PIN[i] = global.WINDOWS_PIN[i + 1];
 }
 
 if (string_count("WINDOW_ME", TAG) > 0)
 	CreateWindow(PARENT.CREATE_WINDOW_IMAGE, PARENT.CREATE_WINDOW_OBJECT,PARENT.CREATE_WINDOW_TAG, PARENT.CREATE_WINDOW_ICON, PARENT.CREATE_WINDOW_NAME);
 
-if (PARENT != "NULL" && string_count("VISIO_BUTTON", TAG)) {
+if (PARENT != undefined && string_count("VISIO_BUTTON", TAG)) {
 	if (!PARENT.IS_REDUCE)
 		showmywindow(PARENT.id, PARENT.id, PARENT.depth, PARENT.MAIN_LAYER_ID);
 	else {
@@ -219,22 +221,22 @@ if (PARENT != "NULL" && string_count("VISIO_BUTTON", TAG)) {
 		PARENT.CAN_TAKE = false;
 	}
 }
-if (PARENT != "NULL" && string_count("VISIO_CLOSE", TAG)) {
+if (PARENT != undefined && string_count("VISIO_CLOSE", TAG)) {
 	PARENT.FADE_END = true;
 	PARENT.CLOSING = true;
 	PARENT.IS_REDUCE = false;
 	var visio = GetObject(VISIO_TAG);
-	if (visio != "NULL") {
+	if (visio != undefined) {
 		visio.Y_TARGET += 22.5;
 		for (var i = 0; visio.COMPONENTS[i] != id;) { i++ };
-		for (; visio.COMPONENTS[i] != "NULL"; i++) {
+		for (; visio.COMPONENTS[i] != undefined; i++) {
 			var object = visio.COMPONENTS[i];
-			if (object == "NULL" || !instance_exists(object))
+			if (object == undefined || !instance_exists(object))
 				continue;
 			object.y += 22.5
-			if (object.OBJECT_LINKED != "NULL")
+			if (object.OBJECT_LINKED != undefined)
 				object.OBJECT_LINKED.y += 22.5;
-			if (object.TEXT_CONNECT != "NULL")
+			if (object.TEXT_CONNECT != undefined)
 				object.TEXT_CONNECT.y += 22.5;
 		}
 		visio.y += 22.5;
@@ -248,13 +250,13 @@ if (PARENT != "NULL" && string_count("VISIO_CLOSE", TAG)) {
 if (string_count("EXPLORER_RELOAD", TAG) > 0 && visible = true) {
 	REFRESH = true;
 	visible = false;
-	REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", TAG + "LOAD", ["NULL"]);
+	REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", TAG + "LOAD", [undefined]);
 	REFRESH_TIME = 0;
 }
 
 if (string_count("FILE_EXPLORERS", TAG) > 0 && EXPLORER_SELECT) {
 	var get = GetObject(INFO_NAME + TAG);
-	if (get != "NULL") DestroyRound(get.TAG);
+	if (get != undefined) DestroyRound(get.TAG);
 	PARENT.PWD_PATH = PARENT.PWD_PATH + "/" + NAME;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PWD_PATH);
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);

@@ -1,19 +1,19 @@
 /// @Project by Kucia Guillaume* ///
 
 // CREATE VARIABLEs
-TYPE = "NULL";
-TAG = "NULL";
-OPTION = ["NULL"];
+TYPE = undefined;
+TAG = undefined;
+OPTION = [undefined];
 
 // INIT ALL OPTION;
-LOCK = ["NULL", "NULL"];
+LOCK = [undefined, undefined];
 LOCK_STATE = false;
-OBJECT_LINKED = "NULL";
-TEXT_CONNECT = "NULL";
+OBJECT_LINKED = undefined;
+TEXT_CONNECT = undefined;
 DESTROY = DestroyButtonBox;
 
 // SLEF
-SELF = "NULL";
+SELF = undefined;
 
 // INIT OPTION VARIABLES
 FADE_IN = false;
@@ -28,32 +28,33 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 // WINDOW
-PARENT = "NULL";
-OTHER_PARENT = "NULL";
-VISIO_TAG = "NULL";
+PARENT = undefined;
+OTHER_PARENT = undefined;
+VISIO_TAG = undefined;
 ON = true;
+GET_PIN = undefined;
 
 // EXPLORER
-GET_EXPLORER = "NULL";
+GET_EXPLORER = undefined;
 PARENT_DIFF_X = 0;
 PARENT_DIFF_Y = 0;
-PARENT = "NULL";
-DOCK_TYPE_TEXT = "NULL";
+PARENT = undefined;
+DOCK_TYPE_TEXT = undefined;
 
 // EXPLORER REFRESH
 REFRESH = false;
 REFRESH_TIME = 0;
-REFRESH_LOAD = "NULL";
-GET_FOLDER = "NULL";
+REFRESH_LOAD = undefined;
+GET_FOLDER = undefined;
 EXPLORER_SELECT = false;
 
 /// FOLDER
-ORIGINAL_NAME = "NULL";
-MASTER_NAME = "NULL";
-RENAME_OBJECT = "NULL";
-GET_FOLDER = "NULL";
-NAME = "NULL";
+ORIGINAL_NAME = undefined;
+MASTER_NAME = undefined;
+RENAME_OBJECT = undefined;
+GET_FOLDER = undefined;
+NAME = undefined;
 

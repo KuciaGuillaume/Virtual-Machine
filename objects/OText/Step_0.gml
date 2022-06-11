@@ -3,7 +3,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 
 if (!FIRST_PASS && !FADE_IN && TAG != "FINISH_MESSAGE") { FIRST_PASS = true; image_alpha = 2; } 

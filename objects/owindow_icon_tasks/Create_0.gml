@@ -2,9 +2,9 @@
 
 
 // CREATE VARIABLES
-TYPE = "NULL";
-OPTION = "NULL";
-TAG = "NULL";
+TYPE = undefined;
+OPTION = undefined;
+TAG = undefined;
 image_alpha = 0;
 
 // INIT OPTION VARIABLES
@@ -20,24 +20,24 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 // ACTION
 CLOSE = false;
 
 // window
-WINDOW = "NULL";
-ON_TASK = "NULL";
+WINDOW = undefined;
+ON_TASK = undefined;
 Y_TARGET = 0;
 Y_BASE = 0;
 OPT_CLOSING = false;
-WINDOWS_BUTTONS = ["NULL"];
-COMPONENTS = "NULL";
+WINDOWS_BUTTONS = [undefined];
+COMPONENTS = undefined;
 PIN = false;
 
-CREATE_WINDOW_IMAGE = "NULL";
-CREATE_WINDOW_TAG = "NULL";
-CREATE_WINDOW_ICON = "NULL";
-CREATE_WINDOW_NAME = "NULL";
+CREATE_WINDOW_IMAGE = undefined;
+CREATE_WINDOW_TAG = undefined;
+CREATE_WINDOW_ICON = undefined;
+CREATE_WINDOW_NAME = undefined;
 VISIO_TIME = 0;
 

@@ -1,7 +1,7 @@
 /// @Project by Kucia Guillaume* ///
 
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 // ON_WRITE
 if (ON_WRITE && PASSED == 0) {
@@ -64,14 +64,14 @@ if ((KeyPressed(vk_tab) || KeyPressed(vk_up) || KeyPressed(vk_down)) && ON_WRITE
 	
 	for (var i = 0; global.WRITE[i][0] != TAG;) { i++ };
 	ON_WRITE = false;
-	var get = "NULL";
-	if (global.WRITE[i + 1] != "NULL" && global.WRITE[i + 1][1] == room && !KeyPressed(vk_up)) {
+	var get = undefined;
+	if (global.WRITE[i + 1] != undefined && global.WRITE[i + 1][1] == room && !KeyPressed(vk_up)) {
 		get = global.WRITE[i + 1][2];
 		get.ON_WRITE = true;
 		get.TAB = true;
 	} else {
-		for (var i = 0; global.WRITE[i] != "NULL" && global.WRITE[i][1] != room;) { i++ }
-		if (global.WRITE[i] == "NULL")
+		for (var i = 0; global.WRITE[i] != undefined && global.WRITE[i][1] != room;) { i++ }
+		if (global.WRITE[i] == undefined)
 			return;
 		get = global.WRITE[i][2];
 		get.ON_WRITE = true;

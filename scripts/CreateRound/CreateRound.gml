@@ -3,8 +3,8 @@ function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, 
 	
 	var my = GetObject(OBJECT_TAG);
 	
-	if (my == "NULL" || my.TAG != OBJECT_TAG)
-		return "NULL";
+	if (my == undefined || my.TAG != OBJECT_TAG)
+		return undefined;
 	var TEXT = AddText(my.x, my.y - 25 - string_height(TEXT_NAME)/2, TEXT_NAME, FONT, c_white, LAYER2, TEXT_NAME + OBJECT_TAG, OPTION);
 	var X = (TEXT.x - (string_width(TEXT.TEXT) / 2)) - MARGE;
 	var Y = (TEXT.y - (string_height(TEXT.TEXT) / 2)) - (MARGE / 2);
@@ -21,14 +21,14 @@ function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, 
 
 function CreateEmptyRound(X, Y, COLOR, SIZE_X, SIZE_Y, LAYER, TAG, OPTION) {
 	var rounded = GetObject(TAG);
-	if (rounded != "NULL") {
+	if (rounded != undefined) {
 		rounded.x = X; rounded.y = Y;
 		rounded.COLOR = COLOR;
 		rounded.SIZE_X = SIZE_X;
 		rounded.SIZE_Y = SIZE_Y;
 		rounded.image_alpha = 0;
 		rounded.FIRST_PASS = false;
-		for (var i = 0; OPTION[i] != "NULL"; i++)
+		for (var i = 0; OPTION[i] != undefined; i++)
 			if (is_array(OPTION[i]) && OPTION[i][0] == "FADE_IN")
 				rounded.FADE_IN = true;
 		return rounded;

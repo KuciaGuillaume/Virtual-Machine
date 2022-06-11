@@ -1,6 +1,6 @@
 /// @Project by Kucia Guillaume* ///
 
-if (TAG == "NULL")
+if (TAG == undefined)
 	return;
 
 if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 
@@ -13,7 +13,7 @@ else
 	FADE_IN = false;
 
 // GET TEXT
-if (write == "NULL")
+if (write == undefined)
 	return;
 
 TEXT = write.TEXT_OUTPUT;

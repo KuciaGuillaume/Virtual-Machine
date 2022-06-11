@@ -9,8 +9,8 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	}
 	ON_MAIN_SCENE.N_WINDOW += 1;	
 	// LAYER
-	OPTION = [["FADE_IN", 0.000005], "NULL"];
-	for (var i = 0; global.layer_depth[i] != "NULL"; ) { i++; }
+	OPTION = [["FADE_IN", 0.000005], undefined];
+	for (var i = 0; global.layer_depth[i] != undefined; ) { i++; }
 	var LAYER_1 = string(ID) + "LAYER" + string(global.last_layer_id - 1);
 	layer_create(global.last_layer_id - 1, LAYER_1);
 	var LAYER_2 = string(ID) + "LAYER" + string(global.last_layer_id - 2);
@@ -23,8 +23,8 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	layer_create(global.last_layer_id - 3, Gp0);layer_create(global.last_layer_id - 4, Gp1);
 	layer_create(global.last_layer_id - 5, Gp2);layer_create(global.last_layer_id - 6, Gp3);
 	layer_create(global.last_layer_id - 7, Gp4);
-	global.layer_depth[i] = ["LAYER" + string(ID), [LAYER_1, LAYER_2, Gp0, Gp1, Gp2, Gp3, Gp4, "NULL"]];
-	global.layer_depth[i + 1] = "NULL";
+	global.layer_depth[i] = ["LAYER" + string(ID), [LAYER_1, LAYER_2, Gp0, Gp1, Gp2, Gp3, Gp4, undefined]];
+	global.layer_depth[i + 1] = undefined;
 	global.last_layer_id -= 7;
 
 	var window = CreateObjectSprite(960, 260, LAYER_1, Swindow_top, Owindow, "TOP_WINDOW", TAG + string(ID), OPTION);
@@ -41,23 +41,23 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	window.LAYERS = [Gp0, Gp1, Gp2, Gp3, Gp4];
 	global.layer_depth[i][2] = window;
 	
-	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL" && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
+	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != undefined && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
 	
-	if (ON_MAIN_SCENE.TASKS[i] != "NULL") {
-		for (var k = 0; ON_MAIN_SCENE.TASKS[k] != "NULL"; k++) {
-			for (var l = 0; ON_MAIN_SCENE.TASKS[k][3][l] != "NULL"; l++) {
+	if (ON_MAIN_SCENE.TASKS[i] != undefined) {
+		for (var k = 0; ON_MAIN_SCENE.TASKS[k] != undefined; k++) {
+			for (var l = 0; ON_MAIN_SCENE.TASKS[k][3][l] != undefined; l++) {
 				ON_MAIN_SCENE.TASKS[k][3][l].ON = false;
 				ON_MAIN_SCENE.TASKS[k][3][l].FIRST_TAKE = false;
 			}
 				
 		}
 		ON_MAIN_SCENE.TASKS[i][1] += 1;
-		for (var e = 0; ON_MAIN_SCENE.TASKS[i][2][e] != "NULL"; ) { e++; }
+		for (var e = 0; ON_MAIN_SCENE.TASKS[i][2][e] != undefined; ) { e++; }
 		ON_MAIN_SCENE.TASKS[i][2][e] = [ID, true];
-		ON_MAIN_SCENE.TASKS[i][2][e + 1] = "NULL";
-		for (var l = 0;  ON_MAIN_SCENE.TASKS[i][3][l] != "NULL"; ) { l++; }
+		ON_MAIN_SCENE.TASKS[i][2][e + 1] = undefined;
+		for (var l = 0;  ON_MAIN_SCENE.TASKS[i][3][l] != undefined; ) { l++; }
 		ON_MAIN_SCENE.TASKS[i][3][l] = window;
-		ON_MAIN_SCENE.TASKS[i][3][l + 1] = "NULL";
+		ON_MAIN_SCENE.TASKS[i][3][l + 1] = undefined;
 		ON_MAIN_SCENE.TASKS[i][4] += 1;
 		if (string_count("-", NAME) == 0)
 			NAME = NAME + " - " + string(ON_MAIN_SCENE.TASKS[i][4]);
@@ -69,9 +69,9 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 			NAME = news;
 		}
 	} else {
-		var new_class = [TAG, 1, [[ID, true], "NULL"], [window, "NULL"]];
+		var new_class = [TAG, 1, [[ID, true], undefined], [window, undefined]];
 		ON_MAIN_SCENE.TASKS[i] = new_class;
-		ON_MAIN_SCENE.TASKS[i + 1] = "NULL";
+		ON_MAIN_SCENE.TASKS[i + 1] = undefined;
 		ON_MAIN_SCENE.TASKS[i][4] = 1;
 		NAME = NAME + " - " + string(ON_MAIN_SCENE.TASKS[i][4]);
 	}
@@ -79,21 +79,21 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	var ORIGINAL_NAME = "";
 	for (var e = 0; string_char_at(NAME, e + 1) != " "; e++)
 		ORIGINAL_NAME += string_char_at(NAME, e + 1);
-	window.TEXT_TITLE = AddText(x + 10, y + 3, NAME, Arial10, c_black, LAYER_2, TAG + "TITLE" + string(ID), [["CENTERED"], ["FADE_IN", 0.000005], "NULL"]);
+	window.TEXT_TITLE = AddText(x + 10, y + 3, NAME, Arial10, c_black, LAYER_2, TAG + "TITLE" + string(ID), [["CENTERED"], ["FADE_IN", 0.000005], undefined]);
 	var icon = GetObject(TAG + "_TASK_ICON");
 	var task_bar = GetObject("MAIN_TASKBAR");
 	// ICON
-	if (icon == "NULL") {
-		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], "NULL"]);
+	if (icon == undefined) {
+		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], undefined]);
 		icon.WINDOW = i;
 		addtolist(icon, ON_MAIN_SCENE.ICONS);
-		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
+		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", [undefined]);
 		icon.image_xscale = 0;
 		icon.image_yscale = 0;
 	} else {
 		window.ON_OBJECT = GetObject(TAG + "ON_TASK");
-		if (window.ON_OBJECT == "NULL") {
-			window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", ["NULL"]);
+		if (window.ON_OBJECT == undefined) {
+			window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", [undefined]);
 			icon.WINDOW = i;
 		}
 	}
@@ -120,11 +120,11 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	static ID = 500;
 	
-	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != "NULL" && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
+	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != undefined && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
 	
-	var new_class = ["NULL", 1, ["NULL"], ["NULL"]];
+	var new_class = [undefined, 1, [undefined], [undefined]];
 	ON_MAIN_SCENE.TASKS[i] = new_class;
-	ON_MAIN_SCENE.TASKS[i + 1] = "NULL";
+	ON_MAIN_SCENE.TASKS[i + 1] = undefined;
 	ON_MAIN_SCENE.TASKS[i][4] = 0;
 	var new_name = "";
 	for (var g = 1; g < string_byte_length(NAME) && string_char_at(NAME, g) != "-"; g++)
@@ -136,7 +136,7 @@ function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 		ORIGINAL_NAME += string_char_at(NAME, e + 1);
 	var task_bar = GetObject("MAIN_TASKBAR");
 	// ICON
-	var icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], "NULL"]);
+	var icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], undefined]);
 	addtolist(icon, ON_MAIN_SCENE.ICONS);
 	icon.WINDOW = i;
 	icon.image_xscale = 1;
@@ -145,7 +145,7 @@ function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	icon.CREATE_WINDOW_TAG = TAG;
 	icon.CREATE_WINDOW_ICON = ICON;
 	icon.CREATE_WINDOW_NAME = NAME;
-	icon.ON_TASK = "NULL";
+	icon.ON_TASK = undefined;
 	icon.PIN = true;
 	icon.WINDOW_TAG = TAG;
 	icon.CREATE_WINDOW_OBJECT = WINDOW_BK_OBJECT;

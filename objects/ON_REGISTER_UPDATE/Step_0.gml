@@ -8,7 +8,7 @@ if (!UPDATE_STATE)
 
 var REGISTER = GetText("REGISTER ERROR");
 
-if (REGISTER != "NULL") {
+if (REGISTER != undefined) {
 	
 	// INIT¨PASSWORD STATE
 	REGISTER_STATE = true;
@@ -35,7 +35,7 @@ if (REGISTER != "NULL") {
 	var num_a = 0;
 	var size = string_byte_length(mail);
 	var end_mail = "";
-	var all_end = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com", "hotmail.co.uk", "hotmail.fr", "msn.com", "yahoo.fr", "wanadoo.fr", "orange.fr", "comcast.net", "yahoo.co.uk", "yahoo.com.br", "yahoo.co.in", "live.com", "rediffmail.com", "free.fr", "gmx.de", "web.de", "yandex.ru", "ymail.com", "libero.it", "outlook.com", "icloud.com", "icloud.fr", "epitech.eu", "NULL"];
+	var all_end = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com", "hotmail.co.uk", "hotmail.fr", "msn.com", "yahoo.fr", "wanadoo.fr", "orange.fr", "comcast.net", "yahoo.co.uk", "yahoo.com.br", "yahoo.co.in", "live.com", "rediffmail.com", "free.fr", "gmx.de", "web.de", "yandex.ru", "ymail.com", "libero.it", "outlook.com", "icloud.com", "icloud.fr", "epitech.eu", undefined];
 	var find = false;
 	
 	// MAIL LOOP
@@ -53,7 +53,7 @@ if (REGISTER != "NULL") {
 	}
 	end_mail = ReverseStr(end_mail);
 	// FINAL MAIL
-	for (var i = 0; all_end[i] != "NULL"; i++)
+	for (var i = 0; all_end[i] != undefined; i++)
 		if (end_mail == all_end[i])
 			find = true;
 	if (!find) { REGISTER_STATE = false; REGISTER.TEXT = "Your domain name is invalid : ' " + end_mail + " '"; }
@@ -67,10 +67,10 @@ if (REGISTER != "NULL") {
 	var full_name = GetWrite("FULL_NAME");
 	var last_name = GetWrite("LAST_NAME");
 	var helper = GetWrite("HELP TEXT");
-	var not_registe = "NULL";
+	var not_registe = undefined;
 	var g = 0;
 
-	if (helper != "NULL") global.USER[8] = helper.TEXT_OUTPUT;
+	if (helper != undefined) global.USER[8] = helper.TEXT_OUTPUT;
 	if (helper.TEXT_OUTPUT == PASSWORD1.TEXT_OUTPUT || helper.TEXT_OUTPUT == PASSWORD2.TEXT_OUTPUT ) { REGISTER_STATE = false; REGISTER.TEXT = "Your 'help sentence' cannot be the same\n               as the password"; }
 	if (helper.TEXT_OUTPUT == helper.INITIAL_TEXT) { REGISTER_STATE = false; not_registe = helper.INITIAL_TEXT; g++; }
 	if (PASSWORD2.TEXT_OUTPUT == PASSWORD2.INITIAL_TEXT) { REGISTER_STATE = false; not_registe = PASSWORD2.INITIAL_TEXT; g++; }
@@ -79,7 +79,7 @@ if (REGISTER != "NULL") {
 	if (get_mail.TEXT_OUTPUT == get_mail.INITIAL_TEXT) { REGISTER_STATE = false; not_registe = get_mail.INITIAL_TEXT; g++; }
 	if (last_name.TEXT_OUTPUT == last_name.INITIAL_TEXT) { REGISTER_STATE = false; not_registe = last_name.INITIAL_TEXT; g++; }
 	if (full_name.TEXT_OUTPUT == full_name.INITIAL_TEXT) { REGISTER_STATE = false; not_registe = full_name.INITIAL_TEXT; g++; }
-	if (not_registe != "NULL")
+	if (not_registe != undefined)
 		REGISTER.TEXT = "' " + not_registe + " ' was not filled in";
 	
 	if (g == 6) REGISTER.TEXT = "";
@@ -91,8 +91,8 @@ if (REGISTER != "NULL") {
 		REGISTER.visible = true;
 }
 
-if (global.USER[6][0] != "NULL" && global.USER[7] >= 0) {
+if (global.USER[6][0] != undefined && global.USER[7] >= 0) {
 	var next = GetText("EDIT_FINISH");
-	if (next != "NULL") { next.image_alpha = 1; LOCK_STATE = true; }
+	if (next != undefined) { next.image_alpha = 1; LOCK_STATE = true; }
 }
 

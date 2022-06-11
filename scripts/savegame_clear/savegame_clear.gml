@@ -4,8 +4,5 @@ function savegame_clear(PATH) {
 	if (file_exists(path)) {
 		file_delete(path);
 	}
-
-
-
 }
 

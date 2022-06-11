@@ -2,9 +2,9 @@
 
 
 // CREATE VARIABLES
-TYPE = "NULL";
-OPTION = ["NULL"];
-TAG = "NULL";
+TYPE = undefined;
+OPTION = [undefined];
+TAG = undefined;
 image_alpha = 0;
 DESTROY = DestroyObject;
 
@@ -21,15 +21,15 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;
 
 //
 SIZE_X = 0;
 SIZE_Y = 0;
-COLOR = "NULL";
+COLOR = undefined;
 Y_TARGET = 0;
-PARENT = "NULL";
+PARENT = undefined;
 CLOSE = false;
-COMPONENTS = "NULL";
+COMPONENTS = undefined;
 SLIDE = false;
 SLIDE_POWER = 0;

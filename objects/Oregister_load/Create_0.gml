@@ -3,7 +3,7 @@
 
 
 // CREATE TYPE
-TYPE = "NULL";
+TYPE = undefined;
 
 // CREATE TIMER
 TIME = 0;
@@ -19,4 +19,4 @@ FADE_ON_POWER = 0;
 
 // INFO
 INFO = false;
-INFO_NAME = "NULL";
+INFO_NAME = undefined;

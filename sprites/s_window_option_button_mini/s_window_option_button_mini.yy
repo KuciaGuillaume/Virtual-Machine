@@ -35,7 +35,7 @@
     "spriteId": {"name":"S_window_option_button_mini","path":"sprites/S_window_option_button_mini/S_window_option_button_mini.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 30.0,
+    "playbackSpeed": 0.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,

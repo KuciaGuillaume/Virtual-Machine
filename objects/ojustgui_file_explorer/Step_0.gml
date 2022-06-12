@@ -17,7 +17,8 @@ if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
 	for (var i = 0; FOLDER_LIST[i] != undefined; i++) {
 		DestroyText(FOLDER_LIST[i].TEXT_CONNECT.TAG);
 		DestroyText(FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
-		DestroyObject(FOLDER_LIST[i].OBJECT_LINKED);
+		DestroyObject(FOLDER_LIST[i].OBJECT_LINKED.TAG);
+		DestroyWrite(FOLDER_LIST[i].WRITE.TAG);
 		DestroyObject(FOLDER_LIST[i].TAG);
 	}
 	if (EXPLORER_RELOAD.REFRESH)
@@ -79,8 +80,10 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		}
 
 		// UPDATE LIST
-		for (var i = 0; FOLDER_LIST[i] != undefined; i++)
-			FOLDER_LIST[i].ON = false;
+		for (var i = 0; FOLDER_LIST[i] != undefined; i++) {
+			if (FOLDER_LIST[i].ON)
+				FOLDER_LIST[i].ON = false;
+		}
 		
 		// SLIDER UPDATE
 		if (EXPLORER_SLIDER != undefined && instance_exists(EXPLORER_SLIDER) && !MouseInside(EXPLORER_SLIDER.x, EXPLORER_SLIDER.x + EXPLORER_SLIDER.SIZE_X, EXPLORER_SLIDER.y, EXPLORER_SLIDER.y + EXPLORER_SLIDER.SIZE_Y) && EXPLORER_SLIDER.image_alpha >= 1) {

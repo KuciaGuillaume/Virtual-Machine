@@ -73,7 +73,7 @@ if (GET_FOLDER == undefined && string_count("FILE_EXPLORERS", TAG) > 0)
 if (GET_FOLDER != undefined) {
 
 	// FOLDER NAME
-	if (WRITE != undefined && instance_exists(WRITE) && WRITE.ON_WRITE) {
+	if (WRITE != undefined && WRITE.ON_WRITE) {
 		var i = get_index_list_explorer(TEXT_CONNECT.TEXT, PARENT.FOLDER_LIST);
 		TEXT_CONNECT.TEXT = WRITE.TEXT_OUTPUT;
 		PARENT.FOLDER_LIST[i].NAME = TEXT_CONNECT.TEXT;
@@ -84,7 +84,7 @@ if (GET_FOLDER != undefined) {
 		TEXT_CONNECT.COLOR = c_white;
 		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - 5, TEXT_CONNECT.y - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 5, PARENT.WINDOW.LAYERS[1], TAG + "RENAME_ON_DESK", [undefined]);
 		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x);
-	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT) && TEXT_CONNECT.COLOR == c_white) {
+	} else if (TEXT_CONNECT != undefined && TEXT_CONNECT.COLOR == c_white) {
 		if (TEXT_CONNECT.TEXT == "") {
 			var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
 			TEXT_CONNECT.TEXT = MASTER_NAME;

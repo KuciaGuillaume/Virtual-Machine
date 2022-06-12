@@ -9,6 +9,7 @@ global.last_layer_id = 5000;
 
 CLASS = [undefined, undefined, room];
 global.OBJECTS = [undefined];
+global.BUTTONS = [undefined];
 
 // CREATE GLOBAL WRITE
 
@@ -37,16 +38,16 @@ global.WINDOWS_PIN = [undefined];
 
 // CREATE USERS VARAIBLES
 
-STATE = undefined;
-FIRST_NAME = undefined;
-LAST_NAME = undefined;
-EMAIL = undefined;
-AGE = undefined;
-PASSWORD = undefined;
-ICON = [undefined, -1];
+STATE = "NULL";
+FIRST_NAME = "NULL";
+LAST_NAME = "NULL";
+EMAIL = "NULL";
+AGE = "NULL";
+PASSWORD = "NULL";
+ICON = ["NULL", -1];
 BACKGROUND = -1;
-HELPING_PASSWORD = undefined;
-LIKE_LIST = [undefined];
+HELPING_PASSWORD = "NULL";
+LIKE_LIST = ["NULL"];
 
 global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGROUND, HELPING_PASSWORD, LIKE_LIST];
 

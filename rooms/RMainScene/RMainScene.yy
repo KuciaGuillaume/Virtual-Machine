@@ -45,16 +45,13 @@
         {"instances":[
             {"properties":[],"isDnd":false,"objectId":{"name":"ON_MAIN_SCENE","path":"objects/ON_MAIN_SCENE/ON_MAIN_SCENE.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-672.0,"y":192.0,"resourceVersion":"1.0","name":"inst_E2E1F91","tags":[],"resourceType":"GMRInstance",},
           ],"visible":true,"depth":16001100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Ap1","tags":[],"resourceType":"GMRInstanceLayer",},
-        {"instances":[
-            {"properties":[],"isDnd":false,"objectId":{"name":"Oadmin_panel","path":"objects/Oadmin_panel/Oadmin_panel.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-416.0,"y":544.0,"resourceVersion":"1.0","name":"inst_400AFF42","tags":[],"resourceType":"GMRInstance",},
-          ],"visible":true,"depth":16001200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Ap0","tags":[],"resourceType":"GMRInstanceLayer",},
+        {"instances":[],"visible":true,"depth":16001200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Ap0","tags":[],"resourceType":"GMRInstanceLayer",},
       ],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"F_ADMIN","tags":[],"resourceType":"GMRLayer",},
   ],
   "inheritLayers": false,
   "creationCodeFile": "${project_dir}/rooms/RMainScene/RoomCreationCode.gml",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_400AFF42","path":"rooms/RMainScene/RMainScene.yy",},
     {"name":"inst_E2E1F91","path":"rooms/RMainScene/RMainScene.yy",},
   ],
   "inheritCreationOrder": false,

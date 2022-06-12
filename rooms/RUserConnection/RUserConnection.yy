@@ -33,9 +33,7 @@
             {"properties":[],"isDnd":false,"objectId":{"name":"ON_USER_UPDATE","path":"objects/ON_USER_UPDATE/ON_USER_UPDATE.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-480.0,"y":192.0,"resourceVersion":"1.0","name":"inst_12E49BA5","tags":[],"resourceType":"GMRInstance",},
             {"properties":[],"isDnd":false,"objectId":{"name":"ON_USER_INPUT","path":"objects/ON_USER_INPUT/ON_USER_INPUT.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-384.0,"y":192.0,"resourceVersion":"1.0","name":"inst_3E4A7E95","tags":[],"resourceType":"GMRInstance",},
           ],"visible":true,"depth":1300,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Ap2","tags":[],"resourceType":"GMRInstanceLayer",},
-        {"instances":[
-            {"properties":[],"isDnd":false,"objectId":{"name":"Oadmin_panel","path":"objects/Oadmin_panel/Oadmin_panel.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-350.0,"y":540.0,"resourceVersion":"1.0","name":"inst_7633056A","tags":[],"resourceType":"GMRInstance",},
-          ],"visible":true,"depth":1400,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Ap1","tags":[],"resourceType":"GMRInstanceLayer",},
+        {"instances":[],"visible":true,"depth":1400,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Ap1","tags":[],"resourceType":"GMRInstanceLayer",},
       ],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"F_ADMIN","tags":[],"resourceType":"GMRLayer",},
     {"spriteId":null,"colour":4278190080,"x":0,"y":0,"htiled":false,"vtiled":false,"hspeed":0.0,"vspeed":0.0,"stretch":false,"animationFPS":15.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":true,"depth":1500,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Background","tags":[],"resourceType":"GMRBackgroundLayer",},
   ],
@@ -43,7 +41,6 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_7633056A","path":"rooms/RUserConnection/RUserConnection.yy",},
     {"name":"inst_51541A8B","path":"rooms/RUserConnection/RUserConnection.yy",},
     {"name":"inst_12E49BA5","path":"rooms/RUserConnection/RUserConnection.yy",},
     {"name":"inst_3E4A7E95","path":"rooms/RUserConnection/RUserConnection.yy",},

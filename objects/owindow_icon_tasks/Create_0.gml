@@ -34,6 +34,9 @@ OPT_CLOSING = false;
 WINDOWS_BUTTONS = [undefined];
 COMPONENTS = undefined;
 PIN = false;
+visio = undefined;
+right_option = undefined;
+info = undefined;
 
 CREATE_WINDOW_IMAGE = undefined;
 CREATE_WINDOW_TAG = undefined;

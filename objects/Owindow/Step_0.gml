@@ -90,7 +90,8 @@ if (image_alpha <= 0 && FADE_END && CLOSING) {
 	CLASS[1] -= 1;
 	if (CLASS[1] <= 0) {
 		if (!ICON.PIN) {
-			if (GetObject(ICON.TAG + "VISIO") != undefined)
+			visio = GetObject(ICON.TAG + "VISIO");
+			if (visio != undefined)
 				DestroyObject(visio.TAG);
 			remove_findlist(ICON.id, ON_MAIN_SCENE.ICONS);
 			DestroyObject(ICON.TAG);

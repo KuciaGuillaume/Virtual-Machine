@@ -55,6 +55,7 @@ if (PARENT != undefined) {
 						if (instance_exists(COMPONENTS[i]))
 							DestroyButtonBox(COMPONENTS[i].TAG);
 				}
+				PARENT.visio = undefined;
 				DestroyObject(TAG);
 			}
 		}

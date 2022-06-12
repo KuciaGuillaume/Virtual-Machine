@@ -14,8 +14,8 @@ y = mouse_y;
 
 if (room == RMainScene)
 	ON_MAIN_SCENE.ON_GUI = false;
-for (var i = 0; global.OBJECTS[i] != undefined; i++) {
-	var class = global.OBJECTS[i];
+for (var i = 0; global.BUTTONS[i] != undefined; i++) {
+	var class = global.BUTTONS[i];
 	
 	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
 		continue;

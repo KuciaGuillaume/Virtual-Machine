@@ -45,10 +45,8 @@ var diff = ON_MAIN_SCENE.ICONS[i + 1].x - x;
 if (ON_TASK != undefined)
 	ON_TASK.x = x;
 
-var visio = GetObject(TAG + "VISIO");
-var right_option = GetObject(TAG + "RIGHT_OPT");
 if (MouseInsideObject(id) && right_option == undefined) {
-	if (GetObject(TAG + "VISIO") == undefined && windows_n > 0 && VISIO_TIME >= 0.5) {
+	if (visio == undefined && windows_n > 0 && VISIO_TIME >= 0.5) {
 		var Y = y - 30;
 		var all_button_box = [undefined];
 		var f = 0;
@@ -82,7 +80,6 @@ if (MouseInsideObject(id) && right_option == undefined) {
 } else if (visio != undefined && MouseInside(visio.x, visio.x + visio.SIZE_X, visio.y, visio.y + visio.SIZE_Y))
 	VISIO_TIME = 0.5;
 
-var info = GetObject(INFO_NAME);
 if (right_option != undefined) {
 	if (right_option.y > right_option.Y_TARGET && !OPT_CLOSING) {
 		if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == undefined) {
@@ -127,6 +124,7 @@ if (right_option != undefined) {
 				DestroyButtonBox(WINDOWS_BUTTONS[i].TAG);
 			WINDOWS_BUTTONS = [undefined];
 			DestroyObject(right_option.TAG);
+			right_option = undefined;
 			OPT_CLOSING = false;
 			NBAR = 0;
 			if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == undefined) {
@@ -136,15 +134,16 @@ if (right_option != undefined) {
 					DestroyObject(ON_TASK.TAG);
 			}
 		}
-	} else if (info != undefined)
-		DestroyRound(INFO_NAME);
+	}
 }
 
 if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_count("_TASK_ICON", TAG) >= 1) {
 	setforfolders(ON_MAIN_SCENE.FOLDERS, false);
 	ON_MAIN_SCENE.ON_DESK = false;
-	if (right_option != undefined)
-		DestroyObject(TAG + "RIGHT_OPT");
+	if (right_option != undefined) {
+		DestroyObject(right_option.TAG);
+		right_option = undefined;
+	}
 	
 	// CREATE ADD RECREATE BUTTON
 	var Y = y - 30;

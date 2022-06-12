@@ -63,15 +63,15 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 	if (!CREATE) {
 		
 		// ON CREATE
-		addtolist(AddText(x, y, "Je suis une phrase de test", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_TEXT", [undefined]), WINDOW.list_objects);
-		addtolist(CreateWrite(TAG + "TERMINAL_WRITE", 100, WINDOW.LAYERS[0], ""), WINDOW.list_objects);
+		WINDOW.list_objects = addtolist(AddText(x, y, "Je suis une phrase de test", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_TEXT", [undefined]), WINDOW.list_objects);
+		WINDOW.list_objects = addtolist(CreateWrite(TAG + "TERMINAL_WRITE", 100, WINDOW.LAYERS[0], ""), WINDOW.list_objects);
 		write_text = GetWrite(TAG + "TERMINAL_WRITE");
 		write_text.BAR.x = x;
-		addtolist(AddText(x, y, "[ " + global.USER[1] + "/" + PWD[0][0][0] + " ]", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_PWD", [undefined]), WINDOW.list_objects);
-		addtolist(AddText(x, y, "", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_WRITE", [undefined]), WINDOW.list_objects);
-		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Help", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HELP", [["CENTERED"], undefined]), WINDOW.list_objects);
-		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "History", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HISTORY", [["CENTERED"], undefined]), WINDOW.list_objects);
-		addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Clear", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_CLEAR", [["CENTERED"], undefined]), WINDOW.list_objects);
+		WINDOW.list_objects = addtolist(AddText(x, y, "[ " + global.USER[1] + "/" + PWD[0][0][0] + " ]", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_PWD", [undefined]), WINDOW.list_objects);
+		WINDOW.list_objects = addtolist(AddText(x, y, "", Arial10, c_white, WINDOW.LAYERS[0], TAG + "TERMINAL_SYSTEM_WRITE", [undefined]), WINDOW.list_objects);
+		WINDOW.list_objects = addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Help", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HELP", [["CENTERED"], undefined]), WINDOW.list_objects);
+		WINDOW.list_objects = addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "History", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_HISTORY", [["CENTERED"], undefined]), WINDOW.list_objects);
+		WINDOW.list_objects = addtolist(CreateButtonBox(x, y, S_terminal_button, Obox, "Clear", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_white, TAG + "TERMINAL_CLEAR", [["CENTERED"], undefined]), WINDOW.list_objects);
 		system_write = GetText(TAG + "TERMINAL_SYSTEM_WRITE");
 		system_write.PARENT = id;
 		CREATE = true;

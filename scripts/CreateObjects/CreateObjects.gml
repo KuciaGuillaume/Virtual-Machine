@@ -10,10 +10,10 @@ function CreateObjects(x, y, Layer, object, type, tag, option){
 	Is_object.TYPE = type;
 	Is_object.TAG = tag;
 	Is_object.OPTION = option;
-	CLASS = [Is_object, type, room, tag, undefined];
-	for (; global.OBJECTS[i] != undefined;) i++;
-	global.OBJECTS[i] = CLASS;
-	global.OBJECTS[i + 1] = undefined;
+	var CLASS = [Is_object, type, room, tag, undefined];
+	global.OBJECTS = addtolist(CLASS, global.OBJECTS);
+	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND")
+		global.BUTTONS = addtolist(CLASS, global.BUTTONS);
 	return Is_object;
 }
 
@@ -42,9 +42,9 @@ function CreateObjectSprite(x, y, Layer, sprite, object, type, tag, option){
 	Isobject.TAG = tag;
 	Isobject.OPTION = option;
 	var CLASS = [Isobject, type, room, tag, undefined];
-	for (; global.OBJECTS[i] != undefined;) { i++; }
-	global.OBJECTS[i] = CLASS;
-	global.OBJECTS[i + 1] = undefined;
+	global.OBJECTS = addtolist(CLASS, global.OBJECTS);
+	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND")
+		global.BUTTONS = addtolist(CLASS, global.BUTTONS);
 	return Isobject;
 }
 
@@ -53,9 +53,19 @@ function DestroyObject(TAG) {
 	for (; global.OBJECTS[i] != undefined && global.OBJECTS[i][3] != TAG;) { i++ };
 	if (global.OBJECTS[i] == undefined || global.OBJECTS[i][2] != room)
 		return;
+	type = global.OBJECTS[i][1];
+	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND") {
+		var e = 0;
+		for (; global.BUTTONS[e] != undefined && global.BUTTONS[e][3] != TAG;) { e++ };
+			if (global.BUTTONS[e] == undefined || global.BUTTONS[e][2] != room)
+				return;
+		for (; global.BUTTONS[e] != undefined; e++)
+			global.BUTTONS[e] = global.BUTTONS[e + 1];
+	}
 	instance_destroy(global.OBJECTS[i][0]);
 	for (; global.OBJECTS[i] != undefined; i++)
 		global.OBJECTS[i] = global.OBJECTS[i + 1];
+	
 }
 
 

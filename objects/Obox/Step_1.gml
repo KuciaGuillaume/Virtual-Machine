@@ -10,4 +10,5 @@ for (var i = 0; OPTION[i] != undefined; i++) {
 		FADE_SATE = true; image_alpha = 0;	
 	}
 	if (OPTION[i][0] == "INFO") {INFO = true; INFO_NAME = OPTION[i][1]; }
+	if (OPTION[i][0] == "SLIDE") {SLIDE = true; SLIDE_POWER = OPTION[i][1]; }
 }

@@ -14,10 +14,13 @@ function check_all_off() {
 				all_off = false;
 		if (ON_MAIN_SCENE.TASKS[i][3][0] != undefined && ON_MAIN_SCENE.TASKS[i][3][0].ICON != undefined) {
 			var visio = GetObject(ON_MAIN_SCENE.TASKS[i][3][0].ICON.TAG + "VISIO");
-			if (visio == undefined)
-				continue;
-			for (var d = 0; visio.COMPONENTS[d] != undefined; d++)
-				if (visio.COMPONENTS[d] != undefined && instance_exists(visio.COMPONENTS[d]) && MouseInsideObject(visio.COMPONENTS[d]))
+			if (visio != undefined)
+				for (var d = 0; visio.COMPONENTS[d] != undefined; d++)
+					if (visio.COMPONENTS[d] != undefined && instance_exists(visio.COMPONENTS[d]) && MouseInsideObject(visio.COMPONENTS[d]))
+						all_off = false;
+			var right_opt = GetObject(ON_MAIN_SCENE.TASKS[i][3][0].ICON.TAG + "RIGHT_OPT");
+			if (right_opt != undefined)
+				if (instance_exists(right_opt) && MouseInside(right_opt.x, right_opt.x + right_opt.SIZE_X, right_opt.y, right_opt.y + right_opt.SIZE_Y))
 					all_off = false;
 		}
 	}

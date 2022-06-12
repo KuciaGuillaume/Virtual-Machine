@@ -13,7 +13,7 @@ function showmywindow(ID, SELF, DEPTH, MAIN_LAYER_ID) {
 		}
 	}
 	for (; DEPTH > min_depth;) {
-		for (var la = 0; global.layer_depth[la] != undefined && DEPTH > min_depth; la++) {
+		for (var la = 0; global.layer_depth[la] != undefined && DEPTH != min_depth; la++) {
 			if (global.layer_depth[la][2] == ID || global.layer_depth[la][2] == SELF)
 				continue;
 			for (var f = 0; global.layer_depth[MAIN_LAYER_ID][1][f] != undefined; f++) {
@@ -24,7 +24,9 @@ function showmywindow(ID, SELF, DEPTH, MAIN_LAYER_ID) {
 				var get = layer_get_id(global.layer_depth[la][1][f]);
 				//var me = layer_get_id(global.layer_depth[MAIN_LAYER_ID][1][0]);
 				///if (layer_get_depth(get) <= layer_get_depth(me))
-					layer_depth(get, layer_get_depth(get) + 7);
+				if (layer_get_depth(get) != layer_get_depth(layer_get_id(global.layer_depth[MAIN_LAYER_ID][1][f])))
+					break;
+				layer_depth(get, layer_get_depth(get) + 7);
 			}
 		}
 		DEPTH = id.depth;

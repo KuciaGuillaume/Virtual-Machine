@@ -51,7 +51,6 @@ function AddFileEplorerFloder(NAME, LIST, PARENT, CreationDate) {
 	LAYER2 = PARENT.WINDOW.LAYERS[1];
 	var type_name = "file folder";
 	var path = LIST;
-	show_debug_message(path);
 	for (var i = 0; path[i] != undefined && !instance_exists(path[i]);) { i++; }
 	for (; path[i] != undefined; i++)
 		Y += 24;
@@ -110,6 +109,18 @@ function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 		if (check && PWD[i][0][0][0] != "..") {
 			LIST = AddFileEplorerFloder(PWD[i][0][0][0], LIST, PARENT, PWD[i][0][0][3]);
 			PARENT.N_ELEMENTS += 1;
+		}
+	}
+	
+	var previous = undefined;
+	for (var i = 0; LIST[i] != undefined; i++) {
+		var obj = LIST[i];
+		if (i == 0)
+			previous = obj.y;
+		else {
+			var Y = previous + 24;
+			obj.PARENT_DIFF_Y = (PARENT.y - Y) * (-1);
+			previous = Y;
 		}
 	}
 	return LIST;

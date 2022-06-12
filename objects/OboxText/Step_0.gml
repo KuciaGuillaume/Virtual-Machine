@@ -256,6 +256,12 @@ if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 	PARENT.PARENT.FOLDER_LIST[NUM_LINKED].WRITE.ON_WRITE = true;
 	PARENT.PARENT.FOLDER_LIST[NUM_LINKED].WRITE.BAR.x = PARENT.PARENT.FOLDER_LIST[NUM_LINKED].TEXT_CONNECT.x;
 	PARENT.PARENT.EXPLORER_SLIDER = undefined;
+	var refresh = PARENT.PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))	
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", PARENT.PARENT.EXPLORER_RELOAD.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox(PARENT.PARENT.TAG + "DELETE_EXPLORERS_FOLDERS");
 	DestroyButtonBox(PARENT.PARENT.TAG + "RENAME_EXPLORERS_FOLDERS");
@@ -296,6 +302,12 @@ if (string_count("NEW_EXPLORERS_FOLDERS", TAG) > 0) {
 	PARENT.PARENT.FOLDER_LIST[e].WRITE.ON_WRITE = true;
 	PARENT.PARENT.FOLDER_LIST[e].WRITE.BAR.x = PARENT.PARENT.FOLDER_LIST[e].TEXT_CONNECT.x;
 	PARENT.PARENT.EXPLORER_SLIDER = undefined;
+	var refresh = PARENT.PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))	
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", PARENT.PARENT.EXPLORER_RELOAD.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox(PARENT.PARENT.TAG + "NEW_EXPLORERS_FOLDERS");
 }
@@ -314,6 +326,12 @@ if (string_count("DELETE_EXPLORERS_FOLDERS", TAG) > 0) {
 	terminal_rm(["rm", PARENT.PARENT.FOLDER_LIST[NUM_LINKED].TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined);
 	PARENT.PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PARENT.PWD, PARENT.PARENT.PWD_PATH, PARENT.PARENT.FOLDER_LIST, PARENT.PARENT.id);
 	PARENT.PARENT.EXPLORER_SLIDER = undefined;
+	var refresh = PARENT.PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))	
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", PARENT.PARENT.EXPLORER_RELOAD.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox(PARENT.PARENT.TAG + "RENAME_EXPLORERS_FOLDERS");
 	DestroyButtonBox(PARENT.PARENT.TAG + "DELETE_EXPLORERS_FOLDERS");

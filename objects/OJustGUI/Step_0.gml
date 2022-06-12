@@ -11,6 +11,11 @@ if (FADE_IN && image_alpha < 1)
 else
 	FADE_IN = false;
 
+if (IMAGE_WIDTH < 0) {
+	IMAGE_WIDTH = sprite_width;
+	IMAGE_HEIGHT = sprite_height;
+}
+
 // GUI SELECT
 if (TAG == "GUI_SELECT_BACKGROUNDS") {
 

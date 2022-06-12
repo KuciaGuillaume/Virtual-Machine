@@ -7,10 +7,21 @@ if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; }
 
 // FADE_IN
 
-if (FADE_IN && image_alpha < 1)
+if (FADE_IN && image_alpha < 1 && ON)
 	image_alpha += FADE_POWER * delta_time;
 else
 	FADE_IN = false;
+
+if (IMAGE_WIDTH < 0) {
+	IMAGE_WIDTH = sprite_width;
+	IMAGE_HEIGHT = sprite_height;
+}
+
+if (SLIDE && image_alpha < 1 && ON) {
+	y -= SLIDE_POWER * delta_time;
+	if (TEXT_CONNECT != undefined)
+		TEXT_CONNECT.y -= SLIDE_POWER * delta_time;
+}
 
 // ICON BUTTON
 if (OBJECT_LINKED != undefined) {
@@ -39,6 +50,8 @@ if (GET_PIN == TAG) {
 if (GET_EXPLORER == undefined && string_count("FILE_EXPLORERS", TAG) > 0)
 	GET_EXPLORER = TAG;
 if (GET_EXPLORER != undefined) {
+	SET_DISPLAY = true;
+	OBJECT_LINKED.SET_DISPLAY = true;
 	if (PARENT != undefined) {
 	    x = PARENT.x + PARENT_DIFF_X;
 		y = PARENT.y + PARENT_DIFF_Y;
@@ -254,20 +267,60 @@ if (string_count("EXPLORER_RELOAD", TAG) > 0 && visible = true) {
 	REFRESH_TIME = 0;
 }
 
-if (string_count("FILE_EXPLORERS", TAG) > 0 && EXPLORER_SELECT) {
+if (EXPLORER_SELECT && string_count("FILE_EXPLORERS", TAG) > 0) {
 	var get = GetObject(INFO_NAME + TAG);
 	if (get != undefined) DestroyRound(get.TAG);
 	PARENT.PWD_PATH = PARENT.PWD_PATH + "/" + NAME;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PWD_PATH);
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+	var refresh = PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", refresh.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
 }
 
-if (string_count("GO_ROOT", TAG) > 0) {
+if (string_count("GO_ROOT", TAG) > 0 || string_count("PATH_THIS_COMPUTER", TAG) > 0) {
 	if (PARENT.PWD_PATH == "/~")
 		return;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~");
 	PARENT.PWD_PATH = "/~";
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+	var refresh = PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", refresh.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
+}
+
+if (string_count("PATH_DESK", TAG) > 0) {
+	if (PARENT.PWD_PATH == "/~/Desk")
+		return;
+	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Desk");
+	PARENT.PWD_PATH = "/~/Desk";
+	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+	var refresh = PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", refresh.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
+}
+
+if (string_count("PATH_DOWNLOADS", TAG) > 0) {
+	if (PARENT.PWD_PATH == "/~/Downloads")
+		return;
+	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Downloads");
+	PARENT.PWD_PATH = "/~/Downloads";
+	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+	var refresh = PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", refresh.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
 }
 
 if (string_count("GO_BACK", TAG) > 0) {
@@ -284,4 +337,45 @@ if (string_count("GO_BACK", TAG) > 0) {
 	PARENT.PWD_PATH = path;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PWD_PATH);
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+	var refresh = PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", refresh.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
+}
+
+if (string_count("LEFT_NEW_FOLDER_EXPLORERS", TAG) > 0) {
+	var PWD = PARENT.PWD;
+	var ID = 0;
+	for (var i = 1; PWD[i] != undefined; i++) {
+		if (is_array(PWD[i]) && string_count("Newfolder", PWD[i][0][0][0]) > 0)
+			ID += 1;
+	}
+	if (ID <= 0)
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined);
+	else
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined);
+	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+	for (var e = 0; PARENT.FOLDER_LIST[e] != undefined; ) { e++; }
+	e -= 1;
+	PARENT.FOLDER_LIST[e].WRITE.ON_WRITE = true;
+	PARENT.FOLDER_LIST[e].WRITE.BAR.x = PARENT.FOLDER_LIST[e].TEXT_CONNECT.x;
+	var refresh = PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))	
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", refresh.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
+	var rect = false;
+	if (PARENT.FOLDER_LIST[e].y > PARENT.bbox_bottom - 70)
+		rect = true;
+	for (; PARENT.FOLDER_LIST[e].y > PARENT.bbox_bottom - 70;) {
+		for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+			PARENT.FOLDER_LIST[i].PARENT_DIFF_Y -= 24;
+			PARENT.FOLDER_LIST[i].y -= 24;
+		}
+	}
+	if (rect)
+		rectsape_folder(PARENT.id, undefined);
 }

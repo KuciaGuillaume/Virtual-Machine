@@ -21,6 +21,8 @@ FADE_SATE = false;
 FADE_POWER = 0;
 FIRST_PASS = false;
 image_alpha = 0;
+SLIDE = false;
+SLIDE_POWER = 0;
 
 //FADE ON
 FADE_ON = false;
@@ -36,6 +38,7 @@ OTHER_PARENT = undefined;
 VISIO_TAG = undefined;
 ON = true;
 GET_PIN = undefined;
+SET_DISPLAY = false;
 
 // EXPLORER
 GET_EXPLORER = undefined;
@@ -43,6 +46,11 @@ PARENT_DIFF_X = 0;
 PARENT_DIFF_Y = 0;
 PARENT = undefined;
 DOCK_TYPE_TEXT = undefined;
+GET_FOLDERS_EXPLORER = false;
+IMAGE_TOP = 0;
+IMAGE_LEFT = 0;
+IMAGE_WIDTH = -1;
+IMAGE_HEIGHT = -1;
 
 // EXPLORER REFRESH
 REFRESH = false;

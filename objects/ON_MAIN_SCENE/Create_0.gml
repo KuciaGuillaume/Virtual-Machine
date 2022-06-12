@@ -40,11 +40,11 @@ ON_DESK = true;
 
 if (PATH == undefined || PATH == undefined) {
 	PATH = [[["~", "ROOT"]], undefined];
-	var get = terminal_mkdir(["mkdir", "Desk", "Documents", undefined], undefined, PATH, undefined, "/~"); PATH = get[0];
+	var get = terminal_mkdir(["mkdir", "Desk", "Documents", "Downloads", undefined], undefined, PATH, undefined, "/~"); PATH = get[0];
 }
 
 CURSOR = CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", [undefined]);
-CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["INDEX_IMAGE", global.USER[7]], ["FADE_IN", 0.00001], undefined]);
+CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["INDEX_IMAGE", 0], ["FADE_IN", 0.00001], undefined]);
 TASKBAR = CreateObjectSprite(960, 1040, "TaskBar_Gp0", S_taskbar, OJustGUI, "IMAGE", "MAIN_TASKBAR", [["FADE_IN", 0.00001], undefined]);
 
 // PIN

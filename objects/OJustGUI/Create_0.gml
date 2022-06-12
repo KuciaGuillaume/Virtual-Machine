@@ -16,6 +16,11 @@ FIRST_PASS = false;
 TEXT_CONNECT = undefined;
 ON = true;
 WRITE = undefined;
+SET_DISPLAY = false;
+IMAGE_TOP = 0;
+IMAGE_LEFT = 0;
+IMAGE_WIDTH = -1;
+IMAGE_HEIGHT = -1;
 
 // BACKGROUNDS
 TARGET_INDEX = 0;

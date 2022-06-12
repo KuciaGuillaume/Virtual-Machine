@@ -29,7 +29,13 @@ if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
 	DestroyObject(GO_ROOT.TAG);
 	DestroyObject(GO_BACK.TAG);
 	DestroyObject(EXPLORER_RELOAD.TAG);
+	DestroyButtonBox(LEFT_NEW_SLIDER.TAG);
+	DestroyButtonBox(PATH_COMPUTER.TAG);
+	DestroyButtonBox(PATH_DESK.TAG);
+	DestroyButtonBox(PATH_DOWNLOAD.TAG);
 	DestroyTextButton(SEARCH.TAG);
+	if (RETURNED_TO_TOP != undefined)
+		DestroyButtonBox(RETURNED_TO_TOP.TAG);
 	DestroyText(PATH.TAG);
 	DestroyObject(TAG);
 }
@@ -77,6 +83,48 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			GO_BACK.image_alpha = image_alpha; GO_BACK.x = x - 75; GO_BACK.y = y + 46;
 			if (WINDOW.ON == false && GO_BACK.ON != false) GO_BACK.ON = false;
 			else if (WINDOW.ON == true && GO_BACK.ON != true) GO_BACK.ON = true;
+		}
+
+		// UPDATE LEFT_NEW_FOLDER
+		if (LEFT_NEW_SLIDER != undefined) {
+			LEFT_NEW_SLIDER.image_alpha = image_alpha; LEFT_NEW_SLIDER.x = bbox_left + 140; LEFT_NEW_SLIDER.y = bbox_bottom - 48;
+			LEFT_NEW_SLIDER.TEXT_CONNECT.x = bbox_left + 140; LEFT_NEW_SLIDER.TEXT_CONNECT.y = bbox_bottom - 48;
+			if (WINDOW.ON == false && LEFT_NEW_SLIDER.ON != false) LEFT_NEW_SLIDER.ON = false;
+			else if (WINDOW.ON == true && LEFT_NEW_SLIDER.ON != true) LEFT_NEW_SLIDER.ON = true;
+		}
+
+		// UPDATE PATHS
+		if (PATH_COMPUTER != undefined) {
+			PATH_COMPUTER.image_alpha = image_alpha; PATH_COMPUTER.x = bbox_left + 140; PATH_COMPUTER.y = bbox_top + 95;
+			PATH_COMPUTER.TEXT_CONNECT.x = PATH_COMPUTER.x - 60; PATH_COMPUTER.TEXT_CONNECT.y = PATH_COMPUTER.y - 7;
+			if (WINDOW.ON == false && PATH_COMPUTER.ON != false) PATH_COMPUTER.ON = false;
+			else if (WINDOW.ON == true && PATH_COMPUTER.ON != true) PATH_COMPUTER.ON = true;
+		}
+
+		if (PATH_DESK != undefined) {
+			PATH_DESK.image_alpha = image_alpha; PATH_DESK.x = bbox_left + 140; PATH_DESK.y = bbox_top + 125;
+			PATH_DESK.TEXT_CONNECT.x = PATH_DESK.x - 60; PATH_DESK.TEXT_CONNECT.y = PATH_DESK.y - 7;
+			if (WINDOW.ON == false && PATH_DESK.ON != false) PATH_DESK.ON = false;
+			else if (WINDOW.ON == true && PATH_DESK.ON != true) PATH_DESK.ON = true;
+		}
+	
+		if (PATH_DOWNLOAD != undefined) {
+			PATH_DOWNLOAD.image_alpha = image_alpha; PATH_DOWNLOAD.x = bbox_left + 140; PATH_DOWNLOAD.y = bbox_top + 155;
+			PATH_DOWNLOAD.TEXT_CONNECT.x = PATH_DOWNLOAD.x - 60; PATH_DOWNLOAD.TEXT_CONNECT.y = PATH_DOWNLOAD.y - 7;
+			if (WINDOW.ON == false && PATH_DOWNLOAD.ON != false) PATH_DOWNLOAD.ON = false;
+			else if (WINDOW.ON == true && PATH_DOWNLOAD.ON != true) PATH_DOWNLOAD.ON = true;
+		}
+		
+		// UPDATE RETURNED_TO_TOP
+		if (RETURNED_TO_TOP != undefined && RETURNED_TO_TOP.image_alpha >= 1)
+			SPAWN = true;
+		if (RETURNED_TO_TOP != undefined && SPAWN) {
+			RETURNED_TO_TOP.x = x + 110;RETURNED_TO_TOP.y = y + 90;
+			RETURNED_TO_TOP.TEXT_CONNECT.x = RETURNED_TO_TOP.x;
+			RETURNED_TO_TOP.TEXT_CONNECT.y = RETURNED_TO_TOP.y;
+			RETURNED_TO_TOP.image_alpha = image_alpha;
+			RETURNED_TO_TOP.TEXT_CONNECT.image_alpha = image_alpha;
+			RETURNED_TO_TOP.ON = WINDOW.ON;
 		}
 
 		// UPDATE LIST
@@ -134,16 +182,26 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		EXPLORER_RELOAD.PARENT = id;
 		
 		// CREATE ELEMENTS
-		ELEMENTS = AddText(bbox_left + 10, bbox_bottom - 10, string(N_ELEMENTS) + " Item(s)  | ", Arial10, c_black, WINDOW.LAYERS[0], TAG + "ELEMENTS", [undefined]);
+		ELEMENTS = AddText(bbox_left + 10, bbox_bottom - 10, string(N_ELEMENTS) + " Item(s)  | ", Arial10, c_black, WINDOW.LAYERS[0], TAG + "ELEMENTS", [undefined]); WINDOW.list_objects = addtolist(ELEMENTS, WINDOW.list_objects);
 		
 		// CREATE GO_ROOT
-		GO_ROOT = CreateObjectSprite(x - 130, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_root, Obox, "BUTTON", TAG + "GO_ROOT", [["INFO", "Back to root"], undefined]);
+		GO_ROOT = CreateObjectSprite(x - 130, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_root, Obox, "BUTTON", TAG + "GO_ROOT", [["INFO", "Back to root"], undefined]); WINDOW.list_objects = addtolist(GO_ROOT, WINDOW.list_objects);
 		GO_ROOT.PARENT = id;
 		
 		// CREATE GO BACK
-		GO_BACK = CreateObjectSprite(x - 110, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_back, Obox, "BUTTON", TAG + "GO_BACK", [["INFO", "Back to previous path"], undefined]);
+		GO_BACK = CreateObjectSprite(x - 110, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_back, Obox, "BUTTON", TAG + "GO_BACK", [["INFO", "Back to previous path"], undefined]); WINDOW.list_objects = addtolist(GO_BACK, WINDOW.list_objects);
 		GO_BACK.PARENT = id;
 	
+		// ADD NEW LEFT SLIDER
+		LEFT_NEW_SLIDER = CreateButtonBox(bbox_left + 80, bbox_bottom - 150, S_FIle_Explorer_new_folder_without_slider, Obox, "New folder", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "LEFT_NEW_FOLDER_EXPLORERS", [["CENTERED"], undefined]); WINDOW.list_objects = addtolist(LEFT_NEW_SLIDER, WINDOW.list_objects);
+		LEFT_NEW_SLIDER.PARENT = id;
+		
+		// ADD PATHS
+		PATH_COMPUTER = CreateButtonBox(bbox_left + 140, bbox_top + 100, S_Files_Explorer_path_computer, Obox, "This computer", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_THIS_COMPUTER", [undefined]);
+		PATH_DESK = CreateButtonBox(bbox_left + 140, bbox_top + 120, S_Files_Explorer_path_desk, Obox, "Desk", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_DESK", [undefined]);
+		PATH_DOWNLOAD = CreateButtonBox(bbox_left + 140, bbox_top + 140, S_Files_Explorer_path_download, Obox, "Downloads", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_DOWNLOADS", [undefined]);
+		WINDOW.list_objects = addtolist(PATH_COMPUTER, WINDOW.list_objects); WINDOW.list_objects = addtolist(PATH_DESK, WINDOW.list_objects); WINDOW.list_objects = addtolist(PATH_COMPUTER, WINDOW.list_objects);
+		PATH_COMPUTER.PARENT = id;PATH_DESK.PARENT = id;PATH_DOWNLOAD.PARENT = id;
 		CREATE = true;
 	} else if (CREATE && (WINDOW.ON || WINDOW.REDUCING || !WINDOW.FADE_MOVEMENT)) {
 		
@@ -151,6 +209,58 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		if (KeyPressed(vk_tab) && !SEARCH.write.ON_WRITE)
 			SEARCH.write.ON_WRITE = true;
 		
+		// UpDATE NEW FOLDER
+		if (MouseInsideObject(LEFT_NEW_SLIDER))
+			LEFT_NEW_SLIDER.TEXT_CONNECT.COLOR = c_white;
+		else if (LEFT_NEW_SLIDER.TEXT_CONNECT.COLOR == c_white)
+			LEFT_NEW_SLIDER.TEXT_CONNECT.COLOR = c_black;
+		
+		// UPDATE PATH
+		if (MouseInsideObject(PATH_COMPUTER))
+			PATH_COMPUTER.TEXT_CONNECT.COLOR = c_white;
+		else if (PATH_COMPUTER.TEXT_CONNECT.COLOR == c_white)
+			PATH_COMPUTER.TEXT_CONNECT.COLOR = c_black;
+
+		if (MouseInsideObject(PATH_DESK))
+			PATH_DESK.TEXT_CONNECT.COLOR = c_white;
+		else if (PATH_DESK.TEXT_CONNECT.COLOR == c_white)
+			PATH_DESK.TEXT_CONNECT.COLOR = c_black;
+
+		if (MouseInsideObject(PATH_DOWNLOAD))
+			PATH_DOWNLOAD.TEXT_CONNECT.COLOR = c_white;
+		else if (PATH_DOWNLOAD.TEXT_CONNECT.COLOR == c_white)
+			PATH_DOWNLOAD.TEXT_CONNECT.COLOR = c_black;
+			
+		// MOUSE WHELL
+		var DIR = undefined;
+		if (mouse_wheel_down() && FOLDER_LIST[N_ELEMENTS - 1].y > bbox_bottom - 70) {
+			if (RETURNED_TO_TOP != undefined) {
+				WINDOW.list_objects = remove_findlist(RETURNED_TO_TOP, WINDOW.list_objects);
+				DestroyButtonBox(RETURNED_TO_TOP.TAG);
+				RETURNED_TO_TOP = undefined;
+			}
+			DIR = 1;
+		}
+		if (mouse_wheel_up() && (FOLDER_LIST[0] != undefined && FOLDER_LIST[0].y < y + 95)) {
+			if (RETURNED_TO_TOP == undefined && !FOLDER_LIST[0].TEXT_CONNECT.visible) {
+				RETURNED_TO_TOP = CreateButtonBox(x + 110, y + 50, S_FIles_Explorer_ReturnedToTop, Obox, "Returned to top", WINDOW.LAYERS[3], WINDOW.LAYERS[4], Arial10, c_black, TAG + "RETURNED_TO_TOP", [["FADE_IN", 0.000005], ["SLIDE", -0.0002], ["CENTERED"], undefined]);
+				RETURNED_TO_TOP.PARENT = id;
+				SPAWN = false;
+				WINDOW.list_objects = addtolist(RETURNED_TO_TOP, WINDOW.list_objects);
+			} else if (RETURNED_TO_TOP != undefined && FOLDER_LIST[0].TEXT_CONNECT.visible) {
+				WINDOW.list_objects = remove_findlist(RETURNED_TO_TOP, WINDOW.list_objects);
+				DestroyButtonBox(RETURNED_TO_TOP.TAG);
+				RETURNED_TO_TOP = undefined;
+			}
+			DIR = 0;
+		} else if (mouse_wheel_up() && FOLDER_LIST[0] != undefined && RETURNED_TO_TOP != undefined && FOLDER_LIST[0].TEXT_CONNECT.visible) {
+			WINDOW.list_objects = remove_findlist(RETURNED_TO_TOP, WINDOW.list_objects);
+			DestroyButtonBox(RETURNED_TO_TOP.TAG);
+			RETURNED_TO_TOP = undefined;
+		}
+		
+		if ((DIR != undefined && MouseInside(x - 140, bbox_right - 40, y + 70, bbox_bottom - 40)) || N_ELEMENTS > 19)
+			rectsape_folder(id, DIR);
 		// RIGHT CLICK
 		if (mouse_check_button_pressed(mb_right) && MouseInside(x - 140, bbox_right - 40, y + 70, bbox_bottom - 40)) {
 			rightclick_explorer(id, FOLDER_LIST, WINDOW.LAYERS);
@@ -159,9 +269,25 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			SLIDER_STATE = false;
 		
 		// UPDATE LIST
+		var on_returned = false;
+		if (RETURNED_TO_TOP != undefined && MouseInsideObject(RETURNED_TO_TOP)) {
+			RETURNED_TO_TOP.TEXT_CONNECT.COLOR = c_white;
+			on_returned = true;
+		} else if (RETURNED_TO_TOP != undefined && RETURNED_TO_TOP.TEXT_CONNECT.COLOR == c_white)
+			RETURNED_TO_TOP.TEXT_CONNECT.COLOR = c_black;
+		
+		if (RETURNED_TO_TOP != undefined && mouse_check_button_pressed(mb_left) && on_returned) {
+			RETURNED_TO_TOP_ACTIVE = true;
+			DestroyButtonBox(RETURNED_TO_TOP.TAG);
+			RETURNED_TO_TOP = undefined;
+		}
+		if (FOLDER_LIST[0] != undefined && FOLDER_LIST[0].TEXT_CONNECT.visible)
+			RETURNED_TO_TOP_ACTIVE = false;
+		if (RETURNED_TO_TOP_ACTIVE)
+			rectsape_folder(id, "UP");
 		if (!ON) {
 			for (var i = 0; FOLDER_LIST[i] != undefined; i++)  {
-				if (!SLIDER_STATE)
+				if (!SLIDER_STATE && FOLDER_LIST[i].TEXT_CONNECT.visible && !on_returned)
 					FOLDER_LIST[i].ON = true;
 				else
 					FOLDER_LIST[i].ON = false;

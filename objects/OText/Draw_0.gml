@@ -10,9 +10,11 @@ if (COLOR != draw_get_color())
 	
 if (image_alpha != draw_get_alpha())
 	draw_set_alpha(image_alpha);
-	
-TEXT_WIDTH = string_width(TEXT);
-TEXT_HEIGHT = string_height(TEXT);
+
+if (TEXT != undefined) {
+	TEXT_WIDTH = string_width(TEXT);
+	TEXT_HEIGHT = string_height(TEXT);
+}
 
 if (CENTERED)
 	draw_text(x - (TEXT_WIDTH / 2), (y - (TEXT_HEIGHT / 2)) + 2, TEXT);

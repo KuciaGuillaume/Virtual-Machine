@@ -12,6 +12,7 @@ OPTION = [undefined];
 CENTERED = false;
 SECRET = false;
 write = undefined;
+PARENT = undefined;
 X = 0;
 Y = 0;
 DESTROY = DestroyTextButton;

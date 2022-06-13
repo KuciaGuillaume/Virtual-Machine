@@ -175,7 +175,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 			ID_RESULT.TEXT = ID_RESULT.TEXT + "|-> " + COMMAND + "\n";
 		for (var i = 1; mkdir[i] != undefined; i++) {
 			var exists_already = false;
-			for (var e = 0; PWD[e] != undefined; e++) {
+			for (var e = 1; PWD[e] != undefined; e++) {
 				if (PWD[e] != undefined && is_array(PWD[e]) && PWD[e][0][0] == mkdir[i]) {
 					if (ID_RESULT != undefined)
 						display_result(ID_RESULT, mkdir[i] + ": Folder already exists.");

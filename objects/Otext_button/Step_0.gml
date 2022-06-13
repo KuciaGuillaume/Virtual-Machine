@@ -31,8 +31,12 @@ UpdateBar(write.BAR, TEXT_SIZE, X);
 if (mouse_check_button_pressed(mb_left)) {
 	if (mouse_x >= bbox_left && mouse_x <= bbox_right && mouse_y >= bbox_top && mouse_y <= bbox_bottom)
 		write.ON_WRITE = true;
-	else
-		write.ON_WRITE = false;
+	else {
+		if (PARENT == undefined || PARENT.FIND_OPTION_FOLDER == undefined)
+			write.ON_WRITE = false;
+		else if (!MouseInsideObject(PARENT.FIND_OPTION_FOLDER) && !MouseInsideObject(PARENT.FIND_OPTION_ROOT))
+			write.ON_WRITE = false;
+	}
 }
 
 if (write.ON_WRITE)

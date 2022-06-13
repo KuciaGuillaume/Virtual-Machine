@@ -51,3 +51,7 @@ PATH_DOWNLOAD = undefined;
 RETURNED_TO_TOP = undefined;
 RETURNED_TO_TOP_ACTIVE = false;
 SPAWN = false;
+previous_enter = "";
+FIND_OPTION_FOLDER = undefined;
+FIND_OPTION_ROOT = undefined;
+FIND_OPION_MODE = "FOLDER";

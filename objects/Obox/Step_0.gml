@@ -385,6 +385,14 @@ if (string_count("GO_BACK", TAG) > 0) {
 	refresh.REFRESH_TIME = 0.5;
 }
 
+if (string_count("FIND_ROOT", TAG) > 0) {
+	PARENT.FIND_OPION_MODE = "ROOT";
+}
+
+if (string_count("FIND_FOLDER", TAG) > 0) {
+	PARENT.FIND_OPION_MODE = "FOLDER";
+}
+
 if (string_count("LEFT_NEW_FOLDER_EXPLORERS", TAG) > 0) {
 	var PWD = PARENT.PWD;
 	var ID = 0;

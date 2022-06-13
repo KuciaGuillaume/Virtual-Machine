@@ -272,6 +272,14 @@ if (EXPLORER_SELECT && string_count("FILE_EXPLORERS", TAG) > 0) {
 	if (get != undefined) DestroyRound(get.TAG);
 	PARENT.PWD_PATH = PARENT.PWD_PATH + "/" + NAME;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PWD_PATH);
+	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+		DestroyText(PARENT.FOLDER_LIST[i].TEXT_CONNECT.TAG);
+		DestroyText(PARENT.FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].OBJECT_LINKED.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].TAG);
+	}
+	PARENT.N_ELEMENTS = 0;
+	PARENT.FOLDER_LIST = [undefined];
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 	var refresh = PARENT.EXPLORER_RELOAD;
 	refresh.REFRESH = true;
@@ -286,6 +294,14 @@ if (string_count("GO_ROOT", TAG) > 0 || string_count("PATH_THIS_COMPUTER", TAG) 
 		return;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~");
 	PARENT.PWD_PATH = "/~";
+	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+		DestroyText(PARENT.FOLDER_LIST[i].TEXT_CONNECT.TAG);
+		DestroyText(PARENT.FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].OBJECT_LINKED.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].TAG);
+	}
+	PARENT.N_ELEMENTS = 0;
+	PARENT.FOLDER_LIST = [undefined];
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 	var refresh = PARENT.EXPLORER_RELOAD;
 	refresh.REFRESH = true;
@@ -300,6 +316,14 @@ if (string_count("PATH_DESK", TAG) > 0) {
 		return;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Desk");
 	PARENT.PWD_PATH = "/~/Desk";
+	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+		DestroyText(PARENT.FOLDER_LIST[i].TEXT_CONNECT.TAG);
+		DestroyText(PARENT.FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].OBJECT_LINKED.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].TAG);
+	}
+	PARENT.N_ELEMENTS = 0;
+	PARENT.FOLDER_LIST = [undefined];
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 	var refresh = PARENT.EXPLORER_RELOAD;
 	refresh.REFRESH = true;
@@ -314,6 +338,14 @@ if (string_count("PATH_DOWNLOADS", TAG) > 0) {
 		return;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Downloads");
 	PARENT.PWD_PATH = "/~/Downloads";
+	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+		DestroyText(PARENT.FOLDER_LIST[i].TEXT_CONNECT.TAG);
+		DestroyText(PARENT.FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].OBJECT_LINKED.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].TAG);
+	}
+	PARENT.N_ELEMENTS = 0;
+	PARENT.FOLDER_LIST = [undefined];
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 	var refresh = PARENT.EXPLORER_RELOAD;
 	refresh.REFRESH = true;
@@ -336,6 +368,14 @@ if (string_count("GO_BACK", TAG) > 0) {
 	}
 	PARENT.PWD_PATH = path;
 	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PWD_PATH);
+	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+		DestroyText(PARENT.FOLDER_LIST[i].TEXT_CONNECT.TAG);
+		DestroyText(PARENT.FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].OBJECT_LINKED.TAG);
+		DestroyObject(PARENT.FOLDER_LIST[i].TAG);
+	}
+	PARENT.N_ELEMENTS = 0;
+	PARENT.FOLDER_LIST = [undefined];
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 	var refresh = PARENT.EXPLORER_RELOAD;
 	refresh.REFRESH = true;

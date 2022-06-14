@@ -7,4 +7,5 @@ for (var i = 0; OPTION[i] != undefined; i++) {
 		image_index = OPTION[i][1];
 	if (OPTION[i][0] == "FADE_ON") {FADE_ON = true; FADE_ON_POWER = OPTION[i][1]; }
 	if (OPTION[i][0] == "INFO") {INFO = true; INFO_NAME = OPTION[i][1]; }
+	if (OPTION[i][0] == "SLIDE") {SLIDE = true; SLIDE_POWER = OPTION[i][1]; }
 }

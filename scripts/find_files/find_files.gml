@@ -4,9 +4,6 @@
 
 function find_files(PWD, PATH, SEARCH, i)
 {
-	show_debug_message("PWD : ");
-	show_debug_message(PWD);
-	show_debug_message("PATH : " + PATH);
 	if (PWD[i] == undefined && PWD[0][0][0] == "~")
 		return [false, undefined, undefined];
 	else if (PWD[i] == undefined) {

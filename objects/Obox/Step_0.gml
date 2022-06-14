@@ -97,34 +97,42 @@ if (GET_FOLDER != undefined) {
 		TEXT_CONNECT.COLOR = c_white;
 		RENAME_OBJECT = CreateEmptyRound(TEXT_CONNECT.x - 5, TEXT_CONNECT.y - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 5, PARENT.WINDOW.LAYERS[1], TAG + "RENAME_ON_DESK", [undefined]);
 		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x);
-	} else if (TEXT_CONNECT != undefined && TEXT_CONNECT.COLOR == c_white) {
-		if (TEXT_CONNECT.TEXT == "") {
-			var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
-			TEXT_CONNECT.TEXT = MASTER_NAME;
-			ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
-			var PWD = ON_MAIN_SCENE.PATH[1];
-			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
-			ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
-			savegame_save("USER", SAVE_LIST);
-		}
-		if (RENAME_OBJECT != undefined) {
-			DestroyObject(TAG + "RENAME_ON_DESK");
-			RENAME_OBJECT = undefined;
-		}
-		TEXT_CONNECT.COLOR = c_black;
-		WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
-		ORIGINAL_NAME = TEXT_CONNECT.TEXT;
-		MASTER_NAME = TEXT_CONNECT.TEXT;
 	}
 	
-	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) {
+	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right) || KeyPressed(vk_enter)) {
 		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true) {
 			WRITE.ON_WRITE = false;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
-			savegame_save("USER", SAVE_LIST);
+			if (TEXT_CONNECT.TEXT == "" || TEXT_CONNECT.TEXT == undefined || TEXT_CONNECT.TEXT == "undefined") {
+				var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
+				var e = get_index_list_explorer(TEXT_CONNECT.TEXT, PARENT.FOLDER_LIST);
+				TEXT_CONNECT.TEXT = MASTER_NAME;
+				if (ON_MAIN_SCENE.NAME_FOLDERS[i] == undefined)
+					ON_MAIN_SCENE.NAME_FOLDERS[i + 1] = undefined;
+				ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
+				PARENT.FOLDER_LIST[e].NAME = TEXT_CONNECT.TEXT;
+				var PWD = PARENT.PWD;
+				terminal_rename(["rename", "", TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
+				ORIGINAL_NAME = TEXT_CONNECT.TEXT;
+				WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
+				WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;;
+				WRITE.TEXT = [WRITE.INITIAL_TEXT, ""];
+				WRITE.TEXT_INDEX_MAX = 1;
+				WRITE.TEXT_INDEX = 1;
+			}
+			if (RENAME_OBJECT != undefined) {
+				DestroyObject(RENAME_OBJECT.TAG);
+				RENAME_OBJECT = undefined;
+			}
+			if (TEXT_CONNECT.COLOR == c_white) {
+				TEXT_CONNECT.COLOR = c_black;
+				WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
+				ORIGINAL_NAME = TEXT_CONNECT.TEXT;
+				MASTER_NAME = TEXT_CONNECT.TEXT;
+			}
 		}
 	}
+	if (WRITE != undefined && !WRITE.ON_WRITE)
+		MASTER_NAME = TEXT_CONNECT.TEXT;
 }
 
 if ((mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) && !MouseInsideObject(id))
@@ -268,6 +276,8 @@ if (string_count("EXPLORER_RELOAD", TAG) > 0 && visible = true) {
 }
 
 if (EXPLORER_SELECT && string_count("FILE_EXPLORERS", TAG) > 0) {
+	if (GET_FOLDER != undefined)
+		if (WRITE != undefined && WRITE.ON_WRITE) { return; }
 	var get = GetObject(INFO_NAME + TAG);
 	if (get != undefined) DestroyRound(get.TAG);
 	PARENT.PWD_PATH = PARENT.PWD_PATH + "/" + NAME;
@@ -401,9 +411,9 @@ if (string_count("LEFT_NEW_FOLDER_EXPLORERS", TAG) > 0) {
 			ID += 1;
 	}
 	if (ID <= 0)
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined);
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined, "xxx");
 	else
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined);
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined, "xxx");
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 	for (var e = 0; PARENT.FOLDER_LIST[e] != undefined; ) { e++; }
 	e -= 1;

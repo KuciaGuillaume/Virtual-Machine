@@ -42,6 +42,8 @@ FADE_ON_POWER = 0;
 // INFO
 INFO = false;
 INFO_NAME = undefined;
+SLIDE = false;
+SLIDE_POWER = 0;
 
 // BACKGROUND
 SKIP = false;

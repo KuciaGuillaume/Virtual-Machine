@@ -16,6 +16,12 @@ if (IMAGE_WIDTH < 0) {
 	IMAGE_HEIGHT = sprite_height;
 }
 
+if (SLIDE && image_alpha < 1 && ON) {
+	y -= SLIDE_POWER * delta_time;
+	if (TEXT_CONNECT != undefined)
+		TEXT_CONNECT.y -= SLIDE_POWER * delta_time;
+}
+
 // GUI SELECT
 if (TAG == "GUI_SELECT_BACKGROUNDS") {
 

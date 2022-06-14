@@ -253,6 +253,19 @@ if (TAG == "RENAME_FOLDER_SLIDERS") {
 if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 	mouse_clear(mb_right);
 	mouse_clear(mb_left);
+	for (var i = 1; PARENT.PARENT.PWD[i][0][0][0] != PARENT.PARENT.FOLDER_LIST[NUM_LINKED].NAME; ) { i++; }
+	if (string_char_at(PARENT.PARENT.PWD[i][0][0][4], 3) == ".") {
+		var parent = PARENT.PARENT;
+		if (parent.WARNING_GUI == undefined) {
+			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
+			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, "You do not have permission to modify this file/folder", Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
+		}
+		DestroyObject(PARENT.TAG);
+		DestroyButtonBox(parent.TAG + "DELETE_EXPLORERS_FOLDERS");
+		DestroyButtonBox(parent.TAG + "RENAME_EXPLORERS_FOLDERS");
+		PARENT.PARENT.EXPLORER_SLIDER = undefined;
+		return;
+	}
 	PARENT.PARENT.FOLDER_LIST[NUM_LINKED].WRITE.ON_WRITE = true;
 	PARENT.PARENT.FOLDER_LIST[NUM_LINKED].WRITE.BAR.x = PARENT.PARENT.FOLDER_LIST[NUM_LINKED].TEXT_CONNECT.x;
 	PARENT.PARENT.EXPLORER_SLIDER = undefined;
@@ -275,9 +288,9 @@ if (TAG == "NEW_FOLDER_SLIDERS") {
 			ID += 1;
 	}
 	if (ID <= 0)
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, "/~/Desk", undefined);
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, "/~/Desk", undefined, "xxx");
 	else
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, "/~/Desk", undefined);
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, "/~/Desk", undefined, "xxx");
 	var folder = mkdir[2];
 	folder.WRITE.ON_WRITE = true;
 	DestroyObject(PARENT.TAG);
@@ -293,14 +306,15 @@ if (string_count("NEW_EXPLORERS_FOLDERS", TAG) > 0) {
 			ID += 1;
 	}
 	if (ID <= 0)
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined);
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined, "xxx");
 	else
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined);
+		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined, "xxx");
 	PARENT.PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PARENT.PWD, PARENT.PARENT.PWD_PATH, PARENT.PARENT.FOLDER_LIST, PARENT.PARENT.id);
 	for (var e = 0; PARENT.PARENT.FOLDER_LIST[e] != undefined; ) { e++; }
 	e -= 1;
 	PARENT.PARENT.FOLDER_LIST[e].WRITE.ON_WRITE = true;
 	PARENT.PARENT.FOLDER_LIST[e].WRITE.BAR.x = PARENT.PARENT.FOLDER_LIST[e].TEXT_CONNECT.x;
+	PARENT.PARENT.FOLDER_LIST[e].MASTER_NAME = PARENT.PARENT.FOLDER_LIST[e].NAME;
 	PARENT.PARENT.EXPLORER_SLIDER = undefined;
 	var refresh = PARENT.PARENT.EXPLORER_RELOAD;
 	refresh.REFRESH = true;

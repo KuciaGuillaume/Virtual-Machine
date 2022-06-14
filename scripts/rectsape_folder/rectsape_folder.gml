@@ -10,7 +10,7 @@ function rectsape_folder(ID, DIR) {
 				var SPEED = 0.001 * delta_time;
 			else
 				var SPEED = 0.001 * delta_time;
-			if (DIR == 1) obj.PARENT_DIFF_Y -= SPEED; else obj.PARENT_DIFF_Y += SPEED;
+			if (DIR == 1 || DIR == "DOWN") obj.PARENT_DIFF_Y -= SPEED; else obj.PARENT_DIFF_Y += SPEED;
 		}
 				
 		// MOVE RECTANGME SHAPE OBJECT LINKED

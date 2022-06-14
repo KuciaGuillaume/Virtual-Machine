@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Divers",
-    "path": "folders/Global/Scripts/Divers.yy",
+    "name": "Create",
+    "path": "folders/Global/Scripts/Create.yy",
   },
   "resourceVersion": "1.0",
   "name": "CreateWrite",

@@ -55,3 +55,5 @@ previous_enter = "";
 FIND_OPTION_FOLDER = undefined;
 FIND_OPTION_ROOT = undefined;
 FIND_OPION_MODE = "FOLDER";
+FIND_TARGET = undefined;
+WARNING_GUI = undefined;

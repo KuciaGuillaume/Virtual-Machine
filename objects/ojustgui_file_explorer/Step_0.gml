@@ -248,16 +248,16 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			SEARCH.y -= 0.0001 * delta_time;
 		} else if (SEARCH.write.ON_WRITE && SEARCH.y < y + 30) {
 			if (FIND_OPTION_ROOT == undefined) {
-				FIND_OPTION_ROOT = CreateButtonBox(x - 312, y + 60, S_FIles_Explorer_find_options, Obox, "PC search", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_ROOT", [["CENTERED"], undefined]);
+				FIND_OPTION_ROOT = CreateButtonBox(x - 312, y + 60, S_FIles_Explorer_find_options, Obox, "PC search", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_ROOT", [["INFO", "Search on all files, folders on machine from root"], ["CENTERED"], undefined]);
 				FIND_OPTION_ROOT.TEXT_CONNECT.y -= 2;
-				FIND_OPTION_FOLDER = CreateButtonBox(x - 205, y + 60, S_FIles_Explorer_find_options, Obox, "Current path", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_FOLDER", [["CENTERED"], undefined]);
+				FIND_OPTION_FOLDER = CreateButtonBox(x - 205, y + 60, S_FIles_Explorer_find_options, Obox, "Current path", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_FOLDER", [["INFO", "Search on all files, folders from current path"], ["CENTERED"], undefined]);
 				FIND_OPTION_FOLDER.TEXT_CONNECT.y -= 2;
 				FIND_OPTION_ROOT.PARENT = id;
 				FIND_OPTION_FOLDER.PARENT = id;
 				WINDOW.list_objects = addtolist(FIND_OPTION_ROOT, WINDOW.list_objects);
 				WINDOW.list_objects = addtolist(FIND_OPTION_FOLDER, WINDOW.list_objects);
+				SEARCH.y = y + 30;
 			}
-			SEARCH.y = y + 30;
 		}
 		
 		if (FIND_OPTION_ROOT != undefined && MouseInsideObject(FIND_OPTION_ROOT))
@@ -280,7 +280,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			FIND_OPTION_ROOT.TEXT_CONNECT.COLOR = c_white;
 		}
 		
-		if (SEARCH.write.ON_WRITE && SEARCH.write.TEXT_OUTPUT != "Search" && (KeyPressed(vk_anykey) || previous_enter != SEARCH.write.TEXT_OUTPUT)) {
+		if ((SEARCH.write.ON_WRITE || KeyPressed(vk_enter)) && SEARCH.write.TEXT_OUTPUT != "Search" && (KeyPressed(vk_anykey) || previous_enter != SEARCH.write.TEXT_OUTPUT)) {
 			previous_enter = SEARCH.write.TEXT_OUTPUT;
 			EXPLORER_RELOAD.REFRESH = true;
 			EXPLORER_RELOAD.visible = false;
@@ -295,6 +295,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 				return;
 			PWD = find[1]
 			PWD_PATH = find[2];
+			
 			for (var i = 0; FOLDER_LIST[i] != undefined; i++) {
 				DestroyText(FOLDER_LIST[i].TEXT_CONNECT.TAG);
 				DestroyText(FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
@@ -304,11 +305,24 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			N_ELEMENTS = 0;
 			FOLDER_LIST = [undefined];
 			FOLDER_LIST = UpdateFileExplorer(PWD, PWD_PATH, FOLDER_LIST, id);
+			rectsape_folder(id, undefined);
+			for (var i = 0; FOLDER_LIST[i].NAME != SEARCH.write.TEXT_OUTPUT; ) { i++; }
+			FOLDER_LIST[i].EXPLORER_SELECT = true;
+			FOLDER_LIST[i].image_index = 1;
+			FIND_TARGET = i;
+		}
+		
+		if (FIND_TARGET != undefined)  {
+			if (!FOLDER_LIST[FIND_TARGET].TEXT_CONNECT.visible) {
+				rectsape_folder(id, "DOWN");
+				FOLDER_LIST = UpdateFileExplorer(PWD, PWD_PATH, FOLDER_LIST, id);
+			} else
+				FIND_TARGET = undefined;
 		}
 			
 		// MOUSE WHELL
 		var DIR = undefined;
-		if (mouse_wheel_down() && FOLDER_LIST[N_ELEMENTS - 1].y > bbox_bottom - 70) {
+		if (mouse_wheel_down() && N_ELEMENTS > 0 && FOLDER_LIST[N_ELEMENTS - 1].y > bbox_bottom - 70) {
 			if (RETURNED_TO_TOP != undefined) {
 				WINDOW.list_objects = remove_findlist(RETURNED_TO_TOP, WINDOW.list_objects);
 				DestroyButtonBox(RETURNED_TO_TOP.TAG);

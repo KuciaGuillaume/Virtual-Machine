@@ -12,6 +12,7 @@
     {"id":{"name":"Terminal_buttons","path":"scripts/Terminal_buttons/Terminal_buttons.yy",},"order":1,},
     {"id":{"name":"S_Files_Explorer_root","path":"sprites/S_Files_Explorer_root/S_Files_Explorer_root.yy",},"order":7,},
     {"id":{"name":"RectSape_Folder","path":"scripts/RectSape_Folder/RectSape_Folder.yy",},"order":2,},
+    {"id":{"name":"S_FIles_Explorer_warning","path":"sprites/S_FIles_Explorer_warning/S_FIles_Explorer_warning.yy",},"order":15,},
     {"id":{"name":"Sok","path":"sprites/Sok/Sok.yy",},"order":11,},
     {"id":{"name":"Segoe10","path":"fonts/Segoe10/Segoe10.yy",},"order":10,},
     {"id":{"name":"S_terminal_icon","path":"sprites/S_terminal_icon/S_terminal_icon.yy",},"order":1,},

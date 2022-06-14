@@ -10,7 +10,7 @@ function getonlist(ARGUMENT, LIST) {
 }
 
 function get_index_list(ARGUMENT, LIST) {
-	for (var i = 0; LIST[i] != undefined && LIST[i][0] != ARGUMENT; ) { i++; }
+	for (var i = 0; LIST[i] != undefined && is_array(LIST[i]) && LIST[i][0] != ARGUMENT; ) { i++; }
 	return i;
 }
 

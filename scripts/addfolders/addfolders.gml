@@ -109,6 +109,7 @@ function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 		if (check && PWD[i][0][0][0] != "..") {
 			LIST = AddFileEplorerFloder(PWD[i][0][0][0], LIST, PARENT, PWD[i][0][0][3]);
 			PARENT.N_ELEMENTS += 1;
+			rectsape_folder(PARENT.id, undefined);
 		}
 	}
 	

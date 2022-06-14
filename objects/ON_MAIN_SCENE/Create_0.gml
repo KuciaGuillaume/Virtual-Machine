@@ -40,7 +40,7 @@ ON_DESK = true;
 
 if (PATH == undefined || PATH == undefined) {
 	PATH = [[["~", "ROOT"]], undefined];
-	var get = terminal_mkdir(["mkdir", "Desk", "Documents", "Downloads", undefined], undefined, PATH, undefined, "/~"); PATH = get[0];
+	var get = terminal_mkdir(["mkdir", "Desk", "Documents", "Downloads", undefined], undefined, PATH, undefined, "/~", undefined, "xx."); PATH = get[0];
 }
 
 CURSOR = CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", [undefined]);

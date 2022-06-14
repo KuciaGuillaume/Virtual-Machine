@@ -16,11 +16,36 @@ if (IMAGE_WIDTH < 0) {
 	IMAGE_HEIGHT = sprite_height;
 }
 
+if (TIMER_OUT) {
+	TIMER_DELTA += delta_time / 1000000;
+	if (TIMER_DELTA >= TIMER_TIME) {
+		TIMER_STATE_END = true;
+		image_alpha -= 0.00001 * delta_time;
+		y += 0.00001 * delta_time;
+		if (TEXT_CONNECT != undefined) {
+			TEXT_CONNECT.image_alpha -= 0.0001 *delta_time;
+			TEXT_CONNECT.y += 0.00001 * delta_time;
+		}
+		if (image_alpha <= 0) {
+			if (PARENT != undefined) {
+				if (string_count("WARNING", TAG)) {
+					PARENT.WINDOW.list_objects = remove_findlist(PARENT.WARNING_GUI, PARENT.WINDOW.list_objects);
+					PARENT.WARNING_GUI = undefined;
+				}
+			}
+			DestroyText(TEXT_CONNECT.TAG)
+			DestroyObject(TAG);
+			return;
+		}
+	}
+}
+
 if (SLIDE && image_alpha < 1 && ON) {
 	y -= SLIDE_POWER * delta_time;
 	if (TEXT_CONNECT != undefined)
 		TEXT_CONNECT.y -= SLIDE_POWER * delta_time;
-}
+} else if (image_alpha >= 1 && SLIDE)
+	SLIDE_OUT = true;
 
 // GUI SELECT
 if (TAG == "GUI_SELECT_BACKGROUNDS") {

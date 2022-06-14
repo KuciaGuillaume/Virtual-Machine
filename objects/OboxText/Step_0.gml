@@ -257,8 +257,10 @@ if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 	if (string_char_at(PARENT.PARENT.PWD[i][0][0][4], 3) == ".") {
 		var parent = PARENT.PARENT;
 		if (parent.WARNING_GUI == undefined) {
-			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
+			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["TIME_OUT", 2], ["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
 			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, "You do not have permission to modify this file/folder", Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
+			parent.WINDOW.list_objects = addtolist(parent.WARNING_GUI, parent.WINDOW.list_objects);
+			parent.WARNING_GUI.PARENT = parent;
 		}
 		DestroyObject(PARENT.TAG);
 		DestroyButtonBox(parent.TAG + "DELETE_EXPLORERS_FOLDERS");
@@ -337,6 +339,21 @@ if (TAG == "DELETE_FOLDER_SLIDERS") {
 
 if (string_count("DELETE_EXPLORERS_FOLDERS", TAG) > 0) {
 	var PWD = PARENT.PARENT.PWD;
+	for (var i = 1; PARENT.PARENT.PWD[i][0][0][0] != PARENT.PARENT.FOLDER_LIST[NUM_LINKED].NAME; ) { i++; }
+	if (string_char_at(PARENT.PARENT.PWD[i][0][0][4], 3) == ".") {
+		var parent = PARENT.PARENT;
+		if (parent.WARNING_GUI == undefined) {
+			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["TIME_OUT", 2], ["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
+			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, "You do not have permission to modify this file/folder", Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
+			parent.WINDOW.list_objects = addtolist(parent.WARNING_GUI, parent.WINDOW.list_objects);
+			parent.WARNING_GUI.PARENT = parent;
+		}
+		DestroyObject(PARENT.TAG);
+		DestroyButtonBox(parent.TAG + "DELETE_EXPLORERS_FOLDERS");
+		DestroyButtonBox(parent.TAG + "RENAME_EXPLORERS_FOLDERS");
+		PARENT.PARENT.EXPLORER_SLIDER = undefined;
+		return;
+	}
 	if (PARENT.PARENT.FOLDER_LIST[0] == PARENT.PARENT.FOLDER_LIST[NUM_LINKED]) {
 		for (var i = 0; PARENT.PARENT.FOLDER_LIST[i] != undefined; i++) {
 			PARENT.PARENT.FOLDER_LIST[i].y -= 24;

@@ -222,14 +222,15 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 		var find = false;
 		var save = ON_MAIN_SCENE.PATH;
 		for (var i = 1; rm[i] != undefined; i++) {
-			if (rm[i] == ".." || ((rm[i] == "Desk" || rm[i] == "Documents") && PWD[0][0][0] == "~")) {
-				display_result(ID_RESULT, "[ " + rm[i] + " ] You do not have permission to delete it.");
-				find = true;
-				continue;
-			}
 			ON_MAIN_SCENE.PATH = go_to_path(ON_MAIN_SCENE.PATH, PATH);
-			for (var e = 0; ON_MAIN_SCENE.PATH[e] != undefined; e++) { 
+			for (var e = 1; ON_MAIN_SCENE.PATH[e] != undefined; e++) { 
 				if (is_array(ON_MAIN_SCENE.PATH[e]) && is_array(ON_MAIN_SCENE.PATH[e][0][0]) && ON_MAIN_SCENE.PATH[e][0][0][0] == rm[i]) {
+					var pwd = ON_MAIN_SCENE.PATH[e];
+					if (pwd[0][0][0] != ".." && string_char_at(pwd[0][0][4], 3) == ".") {
+						if (ID_RESULT != undefined)
+							display_result(ID_RESULT,  "[" + rm[i] + "] You don't have permission to rename it.");
+						return [pwd, true];
+					}
 					if (ON_MAIN_SCENE.PATH[0][0][0] == "Desk") {
 						ON_MAIN_SCENE.FOLDERS = remove_findlist(ON_MAIN_SCENE.PATH[e][0][0][2], ON_MAIN_SCENE.FOLDERS);
 						ON_MAIN_SCENE.NAME_FOLDERS = remove_findlist_index(ON_MAIN_SCENE.PATH[e][0][0][0], ON_MAIN_SCENE.NAME_FOLDERS, 0);

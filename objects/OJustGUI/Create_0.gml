@@ -72,3 +72,10 @@ MASTER_NAME = undefined;
 RENAME_OBJECT = undefined;
 GET_FOLDER = undefined;
 NAME = undefined;
+
+//
+SLIDE_OUT = false;
+TIMER_OUT = false;
+TIMER_TIME = 0;
+TIMER_DELTA = 0;
+TIMER_STATE_END = false;

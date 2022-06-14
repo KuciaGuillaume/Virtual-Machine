@@ -100,7 +100,7 @@ if (GET_FOLDER != undefined) {
 	}
 	
 	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right) || KeyPressed(vk_enter)) {
-		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true) {
+		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true || KeyPressed(vk_enter)) {
 			WRITE.ON_WRITE = false;
 			if (TEXT_CONNECT.TEXT == "" || TEXT_CONNECT.TEXT == undefined || TEXT_CONNECT.TEXT == "undefined") {
 				var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);

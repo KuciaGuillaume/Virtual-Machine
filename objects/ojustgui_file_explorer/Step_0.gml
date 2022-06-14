@@ -34,6 +34,10 @@ if (CLOSE && string_count("FILE_EXPLORER", WINDOW_TAG)) {
 	DestroyButtonBox(PATH_DESK.TAG);
 	DestroyButtonBox(PATH_DOWNLOAD.TAG);
 	DestroyTextButton(SEARCH.TAG);
+	if (WARNING_GUI != undefined) {
+		DestroyText(WARNING_GUI.TEXT_CONNECT.TAG);
+		DestroyObject(WARNING_GUI.TAG);
+	}
 	if (RETURNED_TO_TOP != undefined)
 		DestroyButtonBox(RETURNED_TO_TOP.TAG);
 	if (FIND_OPTION_ROOT != undefined)
@@ -75,13 +79,29 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		// UPDTAE PATH
 		if (PATH != undefined) {
 			PATH.image_alpha = image_alpha; PATH.x = x + 110; PATH.y = y + 47;
-			PATH.TEXT = PWD_PATH;
+			var new_text = "";
+			var size = string_byte_length(PWD_PATH)
+			if (size > 40) {
+				var top = size - 36;
+				for (var i = 0; i != top; ) { i++ };
+				for (; i < size + 1; i++)
+					new_text = new_text + string_char_at(PWD_PATH, i);
+				PATH.TEXT = ".../" + new_text;
+			} else
+				PATH.TEXT = PWD_PATH;
 		}
 		
 		// UPDATE EXPLORER RELOAD
 		if (EXPLORER_RELOAD != undefined) {
 			EXPLORER_RELOAD.image_alpha = image_alpha; EXPLORER_RELOAD.x = x + 348; EXPLORER_RELOAD.y = y + 46;
 		}
+		
+		//UPDATE WARNING
+		if (WARNING_GUI != undefined && WARNING_GUI.SLIDE_OUT && !WARNING_GUI.TIMER_STATE_END) {
+			WARNING_GUI.image_alpha = image_alpha; WARNING_GUI.x = x + 120; WARNING_GUI.y = y + 545;
+			WARNING_GUI.TEXT_CONNECT.image_alpha = image_alpha; WARNING_GUI.TEXT_CONNECT.x = x + 120; WARNING_GUI.TEXT_CONNECT.y = y + 545;
+		} else if (WARNING_GUI != undefined && WARNING_GUI.TIMER_STATE_END)
+			WARNING_GUI.x = x + 120;
 
 		// UPDATE GO ROOT
 		if (GO_ROOT != undefined) {

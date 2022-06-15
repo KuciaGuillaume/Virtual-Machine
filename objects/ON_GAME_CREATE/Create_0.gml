@@ -38,7 +38,7 @@ global.WINDOWS_PIN = [undefined];
 
 // CREATE USERS VARAIBLES
 
-STATE = "NULL";
+STATE = undefined;
 FIRST_NAME = "NULL";
 LAST_NAME = "NULL";
 EMAIL = "NULL";
@@ -47,7 +47,7 @@ PASSWORD = "NULL";
 ICON = ["NULL", -1];
 BACKGROUND = -1;
 HELPING_PASSWORD = "NULL";
-LIKE_LIST = ["NULL"];
+LIKE_LIST = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGROUND, HELPING_PASSWORD, LIKE_LIST];
 
@@ -56,7 +56,7 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, undefined];
 
 // LOAD
-LOAD_LIST = savegame_load("USER", LOAD_LIST);
+//LOAD_LIST = savegame_load("USER", LOAD_LIST);
 //global.USER = LOAD_LIST[0];
 //global.PATH = LOAD_LIST[1];
 //global.FOLDERS = LOAD_LIST[2];

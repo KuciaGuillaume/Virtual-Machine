@@ -3,18 +3,12 @@
 
 function check_path(PWD, PATH) {
 
+	var save_PWD = PWD;
 	PWD = go_to_path(ON_MAIN_SCENE.PATH, PATH);
-	var slash = string_count("/", PATH);
-	for (var e = 1; slash != 0; e++)
-		if (string_char_at(PATH, e) == "/")
-			slash -= 1;
-	var size = string_length(PATH) + 1;
-	var get_end = "";
-	for (; e != size; e++)
-		get_end = get_end + string_char_at(PATH, e);
-	if (get_end != PWD[0][0][0])
+	if (PWD != save_PWD)
 		return false;
-	return true;
+	else
+		return true;
 }
 
 function rightclick_explorer(PARENT, FOLDERS, LAYERS) {

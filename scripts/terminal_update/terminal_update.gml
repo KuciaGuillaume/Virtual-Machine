@@ -97,9 +97,9 @@ function terminal_update(id) {
 					id.CONNECTION = false;
 					id.CONNECTION_TIME = 0;
 					id.write_text.TEXT = ["", undefined];
-					if (id.CATCH || (get != undefined && instance_exists(get) && get.CATCH))
+					if (id.CATCH || (get != undefined && instance_exists(get) && get.object_index == OJustGUITerminal && get.CATCH))
 						 { display_result(id.system_write, "Connect status : false\n" + "A process is connected to your terminal\nor the process you are trying to reach is already connected to another process.\nYou can only connect two processes together"); return; }
-					if (get != undefined && instance_exists(get) && get.CONNECT)
+					if (get != undefined && instance_exists(get) && get.object_index == OJustGUITerminal && get.CONNECT)
 						{ display_result(id.system_write, "Connect status : false\n" + "The target is already connected to another process."); return; }
 					display_result(id.system_write, "Connect status : false\n" + string(id.CONNECT_ID) + " not found.");
 				}

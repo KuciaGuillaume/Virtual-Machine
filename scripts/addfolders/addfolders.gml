@@ -87,15 +87,13 @@ function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 				break;
 		}
 		if (PWD[i] == undefined) {
-			DestroyText(LIST[e].TEXT_CONNECT.TAG);
-			DestroyText(LIST[e].DOCK_TYPE_TEXT.TAG);
-			DestroyObject(LIST[e].OBJECT_LINKED.TAG);
-			DestroyObject(LIST[e].TAG);
+			var folder = LIST[e];
+			PARENT.FOLDER_LIST = remove_findlist(folder, PARENT.FOLDER_LIST);
+			DestroyText(folder.TEXT_CONNECT.TAG);
+			DestroyText(folder.DOCK_TYPE_TEXT.TAG);
+			DestroyObject(folder.OBJECT_LINKED.TAG);
+			DestroyObject(folder.TAG);
 			PARENT.N_ELEMENTS -= 1;
-			var save = e;
-			for (; LIST[e] != undefined; e++)
-				LIST[e] = LIST[e + 1];
-			e = save - 1;
 		}
 	}
 

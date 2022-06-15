@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"293d7a7b-d4ad-4cca-8705-cb0361e3e80f","path":"sprites/S_taskbar/S_taskbar.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"293d7a7b-d4ad-4cca-8705-cb0361e3e80f","path":"sprites/S_taskbar/S_taskbar.yy",},"LayerId":{"name":"09e7b676-4b6a-403b-8203-bb0cb7ddf30c","path":"sprites/S_taskbar/S_taskbar.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_taskbar","path":"sprites/S_taskbar/S_taskbar.yy",},"resourceVersion":"1.0","name":"293d7a7b-d4ad-4cca-8705-cb0361e3e80f","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"7197eea2-104f-411c-b212-38dd08837c43","path":"sprites/S_taskbar/S_taskbar.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"7197eea2-104f-411c-b212-38dd08837c43","path":"sprites/S_taskbar/S_taskbar.yy",},"LayerId":{"name":"fae2fbd7-d227-4f58-a6cc-acdc498de7c6","path":"sprites/S_taskbar/S_taskbar.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"S_taskbar","path":"sprites/S_taskbar/S_taskbar.yy",},"resourceVersion":"1.0","name":"7197eea2-104f-411c-b212-38dd08837c43","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"S_taskbar","path":"sprites/S_taskbar/S_taskbar.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"7cd79fb2-ffff-4f12-8ab2-f4f933118b21","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"293d7a7b-d4ad-4cca-8705-cb0361e3e80f","path":"sprites/S_taskbar/S_taskbar.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"797933bc-855f-432d-a034-d3c93b38ff38","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"7197eea2-104f-411c-b212-38dd08837c43","path":"sprites/S_taskbar/S_taskbar.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"09e7b676-4b6a-403b-8203-bb0cb7ddf30c","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fae2fbd7-d227-4f58-a6cc-acdc498de7c6","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {

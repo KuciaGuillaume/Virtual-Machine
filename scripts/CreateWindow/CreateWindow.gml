@@ -84,7 +84,12 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	var task_bar = GetObject("MAIN_TASKBAR");
 	// ICON
 	if (icon == undefined) {
-		icon = CreateObjectSprite(task_bar.x, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], undefined]);
+		for (var X = 0; ON_MAIN_SCENE.ICONS[X] != undefined; ) { X++; }
+		if (X - 1 < 0 || ON_MAIN_SCENE.ICONS[X - 1] == undefined)
+			var pos = task_bar.x;
+		else
+			var pos = ON_MAIN_SCENE.ICONS[X - 1].x;
+		icon = CreateObjectSprite(pos, task_bar.y - 3, "TaskBar_Gp1", ICON, Owindow_icon_tasks, "BUTTON-NO-HAND", TAG + "_TASK_ICON", [["INFO", ORIGINAL_NAME], undefined]);
 		icon.WINDOW = i;
 		addtolist(icon, ON_MAIN_SCENE.ICONS);
 		window.ON_OBJECT = CreateObjectSprite(task_bar.x, task_bar.y + 12, "TaskBar_Gp2", S_on_task, OJustGUI, "IMAGE", TAG + "ON_TASK", [undefined]);

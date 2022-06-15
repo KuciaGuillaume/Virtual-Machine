@@ -44,3 +44,5 @@ CREATE_WINDOW_ICON = undefined;
 CREATE_WINDOW_NAME = undefined;
 VISIO_TIME = 0;
 
+HOME = false;
+

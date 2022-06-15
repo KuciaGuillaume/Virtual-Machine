@@ -9,7 +9,7 @@ image_index = 0;
 if (image_index == 0)
 	x = mouse_x;
 else
-	x = mouse_x - 10;
+	x = mouse_x - 1;
 y = mouse_y;
 
 if (room == RMainScene)
@@ -91,6 +91,6 @@ for (var i = 0; global.TEXT[i] != undefined; i++) {
 if (image_index == 0)
 	x = mouse_x;
 else
-	x = mouse_x - 10;
+	x = mouse_x - 1;
 y = mouse_y;
 

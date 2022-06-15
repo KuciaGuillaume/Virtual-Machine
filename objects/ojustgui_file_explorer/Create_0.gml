@@ -57,3 +57,4 @@ FIND_OPTION_ROOT = undefined;
 FIND_OPION_MODE = "FOLDER";
 FIND_TARGET = undefined;
 WARNING_GUI = undefined;
+SELECT_VIA_KEY_INDEX = 0;

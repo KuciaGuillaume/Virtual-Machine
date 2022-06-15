@@ -12,28 +12,53 @@ if (FADE_IN && image_alpha < 1)
 else
 	FADE_IN = false;
 
-if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == undefined)
-	OPT_CLOSING = true;
+if (HOME == false && TAG == "HOME_ICON") {
+	HOME = true;
+	ON_MAIN_SCENE.ICONS[0] = id;
+	ON_MAIN_SCENE.ICONS[1] = undefined;
+}
+if (!HOME)
+	if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == undefined)
+		OPT_CLOSING = true;
 
-var windows_n = 0;
-for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != undefined; i++) {
-	var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
-	if (instance_exists(obj))
-		windows_n += 1;
+if (!HOME) {
+	var windows_n = 0;
+	for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != undefined; i++) {
+		var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
+		if (instance_exists(obj))
+			windows_n += 1;
+	}
 }
 
 // ICONS POSITIOB
+
 for (var i = 0; ON_MAIN_SCENE.ICONS[i] != id; ) { i++ };
 
+var task_x = ON_MAIN_SCENE.TASKBAR.x;
+var next = ON_MAIN_SCENE.ICONS[i + 1];
 if (i != 0 && instance_exists(ON_MAIN_SCENE.ICONS[i - 1])) {
 	var diff = x - ON_MAIN_SCENE.ICONS[i - 1].x;
 	if (diff <= 0 || diff < 50)
 		x += 0.0001 * delta_time;
-} else if (i == 0 && x != ON_MAIN_SCENE.TASKBAR.x && ON_MAIN_SCENE.ICONS[i + 1] == undefined) {
+} else if (i == 0 && x != ON_MAIN_SCENE.TASKBAR.x && (next == undefined || (array_size(ON_MAIN_SCENE.ICONS) % 2 == 0 && next != undefined && (task_x - x > next.x - task_x)))) {
 	if (x > ON_MAIN_SCENE.TASKBAR.x)
 		x -= (0.0001 * delta_time) * ((x - ON_MAIN_SCENE.TASKBAR.x) / 10);
-	else if (x < ON_MAIN_SCENE.TASKBAR.x)
+	else if (x < ON_MAIN_SCENE.TASKBAR.x && next == undefined)
 		x += (0.0001 * delta_time) * ((ON_MAIN_SCENE.TASKBAR.x - x) / 10);
+	else if (next != undefined && task_x - x > next.x - task_x)
+		x += (0.0001 * delta_time) * ((ON_MAIN_SCENE.TASKBAR.x - x) / 15);
+		
+}
+
+if (next != undefined) {
+	var diff = next.x - x;
+	if (diff > 51)
+		x += 0.0001 * delta_time;
+}
+if (i - 1 >= 0 && ON_MAIN_SCENE.ICONS[i - 1] != undefined) {
+	var diff = x - ON_MAIN_SCENE.ICONS[i - 1].x;
+	if (diff > 51)
+		x -= 0.0001 * delta_time;
 }
 
 if (ON_MAIN_SCENE.ICONS[i + 1] != undefined && instance_exists(ON_MAIN_SCENE.ICONS[i + 1])) {
@@ -42,10 +67,21 @@ var diff = ON_MAIN_SCENE.ICONS[i + 1].x - x;
 		x -= 0.0001 * delta_time;
 }
 
+// HOME_CLICK
+if (HOME && (MouseInsideObject(id) && mouse_check_button_pressed(mb_left) || (KeyPress(vk_control) && KeyPressed(ord("A"))))) {
+	if (ON_MAIN_SCENE.HOME == undefined)
+		ON_MAIN_SCENE.HOME = CreateObjectSprite(960, 700, "Home_Gp0", S_Home_BK, OHomeBk, "IMAGE", "HOME_BK", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], undefined]);
+	else if (ON_MAIN_SCENE.HOME.image_alpha >= 1) {
+		DestroyObject(ON_MAIN_SCENE.HOME.TAG);
+		ON_MAIN_SCENE.HOME = undefined;
+		ON_MAIN_SCENE.HOME = CreateObjectSprite(960, 700, "Home_Gp0", S_Home_BK, OHomeBk, "IMAGE", "HOME_BK", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], undefined]);
+	}
+}
+
 if (ON_TASK != undefined)
 	ON_TASK.x = x;
 
-if (MouseInsideObject(id) && right_option == undefined) {
+if (MouseInsideObject(id) && right_option == undefined && !HOME) {
 	if (visio == undefined && windows_n > 0 && VISIO_TIME >= 0.5) {
 		var Y = y - 30;
 		var all_button_box = [undefined];

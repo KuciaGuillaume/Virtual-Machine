@@ -72,7 +72,8 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 				if (!WINDOW.REDUCING) {
 					SEARCH.image_alpha = image_alpha; SEARCH.x = x - 259; SEARCH.y = y + 46;
 				} else {
-					SEARCH.image_alpha = 0; SEARCH.x = x - 259; SEARCH.y = y + 46; }
+					SEARCH.image_alpha = 0; SEARCH.x = x - 259; SEARCH.y = y + 46;
+				}
 			}
 		}
 
@@ -348,6 +349,41 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 				FOLDER_LIST = UpdateFileExplorer(PWD, PWD_PATH, FOLDER_LIST, id);
 			} else
 				FIND_TARGET = undefined;
+		}
+		
+		// SELECT VIA KEY
+		if (KeyPressed(vk_up) || KeyPressed(vk_down)) {
+			var select_index = -1;
+			var size = array_size(FOLDER_LIST);
+			for (var i = 0; FOLDER_LIST[i] != undefined; i++) {
+				if (FOLDER_LIST[i].EXPLORER_SELECT) {
+					select_index = i;
+					FOLDER_LIST[i].EXPLORER_SELECT = false;
+					FOLDER_LIST[i].image_index = 1;
+				}
+			}
+			if (select_index < 0) {
+				SELECT_VIA_KEY_INDEX = 0;
+				if (FOLDER_LIST[0] != undefined && instance_exists(FOLDER_LIST[0])) {
+					FOLDER_LIST[SELECT_VIA_KEY_INDEX].EXPLORER_SELECT = true;
+					FOLDER_LIST[SELECT_VIA_KEY_INDEX].image_index = 1;
+				}
+			} else {
+				if (KeyPressed(vk_up) && select_index - 1 >= 0 && FOLDER_LIST[select_index - 1] != undefined && instance_exists(FOLDER_LIST[select_index - 1])) {
+					FOLDER_LIST[select_index - 1].EXPLORER_SELECT = true;
+					FOLDER_LIST[select_index - 1].image_index = 1;
+				} else if (KeyPressed(vk_up) && FOLDER_LIST[size - 1] != undefined && instance_exists(FOLDER_LIST[size - 1])) {
+					FOLDER_LIST[size - 1].EXPLORER_SELECT = true;
+					FOLDER_LIST[size - 1].image_index = 1;
+				}
+				if (KeyPressed(vk_down) && select_index + 1 < size && FOLDER_LIST[select_index + 1] != undefined && instance_exists(FOLDER_LIST[select_index + 1])) {
+					FOLDER_LIST[select_index + 1].EXPLORER_SELECT = true;
+					FOLDER_LIST[select_index + 1].image_index = 1;
+				} else if (KeyPressed(vk_down) && FOLDER_LIST[0] != undefined && instance_exists(FOLDER_LIST[0])) {
+					FOLDER_LIST[0].EXPLORER_SELECT = true;
+					FOLDER_LIST[0].image_index = 1;
+				}
+			}
 		}
 			
 		// MOUSE WHELL

@@ -80,6 +80,37 @@ if (REFRESH) {
 	}
 }
 
+// FILE DELTE WITH VK_DELETE
+if (KeyPressed(vk_delete) && EXPLORER_SELECT && GET_FOLDER != undefined) {
+	var PWD = PARENT.PWD;
+	for (var i = 1; PARENT.PWD[i][0][0][0] != NAME; ) { i++; }
+	if (string_char_at(PARENT.PWD[i][0][0][4], 3) == ".") {
+		var parent = PARENT;
+		if (parent.WARNING_GUI == undefined) {
+			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["TIME_OUT", 2], ["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
+			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, "You do not have permission to modify this file/folder", Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
+			parent.WINDOW.list_objects = addtolist(parent.WARNING_GUI, parent.WINDOW.list_objects);
+			parent.WARNING_GUI.PARENT = parent;
+		}
+		return;
+	}
+	if (PARENT.FOLDER_LIST[0] == id) {
+		for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+			PARENT.FOLDER_LIST[i].y -= 24;
+			PARENT.FOLDER_LIST[i].PARENT_DIFF_Y -= 24;
+		}
+	}
+	terminal_rm(["rm", TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined);
+	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
+	PARENT.EXPLORER_SLIDER = undefined;
+	var refresh = PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))	
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", PARENT.EXPLORER_RELOAD.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
+}
+
 // FILE EXPLORER FOLDER
 if (GET_FOLDER == undefined && string_count("FILE_EXPLORERS", TAG) > 0)
 	GET_FOLDER = TAG;

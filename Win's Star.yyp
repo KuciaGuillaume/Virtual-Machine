@@ -28,6 +28,7 @@
     {"id":{"name":"savegame_clear","path":"scripts/savegame_clear/savegame_clear.yy",},"order":3,},
     {"id":{"name":"GetOnList","path":"scripts/GetOnList/GetOnList.yy",},"order":6,},
     {"id":{"name":"Rstart","path":"rooms/Rstart/Rstart.yy",},"order":0,},
+    {"id":{"name":"S_Desk_open_explorer","path":"sprites/S_Desk_open_explorer/S_Desk_open_explorer.yy",},"order":4,},
     {"id":{"name":"ON_REGISTER_INPUT","path":"objects/ON_REGISTER_INPUT/ON_REGISTER_INPUT.yy",},"order":1,},
     {"id":{"name":"Owrite_text","path":"objects/Owrite_text/Owrite_text.yy",},"order":1,},
     {"id":{"name":"Suser_connect_background","path":"sprites/Suser_connect_background/Suser_connect_background.yy",},"order":0,},
@@ -246,7 +247,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2022.500.0.116",
+    "IDEVersion": "2022.600.0.129",
   },
   "resourceVersion": "1.5",
   "name": "Win's Star",

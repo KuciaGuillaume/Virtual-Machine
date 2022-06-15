@@ -170,6 +170,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			DestroyButtonBox(TAG + "NEW_EXPLORERS_FOLDERS");
 			DestroyButtonBox(TAG + "RENAME_EXPLORERS_FOLDERS");
 			DestroyButtonBox(TAG + "DELETE_EXPLORERS_FOLDERS");
+			DestroyButtonBox(TAG + "EXPLORERS_OPEN_IN_ANOTHER");
 			DestroyObject(EXPLORER_SLIDER.TAG);
 			EXPLORER_SLIDER = undefined;
 		}
@@ -183,10 +184,10 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		//UPDATE EMPTY FOLDER
 		if (N_ELEMENTS <= 0) {
 			if (EMPTY_FOLDER == undefined) {
-				EMPTY_FOLDER = AddText(x + 110, y + 300, "Folder is empty.", Arial10, c_black, WINDOW.LAYERS[0], "TEXT", [["CENTERED"], undefined]);
+				EMPTY_FOLDER = AddText(x + 110, y + 300, "Folder is empty.", Arial10, c_black, WINDOW.LAYERS[0], TAG + "TEXT_EMPTY", [["CENTERED"], undefined]);
 				WINDOW.list_objects = addtolist(EMPTY_FOLDER, WINDOW.list_objects);
-			}
-			EMPTY_FOLDER.image_alpha = image_alpha; EMPTY_FOLDER.x = x + 110; EMPTY_FOLDER.y = y + 300;
+			} else if (EMPTY_FOLDER != undefined && WINDOW.ON) {
+				EMPTY_FOLDER.image_alpha = image_alpha; EMPTY_FOLDER.x = x + 110; EMPTY_FOLDER.y = y + 300; }
 		} else if (N_ELEMENTS > 0 && EMPTY_FOLDER != undefined) {
 			WINDOW.list_objects = remove_findlist(EMPTY_FOLDER, WINDOW.list_objects);
 			DestroyText(EMPTY_FOLDER.TAG);
@@ -237,6 +238,15 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		PATH_COMPUTER.PARENT = id;PATH_DESK.PARENT = id;PATH_DOWNLOAD.PARENT = id;
 		CREATE = true;
 	} else if (CREATE && (WINDOW.ON || WINDOW.REDUCING || !WINDOW.FADE_MOVEMENT)) {
+		
+		//
+		if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) {
+			if (!check_path(PWD, PWD_PATH)) {
+				PWD = ON_MAIN_SCENE.PATH;
+				PWD_PATH = "/~";
+				FOLDER_LIST = UpdateFileExplorer(PWD, PWD_PATH, FOLDER_LIST, id);
+			}
+		}
 		
 		// SEARCH UPDATE
 		if (KeyPressed(vk_tab) && !SEARCH.write.ON_WRITE)

@@ -115,6 +115,7 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	window.INDEX = i;
 	window.NUMBER = ON_MAIN_SCENE.TASKS[i][4];
 	ID += 1;
+	return window;
 }
 
 function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {

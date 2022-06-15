@@ -250,6 +250,15 @@ if (TAG == "RENAME_FOLDER_SLIDERS") {
 	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = undefined;
 }
 
+if (TAG == "DESK_OPEN_IN_FILE_EXPLORER") {
+	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+	window.WINDOW_BK.PWD = ON_MAIN_SCENE.PATH[1];
+	window.WINDOW_BK.PWD_PATH = "/~/Desk"
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox("NEW_FOLDER_SLIDERS");
+	DestroyObject(TAG);
+}
+
 if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 	mouse_clear(mb_right);
 	mouse_clear(mb_left);
@@ -263,6 +272,7 @@ if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 			parent.WARNING_GUI.PARENT = parent;
 		}
 		DestroyObject(PARENT.TAG);
+		DestroyButtonBox(PARENT.PARENT.TAG + "EXPLORERS_OPEN_IN_ANOTHER");
 		DestroyButtonBox(parent.TAG + "DELETE_EXPLORERS_FOLDERS");
 		DestroyButtonBox(parent.TAG + "RENAME_EXPLORERS_FOLDERS");
 		PARENT.PARENT.EXPLORER_SLIDER = undefined;
@@ -279,7 +289,27 @@ if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 	refresh.REFRESH_TIME = 0.5;
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox(PARENT.PARENT.TAG + "DELETE_EXPLORERS_FOLDERS");
+	DestroyButtonBox(PARENT.PARENT.TAG + "EXPLORERS_OPEN_IN_ANOTHER");	
 	DestroyButtonBox(PARENT.PARENT.TAG + "RENAME_EXPLORERS_FOLDERS");
+}
+
+if (string_count("EXPLORERS_OPEN_IN_ANOTHER", TAG) > 0) {
+	mouse_clear(mb_right);
+	mouse_clear(mb_left);
+	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+	window.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PARENT.PWD_PATH + "/" + PARENT.PARENT.FOLDER_LIST[NUM_LINKED].NAME);
+	window.WINDOW_BK.PWD_PATH = PARENT.PARENT.PWD_PATH + "/" + PARENT.PARENT.FOLDER_LIST[NUM_LINKED].NAME;
+	PARENT.PARENT.EXPLORER_SLIDER = undefined;
+	var refresh = PARENT.PARENT.EXPLORER_RELOAD;
+	refresh.REFRESH = true;
+	refresh.visible = false;
+	if (refresh.REFRESH_LOAD == undefined || !instance_exists(refresh.REFRESH_LOAD))	
+		refresh.REFRESH_LOAD = CreateObjectSprite(x, y, layer, S_File_Explorer_Load, OJustGUI, "IMAGE", PARENT.PARENT.EXPLORER_RELOAD.TAG + "LOAD", [undefined]);
+	refresh.REFRESH_TIME = 0.5;
+	DestroyObject(PARENT.TAG);
+	DestroyButtonBox(PARENT.PARENT.TAG + "DELETE_EXPLORERS_FOLDERS");
+	DestroyButtonBox(PARENT.PARENT.TAG + "RENAME_EXPLORERS_FOLDERS");
+	DestroyButtonBox(PARENT.PARENT.TAG + "EXPLORERS_OPEN_IN_ANOTHER");	
 }
 
 if (TAG == "NEW_FOLDER_SLIDERS") {
@@ -297,6 +327,7 @@ if (TAG == "NEW_FOLDER_SLIDERS") {
 	folder.WRITE.ON_WRITE = true;
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox("NEW_FOLDER_SLIDERS");
+	DestroyButtonBox("DESK_OPEN_IN_FILE_EXPLORER");
 	ON_MAIN_SCENE.DESK_SLIDER_OBJECT = undefined;
 }
 
@@ -349,6 +380,7 @@ if (string_count("DELETE_EXPLORERS_FOLDERS", TAG) > 0) {
 			parent.WARNING_GUI.PARENT = parent;
 		}
 		DestroyObject(PARENT.TAG);
+		DestroyButtonBox(PARENT.PARENT.TAG + "EXPLORERS_OPEN_IN_ANOTHER");
 		DestroyButtonBox(parent.TAG + "DELETE_EXPLORERS_FOLDERS");
 		DestroyButtonBox(parent.TAG + "RENAME_EXPLORERS_FOLDERS");
 		PARENT.PARENT.EXPLORER_SLIDER = undefined;
@@ -371,5 +403,6 @@ if (string_count("DELETE_EXPLORERS_FOLDERS", TAG) > 0) {
 	refresh.REFRESH_TIME = 0.5;
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox(PARENT.PARENT.TAG + "RENAME_EXPLORERS_FOLDERS");
+	DestroyButtonBox(PARENT.PARENT.TAG + "EXPLORERS_OPEN_IN_ANOTHER");
 	DestroyButtonBox(PARENT.PARENT.TAG + "DELETE_EXPLORERS_FOLDERS");
 }

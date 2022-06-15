@@ -195,6 +195,22 @@ if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count
 			obj.ON = false;
 			obj.FIRST_TAKE = false;
 			obj.CAN_TAKE = false;
+			if (string_count("FILE_EXPLORER", obj.TAG) > 0) {
+				obj.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, obj.WINDOW_BK.PWD_PATH);
+				var slash = string_count("/", obj.WINDOW_BK.PWD_PATH);
+				for (var e = 1; slash != 0; e++)
+					if (string_char_at(obj.WINDOW_BK.PWD_PATH, e) == "/")
+						slash -= 1;
+				var size = string_length(obj.WINDOW_BK.PWD_PATH) + 1;
+				var get_end = "";
+				for (; e != size; e++)
+					get_end = get_end + string_char_at(obj.WINDOW_BK.PWD_PATH, e);
+				if (get_end != obj.WINDOW_BK.PWD[0][0][0]) {
+					obj.WINDOW_BK.PWD = ON_MAIN_SCENE.PATH;
+					obj.WINDOW_BK.PWD_PATH = "/~";
+					obj.WINDOW_BK.FOLDER_LIST = UpdateFileExplorer(obj.WINDOW_BK.PWD , obj.WINDOW_BK.PWD_PATH, obj.WINDOW_BK.FOLDER_LIST, obj.WINDOW_BK.id);
+				}
+			}
 		}
 	}
 	if (all_open) {

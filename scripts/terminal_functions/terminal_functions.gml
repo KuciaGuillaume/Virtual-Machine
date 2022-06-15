@@ -360,7 +360,7 @@ function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
 			if (ID_RESULT != undefined)
 				display_result(ID_RESULT,  "[" + ARRAY[1] + "] has been successfully renamed to [" + ARRAY[2] + "]");
 			for (var e = 0; ON_MAIN_SCENE.FOLDERS[e] != undefined; e++) {
-				if (ON_MAIN_SCENE.NAME_FOLDERS[e][0] == ARRAY[1]) {
+				if (ON_MAIN_SCENE.NAME_FOLDERS[e][0] == ARRAY[1] && PWD[0][0][0] == "Desk") {
 					var folder = ON_MAIN_SCENE.FOLDERS[e];
 					if (folder != undefined) {
 						folder.TEXT_CONNECT.TEXT = ARRAY[2];

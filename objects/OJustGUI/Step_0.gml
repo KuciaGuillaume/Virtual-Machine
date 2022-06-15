@@ -195,6 +195,18 @@ if (OBJECT_LINKED != undefined) {
 if (GET_FOLDER == undefined && (string_count("FOLDERS", TAG) > 0))
 	GET_FOLDER = TAG;
 if (GET_FOLDER != undefined) {
+	
+	if (MouseInsideObject(id)) {
+		if (mouse_check_button_pressed(mb_left) && SAVE_CURRENT == 0)
+			SAVE_CURRENT = current_time;
+		else if (mouse_check_button_pressed(mb_left) && (current_time - SAVE_CURRENT < 200) && (WRITE == undefined || (WRITE != undefined && !WRITE.ON_WRITE))) {
+			SAVE_CURRENT = current_time;
+			var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+			window.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Desk/" + TEXT_CONNECT.TEXT);
+			window.WINDOW_BK.PWD_PATH = "/~/Desk/" + TEXT_CONNECT.TEXT;
+		} else if (mouse_check_button_pressed(mb_left))
+			SAVE_CURRENT = current_time;
+	}
 
 	// FOLDER NAME
 	if (WRITE != undefined && instance_exists(WRITE) && WRITE.ON_WRITE) {
@@ -215,8 +227,6 @@ if (GET_FOLDER != undefined) {
 			var PWD = ON_MAIN_SCENE.PATH[1];
 			terminal_rename(["rename", ORIGINAL_NAME, TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
 			ORIGINAL_NAME = WRITE.TEXT_OUTPUT;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
-			savegame_save("USER", SAVE_LIST);
 		}
 		if (RENAME_OBJECT != undefined) {
 			DestroyObject(TAG + "RENAME_ON_DESK");
@@ -228,11 +238,8 @@ if (GET_FOLDER != undefined) {
 	}
 	
 	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right)) {
-		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true) {
+		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true)
 			WRITE.ON_WRITE = false;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, undefined];
-			savegame_save("USER", SAVE_LIST);
-		}
 	}
 
 	if (mouse_check_button(mb_left) && (MouseInsideObject(id) || GRABED)) {

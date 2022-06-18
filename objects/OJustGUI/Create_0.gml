@@ -7,6 +7,7 @@ OPTION = undefined;
 TAG = undefined;
 image_alpha = 0;
 DESTROY = DestroyObject;
+PARENT = undefined;
 
 // INIT OPTION VARIABLES
 FADE_IN = false;

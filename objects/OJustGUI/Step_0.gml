@@ -33,7 +33,8 @@ if (TIMER_OUT) {
 					PARENT.WARNING_GUI = undefined;
 				}
 			}
-			DestroyText(TEXT_CONNECT.TAG)
+			if (TEXT_CONNECT != undefined)
+				DestroyText(TEXT_CONNECT.TAG);
 			DestroyObject(TAG);
 			return;
 		}

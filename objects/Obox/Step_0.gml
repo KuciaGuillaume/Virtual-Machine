@@ -87,9 +87,17 @@ if (KeyPressed(vk_delete) && EXPLORER_SELECT && GET_FOLDER != undefined) {
 
 
 // GO ON FOLDER
-if (((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || KeyPressed(vk_enter)) && EXPLORER_SELECT && string_count("FILE_EXPLORERS", TAG) > 0) {
-	if (GET_FOLDER != undefined)
-		if (WRITE != undefined && WRITE.ON_WRITE) { return; }
+var check_enter_select = true;
+if (KeyPressed(vk_enter) && string_count("FILE_EXPLORERS", TAG) > 0) {
+	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
+		if (PARENT.FOLDER_LIST[i].WRITE.ON_WRITE)
+			check_enter_select = false;
+	}
+} else {
+	check_enter_select = false;
+}
+
+if (((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || check_enter_select) && EXPLORER_SELECT && string_count("FILE_EXPLORERS", TAG) > 0) {
 	var get = GetObject(INFO_NAME + TAG);
 	if (get != undefined) DestroyRound(get.TAG);
 	PARENT.PWD_PATH = PARENT.PWD_PATH + "/" + NAME;
@@ -131,7 +139,7 @@ if (GET_FOLDER != undefined) {
 	}
 	
 	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right) || KeyPressed(vk_enter)) {
-		if (!MouseInsideObject(id) && WRITE.ON_WRITE == true || KeyPressed(vk_enter)) {
+		if ((!MouseInsideObject(id) && WRITE.ON_WRITE) || (KeyPressed(vk_enter) && WRITE.ON_WRITE)) {
 			WRITE.ON_WRITE = false;
 			if (TEXT_CONNECT.TEXT == "" || TEXT_CONNECT.TEXT == undefined || TEXT_CONNECT.TEXT == "undefined") {
 				var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
@@ -145,7 +153,7 @@ if (GET_FOLDER != undefined) {
 				terminal_rename(["rename", "", TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined);
 				ORIGINAL_NAME = TEXT_CONNECT.TEXT;
 				WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
-				WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;;
+				WRITE.INITIAL_TEXT = TEXT_CONNECT.TEXT;
 				WRITE.TEXT = [WRITE.INITIAL_TEXT, ""];
 				WRITE.TEXT_INDEX_MAX = 1;
 				WRITE.TEXT_INDEX = 1;
@@ -169,7 +177,12 @@ if (GET_FOLDER != undefined) {
 
 // GO BACK
 if (((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || KeyPressed(vk_backspace)) && string_count("GO_BACK", TAG) > 0) {
-	if (PARENT.PWD_PATH == "/~")
+	var folders = PARENT.FOLDER_LIST;
+	var on_write = false;
+	for (var e = 0; folders[e] != undefined; e++)
+		if (folders[e].WRITE.ON_WRITE)
+			on_write = true;
+	if (on_write || PARENT.PWD_PATH == "/~")
 		return;
 	var path = "";
 	var count = 0;

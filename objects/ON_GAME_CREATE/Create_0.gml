@@ -65,4 +65,4 @@ global.WINDOWS_PIN = LOAD_LIST[3];
 
 
 // LOAD GAME
-room = RMainScene;
+room = Rstart;

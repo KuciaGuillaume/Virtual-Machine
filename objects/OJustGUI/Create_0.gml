@@ -73,7 +73,7 @@ RENAME_OBJECT = undefined;
 GET_FOLDER = undefined;
 NAME = undefined;
 
-//
+// TMER
 SLIDE_OUT = false;
 TIMER_OUT = false;
 TIMER_TIME = 0;

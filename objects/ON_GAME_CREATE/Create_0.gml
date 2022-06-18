@@ -25,7 +25,7 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 0;
+global.TIMER = 0.5;
 
 // PATH AND FOLDERS
 
@@ -44,7 +44,7 @@ LAST_NAME = "NULL";
 EMAIL = "NULL";
 AGE = "NULL";
 PASSWORD = "NULL";
-ICON = ["NULL", -1];
+ICON = [undefined, -1];
 BACKGROUND = -1;
 HELPING_PASSWORD = "NULL";
 LIKE_LIST = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -56,11 +56,11 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, undefined];
 
 // LOAD
-//LOAD_LIST = savegame_load("USER", LOAD_LIST);
-//global.USER = LOAD_LIST[0];
-//global.PATH = LOAD_LIST[1];
-//global.FOLDERS = LOAD_LIST[2];
-//global.WINDOWS_PIN = LOAD_LIST[3];
+LOAD_LIST = savegame_load("USER", LOAD_LIST);
+global.USER = LOAD_LIST[0];
+global.PATH = LOAD_LIST[1];
+global.FOLDERS = LOAD_LIST[2];
+global.WINDOWS_PIN = LOAD_LIST[3];
 
 
 

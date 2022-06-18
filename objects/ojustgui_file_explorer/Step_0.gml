@@ -328,6 +328,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			PWD_PATH = find[2];
 			
 			for (var i = 0; FOLDER_LIST[i] != undefined; i++) {
+				DestroyWrite(FOLDER_LIST[i].WRITE.TAG);
 				DestroyText(FOLDER_LIST[i].TEXT_CONNECT.TAG);
 				DestroyText(FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
 				DestroyObject(FOLDER_LIST[i].OBJECT_LINKED.TAG);

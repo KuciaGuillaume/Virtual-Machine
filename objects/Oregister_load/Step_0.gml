@@ -63,7 +63,7 @@ if (STATE == 1) {
 
 if (STATE == 2) {
 	DestroyObject("REGISTER_BACKGROUND");
+	AddText(960, 540, "Hello", Arial25, c_white, "Gp1", "FINISH_MESSAGE", [["CENTERED"], undefined]);
 	DestroyText("WAIT");
 	DestroyObject("FINISH_LOAD");
-	AddText(960, 540, "Hello", Arial25, c_white, "Gp1", "FINISH_MESSAGE", [["CENTERED"], undefined]);
 }

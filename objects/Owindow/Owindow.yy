@@ -27,7 +27,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Window",
-    "path": "folders/Global/Objects/Window.yy",
+    "path": "folders/MainScene/Objects/Objects/Window.yy",
   },
   "resourceVersion": "1.0",
   "name": "Owindow",

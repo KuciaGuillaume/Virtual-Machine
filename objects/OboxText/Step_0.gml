@@ -129,11 +129,11 @@ if (TAG == "REGISTER") {
 	var g_age = GetWrite("AGE"); age = g_age.TEXT_OUTPUT;
 	var g_password = GetWrite("Password 1"); password = g_password.TEXT_OUTPUT;
 	
-	global.USER[0] = true;
+	global.USER[0]= true;
 	global.USER[1] = name;
 	global.USER[2] = last;
 	global.USER[3] = email;
-	global.USER[4] = age;
+	global.USER[4]= age;
 	global.USER[5] = password;
 	
 	DestroyText("REGISTER ERROR");

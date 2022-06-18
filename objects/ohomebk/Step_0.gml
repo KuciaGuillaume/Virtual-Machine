@@ -29,22 +29,9 @@ if (TIMER_OUT) {
 		TIMER_STATE_END = true;
 		image_alpha -= 0.00001 * delta_time;
 		y += 0.00001 * delta_time;
-		if (TEXT_CONNECT != undefined) {
-			TEXT_CONNECT.image_alpha -= 0.0001 *delta_time;
-			TEXT_CONNECT.y += 0.00001 * delta_time;
-		}
 		if (image_alpha <= 0) {
-			if (PARENT != undefined) {
-				if (string_count("WARNING", TAG)) {
-					PARENT.WINDOW.list_objects = remove_findlist(PARENT.WARNING_GUI, PARENT.WINDOW.list_objects);
-					PARENT.WARNING_GUI = undefined;
-				}
-			}
 			ON_MAIN_SCENE.HOME = undefined;
-			if (TEXT_CONNECT != undefined)
-				DestroyText(TEXT_CONNECT.TAG)
 			DestroyObject(TAG);
-			return;
 		}
 	}
 }
@@ -58,7 +45,5 @@ if (SLIDE && image_alpha < 1 && ON) {
 
 // DESTROY
 
-if ((mouse_check_button_pressed(mb_any) && !MouseInsideObject(id) || ctre || ctrt) && !TIMER_OUT) {
-	TIMER_OUT = true;
-	TIMER_TIME = 0.1;
-}
+if ((mouse_check_button_pressed(mb_any) && !MouseInsideObject(id) || ctre || ctrt) && !TIMER_OUT)
+	DestroyHome();

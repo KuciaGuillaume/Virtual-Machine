@@ -40,6 +40,13 @@ ON = true;
 GET_PIN = undefined;
 SET_DISPLAY = false;
 
+// TMER
+SLIDE_OUT = false;
+TIMER_OUT = false;
+TIMER_TIME = 0;
+TIMER_DELTA = 0;
+TIMER_STATE_END = false;
+
 // EXPLORER
 GET_EXPLORER = undefined;
 PARENT_DIFF_X = 0;

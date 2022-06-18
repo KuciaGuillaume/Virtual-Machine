@@ -69,13 +69,11 @@ var diff = ON_MAIN_SCENE.ICONS[i + 1].x - x;
 
 // HOME_CLICK
 if (HOME && (MouseInsideObject(id) && mouse_check_button_pressed(mb_left) || (KeyPress(vk_control) && KeyPressed(ord("A"))))) {
-	if (ON_MAIN_SCENE.HOME == undefined)
-		ON_MAIN_SCENE.HOME = CreateObjectSprite(960, 700, "Home_Gp0", S_Home_BK, OHomeBk, "IMAGE", "HOME_BK", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], undefined]);
-	else if (ON_MAIN_SCENE.HOME.image_alpha >= 1) {
-		DestroyObject(ON_MAIN_SCENE.HOME.TAG);
-		ON_MAIN_SCENE.HOME = undefined;
-		ON_MAIN_SCENE.HOME = CreateObjectSprite(960, 700, "Home_Gp0", S_Home_BK, OHomeBk, "IMAGE", "HOME_BK", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], undefined]);
-	}
+	if (ON_MAIN_SCENE.HOME != undefined)
+		DestroyHome();
+	else
+		CreateHome();
+	mouse_clear(mb_left);
 }
 
 if (ON_TASK != undefined)

@@ -1,39 +1,13 @@
 /// @Project by Kucia Guillaume* ///
 
-if (TAG == undefined)
-	return;
 
-if (!FIRST_PASS && !FADE_IN) { FIRST_PASS = true; image_alpha = 2; } 
-
-// FADE_IN
-
-if (FADE_IN && image_alpha < 1 && ON)
-	image_alpha += FADE_POWER * delta_time;
-else
-	FADE_IN = false;
-
-if (IMAGE_WIDTH < 0) {
-	IMAGE_WIDTH = sprite_width;
-	IMAGE_HEIGHT = sprite_height;
-}
-
-if (SLIDE && image_alpha < 1 && ON) {
-	y -= SLIDE_POWER * delta_time;
-	if (TEXT_CONNECT != undefined)
-		TEXT_CONNECT.y -= SLIDE_POWER * delta_time;
-}
+DevKit(id);
 
 // ICON BUTTON
 if (OBJECT_LINKED != undefined) {
 	if (((global.USER[6][0] == 0 && OBJECT_LINKED.sprite_index == Shomme) || (global.USER[6][0] == 1 && OBJECT_LINKED.sprite_index == Sfemme)) && global.USER[6][1] == OBJECT_LINKED.image_index) { image_index = 2; }
 	else if (image_index == 2) { image_index = 0; LOCK_STATE = true; }
 }
-
-// LOCK BUTTON
-if ((LOCK[0] != undefined && !LOCK[1].LOCK_STATE)) {
-	image_index = 2;
-	return;
-} else if (image_index == 2) { image_index = 0; }
 
 if (GET_PIN == undefined && string_count("PIN", TAG) > 0)
 	GET_PIN = TAG;

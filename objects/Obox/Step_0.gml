@@ -90,12 +90,11 @@ if (KeyPressed(vk_delete) && EXPLORER_SELECT && GET_FOLDER != undefined) {
 var check_enter_select = true;
 if (KeyPressed(vk_enter) && string_count("FILE_EXPLORERS", TAG) > 0) {
 	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
-		if (PARENT.FOLDER_LIST[i].WRITE.ON_WRITE)
+		if (PARENT.FOLDER_LIST[i].TEXT_CONNECT.COLOR == c_white)
 			check_enter_select = false;
 	}
-} else {
+} else
 	check_enter_select = false;
-}
 
 if (((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || check_enter_select) && EXPLORER_SELECT && string_count("FILE_EXPLORERS", TAG) > 0) {
 	var get = GetObject(INFO_NAME + TAG);
@@ -139,8 +138,7 @@ if (GET_FOLDER != undefined) {
 	}
 	
 	if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right) || KeyPressed(vk_enter)) {
-		if ((!MouseInsideObject(id) && WRITE.ON_WRITE) || (KeyPressed(vk_enter) && WRITE.ON_WRITE)) {
-			WRITE.ON_WRITE = false;
+		if ((!MouseInsideObject(id) && TEXT_CONNECT.COLOR == c_white) || (KeyPressed(vk_enter) && TEXT_CONNECT.COLOR == c_white)) {
 			if (TEXT_CONNECT.TEXT == "" || TEXT_CONNECT.TEXT == undefined || TEXT_CONNECT.TEXT == "undefined") {
 				var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
 				var e = get_index_list_explorer(TEXT_CONNECT.TEXT, PARENT.FOLDER_LIST);
@@ -168,6 +166,7 @@ if (GET_FOLDER != undefined) {
 				ORIGINAL_NAME = TEXT_CONNECT.TEXT;
 				MASTER_NAME = TEXT_CONNECT.TEXT;
 			}
+			WRITE.ON_WRITE = false;
 		}
 	}
 	if (WRITE != undefined && !WRITE.ON_WRITE)

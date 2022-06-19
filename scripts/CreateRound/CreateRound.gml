@@ -33,7 +33,12 @@ function CreateEmptyRound(X, Y, COLOR, SIZE_X, SIZE_Y, LAYER, TAG, OPTION) {
 				rounded.FADE_IN = true;
 		return rounded;
 	}
-	rounded = CreateObjects(X, Y, LAYER, OEmptyRound, "IMAGE", TAG, OPTION);
+	var type = "IMAGE";
+	for (var i = 0; OPTION[i] != undefined; i++) {
+		if (OPTION[i][0] == "TYPE")
+			type = OPTION[i][1];
+	}
+	rounded = CreateObjects(X, Y, LAYER, OEmptyRound, type, TAG, OPTION);
 	rounded.COLOR = COLOR;
 	rounded.SIZE_X = SIZE_X;
 	rounded.SIZE_Y = SIZE_Y;

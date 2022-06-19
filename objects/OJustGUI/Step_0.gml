@@ -23,8 +23,8 @@ if (TIMER_OUT) {
 		image_alpha -= 0.00001 * delta_time;
 		y += 0.00001 * delta_time;
 		if (TEXT_CONNECT != undefined) {
-			TEXT_CONNECT.image_alpha -= 0.0001 *delta_time;
-			TEXT_CONNECT.y += 0.00001 * delta_time;
+			TEXT_CONNECT.image_alpha = image_alpha;
+			TEXT_CONNECT.y = y;
 		}
 		if (image_alpha <= 0) {
 			if (PARENT != undefined) {
@@ -41,7 +41,7 @@ if (TIMER_OUT) {
 	}
 }
 
-if (SLIDE && image_alpha < 1 && ON) {
+if (SLIDE && !TIMER_STATE_END && image_alpha < 1 && ON) {
 	y -= SLIDE_POWER * delta_time;
 	if (TEXT_CONNECT != undefined)
 		TEXT_CONNECT.y -= SLIDE_POWER * delta_time;

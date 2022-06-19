@@ -9,9 +9,11 @@ function setforfolders(LIST, BOOL) {
 function check_all_off() {
 	var home = ON_MAIN_SCENE.HOME;
 	var all_off = true;
+	if (home != undefined && MouseInsideObject(home.id))
+		all_off = false;
 	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != undefined; i++) {
 		for (var e = 0; ON_MAIN_SCENE.TASKS[i][3][e] != undefined; e++)
-			if (ON_MAIN_SCENE.TASKS[i][3][e].ON == true || MouseInsideObject(ON_MAIN_SCENE.TASKS[i][3][e].ICON) || MouseInsideObject(GetObject("MAIN_TASKBAR")) || (home != undefined && MouseInsideObject(home)))
+			if (ON_MAIN_SCENE.TASKS[i][3][e].ON == true || MouseInsideObject(ON_MAIN_SCENE.TASKS[i][3][e].ICON) || MouseInsideObject(GetObject("MAIN_TASKBAR")))
 				all_off = false;
 		if (ON_MAIN_SCENE.TASKS[i][3][0] != undefined && ON_MAIN_SCENE.TASKS[i][3][0].ICON != undefined) {
 			var visio = GetObject(ON_MAIN_SCENE.TASKS[i][3][0].ICON.TAG + "VISIO");

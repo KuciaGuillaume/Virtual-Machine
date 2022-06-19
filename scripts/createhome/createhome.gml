@@ -22,6 +22,8 @@ function CreateHome() {
 function DestroyHome() {
 	ON_MAIN_SCENE.HOME.TIMER_OUT = true;
 	ON_MAIN_SCENE.HOME.TIMER_TIME = 0.1;
-	var get = GetObject("HOME_POWER"); get.TIMER_OUT = true; get.TIMER_TIME = 0.1;
+	var get = GetObject("HOME_POWER");
+	if (get.OPTION_MENU != undefined) DestroyObject(get.OPTION_MENU.TAG);
+	get.TIMER_OUT = true; get.TIMER_TIME = 0.1;
 	var get = GetObject("HOME_USER_ICON"); get.TIMER_OUT = true; get.TIMER_TIME = 0.1;
 }

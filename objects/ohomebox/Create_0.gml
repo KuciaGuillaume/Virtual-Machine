@@ -47,3 +47,4 @@
 /////////////////// BASE VARIABLES ///////////////////
 
 // VARIABLES //
+OPTION_MENU = undefined;

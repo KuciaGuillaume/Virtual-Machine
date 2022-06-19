@@ -12,7 +12,7 @@ function CreateObjects(x, y, Layer, object, type, tag, option){
 	Is_object.OPTION = option;
 	var CLASS = [Is_object, type, room, tag, undefined];
 	global.OBJECTS = addtolist(CLASS, global.OBJECTS);
-	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND")
+	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND" || type == "EMPT_BUTTON-NO-HAND" || type == "EMPT_BUTTON")
 		global.BUTTONS = addtolist(CLASS, global.BUTTONS);
 	return Is_object;
 }

@@ -16,7 +16,7 @@ function DevKit(ID) {
 		ID.IMAGE_HEIGHT = ID.sprite_height;
 	}
 
-	if (ID.SLIDE && ID.image_alpha < 1 && ID.ON) {
+	if (ID.SLIDE && !ID.TIMER_STATE_END && ID.image_alpha < 1 && ID.ON) {
 		ID.y -= ID.SLIDE_POWER * delta_time;
 		if (ID.TEXT_CONNECT != undefined)
 			ID.TEXT_CONNECT.y -= ID.SLIDE_POWER * delta_time;
@@ -30,13 +30,13 @@ function DevKit(ID) {
 		ID.image_alpha -= 0.00001 * delta_time;
 		ID.y += 0.00001 * delta_time;
 		if (ID.TEXT_CONNECT != undefined) {
-			ID.TEXT_CONNECT.image_alpha -= 0.0001 *delta_time;
-			ID.TEXT_CONNECT.y += 0.00001 * delta_time;
+			ID.TEXT_CONNECT.image_alpha = ID.image_alpha
+			ID.TEXT_CONNECT.y = ID.y;
 		}
 		if (ID.image_alpha <= 0) {
 			if (ID.TEXT_CONNECT != undefined)
 				DestroyText(ID.TEXT_CONNECT.TAG)
-			DestroyObject(TAG);
+			DestroyObject(ID.TAG);
 			return;
 		}
 	}

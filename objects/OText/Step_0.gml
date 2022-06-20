@@ -3,17 +3,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (TAG == undefined)
-	return;
-
-if (!FIRST_PASS && !FADE_IN && TAG != "FINISH_MESSAGE") { FIRST_PASS = true; image_alpha = 2; } 
-
-// FADE_IN
-
-if (FADE_IN && image_alpha < 1)
-	image_alpha += FADE_POWER * delta_time;
-else
-	FADE_IN = false;
+DevKit(id);
 
 
 // TAG FINISH_MESSAGE

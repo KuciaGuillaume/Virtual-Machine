@@ -12,3 +12,9 @@ function MouseInsideObject(OBJECT) {
 		return true;
 	return false;
 }
+
+
+function MouseInsideRound(OBJECT) {
+	
+	return MouseInside(OBJECT.x, OBJECT.x + OBJECT.SIZE_X, OBJECT.y, OBJECT.y + OBJECT.SIZE_Y);
+}

@@ -6,6 +6,7 @@ function AddText(X, Y, TEXT, FONT, COLOR, LAYER, TAG, OPTION){
 	text.COLOR = COLOR;
 	text.OPTION = OPTION;
 	text.TAG = TAG;
+	text.TYPE = "TEXT";
 	var class = [TAG, text, room];
 	var i = 0;
 	for (; global.TEXT[i] != undefined;) { i++; }

@@ -42,3 +42,12 @@ TIMER_OUT = false;
 TIMER_TIME = 0;
 TIMER_DELTA = 0;
 TIMER_STATE_END = false;
+
+//HOME
+ALL_APPS = undefined;
+RECOMMANDED = undefined;
+SEARCH = undefined;
+ALL_EXPLORERS = undefined;
+ALL_TERMINAL = undefined;
+CLOSE = false;
+ALL_APPS_LIST = [undefined];

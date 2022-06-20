@@ -29,14 +29,17 @@ function DevKit(ID) {
 		ID.TIMER_STATE_END = true;
 		ID.image_alpha -= 0.00001 * delta_time;
 		ID.y += 0.00001 * delta_time;
-		if (ID.TEXT_CONNECT != undefined) {
-			ID.TEXT_CONNECT.image_alpha = ID.image_alpha
+		if (ID.TEXT_CONNECT != undefined && ID.TAG != "HOME_FILE_TERMINAL" && ID.TAG != "HOME_FILE_EXPLORERS") {
+			ID.TEXT_CONNECT.image_alpha = ID.image_alpha;
 			ID.TEXT_CONNECT.y = ID.y;
 		}
 		if (ID.image_alpha <= 0) {
 			if (ID.TEXT_CONNECT != undefined)
 				DestroyText(ID.TEXT_CONNECT.TAG)
-			DestroyObject(ID.TAG);
+			if (ID.TYPE == "TEXT")
+				DestroyText(ID.TAG);
+			else
+				DestroyObject(ID.TAG);
 			return;
 		}
 	}
@@ -64,5 +67,11 @@ function DevStarterKit(ID) {
 		if (ID.OPTION[i][0] == "INFO") {ID.INFO = true; ID.INFO_NAME = ID.OPTION[i][1]; }
 		if (ID.OPTION[i][0] == "SLIDE") {ID.SLIDE = true; ID.SLIDE_POWER = ID.OPTION[i][1]; }
 		if (ID.OPTION[i][0] == "TIME_OUT") {ID.TIMER_OUT = true; ID.TIMER_TIME = ID.OPTION[i][1]; }
+		if (ID.OPTION[i][0] == "EXT") {ID.EXT = true; ID.EXT_COLOR = ID.OPTION[i][1]; ID.EXT_RADIUS = ID.OPTION[i][2]; ID.EXT_SIZE = ID.OPTION[i][3];}
+		if (ID.OPTION[i][0] == "SHADOW") {ID.SHADOW = true; ID.SHADOW_COLOR = ID.OPTION[i][1]; ID.SHADOW_SIZE = ID.OPTION[i][2]; ID.SHADOW_ALPHA = ID.OPTION[i][3];}
+		if (ID.OPTION[i][0] == "EDIT") {ID.EDIT = true; ID.EDIT_X = ID.OPTION[i][1]; ID.EDIT_Y = ID.OPTION[i][2];}
+		if (ID.OPTION[i][0] == "SECRET") {ID.SECRET = true; }
+		if (ID.OPTION[i][0] == "CENTERED") {ID.CENTERED = true; }
+		if (ID.OPTION[i][0] == "BACK") {ID.BACK = true; ID.BACK_POWER = OPTION[i][1]; }
 	}
 }

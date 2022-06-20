@@ -12,11 +12,8 @@ if (FADE_IN && image_alpha < 1)
 else
 	FADE_IN = false;
 
-if (HOME == false && TAG == "HOME_ICON") {
+if (HOME == false && TAG == "HOME_ICON")
 	HOME = true;
-	ON_MAIN_SCENE.ICONS[0] = id;
-	ON_MAIN_SCENE.ICONS[1] = undefined;
-}
 if (!HOME)
 	if (!PIN && ON_MAIN_SCENE.TASKS[WINDOW][3][0] == undefined)
 		OPT_CLOSING = true;
@@ -100,7 +97,7 @@ if (MouseInsideObject(id) && right_option == undefined && !HOME) {
 				Y -= 22.5;
 			}
 		}
-		visio = CreateEmptyRound(x - 120, y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)), c_white, 240, (20 * windows_n) + (2.5 * (windows_n - 1)) + 20, "TaskBar_Gp0", TAG + "VISIO", [["FADE_IN", 0.00001], undefined]);
+		visio = CreateEmptyRound(OEmptyRound, x - 120, y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)), c_white, 240, (20 * windows_n) + (2.5 * (windows_n - 1)) + 20, "TaskBar_Gp0", TAG + "VISIO", [["FADE_IN", 0.00001], undefined]);
 		visio.Y_TARGET = y - 30 - (20 * windows_n) - (2.5 * (windows_n - 1)) - 20;
 		visio.PARENT = id;
 		visio.COMPONENTS = all_button_box;
@@ -202,7 +199,7 @@ if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_coun
 	me.OBJECT_LINKED.image_xscale = 0.5; me.OBJECT_LINKED.image_yscale = 0.5;
 	WINDOWS_BUTTONS = addtolist(me, WINDOWS_BUTTONS);
 	var nbar = list_n(WINDOWS_BUTTONS);
-	right_option = CreateEmptyRound(x - 120, y - 30 - (20 * nbar) - (2.5 * (nbar - 1)), c_white, 240, (20 * nbar) + (2.5 * (nbar - 1)) + 20, "TaskBar_Gp0", TAG + "RIGHT_OPT", [["FADE_IN", 0.00001], undefined]);
+	right_option = CreateEmptyRound(OEmptyRound, x - 120, y - 30 - (20 * nbar) - (2.5 * (nbar - 1)), c_white, 240, (20 * nbar) + (2.5 * (nbar - 1)) + 20, "TaskBar_Gp0", TAG + "RIGHT_OPT", [["FADE_IN", 0.00001], undefined]);
 	right_option.Y_TARGET = y - 30 - (20 * nbar) - (2.5 * (nbar - 1)) - 20;
 } else if ((mouse_check_button_pressed(mb_right) || mouse_check_button_pressed(mb_left)) && string_count("_TASK_ICON", TAG) >= 1) {
 	if (right_option != undefined) {
@@ -250,7 +247,7 @@ if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count
 	if (all_open) {
 		for (var i = 0; ON_MAIN_SCENE.TASKS[WINDOW][3][i] != undefined; i++) {
 			var obj = ON_MAIN_SCENE.TASKS[WINDOW][3][i];
-			if (!obj.IS_REDUCE) {
+			if (!obj.IS_REDUCE && obj.image_alpha >= 1) {
 				obj.REDUCING = true;
 				obj.FADE_END = true;
 			}

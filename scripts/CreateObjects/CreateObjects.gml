@@ -43,7 +43,7 @@ function CreateObjectSprite(x, y, Layer, sprite, object, type, tag, option){
 	Isobject.OPTION = option;
 	var CLASS = [Isobject, type, room, tag, undefined];
 	global.OBJECTS = addtolist(CLASS, global.OBJECTS);
-	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND")
+	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND" || type == "EMPT_BUTTON-NO-HAND" || type == "EMPT_BUTTON")
 		global.BUTTONS = addtolist(CLASS, global.BUTTONS);
 	return Isobject;
 }
@@ -54,7 +54,7 @@ function DestroyObject(TAG) {
 	if (global.OBJECTS[i] == undefined || global.OBJECTS[i][2] != room)
 		return;
 	type = global.OBJECTS[i][1];
-	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND") {
+	if (type == "BUTTON" || type == "TEXT_BUTTON" || type == "INFO" || type == "BUTTON-NO-HAND" || type == "EMPT_BUTTON-NO-HAND" || type == "EMPT_BUTTON") {
 		var e = 0;
 		for (; global.BUTTONS[e] != undefined && global.BUTTONS[e][3] != TAG;) { e++ };
 			if (global.BUTTONS[e] == undefined || global.BUTTONS[e][2] != room)

@@ -187,7 +187,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			if (EMPTY_FOLDER == undefined) {
 				EMPTY_FOLDER = AddText(x + 110, y + 300, "Folder is empty.", Arial10, c_black, WINDOW.LAYERS[0], TAG + "TEXT_EMPTY", [["CENTERED"], undefined]);
 				WINDOW.list_objects = addtolist(EMPTY_FOLDER, WINDOW.list_objects);
-			} else if (EMPTY_FOLDER != undefined && WINDOW.ON) {
+			} else if (EMPTY_FOLDER != undefined) {
 				EMPTY_FOLDER.image_alpha = image_alpha; EMPTY_FOLDER.x = x + 110; EMPTY_FOLDER.y = y + 300; }
 		} else if (N_ELEMENTS > 0 && EMPTY_FOLDER != undefined) {
 			WINDOW.list_objects = remove_findlist(EMPTY_FOLDER, WINDOW.list_objects);

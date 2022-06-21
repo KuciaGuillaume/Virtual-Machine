@@ -77,15 +77,47 @@ if (SEARCH != undefined && !CLOSE) {
 			var SPEED = 0.001 * delta_time;
 		else
 			var SPEED = -0.001 * delta_time;
+
+
 		var size = array_size(ALL_FILES_LIST) - 1;
 		if (size >= 0) var last = GetObject(ALL_FILES_LIST[size] + "HOME");
 		else var last = undefined;
 		if (ALL_FILES_LIST[0] != undefined) var start = GetObject(ALL_FILES_LIST[0] + "HOME");
 		else var start = undefined;
+		
+		var minimum_v = 1500, maximum_v = 0;
+		var minimum = undefined, maximum = undefined;
+		for (var i = 0; ALL_APPS_LIST[i] != undefined; i++) {
+			var get = ALL_APPS_LIST[i];
+			if (ALL_APPS_LIST[i][1] == undefined || !instance_exists(ALL_APPS_LIST[i][1]))
+				continue;
+			var obj = ALL_APPS_LIST[i][1];
+			if (obj.y < minimum_v)
+				minimum = obj;
+			if (obj.y > maximum_v)
+				maximum = obj;
+		}
+		
+		if (maximum != undefined) {
+			if (last == undefined)
+				last = maximum;
+			else if (maximum.y > last.y)
+				last = maximum;
+		}
+
+		if (minimum != undefined) {
+			if (start == undefined)
+				start = minimum;
+			else if (minimum.y < start.y)
+				start = minimum;
+		}
+
 		if (last != undefined && last.y + 25 < 888 && mouse_wheel_down())
 			return;
 		if (start != undefined && start.y + 25 > 522 && mouse_wheel_up())
 			return;
+
+
 		for (var i = 0; ALL_FILES_LIST[i] != undefined; i++) {
 			var object = GetObject(ALL_FILES_LIST[i] + "HOME");
 			object.y -= SPEED;

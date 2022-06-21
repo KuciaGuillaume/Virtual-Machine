@@ -51,3 +51,4 @@ ALL_EXPLORERS = undefined;
 ALL_TERMINAL = undefined;
 CLOSE = false;
 ALL_APPS_LIST = [undefined];
+ALL_FILES_LIST = [undefined];

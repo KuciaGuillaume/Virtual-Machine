@@ -175,7 +175,7 @@ if (GET_FOLDER != undefined) {
 
 
 // GO BACK
-if (((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || KeyPressed(vk_backspace)) && string_count("GO_BACK", TAG) > 0) {
+if (((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || (KeyPressed(vk_backspace) && PARENT.WINDOW.ON)) && string_count("GO_BACK", TAG) > 0) {
 	var folders = PARENT.FOLDER_LIST;
 	var on_write = false;
 	for (var e = 0; folders[e] != undefined; e++)

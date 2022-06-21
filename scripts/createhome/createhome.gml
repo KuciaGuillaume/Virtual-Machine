@@ -61,6 +61,9 @@ function DestroyHomeApps() {
 	ON_MAIN_SCENE.HOME.ALL_TERMINAL = undefined;
 	for (var i = 0; ALL_APPS_LIST[i] != undefined; i++)
 		ALL_APPS_LIST[i][1] = undefined;
+	for (var m = 0; ON_MAIN_SCENE.HOME.ALL_FILES_LIST[m] != undefined; m++)
+		DestroyEmptyButton(ON_MAIN_SCENE.HOME.ALL_FILES_LIST[m] + "HOME");
+	ON_MAIN_SCENE.HOME.ALL_FILES_LIST = [undefined];
 }
 
 function DestroyHome() {
@@ -69,6 +72,9 @@ function DestroyHome() {
 	ON_MAIN_SCENE.HOME.TIMER_OUT = true;
 	ON_MAIN_SCENE.HOME.TIMER_TIME = 0.1;
 	ON_MAIN_SCENE.HOME.CLOSE = true;
+	var Files = ON_MAIN_SCENE.HOME.ALL_FILES_LIST;
+	for (var z = 0; Files[z] != undefined; z++)
+		DestroyEmptyButton(Files[z] + "HOME");
 	var get = GetObject("HOME_POWER");
 	if (get.OPTION_MENU != undefined) {
 		for (var i = 0; get.OPTION_MENU.BUTTONS[i] != undefined; i++) {

@@ -16,5 +16,11 @@ function MouseInsideObject(OBJECT) {
 
 function MouseInsideRound(OBJECT) {
 	
-	return MouseInside(OBJECT.x, OBJECT.x + OBJECT.SIZE_X, OBJECT.y, OBJECT.y + OBJECT.SIZE_Y);
+	if (!OBJECT.OTHER_DRAWING)
+		return MouseInside(OBJECT.x, OBJECT.x + OBJECT.SIZE_X, OBJECT.y, OBJECT.y + OBJECT.SIZE_Y);
+	else {
+		var X = OBJECT.x + OBJECT.OTHER_DRAWING_X;
+		var Y = OBJECT.y + OBJECT.OTHER_DRAWING_Y;
+		return MouseInside(X, X + OBJECT.SIZE_X, Y, Y + OBJECT.SIZE_Y);
+	}
 }

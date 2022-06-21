@@ -8,6 +8,22 @@ function addtolist(OBJECT, LIST) {
 	return LIST;
 }
 
+function addtolistspec(OBJECT, LIST, SPEC) {
+	
+	for (var i = 0; LIST[i] != SPEC; ) { i++; }
+	LIST[i] = OBJECT;
+	LIST[i + 1] = SPEC;
+	return LIST;
+}
+
+function addtolistnum(OBJECT, LIST, NUM) {
+	
+	for (var i = 0; i != NUM; ) { i++; }
+	LIST[i] = OBJECT;
+	LIST[i + 1] = undefined;
+	return LIST;
+}
+
 function remove_list(i, LIST) {
 	
 	for (; LIST[i] != undefined; i++)

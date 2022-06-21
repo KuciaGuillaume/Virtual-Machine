@@ -20,7 +20,7 @@ for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "EMPT_BUTTON" && class[1] != "EMPT_BUTTON-NO-HAND" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
 		continue;
 	
-	if ((MouseInsideObject(class[0]) || ((class[1] == "EMPT_BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON") && MouseInside(class[0].x, class[0].x + class[0].SIZE_X, class[0].y, class[0].y + class[0].SIZE_Y))) && class[0].image_index < 2 && class[0].ON) {
+	if ((MouseInsideObject(class[0]) || ((class[1] == "EMPT_BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON") && MouseInsideRound(class[0]))) && class[0].image_index < 2 && class[0].ON) {
 		if (class[1] == "BUTTON" || class[1] == "EMPT_BUTTON")
 			image_index = 1;
 		if (class[1] == "TEXT_BUTTON")
@@ -55,7 +55,7 @@ for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 		else if (class[0].image_alpha < 1 && class[0].FADE_ON)
 			class[0].image_alpha += class[0].FADE_ON_POWER * delta_time;
 	} else if (((class[0].image_index == 1 && class[0].image_index != 0) || class[0].FADE_ON || class[0].INFO) ||
-	((class[1] == "EMPT_BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON") && !MouseInside(class[0].x, class[0].x + class[0].SIZE_X, class[0].y, class[0].y + class[0].SIZE_Y))) {
+	((class[1] == "EMPT_BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON") && !MouseInsideRound(class[0]))) {
 	
 		if (class[0].TYPE != "TEXT_BUTTON" || (class[0].TYPE == "TEXT_BUTTON" && !class[0].write.ON_WRITE)) {
 			if (class[0].FADE_ON == false) {

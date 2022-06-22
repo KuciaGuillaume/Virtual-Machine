@@ -36,6 +36,15 @@ global.FOLDERS = [undefined];
 
 global.WINDOWS_PIN = [undefined];
 
+
+// CREATE DATE
+global.DATE = {
+	DAY : undefined,
+	MONTH : undefined,
+	YEAR : undefined,
+	TIME : [undefined, undefined]
+};
+
 // CREATE USERS VARAIBLES
 
 STATE = undefined;

@@ -1,6 +1,30 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+// UPDATE TIME
+if (global.DATE.DAY == undefined) {
+	var day = current_day;
+	if (day < 10)
+		global.DATE.DAY = "0" + string(day);
+	else
+		global.DATE.DAY = string(day);
+}
+if (global.DATE.MONTH == undefined) {
+	var month = current_month;
+	if (month < 10)
+		global.DATE.MONTH = "0" + string(month);
+	else
+		global.DATE.MONTH = string(month);
+}
+if (global.DATE.YEAR == undefined)
+	global.DATE.YEAR = string(current_year);
+
+global.DATE.TIME[0] = string(current_hour);
+if (current_minute > 10)
+	global.DATE.TIME[1] = string(current_minute);
+else
+	global.DATE.TIME[1] = "0" + string(current_minute);
+
 var CTRL = KeyPress(vk_control);
 
 if (CTRL && KeyPressed(ord("T"))) {

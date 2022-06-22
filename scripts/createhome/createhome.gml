@@ -18,7 +18,8 @@ function CreateHome() {
 		ON_MAIN_SCENE.HOME.SEARCH = search;
 		ON_MAIN_SCENE.HOME.ALL_APPS = AddText(715, 490, "All Apps", Segoe10, c_black, "Home_Gp1", "HOME_TEXT_ALL_APS", [["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ON_MAIN_SCENE.HOME.RECOMMANDED = AddText(715, 790, "Recommanded", Segoe10, c_black, "Home_Gp1", "HOME_TEXT_ALL_RECOMMANDED", [["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
-		
+		var date = CreateEmptyRound(OHomeEmpty, 900, 963, #DFDFDF, 120, 20, "Home_Gp1", "HOME_DATE_BACK", [["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
+		date.TEXT_CONNECT = AddText(960, 973, "", Arial10, c_black, "Home_Gp2", "HOME_DATE", [["CENTERED"], undefined]);
 		CreateHomeApps();
 		
 	} else if (ON_MAIN_SCENE.HOME.image_alpha >= 1) {
@@ -93,4 +94,5 @@ function DestroyHome() {
 	var get = GetText("HOME_TEXT_ALL_RECOMMANDED"); if (get != undefined) { get.TIMER_OUT = true;  get.TIMER_TIME = 0.1; }
 	var get = GetObject("HOME_FILE_EXPLORERS"); if (get != undefined) { get.TIMER_OUT = true; get.TIMER_TIME = 0.1; get.OBJECT_LINKED.TIMER_OUT = true; get.OBJECT_LINKED.TIMER_TIME = 0.1; }
 	var get = GetObject("HOME_FILE_TERMINAL"); if (get != undefined) { get.TIMER_OUT = true; get.TIMER_TIME = 0.1;get.OBJECT_LINKED.TIMER_OUT = true; get.OBJECT_LINKED.TIMER_TIME = 0.1; }
+	var get = GetObject("HOME_DATE_BACK"); if (get != undefined) { get.TIMER_OUT = true;  get.TIMER_TIME = 0.1; }
 }

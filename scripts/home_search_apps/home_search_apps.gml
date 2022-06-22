@@ -16,7 +16,7 @@ function position_clalc_apps(X, Y, nb, e, size) {
 		Y += 60;
 		nb = 0;
 	} else {
-		X += 175;
+		X += 170;
 		nb += 1;
 	}
 	e = size - 1;
@@ -71,12 +71,12 @@ function Home_search_apps(ID, search) {
 	for (var d = 0; d != size_check; size_check -= 1) {
 		if (ID.ALL_FILES_LIST[d] == undefined)
 			break;
-		var button = GetObject(ID.ALL_FILES_LIST[d] + "HOME");
+		var button = ID.ALL_FILES_LIST[d];
 		var PWD = button.FOLDER_PWD;
 		var PATH = button.FOLDER_PWD_PATH;
 		var name = button.TEXT_CONNECT.TEXT;
 		DestroyEmptyButton(name + "HOME");
-		ID.ALL_FILES_LIST = remove_findlist(name, ID.ALL_FILES_LIST);
+		ID.ALL_FILES_LIST = remove_findlist(button, ID.ALL_FILES_LIST);
 		Create_find_files(name, X, Y, ID, PWD, PATH);
 		var pos = position_clalc_apps(X,Y,nb,e,size);
 		X = pos[0]; Y = pos[1]; nb = pos[2]; e = pos[3];
@@ -100,14 +100,15 @@ function Home_search_apps(ID, search) {
 				} else {
 					var ALL = [undefined];
 					for (var z = 0; ID.ALL_FILES_LIST[z] != undefined; z++) {
-						ALL = addtolist(ID.ALL_FILES_LIST[z], ALL);
-						DestroyEmptyButton(ID.ALL_FILES_LIST[z] + "HOME");
+						var btn = ID.ALL_FILES_LIST[z];
+						ALL = addtolist([btn.TEXT_CONNECT.TEXT, btn.FOLDER_PWD, btn.FOLDER_PWD_PATH], ALL);
+						DestroyEmptyButton(btn.TAG);
 					}
 					X = save_x; Y = save_y;
 					nb = save_nb;
 					ID.ALL_FILES_LIST = [undefined];
 					for (var z = 0; ALL[z] != undefined; z++) {
-						Create_find_files(ALL[z], X, Y, ID, results[g][3], results[g][4]);
+						Create_find_files(ALL[z][0], X, Y, ID, ALL[z][1], ALL[z][2]);
 						var pos = position_clalc_apps(X,Y,nb,e,size);
 						X = pos[0]; Y = pos[1]; nb = pos[2]; e = pos[3];
 					}
@@ -125,15 +126,12 @@ function Create_find_files(name, X, Y, ID, PWD, PATH) {
 	button.IS_FOLDER = true;
 	button.FOLDER_PWD = PWD;
 	button.FOLDER_PWD_PATH = PATH;
-	ID.ALL_FILES_LIST = addtolist(name, ID.ALL_FILES_LIST);
+	ID.ALL_FILES_LIST = addtolist(button, ID.ALL_FILES_LIST);
 }
 
 function Update_home_files(ID) {
-	for (var i = 0; ID.ALL_FILES_LIST[i] != undefined; i++) {
-		var tab = ID.ALL_FILES_LIST[i];
-		var object = GetObject(tab + "HOME");
-		home_buttons_rect(object);
-	}
+	for (var i = 0; ID.ALL_FILES_LIST[i] != undefined; i++)
+		home_buttons_rect(ID.ALL_FILES_LIST[i]);
 	for (var i = 0; ID.ALL_APPS_LIST[i] != undefined; i++) {
 		var get = ID.ALL_APPS_LIST[i];
 		if (get[0] == "File_explorers" && ID.ALL_EXPLORERS != undefined)

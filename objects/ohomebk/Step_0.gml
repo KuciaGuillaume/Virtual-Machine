@@ -80,9 +80,9 @@ if (SEARCH != undefined && !CLOSE) {
 
 
 		var size = array_size(ALL_FILES_LIST) - 1;
-		if (size >= 0) var last = GetObject(ALL_FILES_LIST[size] + "HOME");
+		if (size >= 0) var last = ALL_FILES_LIST[size];
 		else var last = undefined;
-		if (ALL_FILES_LIST[0] != undefined) var start = GetObject(ALL_FILES_LIST[0] + "HOME");
+		if (ALL_FILES_LIST[0] != undefined) var start = ALL_FILES_LIST[0];
 		else var start = undefined;
 		
 		var minimum_v = 1500, maximum_v = 0;
@@ -119,7 +119,7 @@ if (SEARCH != undefined && !CLOSE) {
 
 
 		for (var i = 0; ALL_FILES_LIST[i] != undefined; i++) {
-			var object = GetObject(ALL_FILES_LIST[i] + "HOME");
+			var object = ALL_FILES_LIST[i];
 			object.y -= SPEED;
 			object.TEXT_CONNECT.y -= SPEED;
 			object.OBJECT_LINKED.y -= SPEED;

@@ -243,6 +243,8 @@ if (GET_FOLDER != undefined) {
 			WRITE.ON_WRITE = false;
 	}
 
+	
+	// CHANGE FOLDER POSITION
 	if (mouse_check_button(mb_left) && (MouseInsideObject(id) || GRABED)) {
 		var cursor = GetObject("CURSOR");
 		if (cursor.image_index == 3 || GRABED) {
@@ -260,8 +262,8 @@ if (GET_FOLDER != undefined) {
 		}
 	} else {
 		if (GRABED) {
-			var modulo_x = x; for (; modulo_x > 100; ) { modulo_x -= 100; } 
-			var modulo_y = y; for (; modulo_y > 100; ) { modulo_y -= 100; }
+			var modulo_x = x % 100;
+			var modulo_y = y % 100;
 			if (modulo_x >= 50) { x = x + (100 - modulo_x) }
 			if (modulo_x < 50) { x -= modulo_x }
 			if (modulo_y >= 50) { y = y + (100 - modulo_y) }
@@ -280,8 +282,6 @@ if (GET_FOLDER != undefined) {
 					ON_MAIN_SCENE.NAME_FOLDERS[i][2] = y;
 				}
 			}
-			SAVE_LIST = [global.USER, global.PATH,  global.FOLDERS, undefined];
-			savegame_save("USER", SAVE_LIST);
 		}
 		GRABED = false;
 		layer = layer_get_id("Gp0");

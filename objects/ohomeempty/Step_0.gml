@@ -4,7 +4,7 @@ IMAGE_WIDTH = SIZE_X;
 IMAGE_HEIGHT = SIZE_Y;
 DevKit(id);
 // CLICK
-if (!MouseInsideRound(id) || !mouse_check_button_pressed(mb_left)) return;
+if (!MouseInsideRound(id) || !mouse_check_button_pressed(mb_left) || !ON) return;
 
 if (TAG == "HOME_OPTION_POWER_OFF") {
 	savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, undefined]);

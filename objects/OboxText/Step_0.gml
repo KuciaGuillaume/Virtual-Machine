@@ -316,7 +316,7 @@ if (TAG == "NEW_FOLDER_SLIDERS") {
 	var PWD = ON_MAIN_SCENE.PATH[1];
 	var ID = 0;
 	for (var i = 1; PWD[i] != undefined; i++) {
-		if (is_array(PWD[i]) &&string_count("Newfolder", PWD[i][0][0][0]) > 0)
+		if (is_array(PWD[i]) && string_count("Newfolder", PWD[i][0][0][0]) > 0)
 			ID += 1;
 	}
 	if (ID <= 0)
@@ -371,6 +371,7 @@ if (TAG == "DELETE_FOLDER_SLIDERS") {
 if (string_count("DELETE_EXPLORERS_FOLDERS", TAG) > 0) {
 	var PWD = PARENT.PARENT.PWD;
 	for (var i = 1; PARENT.PARENT.PWD[i][0][0][0] != PARENT.PARENT.FOLDER_LIST[NUM_LINKED].NAME; ) { i++; }
+	
 	if (string_char_at(PARENT.PARENT.PWD[i][0][0][4], 3) == ".") {
 		var parent = PARENT.PARENT;
 		if (parent.WARNING_GUI == undefined) {

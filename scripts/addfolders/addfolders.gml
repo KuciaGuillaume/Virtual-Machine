@@ -89,6 +89,11 @@ function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 		if (PWD[i] == undefined) {
 			var folder = LIST[e];
 			PARENT.FOLDER_LIST = remove_findlist(folder, PARENT.FOLDER_LIST);
+			var get_info = GetObject(folder.INFO_NAME + folder.TAG);
+			if (get_info != undefined) {
+				DestroyText(get_info.TEXT_CONNECT.TAG);
+				DestroyObject(get_info.TAG);
+			}
 			DestroyText(folder.TEXT_CONNECT.TAG);
 			DestroyText(folder.DOCK_TYPE_TEXT.TAG);
 			DestroyObject(folder.OBJECT_LINKED.TAG);

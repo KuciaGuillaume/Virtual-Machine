@@ -65,27 +65,19 @@ function Home_search_apps(ID, search) {
 		}
 	}
 
+
+// SEARCH FILES
+
+	// PRE INIT
 	var save_x = X, save_y = Y;
 	var save_nb = nb;
-	var size_check = array_size(ID.ALL_FILES_LIST);
-	for (var d = 0; d != size_check; size_check -= 1) {
-		if (ID.ALL_FILES_LIST[d] == undefined)
-			break;
-		var button = ID.ALL_FILES_LIST[d];
-		var PWD = button.FOLDER_PWD;
-		var PATH = button.FOLDER_PWD_PATH;
-		var name = button.TEXT_CONNECT.TEXT;
-		DestroyEmptyButton(name + "HOME");
-		ID.ALL_FILES_LIST = remove_findlist(button, ID.ALL_FILES_LIST);
-		Create_find_files(name, X, Y, ID, PWD, PATH);
-		var pos = position_clalc_apps(X,Y,nb,e,size);
-		X = pos[0]; Y = pos[1]; nb = pos[2]; e = pos[3];
-	}
+
+	
+	// MAIN LOOP
 	for (var e = 0; e != size; e++) {
 		var find = "";
 		for (var f = e; f < size; f++)
 			find = find + string_char_at(word, f + 1);
-		// SEARCH FILES
 		var results = Home_find_files(ON_MAIN_SCENE.PATH, "/~", find, 1, [undefined]);
 		if (results[0] != undefined && (string_length(find) >= 3 || string_length(results[0][2]) <= 3)) {
 			for (var g = 0; results[g] != undefined; g++) {
@@ -93,29 +85,34 @@ function Home_search_apps(ID, search) {
 				for (var h = 1; results[g][2] != PWD[h][0][0][0]; ) { h++; }
 				var name = PWD[h][0][0][0];
 				var files = GetObject(name + "HOME");
+				
+				// CREATE
 				if (files == undefined) {
 					Create_find_files(name, X, Y, ID, results[g][3], results[g][4]);
 					var pos = position_clalc_apps(X,Y,nb,e,size);
 					X = pos[0]; Y = pos[1]; nb = pos[2]; e = pos[3];
-				} else {
-					var ALL = [undefined];
-					for (var z = 0; ID.ALL_FILES_LIST[z] != undefined; z++) {
-						var btn = ID.ALL_FILES_LIST[z];
-						ALL = addtolist([btn.TEXT_CONNECT.TEXT, btn.FOLDER_PWD, btn.FOLDER_PWD_PATH], ALL);
-						DestroyEmptyButton(btn.TAG);
-					}
-					X = save_x; Y = save_y;
-					nb = save_nb;
-					ID.ALL_FILES_LIST = [undefined];
-					for (var z = 0; ALL[z] != undefined; z++) {
-						Create_find_files(ALL[z][0], X, Y, ID, ALL[z][1], ALL[z][2]);
-						var pos = position_clalc_apps(X,Y,nb,e,size);
-						X = pos[0]; Y = pos[1]; nb = pos[2]; e = pos[3];
-					}
 				}
 			}
 		}
 	}
+
+	// RESET ALL
+	var ALL = [undefined];
+	for (var z = 0; ID.ALL_FILES_LIST[z] != undefined; z++) {
+		var btn = ID.ALL_FILES_LIST[z];
+		ALL = addtolist([btn.TEXT_CONNECT.TEXT, btn.FOLDER_PWD, btn.FOLDER_PWD_PATH], ALL);
+		DestroyEmptyButton(btn.TAG);
+	}
+	X = save_x; Y = save_y;
+	nb = save_nb;
+	ID.ALL_FILES_LIST = [undefined];
+	for (var z = 0; ALL[z] != undefined; z++) {
+		Create_find_files(ALL[z][0], X, Y, ID, ALL[z][1], ALL[z][2]);
+		var pos = position_clalc_apps(X,Y,nb,e,size);
+		X = pos[0]; Y = pos[1]; nb = pos[2]; e = pos[3];
+	}
+	
+	// UPDATE FILES
 	Update_home_files(ID);
 }
 

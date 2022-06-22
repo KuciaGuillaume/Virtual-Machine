@@ -186,7 +186,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT, PERMISSION
 				continue;
 			var save = ON_MAIN_SCENE.PATH;
 			ON_MAIN_SCENE.PATH = go_to_path(ON_MAIN_SCENE.PATH, PATH);
-			for (var e = 0; ON_MAIN_SCENE.PATH[e] != undefined; ) { e++; }
+			var e = array_size(ON_MAIN_SCENE.PATH);
 			ON_MAIN_SCENE.PATH[e + 1] = undefined;
 			if (current_day < 10) var day = "0" + string(current_day); else var day = string(current_day);
 			if (current_month < 10) var month = "0" + string(current_month); else var month = string(current_month);
@@ -198,8 +198,6 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT, PERMISSION
 				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", undefined, DateOfCreation, PERMISSION]], [[["..", "PREVIOUS"], "*", undefined]],undefined];
 			var copy = PATH;
 			ON_MAIN_SCENE.PATH = save;
-			var SAVE_LIST = [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN,undefined];
-			savegame_save("USER", SAVE_LIST);
 			if (ID_RESULT != undefined) {
 				terminal_saving(PARENT);
 				display_result(ID_RESULT, "[ " + mkdir[i] + " ] was created.");

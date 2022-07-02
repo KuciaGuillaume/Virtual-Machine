@@ -29,7 +29,7 @@ function DevKit(ID) {
 		ID.TIMER_STATE_END = true;
 		ID.image_alpha -= 0.00001 * delta_time;
 		ID.y += 0.00001 * delta_time;
-		if (ID.TEXT_CONNECT != undefined && ID.TAG != "HOME_FILE_TERMINAL" && ID.TAG != "HOME_FILE_EXPLORERS" && ID.TAG != "HOME_DATE_BACK") {
+		if (ID.TEXT_CONNECT != undefined && ID.TAG != "HOME_FILE_TERMINAL" && ID.TAG != "HOME_FILE_EXPLORERS" && ID.TAG != "HOME_DATE_BACK"&& ID.TAG != "HOME_FILE_SETTINGS") {
 			ID.TEXT_CONNECT.image_alpha = ID.image_alpha;
 			ID.TEXT_CONNECT.y = ID.y;
 		}

@@ -36,6 +36,9 @@ if (CTRL && KeyPressed(ord("T"))) {
 if (CTRL && KeyPressed(ord("E")))
 	CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
 
+if (KeyPressed(vk_escape))
+	CreateWindow(S_Settings_BK, OJustGUI_Settings, "SETTINGS", S_Settings_Icon, "Settings");
+
 if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right))
 	check_all_off()
 	
@@ -48,6 +51,8 @@ if (mouse_check_button_pressed(mb_right) && ON_DESK) {
 	for (var i = 0; FOLDERS[i] != undefined; i++) {
 		if (FOLDERS[i] != undefined && instance_exists(FOLDERS[i]) && MouseInsideObject(FOLDERS[i])) {
 			on_folders = FOLDERS[i];
+			if (on_folders.GRABED)
+				return;
 			break;
 		}
 	}
@@ -91,9 +96,4 @@ if (DESK_SLIDER_OBJECT != undefined && DESK_SLIDER && (!MouseInside(DESK_SLIDER_
 	DestroyButtonBox("DELETE_FOLDER_SLIDERS");
 	DestroyButtonBox("NEW_FOLDER_SLIDERS");
 	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
-}
-
-if (keyboard_check_pressed(vk_escape)) {
-	savegame_save("USER", [global.USER, PATH, NAME_FOLDERS, global.WINDOWS_PIN, undefined]);
-	Machine("END");
 }

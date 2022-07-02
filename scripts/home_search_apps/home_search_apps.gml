@@ -7,6 +7,8 @@ function Destroy_search_apps(ID, i, get) {
 		ID.ALL_TERMINAL = undefined;
 	if (get[0] == "File_explorers")
 		ID.ALL_EXPLORERS = undefined;
+	if (get[0] == "Settings")
+		ID.ALL_SETTINGS = undefined;
 	ID.ALL_APPS_LIST[i][1] = undefined;
 }
 
@@ -31,6 +33,10 @@ function Create_search_apps(ID, X, Y, get, i) {
 	if (get[0] == "File_explorers") {
 		ID.ALL_EXPLORERS = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", get[2], get[3], get[4], "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ID.ALL_APPS_LIST[i][1] = ID.ALL_EXPLORERS;
+	}
+	if (get[0] == "Settings") {
+		ID.ALL_SETTINGS = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", get[2], get[3], get[4], "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
+		ID.ALL_APPS_LIST[i][1] = ID.ALL_SETTINGS;
 	}
 }
 

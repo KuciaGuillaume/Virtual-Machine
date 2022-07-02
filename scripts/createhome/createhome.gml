@@ -39,13 +39,21 @@ function CreateHomeApps() {
 		var empt_text = GetEmptText(790, 550, "File_explorers", Arial10, c_black, c_white, "Home_Gp2");
 		
 		ON_MAIN_SCENE.HOME.ALL_EXPLORERS = CreateEmptyButton(OHomeEmpty, 790, 550, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", empt, empt_text, "HOME_FILE_EXPLORERS", "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
-		ON_MAIN_SCENE.HOME.ALL_APPS_LIST = addtolist(["File_explorers", ON_MAIN_SCENE.HOME.ALL_APPS, empt, empt_text, "HOME_FILE_EXPLORERS"], ON_MAIN_SCENE.HOME.ALL_APPS_LIST);
+		ON_MAIN_SCENE.HOME.ALL_APPS_LIST = addtolist(["File_explorers", ON_MAIN_SCENE.HOME.ALL_EXPLORERS, empt, empt_text, "HOME_FILE_EXPLORERS"], ON_MAIN_SCENE.HOME.ALL_APPS_LIST);
 		
+		// CREATE TERMINAL
 		var empt = GetEmptLinked(790, 550, "Home_Gp2", S_terminal_icon, OJustGUI, "IMAGE");
 		var empt_text = GetEmptText(790, 550, "Terminal", Arial10, c_black, c_white, "Home_Gp2");
-		// CREATE TERMINAL
-		ON_MAIN_SCENE.HOME.ALL_TERMINAL = CreateEmptyButton(OHomeEmpty, 965, 550, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", empt, empt_text, "HOME_FILE_TERMINAL", "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
+		
+		ON_MAIN_SCENE.HOME.ALL_TERMINAL = CreateEmptyButton(OHomeEmpty, 960, 550, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", empt, empt_text, "HOME_FILE_TERMINAL", "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ON_MAIN_SCENE.HOME.ALL_APPS_LIST = addtolist(["Terminal", ON_MAIN_SCENE.HOME.ALL_TERMINAL, empt, empt_text, "HOME_FILE_TERMINAL"], ON_MAIN_SCENE.HOME.ALL_APPS_LIST);
+
+		// CREATE SETTINGS
+		var empt = GetEmptLinked(790, 550, "Home_Gp2", S_Settings_Icon, OJustGUI, "IMAGE");
+		var empt_text = GetEmptText(790, 550, "Settings", Arial10, c_black, c_white, "Home_Gp2");
+		
+		ON_MAIN_SCENE.HOME.ALL_SETTINGS = CreateEmptyButton(OHomeEmpty, 1130, 550, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", empt, empt_text, "HOME_FILE_SETTINGS", "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
+		ON_MAIN_SCENE.HOME.ALL_APPS_LIST = addtolist(["Settings", ON_MAIN_SCENE.HOME.ALL_SETTINGS, empt, empt_text, "HOME_FILE_SETTINGS"], ON_MAIN_SCENE.HOME.ALL_APPS_LIST);
 }
 
 function DestroyHomeApps() {
@@ -60,6 +68,9 @@ function DestroyHomeApps() {
 	if (ON_MAIN_SCENE.HOME.ALL_TERMINAL != undefined)
 		DestroyEmptyButton(ON_MAIN_SCENE.HOME.ALL_TERMINAL.TAG);
 	ON_MAIN_SCENE.HOME.ALL_TERMINAL = undefined;
+	if (ON_MAIN_SCENE.HOME.ALL_SETTINGS != undefined)
+		DestroyEmptyButton(ON_MAIN_SCENE.HOME.ALL_SETTINGS.TAG);
+	ON_MAIN_SCENE.HOME.ALL_SETTINGS = undefined;
 	for (var i = 0; ALL_APPS_LIST[i] != undefined; i++)
 		ALL_APPS_LIST[i][1] = undefined;
 	for (var m = 0; ON_MAIN_SCENE.HOME.ALL_FILES_LIST[m] != undefined; m++)
@@ -94,5 +105,6 @@ function DestroyHome() {
 	var get = GetText("HOME_TEXT_ALL_RECOMMANDED"); if (get != undefined) { get.TIMER_OUT = true;  get.TIMER_TIME = 0.1; }
 	var get = GetObject("HOME_FILE_EXPLORERS"); if (get != undefined) { get.TIMER_OUT = true; get.TIMER_TIME = 0.1; get.OBJECT_LINKED.TIMER_OUT = true; get.OBJECT_LINKED.TIMER_TIME = 0.1; }
 	var get = GetObject("HOME_FILE_TERMINAL"); if (get != undefined) { get.TIMER_OUT = true; get.TIMER_TIME = 0.1;get.OBJECT_LINKED.TIMER_OUT = true; get.OBJECT_LINKED.TIMER_TIME = 0.1; }
+	var get = GetObject("HOME_FILE_SETTINGS"); if (get != undefined) { get.TIMER_OUT = true; get.TIMER_TIME = 0.1;get.OBJECT_LINKED.TIMER_OUT = true; get.OBJECT_LINKED.TIMER_TIME = 0.1; }
 	var get = GetObject("HOME_DATE_BACK"); if (get != undefined) { get.TIMER_OUT = true;  get.TIMER_TIME = 0.1; }
 }

@@ -197,20 +197,20 @@ if (GET_FOLDER == undefined && (string_count("FOLDERS", TAG) > 0))
 	GET_FOLDER = TAG;
 if (GET_FOLDER != undefined) {
 	
-	if (MouseInsideObject(id)) {
-		if (mouse_check_button_pressed(mb_left) && SAVE_CURRENT == 0)
+	if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) {
+		if (SAVE_CURRENT == 0)
 			SAVE_CURRENT = current_time;
-		else if (mouse_check_button_pressed(mb_left) && (current_time - SAVE_CURRENT < 200) && (WRITE == undefined || (WRITE != undefined && !WRITE.ON_WRITE))) {
+		else if ((current_time - SAVE_CURRENT < 200) && (WRITE == undefined || (WRITE != undefined && !WRITE.ON_WRITE)) && ON_MAIN_SCENE.ON_DESK) {
 			SAVE_CURRENT = current_time;
 			var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
 			window.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Desk/" + TEXT_CONNECT.TEXT);
 			window.WINDOW_BK.PWD_PATH = "/~/Desk/" + TEXT_CONNECT.TEXT;
-		} else if (mouse_check_button_pressed(mb_left))
+		} else
 			SAVE_CURRENT = current_time;
 	}
 
 	// FOLDER NAME
-	if (WRITE != undefined && instance_exists(WRITE) && WRITE.ON_WRITE) {
+	if (WRITE != undefined && WRITE.ON_WRITE) {
 		var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
 		TEXT_CONNECT.TEXT = WRITE.TEXT_OUTPUT;
 		ON_MAIN_SCENE.NAME_FOLDERS[i][0] = TEXT_CONNECT.TEXT;
@@ -220,7 +220,7 @@ if (GET_FOLDER != undefined) {
 		WRITE.BAR.y = TEXT_CONNECT.y;
 		RENAME_OBJECT = CreateEmptyRound(OEmptyRound, TEXT_CONNECT.x - TEXT_CONNECT.TEXT_WIDTH/2 - 5, TEXT_CONNECT.y - TEXT_CONNECT.TEXT_HEIGHT/2 - 5, #262626, TEXT_CONNECT.TEXT_WIDTH + 10, TEXT_CONNECT.TEXT_HEIGHT + 10, "Gp0", TAG + "RENAME_ON_DESK", [undefined]);
 		UpdateBar(WRITE.BAR, TEXT_CONNECT.TEXT_WIDTH, TEXT_CONNECT.x - TEXT_CONNECT.TEXT_WIDTH/2);
-	} else if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT)) {
+	} else if (TEXT_CONNECT != undefined) {
 		if (TEXT_CONNECT.TEXT == "") {
 			var i = get_index_list(TEXT_CONNECT.TEXT, ON_MAIN_SCENE.NAME_FOLDERS);
 			TEXT_CONNECT.TEXT = MASTER_NAME;
@@ -282,11 +282,11 @@ if (GET_FOLDER != undefined) {
 					ON_MAIN_SCENE.NAME_FOLDERS[i][2] = y;
 				}
 			}
+			GRABED = false;
+			layer = layer_get_id("Gp0");
+			if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT))
+				TEXT_CONNECT.layer = layer_get_id("Gp1");
 		}
-		GRABED = false;
-		layer = layer_get_id("Gp0");
-		if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT))
-			TEXT_CONNECT.layer = layer_get_id("Gp1");
 	}
 	if (TEXT_CONNECT != undefined && instance_exists(TEXT_CONNECT)) {
 		TEXT_CONNECT.x = x;

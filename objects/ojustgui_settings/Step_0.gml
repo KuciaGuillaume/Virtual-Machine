@@ -13,6 +13,9 @@ else
 	FADE_IN = false;
 
 if (CLOSE && string_count("SETTINGS", WINDOW_TAG)) {
+	// DESTROY SETTING
+	DestroySSystem(id);
+
 	if (ICON != undefined) {
 		DestroyText(ICON.TEXT_CONNECT.TAG);
 		DestroyObject(ICON.TAG);
@@ -22,6 +25,7 @@ if (CLOSE && string_count("SETTINGS", WINDOW_TAG)) {
 		DestroyTextButton(FIND_SETTING.TAG);
 	for (var i = 0; all_settings[i] != undefined; i++)
 		DestroyEmptyButton(all_settings[i].TAG);
+	
 	DestroyObject(OBJECT_SELECT.TAG);
 	DestroyObject(TAG);
 	return;
@@ -52,10 +56,32 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		
 		// OBJECT SELECT
 		if (OBJECT_SELECT != undefined) {
+			var target = OBJECT_SELECT_INDEX.OBJECT_LINKED.y - 1;
+			if (OBJECT_SELECT.y - target < 1 && OBJECT_SELECT.y - target > -1)
+				OBJECT_SELECT_RUN = false;
+			if (OBJECT_SELECT.y > target) {
+				var distance = OBJECT_SELECT.y - target;
+				OBJECT_SELECT.y -= (0.00001 * delta_time) * distance;
+			}
+			if (OBJECT_SELECT.y < target) {
+				var distance = target - OBJECT_SELECT.y;
+				OBJECT_SELECT.y += (0.00001 * delta_time) * distance;
+			}
+			if (!OBJECT_SELECT_RUN)
+				OBJECT_SELECT.y = target;
 			OBJECT_SELECT.x = OBJECT_SELECT_INDEX.x;
-			OBJECT_SELECT.y = OBJECT_SELECT_INDEX.OBJECT_LINKED.y - 1;
 			OBJECT_SELECT.ON = WINDOW.ON;
 		}
+		
+		// SETTING_TITLE
+		if (SETTING_TITLE != undefined) {
+			SETTING_TITLE.x = x - 100;
+			SETTING_TITLE.y = y + 30;
+			SETTING_TITLE.image_alpha = image_alpha;
+		}
+		
+		// UPDATE IN SETTING
+		UpdateSSystem(id);
 		
 		// ALL_SETTING
 		for (var i = 0; all_settings[i] != undefined; i++)
@@ -90,6 +116,13 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		CreateSetting("Update", S_Settings_Update, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "UPDATE", id);
 		CreateSetting("Power system", S_Settings_Power, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "POWER_SYSTEM", id);
 		WINDOW.list_objects = addtolist(OBJECT_SELECT, WINDOW.list_objects);
+		
+		// SETTING TITLE
+		SETTING_TITLE = AddText(x - 100, y + 30, "SYSTEME", Segoe15, c_black, WINDOW.LAYERS[0], TAG + "SETTING_TITLE", [undefined]);
+		
+		// CREATE SETTING
+		CreateSSystem(id);
+		
 		CREATE = true;
 	} else if (CREATE && (WINDOW.ON || WINDOW.REDUCING || !WINDOW.FADE_MOVEMENT)) {
 		ON = true;

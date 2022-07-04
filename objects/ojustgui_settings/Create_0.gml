@@ -64,4 +64,9 @@ ICON = undefined;
 FIND_SETTING = undefined;
 all_settings = [undefined];
 OBJECT_SELECT = undefined;
+OBJECT_SELECT_RUN = false;
 OBJECT_SELECT_INDEX = undefined;
+SETTING_TITLE = undefined;
+
+// SSYSTEM
+SSYSTEM_OBJECT = [undefined];

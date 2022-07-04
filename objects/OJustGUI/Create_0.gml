@@ -18,10 +18,12 @@ TEXT_CONNECT = undefined;
 ON = true;
 WRITE = undefined;
 SET_DISPLAY = false;
+SET_DISPLAY_LEFT = false;
 IMAGE_TOP = 0;
 IMAGE_LEFT = 0;
 IMAGE_WIDTH = -1;
 IMAGE_HEIGHT = -1;
+ALPHA = 1;
 
 // BACKGROUNDS
 TARGET_INDEX = 0;
@@ -83,3 +85,4 @@ TIMER_STATE_END = false;
 
 // DOUBLE CLICK
 SAVE_CURRENT = 0;
+

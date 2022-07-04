@@ -21,5 +21,11 @@ if (string_count("SET-ING", TAG) > 0) {
 		PARENT.all_settings[i].SETTING_SELECT = false;
 	SETTING_SELECT = true;
 	PARENT.OBJECT_SELECT_INDEX = id;
+	PARENT.SETTING_TITLE.TEXT = string_upper(TEXT_CONNECT.TEXT);
+	PARENT.OBJECT_SELECT_RUN = true;
+	
+	DestroySSystem(PARENT);
+	if (string_count("SYSTEM", TAG) > 0 && string_count("POWER", TAG) == 0)
+		CreateSSystem(PARENT);
 }
 

@@ -29,7 +29,6 @@ function find_files(PWD, PATH, SEARCH, i)
 		PATH = PATH + "/" + PWD[i][0][0][0]
 		PWD = go_to_path(ON_MAIN_SCENE.PATH, PATH);
 		return find_files(PWD, PATH, SEARCH, 1);
-	} else {
+	} else
 		return [true, PWD, PATH];
-	}
 }

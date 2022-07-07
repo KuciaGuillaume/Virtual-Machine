@@ -8,10 +8,12 @@ function CreateEmptyButton(OBJECT, X, Y, SIZE_X, SIZE_Y, COLOR_1, COLOR_2, LAYER
 		if (OPTION[i][0] == "AUTO_CLASS")
 			auto_class = true;
 	if (!auto_class) {
-		button.OBJECT_LINKED = CreateObjectSprite(EMPT_LINKED.X, EMPT_LINKED.Y, EMPT_LINKED.LAYER, EMPT_LINKED.SPRITE, EMPT_LINKED.OBJECT, EMPT_LINKED.TYPE, TAG + "EMPT_LINKED", OPTION);
+		if (EMPT_LINKED != undefined)
+			button.OBJECT_LINKED = CreateObjectSprite(EMPT_LINKED.X, EMPT_LINKED.Y, EMPT_LINKED.LAYER, EMPT_LINKED.SPRITE, EMPT_LINKED.OBJECT, EMPT_LINKED.TYPE, TAG + "EMPT_LINKED", OPTION);
 		button.TEXT_CONNECT = AddText(EMPT_TEXT.X, EMPT_TEXT.Y, EMPT_TEXT.TEXT, EMPT_TEXT.FONT, EMPT_TEXT.COLOR1, EMPT_TEXT.LAYER, TAG + "EMPT_TEXT", OPTION);
 	} else {
-		button.OBJECT_LINKED = CreateObjectSprite(X - (SIZE_X/2) + sprite_get_width(EMPT_LINKED.SPRITE), Y, EMPT_LINKED.LAYER, EMPT_LINKED.SPRITE, EMPT_LINKED.OBJECT, EMPT_LINKED.TYPE, TAG + "EMPT_LINKED", OPTION);
+		if (EMPT_LINKED != undefined)
+			button.OBJECT_LINKED = CreateObjectSprite(X - (SIZE_X/2) + sprite_get_width(EMPT_LINKED.SPRITE), Y, EMPT_LINKED.LAYER, EMPT_LINKED.SPRITE, EMPT_LINKED.OBJECT, EMPT_LINKED.TYPE, TAG + "EMPT_LINKED", OPTION);
 		var connect = button.OBJECT_LINKED.bbox_right;
 		var center = (button.x + button.SIZE_X) - connect;
 		button.TEXT_CONNECT = AddText(button.OBJECT_LINKED.bbox_right + center/2, Y, EMPT_TEXT.TEXT, EMPT_TEXT.FONT, EMPT_TEXT.COLOR1, EMPT_TEXT.LAYER, TAG + "EMPT_TEXT", OPTION);
@@ -21,8 +23,10 @@ function CreateEmptyButton(OBJECT, X, Y, SIZE_X, SIZE_Y, COLOR_1, COLOR_2, LAYER
 	button.COLOR_2 = COLOR_2;
 	button.TEXT_COLOR_1 = EMPT_TEXT.COLOR1;
 	button.TEXT_COLOR_2 = EMPT_TEXT.COLOR2;
-	button.OBJ_REF_X = button.OBJECT_LINKED.x - button.x;
-	button.OBJ_REF_Y = button.OBJECT_LINKED.y - button.y;
+	if (EMPT_LINKED != undefined) {
+		button.OBJ_REF_X = button.OBJECT_LINKED.x - button.x;
+		button.OBJ_REF_Y = button.OBJECT_LINKED.y - button.y;
+	}
 	button.TEXT_REF_X = button.TEXT_CONNECT.x - button.x;
 	button.TEXT_REF_Y = button.TEXT_CONNECT.y - button.y;
 	return button;
@@ -52,7 +56,8 @@ function DestroyEmptyButton(TAG) {
 	if (empty == undefined || !instance_exists(empty))
 		return;
 	DestroyText(empty.TEXT_CONNECT.TAG);
-	DestroyObject(empty.OBJECT_LINKED.TAG);
+	if (empty.OBJECT_LINKED != undefined)
+		DestroyObject(empty.OBJECT_LINKED.TAG);
 	DestroyObject(empty.TAG);
 }
 

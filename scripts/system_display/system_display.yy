@@ -6,7 +6,7 @@
     "path": "folders/MainScene/Objects/Objects/Settings/Scripts/System/System.yy",
   },
   "resourceVersion": "1.0",
-  "name": "SETTINGS_SYSTEM",
+  "name": "SYSTEM_DISPLAY",
   "tags": [],
   "resourceType": "GMScript",
 }

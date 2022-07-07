@@ -31,6 +31,7 @@ for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 			PRESS_TIME +=  delta_time / 1000000;
 		else
 			PRESS_TIME = 0;
+			
 
 		// INFO
 		if (class[0].INFO) {

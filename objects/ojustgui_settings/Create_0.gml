@@ -67,6 +67,8 @@ OBJECT_SELECT = undefined;
 OBJECT_SELECT_RUN = false;
 OBJECT_SELECT_INDEX = undefined;
 SETTING_TITLE = undefined;
+SETTING_TITLE_FX = -100;
 
 // SSYSTEM
 SSYSTEM_OBJECT = [undefined];
+SSSYSTEM_DISPLAY_OBJECT = [undefined];

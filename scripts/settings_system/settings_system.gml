@@ -2,6 +2,20 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 pour plus d’informations
 function CreateSSystem(id) {
 	
+	
+	// DESTROY BASE
+	id.SETTING_TITLE_FX = -100;
+
+	// DELETE EmptyButton
+	var get = GetObject(id.TAG + "SYSTEM_BACK");
+	if (get != undefined) {
+		id.SSSYSTEM_DISPLAY_OBJECT = remove_findlist_index(get, id.SSSYSTEM_DISPLAY_OBJECT, 0);
+		if (!id.CLOSE)
+			id.WINDOW.list_objects = remove_findlist(get, id.WINDOW.list_objects);
+		DestroyEmptyButton(get.TAG);
+	}
+	
+	
 	// ADD image
 	var image = CreateObjectSprite(id.x - 100, id.y + 80, id.WINDOW.LAYERS[1], S_backgrounds, OJustGUI, "IMAGE", id.TAG + "SSSIMAGE", [undefined]);
 	image.image_xscale = 0.064;
@@ -45,7 +59,7 @@ function CreateSSystem(id) {
 	id.WINDOW.list_objects = addtolist(SOUND, id.WINDOW.list_objects);
 	id.SSYSTEM_OBJECT = addtolist([SOUND, 190, 130, 1], id.SSYSTEM_OBJECT);
 
-	// CREATE SOUND NOTIFICATIONS
+	// CREATE NOTIFICATIONS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Notifications, OJustGUI,  "IMAGE");
 	var empt_text = GetEmptText(id.x - 100, id.y + 400, "Notifications\nAlerts from apps and system", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
@@ -58,7 +72,7 @@ function CreateSSystem(id) {
 	id.WINDOW.list_objects = addtolist(SOUND, id.WINDOW.list_objects);
 	id.SSYSTEM_OBJECT = addtolist([SOUND, 190, 130, 1], id.SSYSTEM_OBJECT);
 
-	// CREATE SOUND STOCKAGE
+	// CREATE STOCKAGE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Stockage, OJustGUI,  "IMAGE");
 	var empt_text = GetEmptText(id.x - 100, id.y + 400, "STORAGE\nStorage space, drivers, configuration rules", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
@@ -71,7 +85,7 @@ function CreateSSystem(id) {
 	id.WINDOW.list_objects = addtolist(SOUND, id.WINDOW.list_objects);
 	id.SSYSTEM_OBJECT = addtolist([SOUND, 190, 130, 1], id.SSYSTEM_OBJECT);
 
-	// CREATE SOUND INFOS
+	// CREATE INFOS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_infos, OJustGUI,  "IMAGE");
 	var empt_text = GetEmptText(id.x - 100, id.y + 400, "ABOUT\nDevice specifications, rename PC", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	

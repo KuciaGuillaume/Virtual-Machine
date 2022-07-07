@@ -89,5 +89,3 @@ LINK_BTN_TEXT = false;
 
 /////////////////// BASE VARIABLES ///////////////////
 
-
-

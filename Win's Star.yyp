@@ -87,6 +87,7 @@
     {"id":{"name":"Sregister_textbutton","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"order":1,},
     {"id":{"name":"Home_Find_files","path":"scripts/Home_Find_files/Home_Find_files.yy",},"order":1,},
     {"id":{"name":"S_Folder","path":"sprites/S_Folder/S_Folder.yy",},"order":0,},
+    {"id":{"name":"SYSTEM_DISPLAY","path":"scripts/SYSTEM_DISPLAY/SYSTEM_DISPLAY.yy",},"order":1,},
     {"id":{"name":"S_home_restart","path":"sprites/S_home_restart/S_home_restart.yy",},"order":4,},
     {"id":{"name":"S_Files_Explorer_path_computer","path":"sprites/S_Files_Explorer_path_computer/S_Files_Explorer_path_computer.yy",},"order":10,},
     {"id":{"name":"ShowMyWindow","path":"scripts/ShowMyWindow/ShowMyWindow.yy",},"order":1,},
@@ -280,6 +281,7 @@
     {"folderPath":"folders/MainScene/Objects/Sprites/Settings/Setting.yy","order":4,"resourceVersion":"1.0","name":"Setting","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/MainScene/Objects/Objects/Settings/Scripts/System.yy","order":1,"resourceVersion":"1.0","name":"System","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/MainScene/Objects/Sprites/Settings/System.yy","order":5,"resourceVersion":"1.0","name":"System","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/MainScene/Objects/Objects/Settings/Scripts/System/System.yy","order":1,"resourceVersion":"1.0","name":"System","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
@@ -289,7 +291,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2022.600.0.143",
+    "IDEVersion": "2022.600.0.147",
   },
   "resourceVersion": "1.5",
   "name": "Win's Star",

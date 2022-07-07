@@ -75,13 +75,14 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		
 		// SETTING_TITLE
 		if (SETTING_TITLE != undefined) {
-			SETTING_TITLE.x = x - 100;
+			SETTING_TITLE.x = x + SETTING_TITLE_FX;
 			SETTING_TITLE.y = y + 30;
 			SETTING_TITLE.image_alpha = image_alpha;
 		}
 		
 		// UPDATE IN SETTING
 		UpdateSSystem(id);
+		UpdateSystemDisplay(id);
 		
 		// ALL_SETTING
 		for (var i = 0; all_settings[i] != undefined; i++)

@@ -25,7 +25,7 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 0.5;
+global.TIMER = 1;
 
 // PATH AND FOLDERS
 

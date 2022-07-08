@@ -61,7 +61,7 @@ function CreateSSystem(id) {
 
 	// CREATE NOTIFICATIONS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Notifications, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 400, "Notifications\nAlerts from apps and system", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 400, "NOTIFICATIONS\nAlerts from apps and system", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var SOUND = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSNOTIFICATIONS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	SOUND.PARENT = id;

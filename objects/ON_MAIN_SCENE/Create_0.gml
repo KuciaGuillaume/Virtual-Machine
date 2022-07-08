@@ -12,6 +12,7 @@ ON_GUI = false;
 DESK_SLIDER = false;
 DESK_SLIDER_OBJECT = undefined;
 
+
 // ICONS
 ICONS = [undefined];
 

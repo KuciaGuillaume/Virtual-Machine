@@ -4,6 +4,7 @@ if (TAG == undefined)
 	return;
 if (!FIRST_PASS && !FADE_IN) {image_alpha = 2; FIRST_PASS = true; } 
 
+
 // FADE_IN
 
 if (FADE_IN && image_alpha < 1)

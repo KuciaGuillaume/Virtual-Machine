@@ -27,7 +27,6 @@ BAR.INDEX_MAX = TEXT_INDEX_MAX;
 // TEXT OUTPUT
 TEXT_OUTPUT = "";
 if (TEXT != undefined && TEXT_OUTPUT != undefined) {
-	show_debug_message(TEXT_INDEX_MAX);
 	for (var i = 0; i < TEXT_INDEX_MAX; i++) {
 		if (TEXT[i] != undefined)
 			TEXT_OUTPUT = TEXT_OUTPUT + TEXT[i];

@@ -5,15 +5,19 @@ IMAGE_HEIGHT = SIZE_Y;
 DevKit(id);
 
 
-x = PARENT.x + REF_X;
-y = PARENT.y + REF_Y;
-TEXT_CONNECT.x = x + TEXT_REF_X; TEXT_CONNECT.y = y + TEXT_REF_Y;
-if (OBJECT_LINKED != undefined) {
-	OBJECT_LINKED.x = x + OBJ_REF_X;OBJECT_LINKED.y = y + OBJ_REF_Y; }
-image_alpha = PARENT.image_alpha;
-if (OBJECT_LINKED != undefined)
-	OBJECT_LINKED.image_alpha = PARENT.image_alpha;
-TEXT_CONNECT.image_alpha = PARENT.image_alpha;
+if (PARENT != undefined) {
+	x = PARENT.x + REF_X;
+	y = PARENT.y + REF_Y;
+	if (TEXT_CONNECT != undefined) {
+		TEXT_CONNECT.x = x + TEXT_REF_X; TEXT_CONNECT.y = y + TEXT_REF_Y; }
+	if (OBJECT_LINKED != undefined) {
+		OBJECT_LINKED.x = x + OBJ_REF_X;OBJECT_LINKED.y = y + OBJ_REF_Y; }
+	image_alpha = PARENT.image_alpha;
+	if (OBJECT_LINKED != undefined)
+		OBJECT_LINKED.image_alpha = PARENT.image_alpha;
+	if (TEXT_CONNECT != undefined)
+		TEXT_CONNECT.image_alpha = PARENT.image_alpha;
+}
 
 // CLICK
 if (!MouseInsideRound(id) || !mouse_check_button_pressed(mb_left) || !ON) return;
@@ -25,7 +29,8 @@ if (string_count("SET-ING", TAG) > 0) {
 	PARENT.OBJECT_SELECT_INDEX = id;
 	PARENT.SETTING_TITLE.TEXT = string_upper(TEXT_CONNECT.TEXT);
 	PARENT.OBJECT_SELECT_RUN = true;
-	
+
+	DestroySSystemDisplay(PARENT);
 	DestroySSystem(PARENT);
 	if (string_count("SYSTEM", TAG) > 0 && string_count("POWER", TAG) == 0)
 		CreateSSystem(PARENT);
@@ -34,7 +39,17 @@ if (string_count("SET-ING", TAG) > 0) {
 if (PARENT.TAG + "SSDISPLAY" == TAG) {
 	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/DISPLAY";
 	PARENT.SETTING_TITLE_FX = 20;
+	DestroySSystemDisplay(PARENT);
 	DestroySSystem(PARENT);
 	CreateSystemDisplay(PARENT);
+}
+
+if (PARENT.TAG + "SYSTEM_BACK" == TAG) {
+	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/DISPLAY") {
+		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+		DestroySSystemDisplay(PARENT);
+		DestroySSystem(PARENT);
+		CreateSSystem(PARENT);
+	}
 }
 

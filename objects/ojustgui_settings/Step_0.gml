@@ -15,6 +15,7 @@ else
 if (CLOSE && string_count("SETTINGS", WINDOW_TAG)) {
 	// DESTROY SETTING
 	DestroySSystem(id);
+	DestroySSystemDisplay(id);
 
 	if (ICON != undefined) {
 		DestroyText(ICON.TEXT_CONNECT.TAG);
@@ -25,7 +26,8 @@ if (CLOSE && string_count("SETTINGS", WINDOW_TAG)) {
 		DestroyTextButton(FIND_SETTING.TAG);
 	for (var i = 0; all_settings[i] != undefined; i++)
 		DestroyEmptyButton(all_settings[i].TAG);
-	
+	if (SETTING_TITLE != undefined)
+		DestroyText(SETTING_TITLE.TAG);
 	DestroyObject(OBJECT_SELECT.TAG);
 	DestroyObject(TAG);
 	return;
@@ -119,7 +121,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		WINDOW.list_objects = addtolist(OBJECT_SELECT, WINDOW.list_objects);
 		
 		// SETTING TITLE
-		SETTING_TITLE = AddText(x - 100, y + 30, "SYSTEME", Segoe15, c_black, WINDOW.LAYERS[0], TAG + "SETTING_TITLE", [undefined]);
+		SETTING_TITLE = AddText(x - 100, y + 30, "SYSTEM", Segoe15, c_black, WINDOW.LAYERS[0], TAG + "SETTING_TITLE", [undefined]);
 		
 		// CREATE SETTING
 		CreateSSystem(id);

@@ -92,7 +92,6 @@ SLIDE_POWER = 0;
 // FOLDER
 IS_FOLDER = false;
 FOLDER_PWD = undefined;
-PWD_INDEX = 0;
 
 // OTHER_DRAWING
 OTHER_DRAWING = false;

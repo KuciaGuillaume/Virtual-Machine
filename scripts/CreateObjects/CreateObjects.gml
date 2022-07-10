@@ -34,7 +34,6 @@ function GetObject(TAG) {
 function CreateObjectSprite(x, y, Layer, sprite, object, type, tag, option){
 	
 	// CREATE VARIABLES
-	var i = 0;
 	var Isobject = instance_create_layer(x, y, Layer, object);
 
 	Isobject.TYPE = type;

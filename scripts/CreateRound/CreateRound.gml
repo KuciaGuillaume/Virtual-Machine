@@ -5,6 +5,21 @@ function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, 
 	
 	if (my == undefined || my.TAG != OBJECT_TAG)
 		return undefined;
+	var roundRect = GetObject(TEXT_NAME + OBJECT_TAG);
+	if (roundRect != undefined) {
+		var TEXT = roundRect.TEXT_CONNECT;
+		var X = (my.x - (string_width(TEXT.TEXT) / 2)) - MARGE;
+		var Y = ((my.y - 25 - (string_height(TEXT_NAME)/2)) - (string_height(TEXT.TEXT) / 2)) - (MARGE / 2);
+		roundRect.x = X;
+		roundRect.y = Y;
+		TEXT.x = my.x;
+		TEXT.y = my.y - 25 - string_height(TEXT_NAME)/2;
+		roundRect.BBOX_X = (X + TEXT.TEXT_WIDTH) + MARGE;
+		roundRect.BBOX_Y = (Y + TEXT.TEXT_HEIGHT) + MARGE;
+		roundRect.COLOR = COLOR;
+		roundRect.MARGE = MARGE;
+		return roundRect;
+	}
 	var TEXT = AddText(my.x, my.y - 25 - string_height(TEXT_NAME)/2, TEXT_NAME, FONT, c_white, LAYER2, TEXT_NAME + OBJECT_TAG, OPTION);
 	var X = (TEXT.x - (string_width(TEXT.TEXT) / 2)) - MARGE;
 	var Y = (TEXT.y - (string_height(TEXT.TEXT) / 2)) - (MARGE / 2);

@@ -37,6 +37,11 @@ global.FOLDERS = [undefined];
 global.WINDOWS_PIN = [undefined];
 
 
+// SETTINGS
+global.BRIGHTNESS = 100;
+global.SETTINGS = [global.BRIGHTNESS, undefined];
+
+
 // CREATE DATE
 global.DATE = {
 	DAY : undefined,

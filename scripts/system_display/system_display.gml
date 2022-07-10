@@ -32,16 +32,29 @@ function CreateSystemDisplay(id) {
 	id.WINDOW.list_objects = addtolist(BRIGHTNESS, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([BRIGHTNESS, 190, 130, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
-	// CREATE BRIGHTNESS BAR
+	// CREATE BRIGHTNESS BAR_1
 	var bar_1 = CreateObjectSprite(id.x + 110, id.y + 122, id.WINDOW.LAYERS[1], S_Brightness_bar_1, OJustGUI, "IMAGE", id.TAG + "BRIGHTNESS_BAR_1", [undefined]);
 	id.WINDOW.list_objects = addtolist(bar_1, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([bar_1, 110, 122, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
 	// CREATE BRIGHTNESS SELECTOR
-	var selector = CreateObjectSprite(id.x + 310, id.y + 127, id.WINDOW.LAYERS[3], S_Brightness_selector, OJustButtonSettings, "BUTTON", id.TAG + "BRIGHTNESS_SELECTOR", [undefined]);
+	var selector = CreateObjectSprite(id.x + 110 + (global.SETTINGS[0] * 2), id.y + 127, id.WINDOW.LAYERS[3], S_Brightness_selector, OJustButtonSettings, "BUTTON", id.TAG + "BRIGHTNESS_SELECTOR", [undefined]);
 	id.WINDOW.list_objects = addtolist(selector, id.WINDOW.list_objects);
-	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selector, 310, 127, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selector, 110 + (global.SETTINGS[0] * 2), 127, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	selector.PARENT = id;
+	selector.OBJECT_LINKED = bar_1;
+	selector.BRIGHTNESS = global.SETTINGS[0];
+
+	// CREATE BRIGHTNESS BAR_2
+	var bar_2 = CreateObjectSprite(id.x + 110, id.y + 122, id.WINDOW.LAYERS[2], S_Brightness_bar_2, OJustButtonSettings, "IMAGE", id.TAG + "BRIGHTNESS_BAR_2", [undefined]);
+	id.WINDOW.list_objects = addtolist(bar_2, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([bar_2, 110, 122, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	bar_2.OBJECT_LINKED = selector;
+	bar_2.PARENT = id;
+	bar_2.SET_DISPLAY_LEFT = true;
+	bar_2.IMAGE_HEIGHT = 10;
+	bar_2.IMAGE_TOP = 0;
+	bar_2.IMAGE_LEFT = 0;
 	
 }
 

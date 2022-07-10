@@ -47,4 +47,8 @@ SAVE_CURRENT = 0;
 // BRIGHTNESS SELECTOR
 SELECT = false;
 
+// BRIGHTNESS
+BRIGHTNESS = global.SETTINGS[0];
+ROUND = undefined;
+
 

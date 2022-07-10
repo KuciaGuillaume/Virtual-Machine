@@ -97,6 +97,7 @@
     {"id":{"name":"RightClick_Eplorer","path":"scripts/RightClick_Eplorer/RightClick_Eplorer.yy",},"order":1,},
     {"id":{"name":"S_backgrounds","path":"sprites/S_backgrounds/S_backgrounds.yy",},"order":0,},
     {"id":{"name":"S_Files_Explorer_back","path":"sprites/S_Files_Explorer_back/S_Files_Explorer_back.yy",},"order":8,},
+    {"id":{"name":"S_SSsystem_Night_light","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},"order":5,},
     {"id":{"name":"S_on_task","path":"sprites/S_on_task/S_on_task.yy",},"order":3,},
     {"id":{"name":"S_Brightness_bar_1","path":"sprites/S_Brightness_bar_1/S_Brightness_bar_1.yy",},"order":1,},
     {"id":{"name":"S_Home_search","path":"sprites/S_Home_search/S_Home_search.yy",},"order":6,},

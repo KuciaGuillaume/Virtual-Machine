@@ -56,6 +56,19 @@ function CreateSystemDisplay(id) {
 	bar_2.IMAGE_TOP = 0;
 	bar_2.IMAGE_LEFT = 0;
 	
+	// CREATE NIGHT
+	var empt_linked = GetEmptLinked(id.x - 290, id.y + 255, id.WINDOW.LAYERS[1], S_SSsystem_Night_light, OJustGUI,  "IMAGE");
+	var empt_text = GetEmptText(id.x - 100, id.y + 255, "Night light", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	
+	var NIGHT = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 255, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "NIGHT_LIGHT", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	NIGHT.PARENT = id;
+	NIGHT.REF_X = -100;
+	NIGHT.REF_Y = 155;
+	NIGHT.EXT = true;
+	NIGHT.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(NIGHT, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT, 190, 130, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	
 }
 
 function UpdateSystemDisplay(id) {

@@ -69,7 +69,6 @@ function CreateSystemDisplay(id) {
 	id.WINDOW.list_objects = addtolist(NIGHT, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT, 190, 130, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
-	
 	// CREATE NIGHT CHECKER
 	var NIGHT_CHECKER = CreateChecker((bar_1.x + bar_1.sprite_width) - 15, id.y + 182, global.SETTINGS[1], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "NIGHT_CHECKER", [undefined]);
 	id.WINDOW.list_objects = addtolist(NIGHT_CHECKER[0], id.WINDOW.list_objects);
@@ -79,6 +78,35 @@ function CreateSystemDisplay(id) {
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT_CHECKER[1], Diff(id.x, NIGHT_CHECKER[1].x), Diff(id.y, NIGHT_CHECKER[1].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT_CHECKER[2], Diff(id.x, NIGHT_CHECKER[2].x), Diff(id.y, NIGHT_CHECKER[2].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	NIGHT_CHECKER[2].PARENT = id;
+
+	// CREATE RESOLUTION_TITLE
+	var RESOLUTION_TITLE = AddText(id.x - 100, id.y + 300, "Resolution", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "RESOLUTION_TITLE", [undefined]);
+	id.WINDOW.list_objects = addtolist(RESOLUTION_TITLE, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([RESOLUTION_TITLE, -100, 220, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	
+	// CREATE RESOLUTION SELECTION
+	var empt_linked = GetEmptLinked(id.x - 290, id.y + 255, id.WINDOW.LAYERS[1], S_SSsystem_Display_resolution, OJustGUI,  "IMAGE");
+	var empt_text = GetEmptText(id.x - 100, id.y + 255, "Display resolution", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	
+	var RESOLUTION = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 255, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "RESOLUTION", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	RESOLUTION.PARENT = id;
+	RESOLUTION.REF_X = -100;
+	RESOLUTION.REF_Y = 240;
+	RESOLUTION.EXT = true;
+	RESOLUTION.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(RESOLUTION, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([RESOLUTION, 190, 240, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	
+	// CREATE RESOLUTION SELECTR V2
+	var selectv2 = CreateSelectV2(id.x, id.y + 300, 200, 20, id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], 0, ["1920 x 1080 (Recommanded)", undefined], id.TAG + "SELECT_RESOLUTION", [undefined]);
+	selectv2.PARENT = id;
+	selectv2.REF_X = 120;
+	selectv2.REF_Y = 255;
+	selectv2.EXT = true;
+	selectv2.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(selectv2, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 250, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 250, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 }
 
 function UpdateSystemDisplay(id) {

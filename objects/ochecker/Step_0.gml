@@ -80,4 +80,7 @@ if ((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || CHECKER_MO
 		else
 			PARENT.SSSYSTEM_DISPLAY_OBJECT[CHECKER_INDEX][1] -= SPEED;
 	}
+	
+	if (PARENT.x + PARENT.SSSYSTEM_DISPLAY_OBJECT[CHECKER_INDEX][1] > OBJECT_LINKED.x + (OBJECT_LINKED.sprite_width/2))
+		PARENT.SSSYSTEM_DISPLAY_OBJECT[CHECKER_INDEX][1] = Diff(OBJECT_LINKED.x + (OBJECT_LINKED.sprite_width/2), PARENT.x);
 }

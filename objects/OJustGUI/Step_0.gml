@@ -193,6 +193,11 @@ if (OBJECT_LINKED != undefined) {
 	OBJECT_LINKED.y = y;
 }
 
+// CHECKER
+if (string_count("CHECKER_BAR_2", TAG)) {
+	IMAGE_WIDTH = PARENT.x - x;
+}
+
 // FOLDER MOVEMENT
 if (GET_FOLDER == undefined && (string_count("FOLDERS", TAG) > 0))
 	GET_FOLDER = TAG;

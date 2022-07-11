@@ -38,8 +38,9 @@ global.WINDOWS_PIN = [undefined];
 
 
 // SETTINGS
-global.BRIGHTNESS = 100;
-global.SETTINGS = [global.BRIGHTNESS, undefined];
+var BRIGHTNESS = 100;
+var NIGHT_VISION = false;
+global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, undefined];
 
 
 // CREATE DATE

@@ -17,11 +17,11 @@ if (room == RMainScene)
 for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 	var class = global.BUTTONS[i];
 	
-	if ((class[1] != "BUTTON" && class[1] != "TEXT_BUTTON" && class[1] != "EMPT_BUTTON" && class[1] != "EMPT_BUTTON-NO-HAND" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
+	if ((class[1] != "BUTTON" && class[1] != "CHECKER" && class[1] != "TEXT_BUTTON" && class[1] != "EMPT_BUTTON" && class[1] != "EMPT_BUTTON-NO-HAND" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
 		continue;
 	
 	if ((MouseInsideObject(class[0]) || ((class[1] == "EMPT_BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON") && MouseInsideRound(class[0]))) && class[0].image_index < 2 && class[0].ON) {
-		if (class[1] == "BUTTON" || class[1] == "EMPT_BUTTON")
+		if (class[1] == "BUTTON" || class[1] == "EMPT_BUTTON" || class[1] == "CHECKER")
 			image_index = 1;
 		if (class[1] == "TEXT_BUTTON")
 			image_index = 2;
@@ -83,6 +83,9 @@ for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 			class[0].COLOR = class[0].COLOR_1;
 			class[0].TEXT_CONNECT.COLOR = class[0].TEXT_COLOR_1;
 		}
+		
+		if (class[0].TYPE == "CHECKER" && class[0].CHECKER_STATE)
+			class[0].image_index = 1;
 	}
 }
 

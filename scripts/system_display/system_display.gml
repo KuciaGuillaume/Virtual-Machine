@@ -69,6 +69,16 @@ function CreateSystemDisplay(id) {
 	id.WINDOW.list_objects = addtolist(NIGHT, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT, 190, 130, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
+	
+	// CREATE NIGHT CHECKER
+	var NIGHT_CHECKER = CreateChecker((bar_1.x + bar_1.sprite_width) - 15, id.y + 182, global.SETTINGS[1], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "NIGHT_CHECKER", [undefined]);
+	id.WINDOW.list_objects = addtolist(NIGHT_CHECKER[0], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(NIGHT_CHECKER[1], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(NIGHT_CHECKER[2], id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT_CHECKER[0], Diff(id.x, NIGHT_CHECKER[0].x), Diff(id.y, NIGHT_CHECKER[0].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT_CHECKER[1], Diff(id.x, NIGHT_CHECKER[1].x), Diff(id.y, NIGHT_CHECKER[1].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([NIGHT_CHECKER[2], Diff(id.x, NIGHT_CHECKER[2].x), Diff(id.y, NIGHT_CHECKER[2].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	NIGHT_CHECKER[2].PARENT = id;
 }
 
 function UpdateSystemDisplay(id) {
@@ -99,7 +109,7 @@ function DestroySSystemDisplay(id) {
 			DestroyEmptyButton(get.TAG);
 		if (get.TYPE == "TEXT")
 			DestroyText(get.TAG);
-		if (get.TYPE == "IMAGE" || get.TYPE == "BUTTON")
+		if (get.TYPE == "IMAGE" || get.TYPE == "BUTTON" || get.TYPE == "CHECKER")
 			DestroyObject(get.TAG);
 	}
 	id.SSSYSTEM_DISPLAY_OBJECT = [undefined];

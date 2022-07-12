@@ -98,7 +98,12 @@ function CreateSystemDisplay(id) {
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([RESOLUTION, 190, 240, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
 	// CREATE RESOLUTION SELECTR V2
-	var selectv2 = CreateSelectV2(id.x, id.y + 300, 200, 20, id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], 0, ["1920 x 1080 (Recommanded)", undefined], id.TAG + "SELECT_RESOLUTION", [undefined]);
+	var all_display = ["2715 x 1527", "1920 x 1080", "1680 x 1050", "1600 x 900", "1440 x 900", "1400 x 1050", "1366 x 768", "1280 x 1024", "1280 x 720", "800 x 600", undefined];
+	var actual_resolution = string(window_get_width()) + " x " + string(window_get_height());
+	show_message(actual_resolution);
+	var index = getonlist_index(actual_resolution, all_display);
+	all_display[index] = all_display[index] + " (Recommanded)";
+	var selectv2 = CreateSelectV2(id.x, id.y + 300, 200, 20, id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], index, all_display, id.TAG + "SELECT_RESOLUTION", [undefined]);
 	selectv2.PARENT = id;
 	selectv2.REF_X = 120;
 	selectv2.REF_Y = 255;
@@ -107,6 +112,26 @@ function CreateSystemDisplay(id) {
 	id.WINDOW.list_objects = addtolist(selectv2, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 250, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 250, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+
+	// CREATE Apply changement
+	
+	var X = 350;
+	var Y = 530;
+	var empt_text = GetEmptText(id.x + X, id.y + Y, "Apply Changes", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	
+	var size = string_width(empt_text.TEXT) + 20;
+	
+	X -= size;
+	empt_text.X -= size;
+	var APPLY = CreateEmptyButton(OSettingEmpty, id.x + X, id.y + Y, size, 25, #FBFCFE, #0079FF, id.WINDOW.LAYERS[0], undefined, empt_text, id.TAG + "DISPLAY_APPLY_CHANGES", "EMPT_BUTTON-NO-HAND", [["CENTERED"], undefined]);
+	APPLY.PARENT = id;
+	APPLY.REF_X = X;
+	APPLY.REF_Y = Y;
+	APPLY.EXT = true;
+	APPLY.EXT_COLOR = #EAEEF1;
+	APPLY.SELECTV2_CONNECT = selectv2;
+	id.WINDOW.list_objects = addtolist(APPLY, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([APPLY, X, Y, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 }
 
 function UpdateSystemDisplay(id) {
@@ -133,8 +158,16 @@ function DestroySSystemDisplay(id) {
 		
 		if (!id.CLOSE)
 			id.WINDOW.list_objects = remove_findlist(get, id.WINDOW.list_objects);
-		if (get.TYPE == "EMPT_BUTTON-NO-HAND")
-			DestroyEmptyButton(get.TAG);
+		if (get.TYPE == "EMPT_BUTTON-NO-HAND") {
+			if (string_count("SELECTV2", get.TAG) == 0)
+				DestroyEmptyButton(get.TAG);
+			else {
+				for (var e = 0; get.SELECTS[e] != undefined; e++)
+					DestroyEmptyButton(get.SELECTS[e].TAG);
+				DestroyObject(get.TAG + "BOX");
+				DestroyEmptyButton(get.TAG);
+			}
+		}
 		if (get.TYPE == "TEXT")
 			DestroyText(get.TAG);
 		if (get.TYPE == "IMAGE" || get.TYPE == "BUTTON" || get.TYPE == "CHECKER")

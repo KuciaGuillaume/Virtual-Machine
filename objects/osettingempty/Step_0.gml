@@ -53,3 +53,25 @@ if (PARENT.TAG + "SYSTEM_BACK" == TAG) {
 	}
 }
 
+if (PARENT.TAG + "DISPLAY_APPLY_CHANGES" == TAG) {
+
+// "2715 x 1527"
+
+	var res = SELECTV2_CONNECT.TEXT_CONNECT.TEXT;
+
+	var left = "";
+	for (var i = 1; string_char_at(res, i) != " "; i++)
+		left = left + string_char_at(res, i);
+	
+	var right = "";
+	i += 3;
+	for (; i < string_byte_length(res) + 1 && string_char_at(res, i) != "(" && string_char_at(res, i) != " "; i++)
+		right = right + string_char_at(res, i);
+		
+	var width = real(left);
+	var height = real(right);
+
+	window_set_fullscreen(false);
+	window_set_size(width, height);
+}
+

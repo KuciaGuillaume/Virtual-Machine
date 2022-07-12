@@ -105,3 +105,6 @@ REF_Y = 0;
 
 // SETTING
 SETTING_SELECT = false;
+
+// APPLY DISPLAY
+SELECTV2_CONNECT = undefined;

@@ -103,6 +103,7 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 			icon.WINDOW = i;
 		}
 	}
+
 	icon.CREATE_WINDOW_IMAGE = WINDOW_BK;
 	icon.CREATE_WINDOW_TAG = TAG;
 	icon.CREATE_WINDOW_ICON = ICON;

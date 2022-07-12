@@ -9,6 +9,15 @@ function getonlist(ARGUMENT, LIST) {
 	return undefined;
 }
 
+
+function getonlist_index(ARGUMENT, LIST) {
+	for (var i = 0; LIST[i] != undefined; i++) {
+		if (LIST[i] == ARGUMENT)
+			return  i;
+	}
+	return 0;
+}
+
 function get_index_list(ARGUMENT, LIST) {
 	for (var i = 0; LIST[i] != undefined && is_array(LIST[i]) && LIST[i][0] != ARGUMENT; ) { i++; }
 	return i;

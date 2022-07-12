@@ -109,3 +109,5 @@ LISTS = undefined;
 SIZE_X = 0;
 SIZE_Y = 0;
 OPEN = false;
+
+SELECTS = [undefined];

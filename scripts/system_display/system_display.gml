@@ -86,7 +86,7 @@ function CreateSystemDisplay(id) {
 	
 	// CREATE RESOLUTION SELECTION
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 255, id.WINDOW.LAYERS[1], S_SSsystem_Display_resolution, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 255, "Display resolution", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 255, "Display", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var RESOLUTION = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 255, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "RESOLUTION", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	RESOLUTION.PARENT = id;
@@ -99,19 +99,68 @@ function CreateSystemDisplay(id) {
 	
 	// CREATE RESOLUTION SELECTR V2
 	var all_display = ["2715 x 1527", "1920 x 1080", "1680 x 1050", "1600 x 900", "1440 x 900", "1400 x 1050", "1366 x 768", "1280 x 1024", "1280 x 720", "800 x 600", undefined];
-	var actual_resolution = string(window_get_width()) + " x " + string(window_get_height());
-	show_message(actual_resolution);
+	var actual_resolution = global.SETTINGS[2];
 	var index = getonlist_index(actual_resolution, all_display);
-	all_display[index] = all_display[index] + " (Recommanded)";
+	if (index == -1) {
+		all_display = addtolist(actual_resolution, all_display);
+		index = getonlist_index(actual_resolution, all_display);
+	}
 	var selectv2 = CreateSelectV2(id.x, id.y + 300, 200, 20, id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], index, all_display, id.TAG + "SELECT_RESOLUTION", [undefined]);
 	selectv2.PARENT = id;
-	selectv2.REF_X = 120;
+	selectv2.REF_X = 50;
 	selectv2.REF_Y = 255;
 	selectv2.EXT = true;
 	selectv2.EXT_COLOR = #EAEEF1;
 	id.WINDOW.list_objects = addtolist(selectv2, id.WINDOW.list_objects);
-	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 250, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
-	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 250, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 50, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 50, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+
+	// CREATE DISPLAY RESOLUTION CHECKER
+	var DISPLAY_CHECKER = CreateChecker(id.x + 300, id.y + 265, global.SETTINGS[1], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "DISPLAY_CHECKER", [undefined]);
+	id.WINDOW.list_objects = addtolist(DISPLAY_CHECKER[0], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(DISPLAY_CHECKER[1], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(DISPLAY_CHECKER[2], id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([DISPLAY_CHECKER[0], Diff(id.x, DISPLAY_CHECKER[0].x), Diff(id.y, DISPLAY_CHECKER[0].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([DISPLAY_CHECKER[1], Diff(id.x, DISPLAY_CHECKER[1].x), Diff(id.y, DISPLAY_CHECKER[1].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([DISPLAY_CHECKER[2], Diff(id.x, DISPLAY_CHECKER[2].x), Diff(id.y, DISPLAY_CHECKER[2].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	DISPLAY_CHECKER[2].PARENT = id;
+
+	// CREATE CUTSOTM RESOLUTION
+	var empt_linked = GetEmptLinked(id.x - 290, id.y + 295, id.WINDOW.LAYERS[1], S_SSsystem_Custom_resolution, OJustGUI,  "IMAGE");
+	var empt_text = GetEmptText(id.x - 100, id.y + 295, "Custom", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	
+	var CUSTOM_RES = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 295, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "CUSTOM_RES", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	CUSTOM_RES.PARENT = id;
+	CUSTOM_RES.REF_X = -100;
+	CUSTOM_RES.REF_Y = 295;
+	CUSTOM_RES.EXT = true;
+	CUSTOM_RES.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(CUSTOM_RES, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_RES, 190, 295, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	
+	// CREATE TEXT BUTTON LEFT
+
+	var CUSTOM_RES_LEFT = CreateTextButton(id.x + 100, id.y + 320, S_SSystem_text_button, "1920", id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], c_gray, Arial10, 4, id.TAG + "CUSTOM_LEFT", [["CENTERED"], undefined]);
+	CUSTOM_RES_LEFT.write.BAR.image_index = 1;
+	id.WINDOW.list_objects = addtolist(CUSTOM_RES_LEFT, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_RES_LEFT, 100, 320, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+
+	// CREATE TEXT BUTTON RIGHT
+
+	var CUSTOM_RES_RIGHT = CreateTextButton(id.x + 200, id.y + 320, S_SSystem_text_button, "1080", id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], c_gray, Arial10, 4, id.TAG + "CUSTOM_RIGHT", [["CENTERED"], undefined]);
+	CUSTOM_RES_RIGHT.write.BAR.image_index = 1;
+	id.WINDOW.list_objects = addtolist(CUSTOM_RES_RIGHT, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_RES_RIGHT, 200, 320, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+
+	// CREATE CUSTOM RESOLUTION CHECKER
+	var CUSTOM_CHECKER = CreateChecker(id.x + 300, id.y + 320, global.SETTINGS[1], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "DISPLAY_CHECKER", [undefined]);
+	id.WINDOW.list_objects = addtolist(CUSTOM_CHECKER[0], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(CUSTOM_CHECKER[1], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(CUSTOM_CHECKER[2], id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_CHECKER[0], Diff(id.x, CUSTOM_CHECKER[0].x), Diff(id.y, CUSTOM_CHECKER[0].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_CHECKER[1], Diff(id.x, CUSTOM_CHECKER[1].x), Diff(id.y, CUSTOM_CHECKER[1].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_CHECKER[2], Diff(id.x, CUSTOM_CHECKER[2].x), Diff(id.y, CUSTOM_CHECKER[2].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	CUSTOM_CHECKER[2].PARENT = id;
 
 	// CREATE Apply changement
 	
@@ -172,6 +221,8 @@ function DestroySSystemDisplay(id) {
 			DestroyText(get.TAG);
 		if (get.TYPE == "IMAGE" || get.TYPE == "BUTTON" || get.TYPE == "CHECKER")
 			DestroyObject(get.TAG);
+		if (get.TYPE == "TEXT_BUTTON")
+			DestroyTextButton(get.TAG);
 	}
 	id.SSSYSTEM_DISPLAY_OBJECT = [undefined];
 }

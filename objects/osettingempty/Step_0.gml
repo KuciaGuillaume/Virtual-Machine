@@ -58,6 +58,7 @@ if (PARENT.TAG + "DISPLAY_APPLY_CHANGES" == TAG) {
 // "2715 x 1527"
 
 	var res = SELECTV2_CONNECT.TEXT_CONNECT.TEXT;
+	global.SETTINGS[2] = res;
 
 	var left = "";
 	for (var i = 1; string_char_at(res, i) != " "; i++)

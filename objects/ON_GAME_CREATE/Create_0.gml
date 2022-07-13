@@ -40,7 +40,8 @@ global.WINDOWS_PIN = [undefined];
 // SETTINGS
 var BRIGHTNESS = 100;
 var NIGHT_VISION = false;
-global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, undefined];
+var WINDOW_SIZE = "1920 x 1080";
+global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, undefined];
 
 
 // CREATE DATE

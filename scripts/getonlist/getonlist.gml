@@ -15,7 +15,7 @@ function getonlist_index(ARGUMENT, LIST) {
 		if (LIST[i] == ARGUMENT)
 			return  i;
 	}
-	return 0;
+	return -1;
 }
 
 function get_index_list(ARGUMENT, LIST) {

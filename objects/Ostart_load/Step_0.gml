@@ -1,11 +1,8 @@
 /// @Project by Kucia Guillaume* ///
 
-
-// ROTATE IMG
-image_angle += (0.0005 * delta_time);
-
 // LOADING TIME
 TIME += delta_time / 1000000;
+
 if (TIME >= TIMER) {
 	if (!REGISTER && MODE == "START")
 		room = Rregister;
@@ -22,4 +19,11 @@ if (TIME >= TIMER) {
 		TIMER = 5.1;
 		TIME = 0;
 	}
+}
+
+if (TIME >= 2 && MODE == "START") {
+	TIME = 0;
+	TIMER -= 2;
+	var rand = random_range(0, array_size(LOADS_TEXT));
+	LOADING_TEXT = LOADS_TEXT[rand];
 }

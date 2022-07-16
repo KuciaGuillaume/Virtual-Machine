@@ -60,6 +60,9 @@ if (TAG == "CURRENT_TIME" || TAG == "CURRENT_DATE") {
 
 if (TAG == "HOME_DATE")
 	TEXT = global.DATE.DAY + "/" + global.DATE.MONTH + "/" + global.DATE.YEAR + " | " + global.DATE.TIME[0] + ":" + global.DATE.TIME[1];
+	
+if (TAG == "FRAMERATE_TEXT")
+	TEXT = string(fps);
 
 if (mouse_x < x - (TEXT_WIDTH / 2) || mouse_x > x + (TEXT_WIDTH/2) ||
 	mouse_y < y - (TEXT_HEIGHT/2) || mouse_y > y + (TEXT_HEIGHT/2))

@@ -11,6 +11,7 @@ MODE = global.RstartMode;
 LOADING_TEXT = undefined;
 REGISTER = false;
 
+LOADS_TEXT = ["Data recovery", "Inventory retrieval", "Server initialization", "Connection to instances", "Creation of temporary files", "Component checks", "Securing overheating", "Desktop initialization", undefined];
 
 // SELECT MODE TYPE
 

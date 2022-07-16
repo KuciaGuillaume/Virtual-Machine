@@ -57,3 +57,8 @@ for (var i = 0; global.WINDOWS_PIN[i] != undefined; i++) {
 		continue;
 	CreateWindowIcon(class[1], class[2], class[3], class[4], class[5]);
 }
+
+if (global.SETTINGS[5]) {
+	CreateObjectSprite(30, 30, "Notifications_Gp0", S_SSsystem_Display_Framerate, OJustGUI, "IMAGE", "BACK_FRAMERATE", [undefined]);
+	AddText(100, 42.5, string(fps), Arial10, c_white, "Notifications_Gp1", "FRAMERATE_TEXT", [["CENTERED"], undefined]);
+}

@@ -25,7 +25,7 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 1;
+global.TIMER = 2;
 
 // PATH AND FOLDERS
 
@@ -41,7 +41,10 @@ global.WINDOWS_PIN = [undefined];
 var BRIGHTNESS = 100;
 var NIGHT_VISION = false;
 var WINDOW_SIZE = "1920 x 1080";
-global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, undefined];
+var CUSTOM_RES = ["1920", "1080", false];
+var FULLSCREEN = true;
+var FRAMERATE = false;
+global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, undefined];
 
 
 // CREATE DATE
@@ -69,17 +72,44 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 
 // CREATE LOAD_LIST
 
-LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, undefined];
+LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, undefined];
 
 // LOAD
-savegame_clear("USER");
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 global.PATH = LOAD_LIST[1];
 global.FOLDERS = LOAD_LIST[2];
 global.WINDOWS_PIN = LOAD_LIST[3];
+global.SETTINGS = LOAD_LIST[4];
 
 
+window_set_fullscreen(global.SETTINGS[4]);
+
+
+// SCREEN LOAD
+
+	var res = global.SETTINGS[2];
+
+	var left = "";
+	for (var i = 1; string_char_at(res, i) != " "; i++)
+		left = left + string_char_at(res, i);
+	
+	var right = "";
+	i += 3;
+	for (; i < string_byte_length(res) + 1 && string_char_at(res, i) != "(" && string_char_at(res, i) != " "; i++)
+		right = right + string_char_at(res, i);
+		
+	var width = real(left);
+	var height = real(right);
+	
+	if (!global.SETTINGS[3][2])
+		window_set_size(width, height);
+	else {
+		var left = global.SETTINGS[3][0];
+		var right = global.SETTINGS[3][1];
+
+		window_set_size(real(left), real(right));
+	}
 
 // LOAD GAME
 room = RMainScene;

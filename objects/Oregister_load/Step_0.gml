@@ -1,10 +1,5 @@
 /// @Project by Kucia Guillaume* ///
 
-
-
-// ROTATE IMG
-image_angle += (0.0005 * delta_time);
-
 // UPDATE TIMER
 
 if (visible)

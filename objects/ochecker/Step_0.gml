@@ -65,6 +65,49 @@ if ((mouse_check_button_pressed(mb_left) && MouseInsideObject(id)) || CHECKER_MO
 		
 		if (string_count("NIGHT_CHECKER", TAG))
 			global.SETTINGS[1] = CHECKER_STATE;
+		
+		if (PARENT != undefined && string_count("DISPLAY_CHECKER", TAG) > 0) {
+			var custom = GetObject(PARENT.TAG + "CUSTOM_CHECKER" + "CHECKER_SELECTOR");
+			if ( custom.CHECKER_STATE && CHECKER_STATE) {
+				custom.CHECKER_STATE = false;
+				custom.CHECKER_MOVEMENT = true;
+				global.SETTINGS[3][2] = false;
+			} else if ( !custom.CHECKER_STATE && !CHECKER_STATE) {
+				custom.CHECKER_STATE = true;
+				custom.CHECKER_MOVEMENT = true;
+				global.SETTINGS[3][2] = true;
+			}
+		} else if (PARENT != undefined && string_count("CUSTOM_CHECKER", TAG) > 0) {
+			var display = GetObject(PARENT.TAG + "DISPLAY_CHECKER" + "CHECKER_SELECTOR");
+			if ( display.CHECKER_STATE && CHECKER_STATE) {
+				display.CHECKER_STATE = false;
+				display.CHECKER_MOVEMENT = true;
+				global.SETTINGS[3][2] = true;
+			} else if ( !display.CHECKER_STATE && !CHECKER_STATE) {
+				display.CHECKER_STATE = true;
+				display.CHECKER_MOVEMENT = true;
+				global.SETTINGS[3][2] = false;
+			}
+		}
+		
+		if (string_count("FRAMERATE_CHECKER", TAG) > 0) {
+			if (CHECKER_STATE) {
+				CreateObjectSprite(30, 30, "Notifications_Gp0", S_SSsystem_Display_Framerate, OJustGUI, "IMAGE", "BACK_FRAMERATE", [undefined]);
+				AddText(100, 42.5, string(fps), Arial10, c_white, "Notifications_Gp1", "FRAMERATE_TEXT", [["CENTERED"], undefined]);
+				global.SETTINGS[5] = true;
+			} else {
+				DestroyObject("BACK_FRAMERATE");
+				DestroyText("FRAMERATE_TEXT");
+				global.SETTINGS[5] = false;
+			}
+		}
+		
+		if (string_count("FULLSCREEN_CHECKER", TAG) > 0)
+			global.SETTINGS[4] = CHECKER_STATE;
+			
+	}
+	
+	if (CHECKER_MOVEMENT) {
 		for (var i = 0; PARENT.SSSYSTEM_DISPLAY_OBJECT[i][0] != id;) {i++;}
 		CHECKER_INDEX = i;
 	}

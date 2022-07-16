@@ -116,7 +116,12 @@ function CreateSystemDisplay(id) {
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([selectv2, 50, 255, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 
 	// CREATE DISPLAY RESOLUTION CHECKER
-	var DISPLAY_CHECKER = CreateChecker(id.x + 300, id.y + 265, global.SETTINGS[1], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "DISPLAY_CHECKER", [undefined]);
+	
+	if (!global.SETTINGS[3][2])
+		var active = true;
+	else
+		var active = false;
+	var DISPLAY_CHECKER = CreateChecker(id.x + 295, id.y + 265, active, id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "DISPLAY_CHECKER", [undefined]);
 	id.WINDOW.list_objects = addtolist(DISPLAY_CHECKER[0], id.WINDOW.list_objects);
 	id.WINDOW.list_objects = addtolist(DISPLAY_CHECKER[1], id.WINDOW.list_objects);
 	id.WINDOW.list_objects = addtolist(DISPLAY_CHECKER[2], id.WINDOW.list_objects);
@@ -140,20 +145,24 @@ function CreateSystemDisplay(id) {
 	
 	// CREATE TEXT BUTTON LEFT
 
-	var CUSTOM_RES_LEFT = CreateTextButton(id.x + 100, id.y + 320, S_SSystem_text_button, "1920", id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], c_gray, Arial10, 4, id.TAG + "CUSTOM_LEFT", [["CENTERED"], undefined]);
+	var CUSTOM_RES_LEFT = CreateTextButton(id.x + 100, id.y + 320, S_SSystem_text_button, global.SETTINGS[3][0], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], c_gray, Arial10, 4, id.TAG + "CUSTOM_LEFT", [["CENTERED"], undefined]);
 	CUSTOM_RES_LEFT.write.BAR.image_index = 1;
 	id.WINDOW.list_objects = addtolist(CUSTOM_RES_LEFT, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_RES_LEFT, 100, 320, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 
 	// CREATE TEXT BUTTON RIGHT
 
-	var CUSTOM_RES_RIGHT = CreateTextButton(id.x + 200, id.y + 320, S_SSystem_text_button, "1080", id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], c_gray, Arial10, 4, id.TAG + "CUSTOM_RIGHT", [["CENTERED"], undefined]);
+	var CUSTOM_RES_RIGHT = CreateTextButton(id.x + 200, id.y + 320, S_SSystem_text_button, global.SETTINGS[3][1], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], c_gray, Arial10, 4, id.TAG + "CUSTOM_RIGHT", [["CENTERED"], undefined]);
 	CUSTOM_RES_RIGHT.write.BAR.image_index = 1;
 	id.WINDOW.list_objects = addtolist(CUSTOM_RES_RIGHT, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_RES_RIGHT, 200, 320, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 
 	// CREATE CUSTOM RESOLUTION CHECKER
-	var CUSTOM_CHECKER = CreateChecker(id.x + 300, id.y + 320, global.SETTINGS[1], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "DISPLAY_CHECKER", [undefined]);
+	if (!active)
+		active = true;
+	else
+		active = false;
+	var CUSTOM_CHECKER = CreateChecker(id.x + 295, id.y + 320, active, id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "CUSTOM_CHECKER", [undefined]);
 	id.WINDOW.list_objects = addtolist(CUSTOM_CHECKER[0], id.WINDOW.list_objects);
 	id.WINDOW.list_objects = addtolist(CUSTOM_CHECKER[1], id.WINDOW.list_objects);
 	id.WINDOW.list_objects = addtolist(CUSTOM_CHECKER[2], id.WINDOW.list_objects);
@@ -161,6 +170,57 @@ function CreateSystemDisplay(id) {
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_CHECKER[1], Diff(id.x, CUSTOM_CHECKER[1].x), Diff(id.y, CUSTOM_CHECKER[1].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([CUSTOM_CHECKER[2], Diff(id.x, CUSTOM_CHECKER[2].x), Diff(id.y, CUSTOM_CHECKER[2].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	CUSTOM_CHECKER[2].PARENT = id;
+	
+	// CREATE FULLSCREEN
+	var empt_linked = GetEmptLinked(id.x - 290, id.y + 350, id.WINDOW.LAYERS[1], S_SSsystem_Fullscreen, OJustGUI,  "IMAGE");
+	var empt_text = GetEmptText(id.x - 100, id.y + 350, "Fullscreen", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	
+	var FULLSCREEN = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 350, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SET_FULLSCREEN", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	FULLSCREEN.PARENT = id;
+	FULLSCREEN.REF_X = -100;
+	FULLSCREEN.REF_Y = 350;
+	FULLSCREEN.EXT = true;
+	FULLSCREEN.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(FULLSCREEN, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FULLSCREEN, 190, 350, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	
+	// CREATE FULLSCREEN CHECKER
+	var FULLSCREEN_CHECKER = CreateChecker(id.x + 295, id.y + 375, global.SETTINGS[4], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "FULLSCREEN_CHECKER", [undefined]);
+	id.WINDOW.list_objects = addtolist(FULLSCREEN_CHECKER[0], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(FULLSCREEN_CHECKER[1], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(FULLSCREEN_CHECKER[2], id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FULLSCREEN_CHECKER[0], Diff(id.x, FULLSCREEN_CHECKER[0].x), Diff(id.y, FULLSCREEN_CHECKER[0].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FULLSCREEN_CHECKER[1], Diff(id.x, FULLSCREEN_CHECKER[1].x), Diff(id.y, FULLSCREEN_CHECKER[1].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FULLSCREEN_CHECKER[2], Diff(id.x, FULLSCREEN_CHECKER[2].x), Diff(id.y, FULLSCREEN_CHECKER[2].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	FULLSCREEN_CHECKER[2].PARENT = id;
+	
+	// CREATE OPTIONS TITLE
+	var OPTIONS_TITLE = AddText(id.x - 100, id.y + 415, "Display options", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "OPTIONS_TITLE", [undefined]);
+	id.WINDOW.list_objects = addtolist(OPTIONS_TITLE, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([OPTIONS_TITLE, -100, 415, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	
+	// CREATE OPTIONS FRAMERATE
+	var empt_linked = GetEmptLinked(id.x - 290, id.y + 435, id.WINDOW.LAYERS[1], S_SSsystem_Framerate, OJustGUI,  "IMAGE");
+	var empt_text = GetEmptText(id.x - 100, id.y + 435, "Show frames per second", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	
+	var FRAMERATE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 435, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "FRAMERATE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	FRAMERATE.PARENT = id;
+	FRAMERATE.REF_X = -100;
+	FRAMERATE.REF_Y = 435;
+	FRAMERATE.EXT = true;
+	FRAMERATE.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(FRAMERATE, id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FRAMERATE, 190, 435, 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	
+	// CREATE FRAMERATE CHECKER
+	var FRAMERATE_CHECKER = CreateChecker(id.x + 295, id.y + 460, global.SETTINGS[5], id.WINDOW.LAYERS[1], id.WINDOW.LAYERS[2], id.WINDOW.LAYERS[3], id.TAG + "FRAMERATE_CHECKER", [undefined]);
+	id.WINDOW.list_objects = addtolist(FRAMERATE_CHECKER[0], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(FRAMERATE_CHECKER[1], id.WINDOW.list_objects);
+	id.WINDOW.list_objects = addtolist(FRAMERATE_CHECKER[2], id.WINDOW.list_objects);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FRAMERATE_CHECKER[0], Diff(id.x, FRAMERATE_CHECKER[0].x), Diff(id.y, FRAMERATE_CHECKER[0].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FRAMERATE_CHECKER[1], Diff(id.x, FRAMERATE_CHECKER[1].x), Diff(id.y, FRAMERATE_CHECKER[1].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([FRAMERATE_CHECKER[2], Diff(id.x, FRAMERATE_CHECKER[2].x), Diff(id.y, FRAMERATE_CHECKER[2].y), 1], id.SSSYSTEM_DISPLAY_OBJECT);
+	FRAMERATE_CHECKER[2].PARENT = id;
 
 	// CREATE Apply changement
 	

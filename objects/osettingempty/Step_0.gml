@@ -72,7 +72,19 @@ if (PARENT.TAG + "DISPLAY_APPLY_CHANGES" == TAG) {
 	var width = real(left);
 	var height = real(right);
 
-	window_set_fullscreen(false);
-	window_set_size(width, height);
+	var custom = GetObject(PARENT.TAG + "CUSTOM_CHECKER" + "CHECKER_SELECTOR");
+	
+	window_set_fullscreen(global.SETTINGS[4]);
+	if (!custom.CHECKER_STATE)
+		window_set_size(width, height);
+	else {
+		var left = GetObject(PARENT.TAG +  "CUSTOM_LEFT");
+		var right = GetObject(PARENT.TAG +  "CUSTOM_RIGHT");
+		
+		left = left.TEXT;
+		right = right.TEXT;
+		global.SETTINGS[3] = [left, right, true];
+		window_set_size(real(left), real(right));
+	}
 }
 

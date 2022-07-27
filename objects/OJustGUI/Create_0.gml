@@ -31,6 +31,7 @@ TIME = 0;
 TIMER = 0;
 PASS = false;
 B_INSIDE = false;
+BACKGROUND_OBJECTIVE = 0;
 TITLE = "Background Tile";
 DESCRIPTION = "If you are browsing Commons for the first time,\n you may want to start with\nFeatured pictures, Quality images,\n Valued images or Featured media";
 

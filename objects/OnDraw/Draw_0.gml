@@ -9,6 +9,6 @@ if (TAG == "ON_BACKGROUNDS") {
 		return;
 	draw_set_alpha(scroll_bar.image_alpha);
 	var X = backgrounds.x; var Y = backgrounds.y;
-	draw_rectangle(X, Y, X + backgrounds.sprite_width, Y + backgrounds.sprite_height, true);
+	draw_rectangle(X, Y, X + backgrounds.sprite_width, Y + backgrounds.IMAGE_HEIGHT, true);
 }
 

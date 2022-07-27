@@ -80,6 +80,7 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined];
 
 // LOAD
+savegame_clear("USER");
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 global.PATH = LOAD_LIST[1];
@@ -118,4 +119,4 @@ window_set_fullscreen(global.SETTINGS[4]);
 	}
 
 // LOAD GAME
-room = RMainScene;
+room = Rstart;

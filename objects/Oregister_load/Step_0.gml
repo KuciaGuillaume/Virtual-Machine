@@ -45,7 +45,12 @@ if (STATE == 1) {
 	CreateButtonImage(327.5, 735.9, SiconBox, Obox, "Gp3", "Gp4", Shomme, OJustGUI, "EDIT_ICON_6", [["IMAGE_INDEX", 1], undefined]);
 	CreateButtonImage(202.5, 871.6, SiconBox, Obox, "Gp3", "Gp4", Shomme, OJustGUI, "EDIT_ICON_7", [["IMAGE_INDEX", 2], undefined]);
 	CreateButtonImage(327.5, 871.6, SiconBox, Obox, "Gp3", "Gp4", Shomme, OJustGUI, "EDIT_ICON_8", [["IMAGE_INDEX", 3], undefined]);
-	CreateObjectSprite(506, 456, "Gp3", Sbackgrounds, OJustGUI, "IMAGE", "GUI_SELECT_BACKGROUNDS", [undefined]);
+	var backgrounds = CreateObjectSprite(506, 431.5, "Gp3", Sbackgrounds, OJustGUI, "IMAGE", "GUI_SELECT_BACKGROUNDS", [undefined]);
+	backgrounds.SET_DISPLAY_LEFT = true;
+	backgrounds.IMAGE_LEFT = 0;
+	backgrounds.IMAGE_TOP = 0;
+	backgrounds.IMAGE_WIDTH = 756;
+	backgrounds.IMAGE_HEIGHT = 473;
 	var scrollbar = CreateObjectSprite(540, 670, "Gp4", Sscroll_image_bar, OJustGUI, "IMAGE", "SCROLL_IMAGE_BAR", [undefined]);
 	scrollbar.image_alpha = 0;
 	AddText(1520, 490, "BACKGROUND_TITLE", Arial25, c_white, "Gp4", "BACKGROUND_TITLE", [["CENTERED"], undefined]);

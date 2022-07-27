@@ -55,7 +55,7 @@ function Machine(OPTION){
 
 		// CREATE LOAD_LIST
 
-		LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, undefined];
+		LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined];
 
 		// LOAD
 		LOAD_LIST = savegame_load("USER", LOAD_LIST);
@@ -63,6 +63,8 @@ function Machine(OPTION){
 		global.PATH = LOAD_LIST[1];
 		global.FOLDERS = LOAD_LIST[2];
 		global.WINDOWS_PIN = LOAD_LIST[3];
+		global.SETTINGS = LOAD_LIST[4];
+		global.SOUNDS = LOAD_LIST[5];
 		room = RUserConnection;
 	}
 }

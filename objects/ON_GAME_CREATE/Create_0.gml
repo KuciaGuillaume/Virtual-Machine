@@ -46,6 +46,11 @@ var FULLSCREEN = true;
 var FRAMERATE = false;
 global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, undefined];
 
+// SOUND
+var GENERAL_SOUND = 50;
+var NOTIFICATION_SOUND = 50;
+global.SOUNDS = [GENERAL_SOUND, NOTIFICATION_SOUND];
+
 
 // CREATE DATE
 global.DATE = {
@@ -72,7 +77,7 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 
 // CREATE LOAD_LIST
 
-LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, undefined];
+LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined];
 
 // LOAD
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
@@ -81,6 +86,7 @@ global.PATH = LOAD_LIST[1];
 global.FOLDERS = LOAD_LIST[2];
 global.WINDOWS_PIN = LOAD_LIST[3];
 global.SETTINGS = LOAD_LIST[4];
+global.SOUNDS = LOAD_LIST[5];
 
 
 window_set_fullscreen(global.SETTINGS[4]);

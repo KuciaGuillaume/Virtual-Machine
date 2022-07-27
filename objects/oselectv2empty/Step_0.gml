@@ -70,7 +70,6 @@ if (mouse_check_button_pressed(mb_left) && MouseInsideRound(id) && !OPEN && ON) 
 		Select.PARENT = id;
 		Y += SIZE_Y + sp;
 	}
-
 }
 
 

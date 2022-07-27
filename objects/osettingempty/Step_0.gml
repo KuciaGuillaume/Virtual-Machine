@@ -31,6 +31,8 @@ if (string_count("SET-ING", TAG) > 0) {
 	PARENT.OBJECT_SELECT_RUN = true;
 
 	DestroySSystemDisplay(PARENT);
+	DestroySSystemSound(PARENT);
+	DestroySSystemPersonalize(PARENT);
 	DestroySSystem(PARENT);
 	if (string_count("SYSTEM", TAG) > 0 && string_count("POWER", TAG) == 0)
 		CreateSSystem(PARENT);
@@ -44,10 +46,38 @@ if (PARENT.TAG + "SSDISPLAY" == TAG) {
 	CreateSystemDisplay(PARENT);
 }
 
+if (PARENT.TAG + "SSSOUND" == TAG) {
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/SOUND";
+	PARENT.SETTING_TITLE_FX = 20;
+	DestroySSystemSound(PARENT);
+	DestroySSystem(PARENT);
+	CreateSystemSound(PARENT);
+}
+
+if (PARENT.TAG + "SSPERSONALIZE" == TAG) {
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/PERSONALIZE";
+	PARENT.SETTING_TITLE_FX = 20;
+	DestroySSystemPersonalize(PARENT);
+	DestroySSystem(PARENT);
+	CreateSystemPersonalize(PARENT);
+}
+
 if (PARENT.TAG + "SYSTEM_BACK" == TAG) {
 	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/DISPLAY") {
 		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
 		DestroySSystemDisplay(PARENT);
+		DestroySSystem(PARENT);
+		CreateSSystem(PARENT);
+	}
+	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/SOUND") {
+		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+		DestroySSystemSound(PARENT);
+		DestroySSystem(PARENT);
+		CreateSSystem(PARENT);
+	}
+	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/PERSONALIZE") {
+		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+		DestroySSystemPersonalize(PARENT);
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);
 	}

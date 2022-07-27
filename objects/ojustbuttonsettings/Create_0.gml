@@ -49,6 +49,8 @@ SELECT = false;
 
 // BRIGHTNESS
 BRIGHTNESS = global.SETTINGS[0];
+GENERAL_SOUNDS = global.SOUNDS[0];
+NOTIFICATION_SOUNDS = global.SOUNDS[1];
 ROUND = undefined;
 
 

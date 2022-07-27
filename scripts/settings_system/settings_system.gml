@@ -20,6 +20,7 @@ function CreateSSystem(id) {
 	var image = CreateObjectSprite(id.x - 100, id.y + 80, id.WINDOW.LAYERS[1], S_backgrounds, OJustGUI, "IMAGE", id.TAG + "SSSIMAGE", [undefined]);
 	image.image_xscale = 0.064;
 	image.image_yscale = 0.065;
+	image.image_index = global.USER[7];
 	id.WINDOW.list_objects = addtolist(image, id.WINDOW.list_objects);
 	id.SSYSTEM_OBJECT = addtolist([image, -100, 80, 1], id.SSYSTEM_OBJECT);
 	
@@ -53,50 +54,50 @@ function CreateSSystem(id) {
 	var SOUND = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSOUND", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	SOUND.PARENT = id;
 	SOUND.REF_X = -100;
-	SOUND.REF_Y = 260;
-	SOUND.EXT = true;
-	SOUND.EXT_COLOR = #EAEEF1;
-	id.WINDOW.list_objects = addtolist(SOUND, id.WINDOW.list_objects);
-	id.SSYSTEM_OBJECT = addtolist([SOUND, 190, 130, 1], id.SSYSTEM_OBJECT);
-
-	// CREATE NOTIFICATIONS
-	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Notifications, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 400, "NOTIFICATIONS\nAlerts from apps and system", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
-	
-	var SOUND = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSNOTIFICATIONS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
-	SOUND.PARENT = id;
-	SOUND.REF_X = -100;
 	SOUND.REF_Y = 320;
 	SOUND.EXT = true;
 	SOUND.EXT_COLOR = #EAEEF1;
 	id.WINDOW.list_objects = addtolist(SOUND, id.WINDOW.list_objects);
 	id.SSYSTEM_OBJECT = addtolist([SOUND, 190, 130, 1], id.SSYSTEM_OBJECT);
 
+	// CREATE PERSONALIZE
+	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Custom_Display, OJustGUI,  "IMAGE");
+	var empt_text = GetEmptText(id.x - 100, id.y + 400, "PERSONALIZE\nWallpaper, cursor, taskbars", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	
+	var PERSONALIZE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSPERSONALIZE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	PERSONALIZE.PARENT = id;
+	PERSONALIZE.REF_X = -100;
+	PERSONALIZE.REF_Y = 260;
+	PERSONALIZE.EXT = true;
+	PERSONALIZE.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(PERSONALIZE, id.WINDOW.list_objects);
+	id.SSYSTEM_OBJECT = addtolist([PERSONALIZE, 190, 130, 1], id.SSYSTEM_OBJECT);
+
 	// CREATE STOCKAGE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Stockage, OJustGUI,  "IMAGE");
 	var empt_text = GetEmptText(id.x - 100, id.y + 400, "STORAGE\nStorage space, drivers, configuration rules", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
-	var SOUND = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSTOCKAGE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
-	SOUND.PARENT = id;
-	SOUND.REF_X = -100;
-	SOUND.REF_Y = 380;
-	SOUND.EXT = true;
-	SOUND.EXT_COLOR = #EAEEF1;
-	id.WINDOW.list_objects = addtolist(SOUND, id.WINDOW.list_objects);
-	id.SSYSTEM_OBJECT = addtolist([SOUND, 190, 130, 1], id.SSYSTEM_OBJECT);
+	var STOCKAGE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSTOCKAGE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	STOCKAGE.PARENT = id;
+	STOCKAGE.REF_X = -100;
+	STOCKAGE.REF_Y = 380;
+	STOCKAGE.EXT = true;
+	STOCKAGE.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(STOCKAGE, id.WINDOW.list_objects);
+	id.SSYSTEM_OBJECT = addtolist([STOCKAGE, 190, 130, 1], id.SSYSTEM_OBJECT);
 
 	// CREATE INFOS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_infos, OJustGUI,  "IMAGE");
 	var empt_text = GetEmptText(id.x - 100, id.y + 400, "ABOUT\nDevice specifications, rename PC", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
-	var SOUND = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSINFOS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
-	SOUND.PARENT = id;
-	SOUND.REF_X = -100;
-	SOUND.REF_Y = 440;
-	SOUND.EXT = true;
-	SOUND.EXT_COLOR = #EAEEF1;
-	id.WINDOW.list_objects = addtolist(SOUND, id.WINDOW.list_objects);
-	id.SSYSTEM_OBJECT = addtolist([SOUND, 190, 130, 1], id.SSYSTEM_OBJECT);
+	var INFOS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSINFOS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	INFOS.PARENT = id;
+	INFOS.REF_X = -100;
+	INFOS.REF_Y = 440;
+	INFOS.EXT = true;
+	INFOS.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(INFOS, id.WINDOW.list_objects);
+	id.SSYSTEM_OBJECT = addtolist([INFOS, 190, 130, 1], id.SSYSTEM_OBJECT);
 }
 
 function DestroySSystem(id) {
@@ -148,7 +149,7 @@ function DestroySSystem(id) {
 	}
 
 	// DELETE EmptyButton NOTIFICATIONS
-	var screen = GetObject(id.TAG + "SSNOTIFICATIONS");
+	var screen = GetObject(id.TAG + "SSPERSONALIZE");
 	if (screen != undefined) {
 		id.SSYSTEM_OBJECT = remove_findlist_index(screen, id.SSYSTEM_OBJECT, 0);
 		if (!id.CLOSE)

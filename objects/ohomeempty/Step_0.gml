@@ -8,15 +8,15 @@ if (!MouseInsideRound(id) || !mouse_check_button_pressed(mb_left) || !ON) return
 
 if (TAG == "HOME_OPTION_POWER_OFF") {
 	savegame_clear("USER");
-	savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, undefined]);
+	savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined]);
 	Machine("END");
 } if (TAG == "HOME_OPTION_RESTART") {
 	savegame_clear("USER");
-	savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, undefined]);
+	savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined]);
 	Machine("RESTART");
 } if (TAG == "HOME_OPTION_STANDBY") {
 	savegame_clear("USER");
-	savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, undefined]);
+	savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined]);
 	Machine("STANDBY");
 }
 

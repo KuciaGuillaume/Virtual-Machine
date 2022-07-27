@@ -45,7 +45,7 @@ if (PATH == undefined || PATH == undefined) {
 }
 
 CURSOR = CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", [undefined]);
-CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["INDEX_IMAGE", 0], ["FADE_IN", 0.00001], undefined]);
+CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["INDEX_IMAGE", global.USER[7]], ["FADE_IN", 0.00001], undefined]);
 TASKBAR = CreateObjectSprite(960, 1040, "TaskBar_Gp0", S_taskbar, OJustGUI, "IMAGE", "MAIN_TASKBAR", [["FADE_IN", 0.00001], undefined]);
 HOME_ICON = CreateObjectSprite(TASKBAR.x, TASKBAR.y - 3, "TaskBar_Gp1", S_Home_Icon, Owindow_icon_tasks, "BUTTON-NO-HAND", "HOME_ICON", [["INFO", "Home"], undefined]);
 ICON = addtolist(HOME_ICON, ICONS);

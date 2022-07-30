@@ -55,7 +55,7 @@ function Machine(OPTION){
 
 		// CREATE LOAD_LIST
 
-		LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined];
+		LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, global.GAME_VALUE, undefined];
 
 		// LOAD
 		LOAD_LIST = savegame_load("USER", LOAD_LIST);

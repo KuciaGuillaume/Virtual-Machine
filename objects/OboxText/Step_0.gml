@@ -252,8 +252,10 @@ if (TAG == "RENAME_FOLDER_SLIDERS") {
 
 if (TAG == "DESK_OPEN_IN_FILE_EXPLORER") {
 	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
-	window.WINDOW_BK.PWD = ON_MAIN_SCENE.PATH[1];
-	window.WINDOW_BK.PWD_PATH = "/~/Desk"
+	if (window != undefined) {
+		window.WINDOW_BK.PWD = ON_MAIN_SCENE.PATH[1];
+		window.WINDOW_BK.PWD_PATH = "/~/Desk"
+	}
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox("NEW_FOLDER_SLIDERS");
 	DestroyObject(TAG);

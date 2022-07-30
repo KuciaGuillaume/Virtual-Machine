@@ -36,7 +36,7 @@ function CreateSSystem(id) {
 	
 	// CREATE DISPLAY BUTTON
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_display, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 400, "DISPLAY\nMonitors, brightness, night light, display profile", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Monitors, brightness, night light, display profile\nDISPLAY\n", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var DISPLAY = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSDISPLAY", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	DISPLAY.PARENT = id;
@@ -49,7 +49,7 @@ function CreateSSystem(id) {
 
 	// CREATE SOUND BUTTON
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Sound, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 400, "SOUND\nVolume levels, output, input, sound devices", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Volume levels, output, input, sound devices\nSOUND", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var SOUND = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSOUND", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	SOUND.PARENT = id;
@@ -62,7 +62,7 @@ function CreateSSystem(id) {
 
 	// CREATE PERSONALIZE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Custom_Display, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 400, "PERSONALIZE\nWallpaper, cursor, taskbars", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Wallpaper, cursor, taskbars\nPERSONALIZE", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var PERSONALIZE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSPERSONALIZE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	PERSONALIZE.PARENT = id;
@@ -75,9 +75,9 @@ function CreateSSystem(id) {
 
 	// CREATE STOCKAGE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Stockage, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 400, "STORAGE\nStorage space, drivers, configuration rules", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Storage space, drivers, configuration rules\nSTORAGE", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
-	var STOCKAGE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSTOCKAGE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	var STOCKAGE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSTORAGE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	STOCKAGE.PARENT = id;
 	STOCKAGE.REF_X = -100;
 	STOCKAGE.REF_Y = 380;
@@ -88,7 +88,7 @@ function CreateSSystem(id) {
 
 	// CREATE INFOS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_infos, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 400, "ABOUT\nDevice specifications, rename PC", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Device specifications, rename PC\nABOUT", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var INFOS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSINFOS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	INFOS.PARENT = id;
@@ -158,7 +158,7 @@ function DestroySSystem(id) {
 	}
 
 	// DELETE EmptyButton STORAGE
-	var screen = GetObject(id.TAG + "SSSTOCKAGE");
+	var screen = GetObject(id.TAG + "SSSTORAGE");
 	if (screen != undefined) {
 		id.SSYSTEM_OBJECT = remove_findlist_index(screen, id.SSYSTEM_OBJECT, 0);
 		if (!id.CLOSE)

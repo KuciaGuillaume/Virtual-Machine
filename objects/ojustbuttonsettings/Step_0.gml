@@ -114,7 +114,113 @@ if (PARENT != undefined && PARENT.TAG + "BRIGHTNESS_SELECTOR" == TAG) {
 
 if (PARENT.TAG + "BRIGHTNESS_BAR_2" == TAG)
 	IMAGE_WIDTH = OBJECT_LINKED.x - x;
+	
+if (string_count("EDIT", TAG) > 0) {
+	if (MouseInsideObject(id) && string_count("WALLPAPER", TAG) > 0 && PARENT.WINDOW.ON) {
+	
+		if (SELECT_HOVER == undefined && global.USER[7] != image_index) {
+			SELECT_HOVER = CreateObjectSprite(x, y + 60, PARENT.WINDOW.LAYERS[3], S_SSsystem_Personalize_Select_hover, OJustGUI, "IMAGE", PARENT.TAG + "WALLPAPER_SELECTOR_HOVER" + TAG, [undefined]);
+			SELECT_HOVER.SET_DISPLAY_LEFT = true;
+			SELECT_HOVER.IMAGE_TOP = 0;
+			SELECT_HOVER.IMAGE_LEFT = 0;
+			SELECT_HOVER.IMAGE_HEIGHT = 0;
+			SELECT_HOVER.IMAGE_WIDTH = sprite_width;
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT = addtolist([SELECT_HOVER, undefined, undefined, 1], PARENT.SSSYSTEM_PERSONALIZE_OBJECT);
+		} else if (SELECT_HOVER != undefined){
+			var diff = Diff(SELECT_HOVER.y, y - 1);
+			if (SELECT_HOVER.y > y) {
+				SELECT_HOVER.y -= (diff * 0.000009) * delta_time;
+				SELECT_HOVER.IMAGE_HEIGHT += (diff * 0.000009) * delta_time;
+			} else {
+				SELECT_HOVER.IMAGE_HEIGHT = 60;
+				SELECT_HOVER.y = y;
+			}
+			if (global.USER[7] == image_index) {
+				PARENT.SSSYSTEM_PERSONALIZE_OBJECT = remove_findlist_index(SELECT_HOVER, PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+				DestroyObject(SELECT_HOVER.TAG);
+				SELECT_HOVER = undefined;
+			}
+		}
+	
+		if (mouse_check_button_pressed(mb_left)) {
+			global.USER[7] = image_index;
+			var background = GetObject("MAIN_BACKGROUNDS");
+			background.image_index = image_index;
 
+			var index = FindListIndex(id, PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+			var target_x = PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index][1];
+			var target_y = PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index][2];
+			var index_selector = FindListIndex(GetObject(PARENT.TAG + "WALLPAPER_SELECTOR"), PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector][1] = target_x;
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector][2] = target_y + 40;
+			var index_selector_text = FindListIndex(GetText(PARENT.TAG + "WALLPAPER_SELECTOR_TEXT"), PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector_text][1] = target_x + 55;
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector_text][2] = target_y + 49;
+		}
+	} else if (SELECT_HOVER != undefined) {
+			if (SELECT_HOVER.y < y + 60) {
+				var diff = Diff(SELECT_HOVER.y, y + 61);
+				SELECT_HOVER.y += (diff * 0.000009) * delta_time;
+				SELECT_HOVER.IMAGE_HEIGHT -= (diff * 0.000009) * delta_time;
+			} else {				
+				PARENT.SSSYSTEM_PERSONALIZE_OBJECT = remove_findlist_index(SELECT_HOVER, PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+				DestroyObject(SELECT_HOVER.TAG);
+				SELECT_HOVER = undefined;
+			}
+	}
+	if (MouseInsideObject(id) && string_count("CURSOR", TAG) > 0 && PARENT.WINDOW.ON) {
+	
+		if (SELECT_CURSOR_HOVER == undefined) {
+			SELECT_CURSOR_HOVER = CreateObjectSprite(x, y + 60, PARENT.WINDOW.LAYERS[3], S_SSsystem_Personalize_Select_hover, OJustGUI, "IMAGE", PARENT.TAG + "CURSOR_SELECTOR_HOVER" + TAG, [undefined]);
+			SELECT_CURSOR_HOVER.SET_DISPLAY_LEFT = true;
+			SELECT_CURSOR_HOVER.IMAGE_TOP = 0;
+			SELECT_CURSOR_HOVER.IMAGE_LEFT = 0;
+			SELECT_CURSOR_HOVER.IMAGE_HEIGHT = 0;
+			SELECT_CURSOR_HOVER.IMAGE_WIDTH = sprite_width;
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT = addtolist([SELECT_CURSOR_HOVER, undefined, undefined, 1], PARENT.SSSYSTEM_PERSONALIZE_OBJECT);
+		} else if (SELECT_CURSOR_HOVER != undefined){
+			var diff = Diff(SELECT_CURSOR_HOVER.y, y - 1);
+			if (SELECT_CURSOR_HOVER.y > y) {
+				SELECT_CURSOR_HOVER.y -= (diff * 0.000009) * delta_time;
+				SELECT_CURSOR_HOVER.IMAGE_HEIGHT += (diff * 0.000009) * delta_time;
+			} else {
+				SELECT_CURSOR_HOVER.IMAGE_HEIGHT = 60;
+				SELECT_CURSOR_HOVER.y = y;
+			}
+			if (global.SETTINGS[6] == ID_CURSOR) {
+				PARENT.SSSYSTEM_PERSONALIZE_OBJECT = remove_findlist_index(SELECT_CURSOR_HOVER, PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+				DestroyObject(SELECT_CURSOR_HOVER.TAG);
+				SELECT_CURSOR_HOVER = undefined;
+			}
+		}
+
+		if (mouse_check_button_pressed(mb_left)) {
+			global.SETTINGS[6] = ID_CURSOR;
+
+			var index = FindListIndex(id, PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+			var target_x = PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index][1];
+			var target_y = PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index][2];
+			var index_selector = FindListIndex(GetObject(PARENT.TAG + "CURSOR_SELECTOR"), PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector][1] = target_x;
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector][2] = target_y + 40;
+			var index_selector_text = FindListIndex(GetText(PARENT.TAG + "CURSOR_SELECTOR_TEXT"), PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector_text][1] = target_x + 55;
+			PARENT.SSSYSTEM_PERSONALIZE_OBJECT[index_selector_text][2] = target_y + 49;
+			Ocursor.sprite_index = CURSOR_IMAGE;
+		}
+
+	} else if (SELECT_CURSOR_HOVER != undefined) {
+			if (SELECT_CURSOR_HOVER.y < y + 60) {
+				var diff = Diff(SELECT_CURSOR_HOVER.y, y + 61);
+				SELECT_CURSOR_HOVER.y += (diff * 0.000009) * delta_time;
+				SELECT_CURSOR_HOVER.IMAGE_HEIGHT -= (diff * 0.000009) * delta_time;
+			} else {				
+				PARENT.SSSYSTEM_PERSONALIZE_OBJECT = remove_findlist_index(SELECT_CURSOR_HOVER, PARENT.SSSYSTEM_PERSONALIZE_OBJECT, 0);
+				DestroyObject(SELECT_CURSOR_HOVER.TAG);
+				SELECT_CURSOR_HOVER = undefined;
+			}
+	}
+}
 
 
 

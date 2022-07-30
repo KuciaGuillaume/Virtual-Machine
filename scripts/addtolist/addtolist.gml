@@ -71,3 +71,10 @@ function addtolist_limited(OBJECT, LIST, MAX) {
 	}
 	return LIST;
 }
+
+function FindListIndex(OBJECT, ARRAY, INDEX) {
+	for (var i = 0; ARRAY[i] != undefined; i++)
+		if (ARRAY[i][INDEX] == OBJECT)
+			return i;
+	return false;
+}

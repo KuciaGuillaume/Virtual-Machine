@@ -53,4 +53,10 @@ GENERAL_SOUNDS = global.SOUNDS[0];
 NOTIFICATION_SOUNDS = global.SOUNDS[1];
 ROUND = undefined;
 
+// WALLAPAPER SELECTED HOVER
+SELECT_HOVER = undefined;
+SELECT_CURSOR_HOVER = undefined;
+ID_CURSOR = undefined;
+CURSOR_IMAGE = undefined;
+
 

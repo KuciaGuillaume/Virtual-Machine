@@ -25,7 +25,7 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 2;
+global.TIMER = 1;
 
 // PATH AND FOLDERS
 
@@ -36,6 +36,11 @@ global.FOLDERS = [undefined];
 
 global.WINDOWS_PIN = [undefined];
 
+// GAME VALUE
+var STOCKAGE_SPACE = 10;
+var STOCKAGE_USE = 0;
+global.GAME_VALUE = [STOCKAGE_SPACE, STOCKAGE_USE, undefined];
+
 
 // SETTINGS
 var BRIGHTNESS = 100;
@@ -44,7 +49,8 @@ var WINDOW_SIZE = "1920 x 1080";
 var CUSTOM_RES = ["1920", "1080", false];
 var FULLSCREEN = true;
 var FRAMERATE = false;
-global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, undefined];
+var CURSOR = "MAC";
+global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, CURSOR ,undefined];
 
 // SOUND
 var GENERAL_SOUND = 50;
@@ -69,7 +75,7 @@ EMAIL = "NULL";
 AGE = "NULL";
 PASSWORD = "NULL";
 ICON = [undefined, -1];
-BACKGROUND = -1;
+BACKGROUND = 0;
 HELPING_PASSWORD = "NULL";
 LIKE_LIST = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -77,7 +83,7 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 
 // CREATE LOAD_LIST
 
-LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, undefined];
+LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, global.GAME_VALUE, undefined];
 
 // LOAD
 savegame_clear("USER");
@@ -88,6 +94,7 @@ global.FOLDERS = LOAD_LIST[2];
 global.WINDOWS_PIN = LOAD_LIST[3];
 global.SETTINGS = LOAD_LIST[4];
 global.SOUNDS = LOAD_LIST[5];
+global.GAME_VALUE = LOAD_LIST[6];
 
 
 window_set_fullscreen(global.SETTINGS[4]);
@@ -119,4 +126,4 @@ window_set_fullscreen(global.SETTINGS[4]);
 	}
 
 // LOAD GAME
-room = Rstart;
+room = RMainScene;

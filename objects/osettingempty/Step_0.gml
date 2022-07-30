@@ -33,6 +33,7 @@ if (string_count("SET-ING", TAG) > 0) {
 	DestroySSystemDisplay(PARENT);
 	DestroySSystemSound(PARENT);
 	DestroySSystemPersonalize(PARENT);
+	DestroySSystemStorage(PARENT);
 	DestroySSystem(PARENT);
 	if (string_count("SYSTEM", TAG) > 0 && string_count("POWER", TAG) == 0)
 		CreateSSystem(PARENT);
@@ -62,6 +63,14 @@ if (PARENT.TAG + "SSPERSONALIZE" == TAG) {
 	CreateSystemPersonalize(PARENT);
 }
 
+if (PARENT.TAG + "SSSTORAGE" == TAG) {
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/STORAGE";
+	PARENT.SETTING_TITLE_FX = 20;
+	DestroySSystemStorage(PARENT);
+	DestroySSystem(PARENT);
+	CreateSystemStorage(PARENT);
+}
+
 if (PARENT.TAG + "SYSTEM_BACK" == TAG) {
 	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/DISPLAY") {
 		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
@@ -78,6 +87,12 @@ if (PARENT.TAG + "SYSTEM_BACK" == TAG) {
 	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/PERSONALIZE") {
 		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
 		DestroySSystemPersonalize(PARENT);
+		DestroySSystem(PARENT);
+		CreateSSystem(PARENT);
+	}
+	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/STORAGE") {
+		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+		DestroySSystemStorage(PARENT);
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);
 	}

@@ -2,7 +2,7 @@
   "hinting": 0,
   "glyphOperations": 0,
   "interpreter": 0,
-  "pointRounding": 0,
+  "pointRounding": 1,
   "applyKerning": 0,
   "fontName": "Arial",
   "styleName": "Regular",
@@ -13,7 +13,7 @@
   "AntiAlias": 1,
   "first": 0,
   "last": 0,
-  "sampleText": "abcdef ABCDEF\n0123456789 .,<>\"'&!?\nthe quick brown fox jumps over the lazy dog\nTHE QUICK BROWN FOX JUMPS OVER THE LAZY DOG\nDefault character: ▯ (9647)🧱",
+  "sampleText": "ok\\n\r\n",
   "includeTTF": false,
   "TTFName": "",
   "textureGroupId": {

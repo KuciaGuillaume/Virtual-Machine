@@ -44,8 +44,15 @@ if (PATH == undefined || PATH == undefined) {
 	var get = terminal_mkdir(["mkdir", "Desk", "Documents", "Downloads", undefined], undefined, PATH, undefined, "/~", undefined, "xx."); PATH = get[0];
 }
 
-CURSOR = CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", [undefined]);
-CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["INDEX_IMAGE", global.USER[7]], ["FADE_IN", 0.00001], undefined]);
+var CURSOR = CreateObjects(960, 540, "Cursor",  Ocursor, "CURSOR", "CURSOR", [undefined]);
+if (global.SETTINGS[6] == "MAC")
+	CURSOR.sprite_index = Scursor;
+if (global.SETTINGS[6] == "WIN11")
+	CURSOR.sprite_index = S_Win11_cursor;
+if (global.SETTINGS[6] == "WIN11_LIGHT")
+	CURSOR.sprite_index = S_Win11_light_cursor;
+var background = CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["FADE_IN", 0.00001], undefined]);
+background.image_index = global.USER[7];
 TASKBAR = CreateObjectSprite(960, 1040, "TaskBar_Gp0", S_taskbar, OJustGUI, "IMAGE", "MAIN_TASKBAR", [["FADE_IN", 0.00001], undefined]);
 HOME_ICON = CreateObjectSprite(TASKBAR.x, TASKBAR.y - 3, "TaskBar_Gp1", S_Home_Icon, Owindow_icon_tasks, "BUTTON-NO-HAND", "HOME_ICON", [["INFO", "Home"], undefined]);
 ICON = addtolist(HOME_ICON, ICONS);

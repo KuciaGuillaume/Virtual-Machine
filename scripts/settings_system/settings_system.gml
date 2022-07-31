@@ -90,7 +90,7 @@ function CreateSSystem(id) {
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_infos, OJustGUI,  "IMAGE");
 	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Device specifications, rename PC\nABOUT", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
-	var INFOS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSINFOS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	var INFOS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSABOUT", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	INFOS.PARENT = id;
 	INFOS.REF_X = -100;
 	INFOS.REF_Y = 440;
@@ -166,7 +166,7 @@ function DestroySSystem(id) {
 		DestroyEmptyButton(screen.TAG);
 	}
 	// DELETE EmptyButton ABOUT
-	var screen = GetObject(id.TAG + "SSINFOS");
+	var screen = GetObject(id.TAG + "SSABOUT");
 	if (screen != undefined) {
 		id.SSYSTEM_OBJECT = remove_findlist_index(screen, id.SSYSTEM_OBJECT, 0);
 		if (!id.CLOSE)

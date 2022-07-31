@@ -9,3 +9,14 @@ function ReverseStr(str){
 	return answer;
 }
 
+function MidleStr( y, text ) {
+	
+	return y - (string_height(text) / 2);
+	
+}
+
+function CenterStr( x, text ) {
+	
+	return x - (string_width(text) / 2);
+	
+}

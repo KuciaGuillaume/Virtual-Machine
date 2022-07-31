@@ -99,7 +99,7 @@
   },
   "parent": {
     "name": "Room",
-    "path": "folders/MainScene/Objects/Sprites/Room.yy",
+    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Room.yy",
   },
   "resourceVersion": "1.0",
   "name": "RMainScene",

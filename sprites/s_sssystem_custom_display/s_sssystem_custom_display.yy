@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "System",
-    "path": "folders/MainScene/Objects/Sprites/Settings/System.yy",
+    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_Custom_Display",

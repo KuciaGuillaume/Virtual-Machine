@@ -74,7 +74,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Settings",
-    "path": "folders/MainScene/Objects/Sprites/Settings.yy",
+    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_Settings_Icon",

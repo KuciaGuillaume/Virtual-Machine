@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Personalize",
-    "path": "folders/MainScene/Objects/Sprites/Settings/System/Personalize.yy",
+    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System/Personalize.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_Personalize_Select_hover",

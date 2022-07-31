@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Sound",
-    "path": "folders/MainScene/Objects/Sprites/Settings/System/Sound.yy",
+    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System/Sound.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_General_sound",

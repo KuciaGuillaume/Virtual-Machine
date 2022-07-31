@@ -19,6 +19,7 @@ if (CLOSE && string_count("SETTINGS", WINDOW_TAG)) {
 	DestroySSystemSound(id);
 	DestroySSystemPersonalize(id);
 	DestroySSystemStorage(id);
+	DestroySSystemAbout(id);
 
 	if (ICON != undefined) {
 		DestroyText(ICON.TEXT_CONNECT.TAG);
@@ -91,6 +92,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		UpdateSystemSound(id);
 		UpdateSystemPersonalize(id);
 		UpdateSystemStorage(id);
+		UpdateSystemAbout(id);
 		
 		// ALL_SETTING
 		for (var i = 0; all_settings[i] != undefined; i++)

@@ -74,7 +74,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Desk",
-    "path": "folders/MainScene/Objects/Sprites/Desk.yy",
+    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Desk.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_Folder",

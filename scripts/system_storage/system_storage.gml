@@ -14,14 +14,14 @@ function CreateSystemStorage(id) {
 	id.WINDOW.list_objects = addtolist(STORAGE_BACK, id.WINDOW.list_objects);
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([STORAGE_BACK, 190, 130, 1], id.SSSYSTEM_STORAGE_OBJECT);
 	
-	// CREATE CHANGE WALPPAPER TITLE
-	var EDIT_WALLPAPER_TITLE = AddText(id.x - 100, id.y + 80, "This is your storage space", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "STORAGE_TITLE", [undefined]);
-	id.WINDOW.list_objects = addtolist(EDIT_WALLPAPER_TITLE, id.WINDOW.list_objects);
-	id.SSSYSTEM_STORAGE_OBJECT = addtolist([EDIT_WALLPAPER_TITLE, -100, 80, 1], id.SSSYSTEM_STORAGE_OBJECT);
+	// CREATE STORAGE_TITLE
+	var STORAGE_TITLE = AddText(id.x - 100, id.y + 80, "This is your storage space", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "STORAGE_TITLE", [undefined]);
+	id.WINDOW.list_objects = addtolist(STORAGE_TITLE, id.WINDOW.list_objects);
+	id.SSSYSTEM_STORAGE_OBJECT = addtolist([STORAGE_TITLE, -100, 80, 1], id.SSSYSTEM_STORAGE_OBJECT);
 
-	var GUI_BACK_WALLPAPER = CreateEmptyRound(OEmptyRound, id.x - 100, id.y + 100, #FBFCFE, 450, 150, id.WINDOW.LAYERS[0], id.TAG + "STORAGE_BACK", [undefined]);
-	id.WINDOW.list_objects = addtolist(GUI_BACK_WALLPAPER, id.WINDOW.list_objects);
-	id.SSSYSTEM_STORAGE_OBJECT = addtolist([GUI_BACK_WALLPAPER, -100, 100, 1], id.SSSYSTEM_STORAGE_OBJECT);
+	var GUI_BACK_STORAGE = CreateEmptyRound(OEmptyRound, id.x - 100, id.y + 100, #FBFCFE, 450, 150, id.WINDOW.LAYERS[0], id.TAG + "STORAGE_BACK", [undefined]);
+	id.WINDOW.list_objects = addtolist(GUI_BACK_STORAGE, id.WINDOW.list_objects);
+	id.SSSYSTEM_STORAGE_OBJECT = addtolist([GUI_BACK_STORAGE, -100, 100, 1], id.SSSYSTEM_STORAGE_OBJECT);
 	
 	// CREATE STORAGE BACK
 	var STORAGE_BACK_BAR_1 = CreateEmptyRound(OEmptyRound, id.x - 90, id.y + 215, #E9E9E9, 430, 25, id.WINDOW.LAYERS[1], id.TAG + "STORAGE_BACK_BAR_1", [undefined]);

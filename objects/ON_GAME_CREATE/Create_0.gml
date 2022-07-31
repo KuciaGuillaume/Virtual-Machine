@@ -39,7 +39,11 @@ global.WINDOWS_PIN = [undefined];
 // GAME VALUE
 var STOCKAGE_SPACE = 10;
 var STOCKAGE_USE = 0;
-global.GAME_VALUE = [STOCKAGE_SPACE, STOCKAGE_USE, undefined];
+var PROCESSEUR = ["AGI Electron T3 @ ", 1.27];
+var RAM = 2;
+var GRAPHIC_CARD = ["Triton NI-50", 2];
+var MOTHERBOARD = ["Master Z-300", 2];
+global.GAME_VALUE = [STOCKAGE_SPACE, STOCKAGE_USE, PROCESSEUR, RAM, GRAPHIC_CARD, MOTHERBOARD, undefined];
 
 
 // SETTINGS

@@ -1,6 +1,8 @@
 /// @Project by Kucia Guillaume* ///
 
 
+randomize();
+
 // CREATE GLOBAL WINDOW LAYER
 global.layer_depth = [undefined];
 global.last_layer_id = 5000;
@@ -43,7 +45,8 @@ var PROCESSEUR = ["AGI Electron T3 @ ", 1.27];
 var RAM = 2;
 var GRAPHIC_CARD = ["Triton NI-50", 2];
 var MOTHERBOARD = ["Master Z-300", 2];
-global.GAME_VALUE = [STOCKAGE_SPACE, STOCKAGE_USE, PROCESSEUR, RAM, GRAPHIC_CARD, MOTHERBOARD, undefined];
+var NETWORK = [1, 1];
+global.GAME_VALUE = [STOCKAGE_SPACE, STOCKAGE_USE, PROCESSEUR, RAM, GRAPHIC_CARD, MOTHERBOARD, NETWORK, undefined];
 
 
 // SETTINGS
@@ -54,7 +57,8 @@ var CUSTOM_RES = ["1920", "1080", false];
 var FULLSCREEN = true;
 var FRAMERATE = false;
 var CURSOR = "MAC";
-global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, CURSOR ,undefined];
+var LANGUAGE = "ENGLISH";
+global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, CURSOR, LANGUAGE ,undefined];
 
 // SOUND
 var GENERAL_SOUND = 50;
@@ -90,7 +94,7 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, global.GAME_VALUE, undefined];
 
 // LOAD
-savegame_clear("USER");
+//savegame_clear("USER");
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 global.PATH = LOAD_LIST[1];

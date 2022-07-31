@@ -97,3 +97,11 @@ if (DESK_SLIDER_OBJECT != undefined && DESK_SLIDER && (!MouseInside(DESK_SLIDER_
 	DestroyButtonBox("NEW_FOLDER_SLIDERS");
 	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
 }
+
+if (NET_INC >= NET_MAX) {
+	NET_INC = 0;
+	
+	var Val_max = global.GAME_VALUE[6][1];
+	global.GAME_VALUE[6][0] = random_range(Val_max, Val_max - MathPercentToValue( 50 , Val_max));
+} else
+	NET_INC += delta_time / 1000000;

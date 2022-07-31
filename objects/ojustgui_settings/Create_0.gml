@@ -79,3 +79,7 @@ SSSYSTEM_PERSONALIZE_OBJECT = [undefined];
 SSSYSTEM_STORAGE_OBJECT = [undefined];
 SSSYSTEM_ABOUT_OBJECT = [undefined];
 PERSONALIZE_ALL_CURSOR = [undefined];
+
+// SNETWORK
+SNETWORK_OBJECT = [undefined];
+SACCOUNT_OBJECT = [undefined];

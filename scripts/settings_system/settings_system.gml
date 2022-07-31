@@ -75,7 +75,7 @@ function CreateSSystem(id) {
 
 	// CREATE STOCKAGE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Stockage, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Storage space, drivers, configuration rules\nSTORAGE", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Storage space\nSTORAGE", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var STOCKAGE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSTORAGE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	STOCKAGE.PARENT = id;
@@ -88,7 +88,7 @@ function CreateSSystem(id) {
 
 	// CREATE INFOS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_infos, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Device specifications, rename PC\nABOUT", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Device specifications\nABOUT", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var INFOS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSABOUT", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	INFOS.PARENT = id;

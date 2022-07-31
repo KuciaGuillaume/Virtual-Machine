@@ -22,6 +22,17 @@ if (PARENT != undefined) {
 // CLICK
 if (!MouseInsideRound(id) || !mouse_check_button_pressed(mb_left) || !ON) return;
 
+
+if (PARENT.TAG + "ACCOUNT_EDIT_PASSWORD_APPLY" == TAG) {
+	if (OBJECT_LINKED.write.TEXT_OUTPUT == OBJECT_LINKED.write.INITIAL_TEXT)
+		return;
+	if (string_byte_length(OBJECT_LINKED.write.TEXT_OUTPUT) < 5) {  CreateNotification(Ssystem_icon, "Errors", "Password too short", PARENT.TAG + "PASSWORD_EDIT_ERROR"); return; }
+	global.USER[5] = OBJECT_LINKED.write.TEXT_OUTPUT;
+	OBJECT_LINKED.write.TEXT = [OBJECT_LINKED.write.INITIAL_TEXT, undefined];
+	OBJECT_LINKED.write.TEXT_INDEX = 1;
+	OBJECT_LINKED.write.TEXT_INDEX_MAX = 1;
+}
+
 if (string_count("SET-ING", TAG) > 0) {
 	for (var i = 0; PARENT.all_settings[i] != undefined; i++)
 		PARENT.all_settings[i].SETTING_SELECT = false;
@@ -36,8 +47,19 @@ if (string_count("SET-ING", TAG) > 0) {
 	DestroySSystemStorage(PARENT);
 	DestroySSystemAbout(PARENT);
 	DestroySSystem(PARENT);
+
+	DestroySNetwork(PARENT);
+	
+	DestroySAccount(PARENT);
+
 	if (string_count("SYSTEM", TAG) > 0 && string_count("POWER", TAG) == 0)
 		CreateSSystem(PARENT);
+	
+	if (string_count("NETWORK", TAG) > 0)
+		CreateSNetwork(PARENT);
+		
+	if (string_count("ACCOUNT", TAG) > 0)
+		CreateSAccount(PARENT);
 }
 
 if (PARENT.TAG + "SSDISPLAY" == TAG) {

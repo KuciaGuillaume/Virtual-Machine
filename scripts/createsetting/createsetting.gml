@@ -2,11 +2,11 @@
 function CreateSetting(TEXT, IMAGE, LAYER1, LAYER2, TAG, id) {
 	
 		
-		var YREF = 180;
-		var X = id.x - 371, Y = id.y + 180;
+		var YREF = 130;
+		var X = id.x - 371, Y = id.y + YREF;
 		var XREF = (-371);
 		var size = array_size(id.all_settings);
-		YREF = 180 + (40 * size);
+		YREF = YREF + (40 * size);
 		var empt = GetEmptLinked(X - 98, Y + 2, LAYER2, IMAGE, OJustGUI, "IMAGE");
 		var empt_text = GetEmptText(X - 40, Y, TEXT, Segoe10, #5E6668, #5E6668, LAYER2);
 		

@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Settings",
-    "path": "folders/MainScene/Objects/Objects/Settings.yy",
+    "name": "System",
+    "path": "folders/MainScene/Objects/Objects/Settings/Scripts/System.yy",
   },
   "resourceVersion": "1.0",
   "name": "OJustGUI_Settings",

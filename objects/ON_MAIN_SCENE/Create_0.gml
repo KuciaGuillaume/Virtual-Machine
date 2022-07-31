@@ -38,6 +38,11 @@ if (global.FOLDERS != undefined) {
 // DESK
 ON_DESK = true;
 
+// NETWORK DYNAMICS
+NET_INC = 0;
+NET_MAX = 1;
+
+
 
 if (PATH == undefined || PATH == undefined) {
 	PATH = [[["~", "ROOT"]], undefined];

@@ -20,6 +20,10 @@ if (CLOSE && string_count("SETTINGS", WINDOW_TAG)) {
 	DestroySSystemPersonalize(id);
 	DestroySSystemStorage(id);
 	DestroySSystemAbout(id);
+	
+	DestroySNetwork(id);
+	
+	DestroySAccount(id);
 
 	if (ICON != undefined) {
 		DestroyText(ICON.TEXT_CONNECT.TAG);
@@ -94,6 +98,10 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		UpdateSystemStorage(id);
 		UpdateSystemAbout(id);
 		
+		UpdateSNetwork(id);
+		
+		UpdateSAccount(id);
+		
 		// ALL_SETTING
 		for (var i = 0; all_settings[i] != undefined; i++)
 			all_settings[i].ON = WINDOW.ON;
@@ -111,11 +119,6 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		ICON.TEXT_CONNECT = AddText(ICON.x + 60, ICON.y, global.USER[1] + "\nLocal Account", Segoe10, c_black, WINDOW.LAYERS[1], "SETTINGS_USER_NAME_" + TAG, [["BACK", 5], undefined]);
 		WINDOW.list_objects = addtolist(ICON, WINDOW.list_objects);
 		
-		//CREATE FIND SETTING
-		
-		FIND_SETTING = CreateTextButton(x - 247, y + 150, S_Find_setting, "Find setting", WINDOW.LAYERS[0], WINDOW.LAYERS[1], #5E6668, Arial10, 25, TAG + "FIND_SETTING", [["BACK", 10], undefined]);
-		FIND_SETTING.write.BAR.image_index = 1;
-		WINDOW.list_objects = addtolist(FIND_SETTING, WINDOW.list_objects);
 		
 
 		// CREATE SETTING

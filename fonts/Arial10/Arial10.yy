@@ -13,7 +13,7 @@
   "AntiAlias": 1,
   "first": 0,
   "last": 0,
-  "sampleText": "ok\\n\r\n",
+  "sampleText": "\r\n",
   "includeTTF": false,
   "TTFName": "",
   "textureGroupId": {

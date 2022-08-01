@@ -70,19 +70,5 @@ if (PARENT != undefined) {
 	}
 }
 
-if (PARENT != undefined) {
-	if (PARENT.TAG + "BAR_CURRENT_NETWORK_SPEED" == TAG) {
-		var objective = MathPercentOf2(global.GAME_VALUE[6][0], global.GAME_VALUE[6][1], 370);
-		
-		if (objective > SIZE_X)
-			SIZE_X += (Diff(x + SIZE_X, x + objective) * (delta_time * 0.000005));
-		else
-			SIZE_X -= (Diff(x + SIZE_X, x + objective) * (delta_time * 0.000005));
-			
-		PARENT.SNETWORK_OBJECT[OBJECT_LINKED][1] = Diff(id.x, ((x + SIZE_X) - string_width(TEXT_CONNECT.TEXT)) - 50);
-		TEXT_CONNECT.TEXT = string(global.GAME_VALUE[6][0]) + " Mb/s"; 
-	}
-}
-
 // CLICK
 if (!MouseInsideRound(id) && !mouse_check_button_pressed(mb_left)) return;

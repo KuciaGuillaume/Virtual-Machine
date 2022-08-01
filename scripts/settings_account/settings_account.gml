@@ -11,7 +11,7 @@ function CreateSAccount(id) {
 	id.SACCOUNT_OBJECT = addtolist([ACCOUNT_EDIT_PASSWORD_TITLE, -100, 80, 1], id.SACCOUNT_OBJECT);
 
 	// BACK_ACCOUNT_EDIT_PASSWORD
-	var BACK_ACCOUNT_EDIT_PASSWORD = CreateEmptyRound(OEmptyRound, id.x - 100, id.y + 100, #FBFCFE, 450, 50, id.WINDOW.LAYERS[0], id.TAG + "BACK_ACCOUNT_EDIT_PASSWORD", [undefined]);
+	var BACK_ACCOUNT_EDIT_PASSWORD = CreateEmptyRound(OSettingEmpty, id.x - 100, id.y + 100, #FBFCFE, 450, 50, id.WINDOW.LAYERS[0], id.TAG + "BACK_ACCOUNT_EDIT_PASSWORD", [undefined]);
 	id.WINDOW.list_objects = addtolist(BACK_ACCOUNT_EDIT_PASSWORD, id.WINDOW.list_objects);
 	id.SACCOUNT_OBJECT = addtolist([BACK_ACCOUNT_EDIT_PASSWORD, -100, 100, 1], id.SACCOUNT_OBJECT);
 	
@@ -23,7 +23,7 @@ function CreateSAccount(id) {
 	id.SACCOUNT_OBJECT = addtolist([ACCOUNT_EDIT_PASSWORD, 10, 125, 1], id.SACCOUNT_OBJECT);
 	
 	// CREATE PASSWORD APPLY
-	var empt_text = GetEmptText(id.x, id.y, "Apply", Segoe10, c_gray, #262626, id.WINDOW.LAYERS[2]);
+	var empt_text = GetEmptText(id.x, id.y, AutoLanguage("Apply"), Segoe10, c_gray, #262626, id.WINDOW.LAYERS[2]);
 	
 	var ACCOUNT_EDIT_PASSWORD_APPLY = CreateEmptyButton(OSettingEmpty, id.x, id.y, 100, 30, #F8FAFF, #F8FAFF, id.WINDOW.LAYERS[1], undefined, empt_text, id.TAG + "ACCOUNT_EDIT_PASSWORD_APPLY", "EMPT_BUTTON", [["CENTERED"], undefined]);
 	ACCOUNT_EDIT_PASSWORD_APPLY.PARENT = id;
@@ -41,7 +41,7 @@ function CreateSAccount(id) {
 	id.SACCOUNT_OBJECT = addtolist([LANGUAGE_CHANGE, -100, 180, 1], id.SACCOUNT_OBJECT);
 	
 	// EDIT_LANGUAGE_CHANGE FRANCE
-	var EDIT_LANGUAGE_CHANGE = CreateEmptyRound(OEmptyRound, id.x, id.y, #FBFCFE, 450, 50, id.WINDOW.LAYERS[0], id.TAG + "EDIT_LANGUAGE_CHANGE_FRENCH", [undefined]);
+	var EDIT_LANGUAGE_CHANGE = CreateEmptyRound(OSettingEmpty, id.x, id.y, #FBFCFE, 450, 50, id.WINDOW.LAYERS[0], id.TAG + "EDIT_LANGUAGE_CHANGE_FRENCH", [undefined]);
 	var EDIT_LANGUAGE_CHANGE_IMG = CreateObjectSprite(id.x, id.y, id.WINDOW.LAYERS[1], S_SAccount_France, OJustGUI, "IMAGE", id.TAG + "EDIT_LANGUAGE_CHANGE_FRENCH", [undefined]);
 	var EDIT_LANGUAGE_CHANGE_TEXT = AddText(id.x, id.y, "French", Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "EDIT_LANGUAGE_CHANGE_FRENCH_TEXT", [undefined]);
 	id.WINDOW.list_objects = addtolist(EDIT_LANGUAGE_CHANGE, id.WINDOW.list_objects);
@@ -50,17 +50,23 @@ function CreateSAccount(id) {
 	id.SACCOUNT_OBJECT = addtolist([EDIT_LANGUAGE_CHANGE_IMG, -90, 210, 1], id.SACCOUNT_OBJECT);
 	id.WINDOW.list_objects = addtolist(EDIT_LANGUAGE_CHANGE_TEXT, id.WINDOW.list_objects);
 	id.SACCOUNT_OBJECT = addtolist([EDIT_LANGUAGE_CHANGE_TEXT, -50, MidleStr(225, "French"), 1], id.SACCOUNT_OBJECT);
+	EDIT_LANGUAGE_CHANGE.LANGUAGE = "FRENCH";
+	EDIT_LANGUAGE_CHANGE.PARENT = id;
+	EDIT_LANGUAGE_CHANGE.AUTO_PLACE = false;
 	
 	// EDIT_LANGUAGE_CHANGE ENGLISH
-	var EDIT_LANGUAGE_CHANGE = CreateEmptyRound(OEmptyRound, id.x, id.y, #FBFCFE, 450, 50, id.WINDOW.LAYERS[0], id.TAG + "EDIT_LANGUAGE_CHANGE_ENGLISH", [undefined]);
+	var EDIT_LANGUAGE_CHANGE = CreateEmptyRound(OSettingEmpty, id.x, id.y, #FBFCFE, 450, 50, id.WINDOW.LAYERS[0], id.TAG + "EDIT_LANGUAGE_CHANGE_ENGLISH", [undefined]);
 	var EDIT_LANGUAGE_CHANGE_IMG = CreateObjectSprite(id.x, id.y, id.WINDOW.LAYERS[1], S_SAccount_English, OJustGUI, "IMAGE", id.TAG + "EDIT_LANGUAGE_CHANGE_ENGLISH", [undefined]);
-		var EDIT_LANGUAGE_CHANGE_TEXT = AddText(id.x, id.y, "English", Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "EDIT_LANGUAGE_CHANGE_FRENCH_TEXT", [undefined]);
+	var EDIT_LANGUAGE_CHANGE_TEXT = AddText(id.x, id.y, "English", Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "EDIT_LANGUAGE_CHANGE_FRENCH_TEXT", [undefined]);
 	id.WINDOW.list_objects = addtolist(EDIT_LANGUAGE_CHANGE, id.WINDOW.list_objects);
 	id.SACCOUNT_OBJECT = addtolist([EDIT_LANGUAGE_CHANGE, -100, 260, 1], id.SACCOUNT_OBJECT);
 	id.WINDOW.list_objects = addtolist(EDIT_LANGUAGE_CHANGE_IMG, id.WINDOW.list_objects);
 	id.SACCOUNT_OBJECT = addtolist([EDIT_LANGUAGE_CHANGE_IMG, -90, 270, 1], id.SACCOUNT_OBJECT);
 	id.WINDOW.list_objects = addtolist(EDIT_LANGUAGE_CHANGE_TEXT, id.WINDOW.list_objects);
 	id.SACCOUNT_OBJECT = addtolist([EDIT_LANGUAGE_CHANGE_TEXT, -50, MidleStr(285, "English"), 1], id.SACCOUNT_OBJECT);
+	EDIT_LANGUAGE_CHANGE.LANGUAGE = "ENGLISH";
+	EDIT_LANGUAGE_CHANGE.PARENT = id;
+	EDIT_LANGUAGE_CHANGE.AUTO_PLACE = false;
 }
 
 function UpdateSAccount(id) {

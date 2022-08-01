@@ -5,7 +5,7 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	
 	DestroyHome();
 	if (ON_MAIN_SCENE.N_WINDOW >= ON_MAIN_SCENE.N_WINDOW_LIMITED) {
-		CreateNotification(Ssystem_icon, "Warning", "Too many windows have already been created", "TOO_MANY_WINDOW");
+		CreateNotification(Ssystem_icon, AutoLanguage("Warning"), AutoLanguage("Too many windows have already been created"), "TOO_MANY_WINDOW");
 		return;
 	}
 	ON_MAIN_SCENE.N_WINDOW += 1;	

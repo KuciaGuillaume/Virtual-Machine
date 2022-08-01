@@ -44,6 +44,9 @@
 				TIMER_TIME = 0;
 				TIMER_DELTA = 0;
 				TIMER_STATE_END = false;
+				
+				// AUTO_PLACE
+				AUTO_PLACE = true;
 
 /////////////////// BASE VARIABLES ///////////////////
 
@@ -108,3 +111,8 @@ SETTING_SELECT = false;
 
 // APPLY DISPLAY
 SELECTV2_CONNECT = undefined;
+
+// LANGUAGE
+LANGUAGE_BUTTON_SELECT = undefined;
+LANGUAGE = undefined;
+LANGUAGE_CHECKER = undefined;

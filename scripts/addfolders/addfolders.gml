@@ -54,7 +54,7 @@ function AddFileEplorerFloder(NAME, LIST, PARENT, CreationDate) {
 	for (var i = 0; path[i] != undefined && !instance_exists(path[i]);) { i++; }
 	for (; path[i] != undefined; i++)
 		Y += 24;
-	var folder = CreateObjectSprite(X, Y, LAYER1, S_FILES_buton, Obox, "BUTTON-NO-HAND", NAME + "FILE_EXPLORERS" + string(ID) + PARENT.TAG, [["INFO", "Creation date: " + CreationDate], undefined]);
+	var folder = CreateObjectSprite(X, Y, LAYER1, S_FILES_buton, Obox, "BUTTON-NO-HAND", NAME + "FILE_EXPLORERS" + string(ID) + PARENT.TAG, [["INFO", AutoLanguage("Creation date") + ": " + CreationDate], undefined]);
 	addtolist(folder, LIST);
 	folder.TEXT_CONNECT = AddText(X, Y, NAME, Arial10, c_black, LAYER2, NAME + "FILE_EXPLORER_TEXT" + string(ID) + PARENT.TAG, [undefined]);
 	folder.DOCK_TYPE_TEXT = AddText(X, Y, type_name, Arial10, c_black, LAYER2, NAME + "FILE_TYPE" + type_name + string(ID) + PARENT.TAG, [undefined]);

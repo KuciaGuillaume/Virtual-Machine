@@ -167,7 +167,7 @@ if (TAG == "IMAGE_WIFI" && ON_USER_INPUT.MODE == 1) {
 	if (x > 1815)
 		x -= 0.0001 * delta_time;
 	else if (power_off == undefined)
-		CreateObjectSprite(1866, 1041.15, "Gp2", Spower_off, Obox, "BUTTON-NO-HAND", "POWER_OFF", [["INFO", "Power-off"], ["FADE_IN", 0.000001], undefined]);
+		CreateObjectSprite(1866, 1041.15, "Gp2", Spower_off, Obox, "BUTTON-NO-HAND", "POWER_OFF", [["INFO", AutoLanguage("Power-off")], ["FADE_IN", 0.000001], undefined]);
 	return;
 }
 
@@ -208,9 +208,10 @@ if (GET_FOLDER != undefined) {
 			SAVE_CURRENT = current_time;
 		else if ((current_time - SAVE_CURRENT < 200) && (WRITE == undefined || (WRITE != undefined && !WRITE.ON_WRITE)) && ON_MAIN_SCENE.ON_DESK) {
 			SAVE_CURRENT = current_time;
+			var desk = AutoLanguage("Desk");
 			var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
-			window.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Desk/" + TEXT_CONNECT.TEXT);
-			window.WINDOW_BK.PWD_PATH = "/~/Desk/" + TEXT_CONNECT.TEXT;
+			window.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/" + desk + "/" + TEXT_CONNECT.TEXT);
+			window.WINDOW_BK.PWD_PATH = "/~/" + desk + "/" + TEXT_CONNECT.TEXT;
 		} else
 			SAVE_CURRENT = current_time;
 	}

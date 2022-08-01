@@ -15,22 +15,22 @@ if (TAG == "FINISH_MESSAGE") {
 		image_alpha = 0;
 		STEP += 1;
 	}
-	if (STEP == 0) { TEXT = "Hello"; }
-	if (STEP == 1) { TEXT = "We prepare your system..."; }
-	if (STEP == 2) { TEXT = "Let's go"; }
+	if (STEP == 0) { TEXT = AutoLanguage("Hello"); }
+	if (STEP == 1) { TEXT = AutoLanguage("We prepare your system..."); }
+	if (STEP == 2) { TEXT = AutoLanguage("Let's go"); }
 	if (STEP == 3) { room = RUserConnection; }
 }
 
 if (TAG == "CURRENT_TIME" || TAG == "CURRENT_DATE") {
 
 	switch ((current_year + current_month + current_day) % 7) {
-		case 6: DAY = "Monday"; break;
-		case 0: DAY = "Tuesday"; break;
-		case 1: DAY = "Wednesday"; break;
-		case 2: DAY = "Thusday"; break;
-		case 3: DAY = "Friday"; break;
-		case 4: DAY = "Saturday"; break;
-		case 5: DAY = "Sunday"; break;
+		case 6: DAY = AutoLanguage("Monday"); break;
+		case 0: DAY = AutoLanguage("Tuesday"); break;
+		case 1: DAY = AutoLanguage("Wednesday"); break;
+		case 2: DAY = AutoLanguage("Thusday"); break;
+		case 3: DAY = AutoLanguage("Friday"); break;
+		case 4: DAY = AutoLanguage("Saturday"); break;
+		case 5: DAY = AutoLanguage("Sunday"); break;
 	}
 
 	switch (current_month) {
@@ -72,4 +72,4 @@ if (!mouse_check_button_pressed(mb_left))
 	return;
 
 if (TAG == "FORGOT")
-	CreateNotification(Ssystem_icon, "Your reminder phrase", global.USER[8], "REMEMBER_SENTENCE");
+	CreateNotification(Ssystem_icon, AutoLanguage("Your reminder phrase"), global.USER[8], "REMEMBER_SENTENCE");

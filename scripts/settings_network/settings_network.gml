@@ -11,9 +11,10 @@ function CreateSNetwork(id) {
 	id.SNETWORK_OBJECT = addtolist([IMG_NETWORK_GUI_ETHERNET_TITLE, -100, 80, 1], id.SNETWORK_OBJECT);
 
 	// BACK_IMG_NETWORK_GUI_ETHERNET
-	var BACK_IMG_NETWORK_GUI_ETHERNET = CreateEmptyRound(OEmptyRound, id.x - 100, id.y + 100, #FBFCFE, 450, 70, id.WINDOW.LAYERS[0], id.TAG + "BACK_IMG_NETWORK_GUI_ETHERNET", [undefined]);
+	var BACK_IMG_NETWORK_GUI_ETHERNET = CreateEmptyRound(OSettingEmpty, id.x - 100, id.y + 100, #FBFCFE, 450, 70, id.WINDOW.LAYERS[0], id.TAG + "BACK_IMG_NETWORK_GUI_ETHERNET", [undefined]);
 	id.WINDOW.list_objects = addtolist(BACK_IMG_NETWORK_GUI_ETHERNET, id.WINDOW.list_objects);
 	id.SNETWORK_OBJECT = addtolist([BACK_IMG_NETWORK_GUI_ETHERNET, -100, 100, 1], id.SNETWORK_OBJECT);
+	BACK_IMG_NETWORK_GUI_ETHERNET.AUTO_PLACE = false;
 
 	// IMG_NETWORK_GUI_ETHERNET
 	var IMG_NETWORK_GUI_ETHERNET = CreateObjectSprite(id.x, id.y, id.WINDOW.LAYERS[1], S_Settings_Network_Ethernet, OJustGUI, "IMAGE", id.TAG + "IMG_NETWORK_GUI_ETHERNET", [undefined]);
@@ -21,16 +22,18 @@ function CreateSNetwork(id) {
 	id.SNETWORK_OBJECT = addtolist([IMG_NETWORK_GUI_ETHERNET, -90, 110, 1], id.SNETWORK_OBJECT);
 	
 	// BACK_NETWORK_SPEED
-	var BACK_NETWORK_SPEED = CreateEmptyRound(OEmptyRound, id.x - 30, id.y + 140, #E9E9E9, 370, 20, id.WINDOW.LAYERS[1], id.TAG + "BACK_NETWORK_SPEED", [undefined]);
+	var BACK_NETWORK_SPEED = CreateEmptyRound(OSettingEmpty, id.x - 30, id.y + 140, #E9E9E9, 370, 20, id.WINDOW.LAYERS[1], id.TAG + "BACK_NETWORK_SPEED", [undefined]);
 	id.WINDOW.list_objects = addtolist(BACK_NETWORK_SPEED, id.WINDOW.list_objects);
 	id.SNETWORK_OBJECT = addtolist([BACK_NETWORK_SPEED, -30, 140, 1], id.SNETWORK_OBJECT);
+	BACK_NETWORK_SPEED.AUTO_PLACE = false;
 		
 	
 	// BAR_CURRENT_NETWORK_SPEED
-	var BAR_CURRENT_NETWORK_SPEED = CreateEmptyRound(OEmptyRound, id.x - 30, id.y + 140, #0079FF, MathPercentOf2(0, global.GAME_VALUE[6][1], 370), 20, id.WINDOW.LAYERS[2], id.TAG + "BAR_CURRENT_NETWORK_SPEED", [undefined]);
+	var BAR_CURRENT_NETWORK_SPEED = CreateEmptyRound(OSettingEmpty, id.x - 30, id.y + 140, #0079FF, MathPercentOf2(0, global.GAME_VALUE[6][1], 370), 20, id.WINDOW.LAYERS[2], id.TAG + "BAR_CURRENT_NETWORK_SPEED", [undefined]);
 	id.WINDOW.list_objects = addtolist(BAR_CURRENT_NETWORK_SPEED, id.WINDOW.list_objects);
 	id.SNETWORK_OBJECT = addtolist([BAR_CURRENT_NETWORK_SPEED, -30, 140, 1], id.SNETWORK_OBJECT);
 	BAR_CURRENT_NETWORK_SPEED.PARENT = id;
+	BAR_CURRENT_NETWORK_SPEED.AUTO_PLACE = false;
 	
 	
 	// CURRENT_SPEED_TEXT

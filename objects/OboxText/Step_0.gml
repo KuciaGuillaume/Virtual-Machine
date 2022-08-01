@@ -29,12 +29,12 @@ if (OPT_POSITIONS && TEXT_CONNECT != undefined) {TEXT_CONNECT.x = OPT_X; TEXT_CO
 if (LOCK[0] != undefined && !LOCK[1].LOCK_STATE || (WALLPAPER && global.USER[7] == WALLPAPER_INDEX)) {
 	image_index = 2;
 	TEXT_CONNECT.image_alpha = 0.5;
-	if (WALLPAPER) { TEXT_CONNECT.TEXT = "Currently select"; }
+	if (WALLPAPER) { TEXT_CONNECT.TEXT = AutoLanguage("Currently select"); }
 	return;
 } else if (image_index == 2) {
 	image_index = 0;
 	TEXT_CONNECT.image_alpha = 1;
-	if (WALLPAPER) { TEXT_CONNECT.COLOR = c_white; TEXT_CONNECT.TEXT = "Select this one"; }
+	if (WALLPAPER) { TEXT_CONNECT.COLOR = c_white; TEXT_CONNECT.TEXT = AutoLanguage("Select this one"); }
 }
 
 if (TAG == "PHOTO") {
@@ -47,8 +47,8 @@ if (TAG == "PHOTO") {
 	if (IN) {
 		if (get == undefined) {
 			CreateObjectSprite(x, y, "Gp3", SphotoOn, OJustGUI, "IMAGE", "ON_PHOTO", [["FADE_IN", 0.000003], undefined]);
-			CreateButtonBox(x, y + 180, Sdislike, OboxText, "I do not like", "Gp4", "Gp5", Arial10, c_white, "DISLIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], undefined]);
-			CreateButtonBox(x, y + 130, Slike, OboxText, "I love it", "Gp4", "Gp5", Arial10, c_white, "LIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], undefined]);
+			CreateButtonBox(x, y + 180, Sdislike, OboxText, AutoLanguage("I do not like"), "Gp4", "Gp5", Arial10, c_white, "DISLIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], undefined]);
+			CreateButtonBox(x, y + 130, Slike, OboxText, AutoLanguage("I love it"), "Gp4", "Gp5", Arial10, c_white, "LIKE", [["CENTERED"], ["FADE_IN", 0.000003], ["FADE_ON", 0.000003], undefined]);
 		} else if (get.image_alpha < 1) { get.image_alpha += 0.000003 * delta_time; }
 	} else {
 		if (get != undefined)  {
@@ -149,7 +149,7 @@ if (TAG == "REGISTER") {
 	DestroyButtonBox("RESTART MACHINE");
 	DestroyButtonBox("REGISTER");
 	DestroyTextButton("HELP TEXT");
-	AddText(960, 400, "Perfect " + name + ", we will now personalize your profile", Arial25, c_white, "Gp2", "TEXT_P_PROFILE", [["CENTERED"], undefined]);
+	AddText(960, 400, AutoLanguage("Perfect") + " " + name + AutoLanguage(", we will now personalize your profile"), Arial25, c_white, "Gp2", "TEXT_P_PROFILE", [["CENTERED"], undefined]);
 	var load = CreateObjects(960, 540, "Gp2", Oregister_load, "IMAGE", "LOAD_P_PROFILE", [undefined]);
 	load.STATE = 1;
 	ON_REGISTER_UPDATE.LOCK_STATE = false;
@@ -179,7 +179,7 @@ if (TAG == "EDIT PREVIOUS") {
 	load.STATE = 0;
 	load.TIMER = global.TIMER / 3;
 	// CREATE TEXT
-	AddText(960, 300, "We create your registration environment...", Arial35, c_white, "Gp2", "LAUNCH_REGISTER", [["CENTERED"], undefined]);
+	AddText(960, 300, AutoLanguage("We create your registration environment..."), Arial35, c_white, "Gp2", "LAUNCH_REGISTER", [["CENTERED"], undefined]);
 	DestroyButtonBox("EDIT_FINISH");
 }
 
@@ -200,7 +200,7 @@ if (TAG == "EDIT_FINISH") {
 	DestroyButtonBox("BACKGROUND_SELECTOR");
 	DestroyButtonBox("EDIT_FINISH");
 	DestroyObject("ON_BACKGROUNDS");
-	AddText(960, 400, "Please wait...", Arial25, c_white, "Gp2", "WAIT", [["CENTERED"], undefined]);
+	AddText(960, 400, AutoLanguage("Please wait..."), Arial25, c_white, "Gp2", "WAIT", [["CENTERED"], undefined]);
 	var load = CreateObjects(960, 540, "Gp2", Oregister_load, "IMAGE", "FINISH_LOAD", [undefined]);
 	load.STATE = 2;
 	load.TIMER = global.TIMER / 2;
@@ -231,7 +231,7 @@ if (TAG == "RESTART") Machine("RESTART");
 
 if (TAG == "OK") {
 	DestroyText("WRONG_PASSWORD");
-	AddTextLink(960, 670, "I forgot my password", Arial10, c_white, #2980B9, "Gp2", "FORGOT", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
+	AddTextLink(960, 670, AutoLanguage("I forgot my password"), Arial10, c_white, #2980B9, "Gp2", "FORGOT", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
 	CreateTextButton(960, 640, Senterpassword, "Password", "Gp1", "Gp2", c_white, Arial10, 20, "Password", [["FADE_IN", 0.00001], ["SECRET"], undefined]);
 	var type = GetWrite("Password");
 	type.ON_WRITE = true;
@@ -254,7 +254,7 @@ if (TAG == "DESK_OPEN_IN_FILE_EXPLORER") {
 	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
 	if (window != undefined) {
 		window.WINDOW_BK.PWD = ON_MAIN_SCENE.PATH[1];
-		window.WINDOW_BK.PWD_PATH = "/~/Desk"
+		window.WINDOW_BK.PWD_PATH = "/~/" + AutoLanguage("Desk");
 	}
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox("NEW_FOLDER_SLIDERS");
@@ -269,7 +269,7 @@ if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 		var parent = PARENT.PARENT;
 		if (parent.WARNING_GUI == undefined) {
 			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["TIME_OUT", 2], ["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
-			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, "You do not have permission to modify this file/folder", Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
+			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, AutoLanguage("You do not have permission to modify this file/folder"), Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
 			parent.WINDOW.list_objects = addtolist(parent.WARNING_GUI, parent.WINDOW.list_objects);
 			parent.WARNING_GUI.PARENT = parent;
 		}
@@ -315,16 +315,17 @@ if (string_count("EXPLORERS_OPEN_IN_ANOTHER", TAG) > 0) {
 }
 
 if (TAG == "NEW_FOLDER_SLIDERS") {
+	var new_folder = AutoLanguage("Newfolder");
 	var PWD = ON_MAIN_SCENE.PATH[1];
 	var ID = 0;
 	for (var i = 1; PWD[i] != undefined; i++) {
-		if (is_array(PWD[i]) && string_count("Newfolder", PWD[i][0][0][0]) > 0)
+		if (is_array(PWD[i]) && string_count(new_folder, PWD[i][0][0][0]) > 0)
 			ID += 1;
 	}
 	if (ID <= 0)
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, "/~/Desk", undefined, "xxx");
+		var mkdir = terminal_mkdir(["mkdir", new_folder, undefined], undefined, PWD, undefined, "/~/" + AutoLanguage("Desk"), undefined, "xxx");
 	else
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, "/~/Desk", undefined, "xxx");
+		var mkdir = terminal_mkdir(["mkdir", new_folder + "_" + string(ID), undefined], undefined, PWD, undefined, "/~/" + AutoLanguage("Desk"), undefined, "xxx");
 	var folder = mkdir[2];
 	folder.WRITE.ON_WRITE = true;
 	DestroyObject(PARENT.TAG);
@@ -334,16 +335,17 @@ if (TAG == "NEW_FOLDER_SLIDERS") {
 }
 
 if (string_count("NEW_EXPLORERS_FOLDERS", TAG) > 0) {
+	var new_folder = AutoLanguage("Newfolder");
 	var PWD = PARENT.PARENT.PWD;
 	var ID = 0;
 	for (var i = 1; PWD[i] != undefined; i++) {
-		if (is_array(PWD[i]) && string_count("Newfolder", PWD[i][0][0][0]) > 0)
+		if (is_array(PWD[i]) && string_count(new_folder, PWD[i][0][0][0]) > 0)
 			ID += 1;
 	}
 	if (ID <= 0)
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined, "xxx");
+		var mkdir = terminal_mkdir(["mkdir", new_folder, undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined, "xxx");
 	else
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined, "xxx");
+		var mkdir = terminal_mkdir(["mkdir", new_folder + "_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PARENT.PWD_PATH, undefined, "xxx");
 	PARENT.PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PARENT.PWD, PARENT.PARENT.PWD_PATH, PARENT.PARENT.FOLDER_LIST, PARENT.PARENT.id);
 	for (var e = 0; PARENT.PARENT.FOLDER_LIST[e] != undefined; ) { e++; }
 	e -= 1;
@@ -363,7 +365,7 @@ if (string_count("NEW_EXPLORERS_FOLDERS", TAG) > 0) {
 
 if (TAG == "DELETE_FOLDER_SLIDERS") {
 	var PWD = ON_MAIN_SCENE.PATH[1];
-	terminal_rm(["rm", ON_MAIN_SCENE.FOLDERS[NUM_LINKED].TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined, "/~/Desk", undefined);
+	terminal_rm(["rm", ON_MAIN_SCENE.FOLDERS[NUM_LINKED].TEXT_CONNECT.TEXT, undefined], undefined, PWD, undefined, "/~/" + AutoLanguage("Desk"), undefined);
 	DestroyObject(PARENT.TAG);
 	DestroyButtonBox("RENAME_FOLDER_SLIDERS");
 	DestroyButtonBox("DELETE_FOLDER_SLIDERS");
@@ -378,7 +380,7 @@ if (string_count("DELETE_EXPLORERS_FOLDERS", TAG) > 0) {
 		var parent = PARENT.PARENT;
 		if (parent.WARNING_GUI == undefined) {
 			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["TIME_OUT", 2], ["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
-			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, "You do not have permission to modify this file/folder", Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
+			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, AutoLanguage("You do not have permission to modify this file/folder"), Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
 			parent.WINDOW.list_objects = addtolist(parent.WARNING_GUI, parent.WINDOW.list_objects);
 			parent.WARNING_GUI.PARENT = parent;
 		}

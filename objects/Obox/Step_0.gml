@@ -14,10 +14,10 @@ if (GET_PIN == undefined && string_count("PIN", TAG) > 0)
 if (GET_PIN == TAG) {
 	if (!PARENT.PIN) {
 		OBJECT_LINKED.image_index = 0;
-		TEXT_CONNECT.TEXT = "Pin from taskbar";
+		TEXT_CONNECT.TEXT = AutoLanguage("Pin from taskbar");
 	} else {
 		OBJECT_LINKED.image_index = 1;
-		TEXT_CONNECT.TEXT = "Unpin from taskbar";
+		TEXT_CONNECT.TEXT = AutoLanguage("Unpin from taskbar");
 	}
 }
 
@@ -62,7 +62,7 @@ if (KeyPressed(vk_delete) && EXPLORER_SELECT && GET_FOLDER != undefined) {
 		var parent = PARENT;
 		if (parent.WARNING_GUI == undefined) {
 			parent.WARNING_GUI = CreateObjectSprite(parent.x + 120, parent.y + 560, parent.WINDOW.LAYERS[2], S_FIles_Explorer_warning, OJustGUI, "IMAGE", parent.TAG + "WARNING", [["TIME_OUT", 2], ["FADE_IN", 0.00001], ["SLIDE", 0.0001], undefined]);
-			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, "You do not have permission to modify this file/folder", Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
+			parent.WARNING_GUI.TEXT_CONNECT = AddText(parent.x + 120, parent.y + 560, AutoLanguage("You do not have permission to modify this file/folder"), Arial10, c_black, parent.WINDOW.LAYERS[3], parent.TAG + "TEXT_WARNING", [["CENTERED"], undefined]);
 			parent.WINDOW.list_objects = addtolist(parent.WARNING_GUI, parent.WINDOW.list_objects);
 			parent.WARNING_GUI.PARENT = parent;
 		}
@@ -251,8 +251,8 @@ if (TAG == "POWER_OFF") {
 	var get = GetObject("POWER_OPTION")
 	if (get == undefined) {
 		CreateObjectSprite(1820, 935, "Gp2", Spower_option, OJustGUI, "IMAGE", "POWER_OPTION", [["FADE_IN", 0.000001], undefined]);
-		CreateButtonBox(1820, 1000, Sshutdown, OboxText, "Stop", "Gp3", "Gp4", Arial10, c_white, "SUTDOWN", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
-		CreateButtonBox(1820, 960, Srestart, OboxText, "Restart", "Gp3", "Gp4", Arial10, c_white, "RESTART", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
+		CreateButtonBox(1820, 1000, Sshutdown, OboxText, AutoLanguage("Stop"), "Gp3", "Gp4", Arial10, c_white, "SUTDOWN", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
+		CreateButtonBox(1820, 960, Srestart, OboxText, AutoLanguage("Restart"), "Gp3", "Gp4", Arial10, c_white, "RESTART", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
 	} else {
 		DestroyObject("POWER_OPTION");
 		DestroyButtonBox("SUTDOWN");
@@ -378,10 +378,11 @@ if (string_count("GO_ROOT", TAG) > 0 || string_count("PATH_THIS_COMPUTER", TAG) 
 }
 
 if (string_count("PATH_DESK", TAG) > 0) {
-	if (PARENT.PWD_PATH == "/~/Desk")
+	var desk = AutoLanguage("Desk");
+	if (PARENT.PWD_PATH == "/~/" + desk)
 		return;
-	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Desk");
-	PARENT.PWD_PATH = "/~/Desk";
+	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/" + desk);
+	PARENT.PWD_PATH = "/~/" + desk;
 	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
 		DestroyText(PARENT.FOLDER_LIST[i].TEXT_CONNECT.TAG);
 		DestroyText(PARENT.FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
@@ -400,10 +401,11 @@ if (string_count("PATH_DESK", TAG) > 0) {
 }
 
 if (string_count("PATH_DOWNLOADS", TAG) > 0) {
-	if (PARENT.PWD_PATH == "/~/Downloads")
+	var downloads = AutoLanguage("Downloads");
+	if (PARENT.PWD_PATH == "/~/" + downloads)
 		return;
-	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/Downloads");
-	PARENT.PWD_PATH = "/~/Downloads";
+	PARENT.PWD = go_to_path(ON_MAIN_SCENE.PATH,  "/~/" + downloads);
+	PARENT.PWD_PATH = "/~/" + downloads;
 	for (var i = 0; PARENT.FOLDER_LIST[i] != undefined; i++) {
 		DestroyText(PARENT.FOLDER_LIST[i].TEXT_CONNECT.TAG);
 		DestroyText(PARENT.FOLDER_LIST[i].DOCK_TYPE_TEXT.TAG);
@@ -430,16 +432,17 @@ if (string_count("FIND_FOLDER", TAG) > 0) {
 }
 
 if (string_count("LEFT_NEW_FOLDER_EXPLORERS", TAG) > 0) {
+	var new_folder = AutoLanguage("Newfolder");
 	var PWD = PARENT.PWD;
 	var ID = 0;
 	for (var i = 1; PWD[i] != undefined; i++) {
-		if (is_array(PWD[i]) && string_count("Newfolder", PWD[i][0][0][0]) > 0)
+		if (is_array(PWD[i]) && string_count(new_folder, PWD[i][0][0][0]) > 0)
 			ID += 1;
 	}
 	if (ID <= 0)
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder", undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined, "xxx");
+		var mkdir = terminal_mkdir(["mkdir", new_folder, undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined, "xxx");
 	else
-		var mkdir = terminal_mkdir(["mkdir", "Newfolder_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined, "xxx");
+		var mkdir = terminal_mkdir(["mkdir", new_folder + "_" + string(ID), undefined], undefined, PWD, undefined, PARENT.PWD_PATH, undefined, "xxx");
 	PARENT.FOLDER_LIST = UpdateFileExplorer(PARENT.PWD, PARENT.PWD_PATH, PARENT.FOLDER_LIST, PARENT.id);
 	for (var e = 0; PARENT.FOLDER_LIST[e] != undefined; ) { e++; }
 	e -= 1;

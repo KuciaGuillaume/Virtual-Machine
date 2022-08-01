@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Network",
-    "path": "folders/MainScene/Objects/Objects/Settings/Scripts/System/Network.yy",
+    "name": "Account",
+    "path": "folders/MainScene/Objects/Objects/Settings/Scripts/System/Account.yy",
   },
   "resourceVersion": "1.0",
   "name": "SETTINGS_ACCOUNT",

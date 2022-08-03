@@ -28,16 +28,16 @@ else
 var CTRL = KeyPress(vk_control);
 
 if (CTRL && KeyPressed(ord("T"))) {
-	CreateWindow(Sterminal_bk, OJustGUITerminal, "TERMINAL", S_terminal_icon, "Terminal");
+	CreateWindow(Sterminal_bk, OJustGUITerminal, "TERMINAL", S_terminal_icon, AutoLanguage("Terminal"));
 	setforfolders(FOLDERS, false);
 	ON_DESK = false;
 }
 
 if (CTRL && KeyPressed(ord("E")))
-	CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+	CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, AutoLanguage("File_explorer"));
 
 if (KeyPressed(vk_escape))
-	CreateWindow(S_Settings_BK, OJustGUI_Settings, "SETTINGS", S_Settings_Icon, "Settings");
+	CreateWindow(S_Settings_BK, OJustGUI_Settings, "SETTINGS", S_Settings_Icon, AutoLanguage("Settings"));
 
 if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right))
 	check_all_off()
@@ -73,14 +73,14 @@ if (mouse_check_button_pressed(mb_right) && ON_DESK) {
 		DestroyButtonBox(get.TAG);
 	if (on_folders == undefined) {
 		DESK_SLIDER_OBJECT = CreateEmptyRound(OEmptyRound, mouse_x - 10, mouse_y - 25, c_white, 200, 56, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], ["SLIDE", 0.0001], undefined]);
-		var button = CreateButtonBoxType(mouse_x + 90, mouse_y + 16, S_new_folder, OboxText, "Create new folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "NEW_FOLDER_SLIDERS", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
-		var open_explorer = CreateButtonBoxType(mouse_x + 90, mouse_y - 8, S_Desk_open_explorer, OboxText, "Open in file explorer", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DESK_OPEN_IN_FILE_EXPLORER", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
+		var button = CreateButtonBoxType(mouse_x + 90, mouse_y + 16, S_new_folder, OboxText, AutoLanguage("Create new folder"), "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "NEW_FOLDER_SLIDERS", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
+		var open_explorer = CreateButtonBoxType(mouse_x + 90, mouse_y - 8, S_Desk_open_explorer, OboxText, AutoLanguage("Open in file explorer"), "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DESK_OPEN_IN_FILE_EXPLORER", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
 		button.PARENT = DESK_SLIDER_OBJECT;
 		open_explorer.PARENT = DESK_SLIDER_OBJECT;
 	} else if (on_folders.WRITE == undefined || (on_folders.WRITE != undefined && !on_folders.WRITE.ON_WRITE)) {
 		DESK_SLIDER_OBJECT = CreateEmptyRound(OEmptyRound, mouse_x - 10, mouse_y - 25, c_white, 200, 56, "Sliders_Gp0", "DESK_SLIDERS", [["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined]);
-		var button = CreateButtonBoxType(mouse_x + 90, mouse_y + 16, S_rename_folder, OboxText, "Rename folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "RENAME_FOLDER_SLIDERS", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
-		var deleted = CreateButtonBoxType(mouse_x + 90, mouse_y - 8, S_delete_folder, OboxText, "Delete folder", "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DELETE_FOLDER_SLIDERS", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
+		var button = CreateButtonBoxType(mouse_x + 90, mouse_y + 16, S_rename_folder, OboxText, AutoLanguage("Rename folder"), "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "RENAME_FOLDER_SLIDERS", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
+		var deleted = CreateButtonBoxType(mouse_x + 90, mouse_y - 8, S_delete_folder, OboxText, AutoLanguage("Delete folder"), "Sliders_Gp1", "Sliders_Gp2", Arial10, c_black, "DELETE_FOLDER_SLIDERS", [["BACK", 60], ["FADE_IN", 0.000005], ["SLIDE", 0.0001],  undefined], "BUTTON-NO-HAND");
 		button.NUM_LINKED = i;
 		button.PARENT = DESK_SLIDER_OBJECT;
 		deleted.PARENT = DESK_SLIDER_OBJECT;

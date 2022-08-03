@@ -179,13 +179,13 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		//UPDATE ELEMENTS
 		if (ELEMENTS != undefined) {
 			ELEMENTS.image_alpha = image_alpha; ELEMENTS.x = bbox_left + 10; ELEMENTS.y = bbox_bottom - 20;
-			ELEMENTS.TEXT =  string(N_ELEMENTS) + " Item(s)  | ";
+			ELEMENTS.TEXT =  string(N_ELEMENTS) + " " + AutoLanguage("Item(s)") + "  | ";
 		}
 		
 		//UPDATE EMPTY FOLDER
 		if (N_ELEMENTS <= 0) {
 			if (EMPTY_FOLDER == undefined) {
-				EMPTY_FOLDER = AddText(x + 110, y + 300, "Folder is empty.", Arial10, c_black, WINDOW.LAYERS[0], TAG + "TEXT_EMPTY", [["CENTERED"], undefined]);
+				EMPTY_FOLDER = AddText(x + 110, y + 300, AutoLanguage("Folder is empty") + ".", Arial10, c_black, WINDOW.LAYERS[0], TAG + "TEXT_EMPTY", [["CENTERED"], undefined]);
 				WINDOW.list_objects = addtolist(EMPTY_FOLDER, WINDOW.list_objects);
 			} else if (EMPTY_FOLDER != undefined) {
 				EMPTY_FOLDER.image_alpha = image_alpha; EMPTY_FOLDER.x = x + 110; EMPTY_FOLDER.y = y + 300; }
@@ -201,7 +201,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		// ON CREATE
 		
 		// CREATE SEARCH
-		SEARCH = CreateTextButton(x - 259, y + 46, S_search_file, "Search", WINDOW.LAYERS[0], WINDOW.LAYERS[1], c_black, Segoe10, 20, TAG + "Search", [undefined]); WINDOW.list_objects = addtolist(SEARCH, WINDOW.list_objects);
+		SEARCH = CreateTextButton(x - 259, y + 46, S_search_file, AutoLanguage("Search"), WINDOW.LAYERS[0], WINDOW.LAYERS[1], c_black, Segoe10, 20, TAG + AutoLanguage("Search"), [undefined]); WINDOW.list_objects = addtolist(SEARCH, WINDOW.list_objects);
 		SEARCH.MORE_X += 35;
 		SEARCH.write.BAR.image_index = 1;
 		SEARCH.PARENT = id;
@@ -213,28 +213,28 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		FOLDER_LIST = UpdateFileExplorer(PWD, PWD_PATH, FOLDER_LIST, id);
 		
 		// CREATE EXPLORER RELOAD
-		EXPLORER_RELOAD = CreateObjectSprite(x + 347, y + 46, WINDOW.LAYERS[0], S_File_Explorer_Reload, Obox, "BUTTON", TAG + "EXPLORER_RELOAD", [["INFO", "Refresh"], undefined]); WINDOW.list_objects = addtolist(EXPLORER_RELOAD, WINDOW.list_objects);
+		EXPLORER_RELOAD = CreateObjectSprite(x + 347, y + 46, WINDOW.LAYERS[0], S_File_Explorer_Reload, Obox, "BUTTON", TAG + "EXPLORER_RELOAD", [["INFO", AutoLanguage("Refresh")], undefined]); WINDOW.list_objects = addtolist(EXPLORER_RELOAD, WINDOW.list_objects);
 		EXPLORER_RELOAD.PARENT = id;
 		
 		// CREATE ELEMENTS
-		ELEMENTS = AddText(bbox_left + 10, bbox_bottom - 10, string(N_ELEMENTS) + " Item(s)  | ", Arial10, c_black, WINDOW.LAYERS[0], TAG + "ELEMENTS", [undefined]); WINDOW.list_objects = addtolist(ELEMENTS, WINDOW.list_objects);
+		ELEMENTS = AddText(bbox_left + 10, bbox_bottom - 10, string(N_ELEMENTS) + " " + AutoLanguage("Item(s)") + "  | ", Arial10, c_black, WINDOW.LAYERS[0], TAG + "ELEMENTS", [undefined]); WINDOW.list_objects = addtolist(ELEMENTS, WINDOW.list_objects);
 		
 		// CREATE GO_ROOT
-		GO_ROOT = CreateObjectSprite(x - 130, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_root, Obox, "BUTTON", TAG + "GO_ROOT", [["INFO", "Back to root"], undefined]); WINDOW.list_objects = addtolist(GO_ROOT, WINDOW.list_objects);
+		GO_ROOT = CreateObjectSprite(x - 130, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_root, Obox, "BUTTON", TAG + "GO_ROOT", [["INFO", AutoLanguage("Back to root")], undefined]); WINDOW.list_objects = addtolist(GO_ROOT, WINDOW.list_objects);
 		GO_ROOT.PARENT = id;
 		
 		// CREATE GO BACK
-		GO_BACK = CreateObjectSprite(x - 110, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_back, Obox, "BUTTON", TAG + "GO_BACK", [["INFO", "Back to previous path"], undefined]); WINDOW.list_objects = addtolist(GO_BACK, WINDOW.list_objects);
+		GO_BACK = CreateObjectSprite(x - 110, y + 46, WINDOW.LAYERS[0], S_Files_Explorer_back, Obox, "BUTTON", TAG + "GO_BACK", [["INFO", AutoLanguage("Back to previous path")], undefined]); WINDOW.list_objects = addtolist(GO_BACK, WINDOW.list_objects);
 		GO_BACK.PARENT = id;
 	
 		// ADD NEW LEFT SLIDER
-		LEFT_NEW_SLIDER = CreateButtonBox(bbox_left + 80, bbox_bottom - 150, S_FIle_Explorer_new_folder_without_slider, Obox, "New folder", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "LEFT_NEW_FOLDER_EXPLORERS", [["CENTERED"], undefined]); WINDOW.list_objects = addtolist(LEFT_NEW_SLIDER, WINDOW.list_objects);
+		LEFT_NEW_SLIDER = CreateButtonBox(bbox_left + 80, bbox_bottom - 150, S_FIle_Explorer_new_folder_without_slider, Obox, AutoLanguage("New folder"), WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "LEFT_NEW_FOLDER_EXPLORERS", [["CENTERED"], undefined]); WINDOW.list_objects = addtolist(LEFT_NEW_SLIDER, WINDOW.list_objects);
 		LEFT_NEW_SLIDER.PARENT = id;
 		
 		// ADD PATHS
-		PATH_COMPUTER = CreateButtonBox(bbox_left + 140, bbox_top + 100, S_Files_Explorer_path_computer, Obox, "This computer", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_THIS_COMPUTER", [undefined]);
-		PATH_DESK = CreateButtonBox(bbox_left + 140, bbox_top + 120, S_Files_Explorer_path_desk, Obox, "Desk", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_DESK", [undefined]);
-		PATH_DOWNLOAD = CreateButtonBox(bbox_left + 140, bbox_top + 140, S_Files_Explorer_path_download, Obox, "Downloads", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_DOWNLOADS", [undefined]);
+		PATH_COMPUTER = CreateButtonBox(bbox_left + 140, bbox_top + 100, S_Files_Explorer_path_computer, Obox, AutoLanguage("This computer"), WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_THIS_COMPUTER", [undefined]);
+		PATH_DESK = CreateButtonBox(bbox_left + 140, bbox_top + 120, S_Files_Explorer_path_desk, Obox, AutoLanguage("Desk"), WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_DESK", [undefined]);
+		PATH_DOWNLOAD = CreateButtonBox(bbox_left + 140, bbox_top + 140, S_Files_Explorer_path_download, Obox, AutoLanguage("Downloads"), WINDOW.LAYERS[0], WINDOW.LAYERS[1], Arial10, c_black, TAG + "PATH_DOWNLOADS", [undefined]);
 		WINDOW.list_objects = addtolist(PATH_COMPUTER, WINDOW.list_objects); WINDOW.list_objects = addtolist(PATH_DESK, WINDOW.list_objects); WINDOW.list_objects = addtolist(PATH_COMPUTER, WINDOW.list_objects);
 		PATH_COMPUTER.PARENT = id;PATH_DESK.PARENT = id;PATH_DOWNLOAD.PARENT = id;
 		CREATE = true;
@@ -279,9 +279,9 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			SEARCH.y -= 0.0001 * delta_time;
 		} else if (SEARCH.write.ON_WRITE && SEARCH.y < y + 30) {
 			if (FIND_OPTION_ROOT == undefined) {
-				FIND_OPTION_ROOT = CreateButtonBox(x - 312, y + 60, S_FIles_Explorer_find_options, Obox, "PC search", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_ROOT", [["INFO", "Search on all files, folders on machine from root"], ["CENTERED"], undefined]);
+				FIND_OPTION_ROOT = CreateButtonBox(x - 312, y + 60, S_FIles_Explorer_find_options, Obox, AutoLanguage("PC search"), WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_ROOT", [["INFO", AutoLanguage("Search on all files, folders on machine from root")], ["CENTERED"], undefined]);
 				FIND_OPTION_ROOT.TEXT_CONNECT.y -= 2;
-				FIND_OPTION_FOLDER = CreateButtonBox(x - 205, y + 60, S_FIles_Explorer_find_options, Obox, "Current path", WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_FOLDER", [["INFO", "Search on all files, folders from current path"], ["CENTERED"], undefined]);
+				FIND_OPTION_FOLDER = CreateButtonBox(x - 205, y + 60, S_FIles_Explorer_find_options, Obox, AutoLanguage("Current path"), WINDOW.LAYERS[0], WINDOW.LAYERS[1], Segoe8, c_white, TAG + "FIND_FOLDER", [["INFO", AutoLanguage("Search on all files, folders from current path")], ["CENTERED"], undefined]);
 				FIND_OPTION_FOLDER.TEXT_CONNECT.y -= 2;
 				FIND_OPTION_ROOT.PARENT = id;
 				FIND_OPTION_FOLDER.PARENT = id;
@@ -311,7 +311,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			FIND_OPTION_ROOT.TEXT_CONNECT.COLOR = c_white;
 		}
 		
-		if ((SEARCH.write.ON_WRITE || KeyPressed(vk_enter)) && SEARCH.write.TEXT_OUTPUT != "Search" && (KeyPressed(vk_anykey) || previous_enter != SEARCH.write.TEXT_OUTPUT)) {
+		if ((SEARCH.write.ON_WRITE || KeyPressed(vk_enter)) && SEARCH.write.TEXT_OUTPUT != AutoLanguage("Search") && (KeyPressed(vk_anykey) || previous_enter != SEARCH.write.TEXT_OUTPUT)) {
 			previous_enter = SEARCH.write.TEXT_OUTPUT;
 			EXPLORER_RELOAD.REFRESH = true;
 			EXPLORER_RELOAD.visible = false;
@@ -399,7 +399,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		}
 		if (mouse_wheel_up() && (FOLDER_LIST[0] != undefined && FOLDER_LIST[0].y < y + 95)) {
 			if (RETURNED_TO_TOP == undefined && !FOLDER_LIST[0].TEXT_CONNECT.visible) {
-				RETURNED_TO_TOP = CreateButtonBox(x + 110, y + 50, S_FIles_Explorer_ReturnedToTop, Obox, "Returned to top", WINDOW.LAYERS[3], WINDOW.LAYERS[4], Arial10, c_black, TAG + "RETURNED_TO_TOP", [["FADE_IN", 0.000005], ["SLIDE", -0.0002], ["CENTERED"], undefined]);
+				RETURNED_TO_TOP = CreateButtonBox(x + 110, y + 50, S_FIles_Explorer_ReturnedToTop, Obox, AutoLanguage("Returned to top"), WINDOW.LAYERS[3], WINDOW.LAYERS[4], Arial10, c_black, TAG + "RETURNED_TO_TOP", [["FADE_IN", 0.000005], ["SLIDE", -0.0002], ["CENTERED"], undefined]);
 				RETURNED_TO_TOP.PARENT = id;
 				SPAWN = false;
 				WINDOW.list_objects = addtolist(RETURNED_TO_TOP, WINDOW.list_objects);

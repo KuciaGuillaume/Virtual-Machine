@@ -3,11 +3,11 @@
 
 function Destroy_search_apps(ID, i, get) {
 	DestroyEmptyButton(get[1].TAG);
-	if (get[0] == "Terminal")
+	if (get[0] == AutoLanguage("Terminal"))
 		ID.ALL_TERMINAL = undefined;
-	if (get[0] == "File_explorers")
+	if (get[0] == AutoLanguage("File_explorers"))
 		ID.ALL_EXPLORERS = undefined;
-	if (get[0] == "Settings")
+	if (get[0] == AutoLanguage("Settings"))
 		ID.ALL_SETTINGS = undefined;
 	ID.ALL_APPS_LIST[i][1] = undefined;
 }
@@ -26,15 +26,15 @@ function position_clalc_apps(X, Y, nb, e, size) {
 }
 
 function Create_search_apps(ID, X, Y, get, i) {
-	if (get[0] == "Terminal") {
+	if (get[0] == AutoLanguage("Terminal")) {
 		ID.ALL_TERMINAL = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", get[2], get[3], get[4], "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ID.ALL_APPS_LIST[i][1] = ID.ALL_TERMINAL;
 	}
-	if (get[0] == "File_explorers") {
+	if (get[0] == AutoLanguage("File_explorers")) {
 		ID.ALL_EXPLORERS = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", get[2], get[3], get[4], "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ID.ALL_APPS_LIST[i][1] = ID.ALL_EXPLORERS;
 	}
-	if (get[0] == "Settings") {
+	if (get[0] == AutoLanguage("Settings")) {
 		ID.ALL_SETTINGS = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", get[2], get[3], get[4], "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ID.ALL_APPS_LIST[i][1] = ID.ALL_SETTINGS;
 	}
@@ -137,9 +137,9 @@ function Update_home_files(ID) {
 		home_buttons_rect(ID.ALL_FILES_LIST[i]);
 	for (var i = 0; ID.ALL_APPS_LIST[i] != undefined; i++) {
 		var get = ID.ALL_APPS_LIST[i];
-		if (get[0] == "File_explorers" && ID.ALL_EXPLORERS != undefined)
+		if (get[0] == AutoLanguage("File_explorers") && ID.ALL_EXPLORERS != undefined)
 			home_buttons_rect(ID.ALL_EXPLORERS);
-		if (get[0] == "Terminal" && ID.ALL_TERMINAL != undefined)
+		if (get[0] == AutoLanguage("Terminal") && ID.ALL_TERMINAL != undefined)
 			home_buttons_rect(ID.ALL_TERMINAL);
 	}
 }

@@ -30,13 +30,13 @@ function CreateSSystem(id) {
 	id.SSYSTEM_OBJECT = addtolist([screen, -100, 70, 1], id.SSYSTEM_OBJECT);
 	
 	// CREATE OTHER TITLE
-	var subtitle = AddText(id.x + 190, id.y + 130, "      Welcome to system settings.\nCustomize your experience to the best!", Segoe10, c_black, id.WINDOW.LAYERS[0], id.TAG + "SSS_SUBTITLE_TEXT", [["CENTERED"], undefined]);
+	var subtitle = AddText(id.x + 190, id.y + 130, "      " + AutoLanguage("Welcome to system settings.\nCustomize your experience to the best!"), Segoe10, c_black, id.WINDOW.LAYERS[0], id.TAG + "SSS_SUBTITLE_TEXT", [["CENTERED"], undefined]);
 	id.WINDOW.list_objects = addtolist(subtitle, id.WINDOW.list_objects);
 	id.SSYSTEM_OBJECT = addtolist([subtitle, 190, 130, 1], id.SSYSTEM_OBJECT);
 	
 	// CREATE DISPLAY BUTTON
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_display, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Monitors, brightness, night light, display profile\nDISPLAY\n", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, AutoLanguage("Monitors, brightness, night light, display profile\nDISPLAY\n"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var DISPLAY = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSDISPLAY", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	DISPLAY.PARENT = id;
@@ -49,7 +49,7 @@ function CreateSSystem(id) {
 
 	// CREATE SOUND BUTTON
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Sound, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Volume levels, output, input, sound devices\nSOUND", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, AutoLanguage("Volume levels, output, input, sound devices\nSOUND"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var SOUND = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSOUND", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	SOUND.PARENT = id;
@@ -62,7 +62,7 @@ function CreateSSystem(id) {
 
 	// CREATE PERSONALIZE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Custom_Display, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Wallpaper, cursor, taskbars\nPERSONALIZE", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, AutoLanguage("Wallpaper, cursor, taskbars\nPERSONALIZE"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var PERSONALIZE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSPERSONALIZE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	PERSONALIZE.PARENT = id;
@@ -75,7 +75,7 @@ function CreateSSystem(id) {
 
 	// CREATE STOCKAGE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_Stockage, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Storage space\nSTORAGE", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, AutoLanguage("Storage space\nSTORAGE"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var STOCKAGE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSSTORAGE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	STOCKAGE.PARENT = id;
@@ -88,7 +88,7 @@ function CreateSSystem(id) {
 
 	// CREATE INFOS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 400, id.WINDOW.LAYERS[1], S_SSsystem_infos, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 417, "Device specifications\nABOUT", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 417, AutoLanguage("Device specifications\nABOUT"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var INFOS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 400, 450, 50, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SSABOUT", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	INFOS.PARENT = id;

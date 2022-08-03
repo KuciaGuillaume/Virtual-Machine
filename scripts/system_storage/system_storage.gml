@@ -3,7 +3,7 @@
 function CreateSystemStorage(id) {
 
 	// CREATE RETURN BUTTON
-	var empt_text = GetEmptText(id.x - 100, id.y + 200, "BACK", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 200, AutoLanguage("BACK"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var STORAGE_BACK = CreateEmptyButton(OSettingEmpty, id.x - 103, id.y + 200, 100, 30, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], undefined, empt_text, id.TAG + "SYSTEM_BACK", "EMPT_BUTTON-NO-HAND", [["CENTERED"], undefined]);
 	STORAGE_BACK.PARENT = id;
@@ -15,7 +15,7 @@ function CreateSystemStorage(id) {
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([STORAGE_BACK, 190, 130, 1], id.SSSYSTEM_STORAGE_OBJECT);
 	
 	// CREATE STORAGE_TITLE
-	var STORAGE_TITLE = AddText(id.x - 100, id.y + 80, "This is your storage space", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "STORAGE_TITLE", [undefined]);
+	var STORAGE_TITLE = AddText(id.x - 100, id.y + 80, AutoLanguage("This is your storage space"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "STORAGE_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(STORAGE_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([STORAGE_TITLE, -100, 80, 1], id.SSSYSTEM_STORAGE_OBJECT);
 
@@ -34,12 +34,12 @@ function CreateSystemStorage(id) {
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([STORAGE_USE_BAR, -90, 215, 1], id.SSSYSTEM_STORAGE_OBJECT);
 	
 	// CREATE TEXT_ACTUAL_USE_STORAGE
-	var TEXT_ACTUAL_USE_STORAGE = AddText(id.x, id.y, string(global.GAME_VALUE[1]) + " Gb used", Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "TEXT_ACTUAL_USE_STORAGE", [undefined]);
+	var TEXT_ACTUAL_USE_STORAGE = AddText(id.x, id.y, string(global.GAME_VALUE[1]) + " " + AutoLanguage("Gb used"), Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "TEXT_ACTUAL_USE_STORAGE", [undefined]);
 	id.WINDOW.list_objects = addtolist(TEXT_ACTUAL_USE_STORAGE, id.WINDOW.list_objects);
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([TEXT_ACTUAL_USE_STORAGE, -Diff(STORAGE_USE_BAR.x, id.x), Diff(STORAGE_USE_BAR.y - 20, id.y), 1], id.SSSYSTEM_STORAGE_OBJECT);
 	
 	// CREATE TEXT_FREE_STORAGE
-	var free_storage = string(global.GAME_VALUE[0] - global.GAME_VALUE[1]) + " Gb free";
+	var free_storage = string(global.GAME_VALUE[0] - global.GAME_VALUE[1]) + " " + AutoLanguage("Gb free");
 	var TEXT_FREE_STORAGE = AddText(id.x, id.y, free_storage, Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "TEXT_FREE_STORAGE", [undefined]);
 	id.WINDOW.list_objects = addtolist(TEXT_FREE_STORAGE, id.WINDOW.list_objects);
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([TEXT_FREE_STORAGE, Diff((STORAGE_BACK_BAR_1.x + STORAGE_BACK_BAR_1.SIZE_X) - string_width(free_storage), id.x), Diff(STORAGE_USE_BAR.y - 20, id.y), 1], id.SSSYSTEM_STORAGE_OBJECT);
@@ -50,7 +50,7 @@ function CreateSystemStorage(id) {
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([HARD_DISK_IMG, -95, 110, 1], id.SSSYSTEM_STORAGE_OBJECT);
 	
 	// CREATE TEXT_HARD_DISK
-	var text_hard_disk = "HDD (C:) - " + string(global.GAME_VALUE[0]) + " Gb";
+	var text_hard_disk = "HDD (C:) - " + string(global.GAME_VALUE[0]) + " " + AutoLanguage("Gb");
 	var TEXT_HARD_DISK = AddText(id.x, id.y, text_hard_disk, Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "TEXT_HARD_DISK", [undefined]);
 	id.WINDOW.list_objects = addtolist(TEXT_HARD_DISK, id.WINDOW.list_objects);
 	id.SSSYSTEM_STORAGE_OBJECT = addtolist([TEXT_HARD_DISK, -35, 135 - (string_height(text_hard_disk) / 2), 1], id.SSSYSTEM_STORAGE_OBJECT);

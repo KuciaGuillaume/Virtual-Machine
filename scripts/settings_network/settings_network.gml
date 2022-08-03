@@ -6,7 +6,7 @@ function CreateSNetwork(id) {
 	id.SETTING_TITLE_FX = -100;
 
 	// CREATE IMG_NETWORK_GUI_ETHERNET_TITLE
-	var IMG_NETWORK_GUI_ETHERNET_TITLE = AddText(id.x - 100, id.y + 80, "Your current connection", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "IMG_NETWORK_GUI_ETHERNET_TITLE", [undefined]);
+	var IMG_NETWORK_GUI_ETHERNET_TITLE = AddText(id.x - 100, id.y + 80, AutoLanguage("Your current connection"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "IMG_NETWORK_GUI_ETHERNET_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(IMG_NETWORK_GUI_ETHERNET_TITLE, id.WINDOW.list_objects);
 	id.SNETWORK_OBJECT = addtolist([IMG_NETWORK_GUI_ETHERNET_TITLE, -100, 80, 1], id.SNETWORK_OBJECT);
 

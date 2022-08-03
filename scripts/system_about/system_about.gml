@@ -3,7 +3,7 @@
 function CreateSystemAbout(id) {
 
 	// CREATE RETURN BUTTON
-	var empt_text = GetEmptText(id.x - 100, id.y + 200, "BACK", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 200, AutoLanguage("BACK"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var STORAGE_BACK = CreateEmptyButton(OSettingEmpty, id.x - 103, id.y + 200, 100, 30, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], undefined, empt_text, id.TAG + "SYSTEM_BACK", "EMPT_BUTTON-NO-HAND", [["CENTERED"], undefined]);
 	STORAGE_BACK.PARENT = id;
@@ -17,7 +17,7 @@ function CreateSystemAbout(id) {
 	
 	
 	// CREATE PROCESSOR_TITLE
-	var PROCESSOR_TITLE = AddText(id.x - 100, id.y + 80, "Processor", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "PROCESSOR_TITLE", [undefined]);
+	var PROCESSOR_TITLE = AddText(id.x - 100, id.y + 80, AutoLanguage("Processor"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "PROCESSOR_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(PROCESSOR_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([PROCESSOR_TITLE, -100, 80, 1], id.SSSYSTEM_ABOUT_OBJECT);
 
@@ -39,7 +39,7 @@ function CreateSystemAbout(id) {
 	
 	
 	// CREATE RAM_TITLE
-	var RAM_TITLE = AddText(id.x, id.y, "Installed Ram", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "RAM_TITLE", [undefined]);
+	var RAM_TITLE = AddText(id.x, id.y, AutoLanguage("Installed Ram"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "RAM_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(RAM_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([RAM_TITLE, -100, 160, 1], id.SSSYSTEM_ABOUT_OBJECT);
 
@@ -54,7 +54,7 @@ function CreateSystemAbout(id) {
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([IMG_RAM, -90, 190, 1], id.SSSYSTEM_ABOUT_OBJECT);
 
 	// RAM_NAME
-	var ram_name_txt = string(global.GAME_VALUE[3]) + " GB (" + string(global.GAME_VALUE[3] - MathPercentToValue( 2 , global.GAME_VALUE[3])) + " GB usable)" ;
+	var ram_name_txt = string(global.GAME_VALUE[3]) + " " + AutoLanguage("GB") + "(" + string(global.GAME_VALUE[3] - MathPercentToValue( 2 , global.GAME_VALUE[3])) + " GB usable)" ;
 	var RAM_NAME = AddText(id.x, id.y, ram_name_txt, Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "RAM_NAME", [undefined]);
 	id.WINDOW.list_objects = addtolist(RAM_NAME, id.WINDOW.list_objects);
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([RAM_NAME, -50, MidleStr(205, ram_name_txt), 1], id.SSSYSTEM_ABOUT_OBJECT);
@@ -62,7 +62,7 @@ function CreateSystemAbout(id) {
 
 	
 	// CREATE GRAPHIC_CARD_TITLE
-	var GRAPHIC_CARD_TITLE = AddText(id.x, id.y, "Graphic card", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "GRAPHIC_CARD_TITLE", [undefined]);
+	var GRAPHIC_CARD_TITLE = AddText(id.x, id.y, AutoLanguage("Graphic card"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "GRAPHIC_CARD_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(GRAPHIC_CARD_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([GRAPHIC_CARD_TITLE, -100, 240, 1], id.SSSYSTEM_ABOUT_OBJECT);
 
@@ -77,14 +77,14 @@ function CreateSystemAbout(id) {
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([IMG_GRAPHIC_CARD, -90, 270, 1], id.SSSYSTEM_ABOUT_OBJECT);
 
 	// GRAPHIC_CARD_NAME
-	var graphic_card_name_txt = global.GAME_VALUE[4][0] + " " + string(global.GAME_VALUE[4][1]) + " GB";
+	var graphic_card_name_txt = global.GAME_VALUE[4][0] + " " + string(global.GAME_VALUE[4][1]) + " " + AutoLanguage("GB");
 	var GRAPHIC_CARD_NAME = AddText(id.x, id.y, graphic_card_name_txt, Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "GRAPHIC_CARD_NAME", [undefined]);
 	id.WINDOW.list_objects = addtolist(GRAPHIC_CARD_NAME, id.WINDOW.list_objects);
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([GRAPHIC_CARD_NAME, -50, MidleStr(285, graphic_card_name_txt), 1], id.SSSYSTEM_ABOUT_OBJECT);
 	
 
 	// CREATE MOTHERBOARD_TITLE
-	var MOTHERBOARD_TITLE = AddText(id.x, id.y, "Motherboard", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "MOTHERBOARD_TITLE", [undefined]);
+	var MOTHERBOARD_TITLE = AddText(id.x, id.y, AutoLanguage("Motherboard"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "MOTHERBOARD_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(MOTHERBOARD_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([MOTHERBOARD_TITLE, -100, 320, 1], id.SSSYSTEM_ABOUT_OBJECT);
 
@@ -99,7 +99,7 @@ function CreateSystemAbout(id) {
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([IMG_GUI_BACK_MOTHERBOARD, -90, 350, 1], id.SSSYSTEM_ABOUT_OBJECT);
 
 	// MOTHERBOARD_NAME
-	var motherboard_name_txt = global.GAME_VALUE[5][0] + " (Maximum RAM capacity : " + string(global.GAME_VALUE[5][1]) + " GB)";
+	var motherboard_name_txt = global.GAME_VALUE[5][0] + " (" + AutoLanguage("Maximum RAM capacity") + " : " + string(global.GAME_VALUE[5][1]) + " " +  AutoLanguage("GB") + ")";
 	var MOTHERBOARD_NAME = AddText(id.x, id.y, motherboard_name_txt, Segoe10, #414141, id.WINDOW.LAYERS[1], id.TAG + "MOTHERBOARD_NAME", [undefined]);
 	id.WINDOW.list_objects = addtolist(MOTHERBOARD_NAME, id.WINDOW.list_objects);
 	id.SSSYSTEM_ABOUT_OBJECT = addtolist([MOTHERBOARD_NAME, -50, MidleStr(365, motherboard_name_txt), 1], id.SSSYSTEM_ABOUT_OBJECT);

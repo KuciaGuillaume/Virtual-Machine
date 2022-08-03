@@ -3,7 +3,7 @@
 function CreateSystemPersonalize(id) {
 
 	// CREATE RETURN BUTTON
-	var empt_text = GetEmptText(id.x - 100, id.y + 200, "BACK", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 200, AutoLanguage("BACK"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 
 	var PERSONALIZE_BACK = CreateEmptyButton(OSettingEmpty, id.x - 103, id.y + 200, 100, 30, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], undefined, empt_text, id.TAG + "SYSTEM_BACK", "EMPT_BUTTON-NO-HAND", [["CENTERED"], undefined]);
 	PERSONALIZE_BACK.PARENT = id;
@@ -15,7 +15,7 @@ function CreateSystemPersonalize(id) {
 	id.SSSYSTEM_PERSONALIZE_OBJECT = addtolist([PERSONALIZE_BACK, 190, 130, 1], id.SSSYSTEM_PERSONALIZE_OBJECT);
 
 	// CREATE CHANGE WALPPAPER TITLE
-	var EDIT_WALLPAPER_TITLE = AddText(id.x - 100, id.y + 80, "Change your wallpaper", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "EDIT_WALLPAPER_TITLE", [undefined]);
+	var EDIT_WALLPAPER_TITLE = AddText(id.x - 100, id.y + 80, AutoLanguage("Change your wallpaper"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "EDIT_WALLPAPER_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(EDIT_WALLPAPER_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_PERSONALIZE_OBJECT = addtolist([EDIT_WALLPAPER_TITLE, -100, 80, 1], id.SSSYSTEM_PERSONALIZE_OBJECT);
 
@@ -80,7 +80,7 @@ function CreateSystemPersonalize(id) {
 	var index = FindListIndex(target,id.SSSYSTEM_PERSONALIZE_OBJECT, 0);
 	var target_x = id.SSSYSTEM_PERSONALIZE_OBJECT[index][1];
 	var target_y = id.SSSYSTEM_PERSONALIZE_OBJECT[index][2];
-	var select_text = AddText(id.x, id.y, "Currently", Arial10, c_white, id.WINDOW.LAYERS[3], id.TAG + "WALLPAPER_SELECTOR_TEXT", [["CENTERED"], undefined]);
+	var select_text = AddText(id.x, id.y, AutoLanguage("Currently"), Arial10, c_white, id.WINDOW.LAYERS[3], id.TAG + "WALLPAPER_SELECTOR_TEXT", [["CENTERED"], undefined]);
 	var wallpaper_selector = CreateObjectSprite(id.x, id.y, id.WINDOW.LAYERS[2], S_SSsystem_Personalize_Select, OJustButtonSettings, "IMAGE", id.TAG + "WALLPAPER_SELECTOR", [["CENTERED"], undefined]);
 	id.WINDOW.list_objects = addtolist(wallpaper_selector, id.WINDOW.list_objects);
 	id.SSSYSTEM_PERSONALIZE_OBJECT = addtolist([wallpaper_selector, target_x, (target_y + 40), 1], id.SSSYSTEM_PERSONALIZE_OBJECT);
@@ -91,7 +91,7 @@ function CreateSystemPersonalize(id) {
 
 
 	// CREATE CHANGE CURSOR TITLE
-	var EDIT_CURSOR_TITLE = AddText(id.x - 100, id.y + 270, "Change your cursor", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "EDIT_CURSOR_TITLE", [undefined]);
+	var EDIT_CURSOR_TITLE = AddText(id.x - 100, id.y + 270, AutoLanguage("Change your cursor"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "EDIT_CURSOR_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(EDIT_CURSOR_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_PERSONALIZE_OBJECT = addtolist([EDIT_CURSOR_TITLE, -100, 270, 1], id.SSSYSTEM_PERSONALIZE_OBJECT);
 
@@ -133,7 +133,7 @@ function CreateSystemPersonalize(id) {
 	var index = FindListIndex(target,id.SSSYSTEM_PERSONALIZE_OBJECT, 0);
 	var target_x = id.SSSYSTEM_PERSONALIZE_OBJECT[index][1];
 	var target_y = id.SSSYSTEM_PERSONALIZE_OBJECT[index][2];
-	var select_text_cursor = AddText(id.x, id.y, "Currently", Arial10, c_white, id.WINDOW.LAYERS[3], id.TAG + "CURSOR_SELECTOR_TEXT", [["CENTERED"], undefined]);
+	var select_text_cursor = AddText(id.x, id.y, AutoLanguage("Currently"), Arial10, c_white, id.WINDOW.LAYERS[3], id.TAG + "CURSOR_SELECTOR_TEXT", [["CENTERED"], undefined]);
 	var cursor_selector = CreateObjectSprite(id.x, id.y, id.WINDOW.LAYERS[2], S_SSsystem_Personalize_Select, OJustButtonSettings, "IMAGE", id.TAG + "CURSOR_SELECTOR", [["CENTERED"], undefined]);
 	id.WINDOW.list_objects = addtolist(cursor_selector, id.WINDOW.list_objects);
 	id.SSSYSTEM_PERSONALIZE_OBJECT = addtolist([cursor_selector, target_x, (target_y + 40), 1], id.SSSYSTEM_PERSONALIZE_OBJECT);

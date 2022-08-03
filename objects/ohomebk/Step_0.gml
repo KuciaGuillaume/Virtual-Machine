@@ -59,13 +59,13 @@ if (SEARCH != undefined && !CLOSE) {
 			SEARCH.write.TEXT_INDEX_MAX += 1;
 		}
 	}
-	if (SEARCH.write.TEXT_OUTPUT != SEARCH.write.INITIAL_TEXT && ALL_APPS != undefined && instance_exists(ALL_APPS) && ALL_APPS.TEXT != "Search results" && SEARCH.write.TEXT_OUTPUT != "") {
-		ALL_APPS.TEXT = "Search results";
+	if (SEARCH.write.TEXT_OUTPUT != SEARCH.write.INITIAL_TEXT && ALL_APPS != undefined && instance_exists(ALL_APPS) && ALL_APPS.TEXT != AutoLanguage("Search results") && SEARCH.write.TEXT_OUTPUT != "") {
+		ALL_APPS.TEXT = AutoLanguage("Search results");
 		DestroyHomeApps();
-	} else if (ALL_APPS != undefined && instance_exists(ALL_APPS) && ALL_APPS.TEXT == "Search results" && ((!SEARCH.write.ON_WRITE && SEARCH.write.TEXT_OUTPUT == SEARCH.write.INITIAL_TEXT) || (SEARCH.write.ON_WRITE && SEARCH.write.TEXT_OUTPUT == ""))) {
+	} else if (ALL_APPS != undefined && instance_exists(ALL_APPS) && ALL_APPS.TEXT == AutoLanguage("Search results") && ((!SEARCH.write.ON_WRITE && SEARCH.write.TEXT_OUTPUT == SEARCH.write.INITIAL_TEXT) || (SEARCH.write.ON_WRITE && SEARCH.write.TEXT_OUTPUT == ""))) {
 		DestroyHomeApps();
-		RECOMMANDED = AddText(715, 790, "Recommanded", Segoe10, c_black, "Home_Gp1", "HOME_TEXT_ALL_RECOMMANDED", [["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
-		ALL_APPS.TEXT = "All Apps";
+		RECOMMANDED = AddText(715, 790, AutoLanguage("Recommanded"), Segoe10, c_black, "Home_Gp1", "HOME_TEXT_ALL_RECOMMANDED", [["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
+		ALL_APPS.TEXT = AutoLanguage("All Apps");
 		CreateHomeApps();
 	}
 	var search = SEARCH.write;

@@ -3,7 +3,7 @@
 function CreateSystemDisplay(id) {
 	
 	// CREATE RETURN BUTTON
-	var empt_text = GetEmptText(id.x - 100, id.y + 200, "BACK", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 200, AutoLanguage("BACK"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var DISPLAY_BACK = CreateEmptyButton(OSettingEmpty, id.x - 103, id.y + 200, 100, 30, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], undefined, empt_text, id.TAG + "SYSTEM_BACK", "EMPT_BUTTON-NO-HAND", [["CENTERED"], undefined]);
 	DISPLAY_BACK.PARENT = id;
@@ -15,13 +15,13 @@ function CreateSystemDisplay(id) {
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([DISPLAY_BACK, 190, 130, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
 	// CREATE BRIGTHNESS_TITLE
-	var BRIGHTNESS_TITLE = AddText(id.x - 100, id.y + 300, "Brightness & color", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "BRIGHTNESS_TITLE", [undefined]);
+	var BRIGHTNESS_TITLE = AddText(id.x - 100, id.y + 300, AutoLanguage("Brightness & color"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "BRIGHTNESS_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(BRIGHTNESS_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([BRIGHTNESS_TITLE, -100, 80, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
 	// CREATE BRIGHNESS
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 200, id.WINDOW.LAYERS[1], S_SSsystem_Luminosite, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 200, "Brightness", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 200, AutoLanguage("Brightness"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var BRIGHTNESS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 200, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "BRIGHTNESS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	BRIGHTNESS.PARENT = id;
@@ -58,7 +58,7 @@ function CreateSystemDisplay(id) {
 	
 	// CREATE NIGHT
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 255, id.WINDOW.LAYERS[1], S_SSsystem_Night_light, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 255, "Night light", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 255, AutoLanguage("Night light"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var NIGHT = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 255, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "NIGHT_LIGHT", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	NIGHT.PARENT = id;
@@ -80,13 +80,13 @@ function CreateSystemDisplay(id) {
 	NIGHT_CHECKER[2].PARENT = id;
 
 	// CREATE RESOLUTION_TITLE
-	var RESOLUTION_TITLE = AddText(id.x - 100, id.y + 300, "Resolution", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "RESOLUTION_TITLE", [undefined]);
+	var RESOLUTION_TITLE = AddText(id.x - 100, id.y + 300, AutoLanguage("Resolution"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "RESOLUTION_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(RESOLUTION_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([RESOLUTION_TITLE, -100, 220, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
 	// CREATE RESOLUTION SELECTION
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 255, id.WINDOW.LAYERS[1], S_SSsystem_Display_resolution, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 255, "Display", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 255, AutoLanguage("Display"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var RESOLUTION = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 255, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "RESOLUTION", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	RESOLUTION.PARENT = id;
@@ -132,7 +132,7 @@ function CreateSystemDisplay(id) {
 
 	// CREATE CUTSOTM RESOLUTION
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 295, id.WINDOW.LAYERS[1], S_SSsystem_Custom_resolution, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 295, "Custom", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 295, AutoLanguage("Custom"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var CUSTOM_RES = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 295, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "CUSTOM_RES", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	CUSTOM_RES.PARENT = id;
@@ -173,7 +173,7 @@ function CreateSystemDisplay(id) {
 	
 	// CREATE FULLSCREEN
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 350, id.WINDOW.LAYERS[1], S_SSsystem_Fullscreen, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 350, "Fullscreen", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 350, AutoLanguage("Fullscreen"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var FULLSCREEN = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 350, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SET_FULLSCREEN", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	FULLSCREEN.PARENT = id;
@@ -195,13 +195,13 @@ function CreateSystemDisplay(id) {
 	FULLSCREEN_CHECKER[2].PARENT = id;
 	
 	// CREATE OPTIONS TITLE
-	var OPTIONS_TITLE = AddText(id.x - 100, id.y + 415, "Display options", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "OPTIONS_TITLE", [undefined]);
+	var OPTIONS_TITLE = AddText(id.x - 100, id.y + 415, AutoLanguage("Display options"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "OPTIONS_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(OPTIONS_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_DISPLAY_OBJECT = addtolist([OPTIONS_TITLE, -100, 415, 1], id.SSSYSTEM_DISPLAY_OBJECT);
 	
 	// CREATE OPTIONS FRAMERATE
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 435, id.WINDOW.LAYERS[1], S_SSsystem_Framerate, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 435, "Show frames per second", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 435, AutoLanguage("Show frames per second"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var FRAMERATE = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 435, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "FRAMERATE", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	FRAMERATE.PARENT = id;
@@ -226,7 +226,7 @@ function CreateSystemDisplay(id) {
 	
 	var X = 350;
 	var Y = 530;
-	var empt_text = GetEmptText(id.x + X, id.y + Y, "Apply Changes", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x + X, id.y + Y, AutoLanguage("Apply Changes"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var size = string_width(empt_text.TEXT) + 20;
 	

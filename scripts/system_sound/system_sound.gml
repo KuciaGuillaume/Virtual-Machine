@@ -3,7 +3,7 @@
 function CreateSystemSound(id) {
 
 	// CREATE RETURN BUTTON
-	var empt_text = GetEmptText(id.x - 100, id.y + 200, "BACK", Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 200, AutoLanguage("BACK"), Arial10, c_gray, c_white, id.WINDOW.LAYERS[1]);
 	
 	var SOUND_BACK = CreateEmptyButton(OSettingEmpty, id.x - 103, id.y + 200, 100, 30, #FBFCFE, #435D7A, id.WINDOW.LAYERS[0], undefined, empt_text, id.TAG + "SYSTEM_BACK", "EMPT_BUTTON-NO-HAND", [["CENTERED"], undefined]);
 	SOUND_BACK.PARENT = id;
@@ -15,13 +15,13 @@ function CreateSystemSound(id) {
 	id.SSSYSTEM_SOUND_OBJECT = addtolist([SOUND_BACK, 190, 130, 1], id.SSSYSTEM_SOUND_OBJECT);
 
 	// CREATE GENERAL_TITLE
-	var SOUND_GENERAL_TITLE = AddText(id.x - 100, id.y + 300, "Sounds", Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "SOUND_GENERAL_TITLE", [undefined]);
+	var SOUND_GENERAL_TITLE = AddText(id.x - 100, id.y + 300, AutoLanguage("Sounds"), Segoe8, #262626, id.WINDOW.LAYERS[0], id.TAG + "SOUND_GENERAL_TITLE", [undefined]);
 	id.WINDOW.list_objects = addtolist(SOUND_GENERAL_TITLE, id.WINDOW.list_objects);
 	id.SSSYSTEM_SOUND_OBJECT = addtolist([SOUND_GENERAL_TITLE, -100, 80, 1], id.SSSYSTEM_SOUND_OBJECT);
 	
 	// CREATE GENRAL VOLUME
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 200, id.WINDOW.LAYERS[1], S_SSsystem_General_sound, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 200, "General volume", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 200, AutoLanguage("General volume"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var SOUND_GENERAL = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 200, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SOUND_GENERAL", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	SOUND_GENERAL.PARENT = id;
@@ -59,7 +59,7 @@ function CreateSystemSound(id) {
 	
 	// CREATE NOTIFICATION VOLUME
 	var empt_linked = GetEmptLinked(id.x - 290, id.y + 160, id.WINDOW.LAYERS[1], S_SSsystem_Notifications_sound, OJustGUI,  "IMAGE");
-	var empt_text = GetEmptText(id.x - 100, id.y + 160, "Notification volumes", Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	var empt_text = GetEmptText(id.x - 100, id.y + 160, AutoLanguage("Notification volumes"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
 	
 	var SOUND_NOTIFICATIONS = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 160, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SOUND_NOTIFICATIONS", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
 	SOUND_NOTIFICATIONS.PARENT = id;

@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"e183f6cc-10ba-443b-b415-e49ac88d931c","path":"sprites/Luminosity/Luminosity.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"e183f6cc-10ba-443b-b415-e49ac88d931c","path":"sprites/Luminosity/Luminosity.yy",},"LayerId":{"name":"feeb7ccc-b9f8-43e7-b44a-7bffbaebaf3f","path":"sprites/Luminosity/Luminosity.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Luminosity","path":"sprites/Luminosity/Luminosity.yy",},"resourceVersion":"1.0","name":"e183f6cc-10ba-443b-b415-e49ac88d931c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"e183f6cc-10ba-443b-b415-e49ac88d931c","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"Luminosity","path":"sprites/Luminosity/Luminosity.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"395e3c06-3ad0-43c9-b9b9-3b6ddd45d038","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e183f6cc-10ba-443b-b415-e49ac88d931c","path":"sprites/Luminosity/Luminosity.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"Luminosity","path":"sprites/Luminosity/Luminosity.yy",},
     "resourceVersion": "1.4",
     "name": "Luminosity",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"feeb7ccc-b9f8-43e7-b44a-7bffbaebaf3f","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"feeb7ccc-b9f8-43e7-b44a-7bffbaebaf3f","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Luminosity",
-  "tags": [],
   "resourceType": "GMSprite",
 }

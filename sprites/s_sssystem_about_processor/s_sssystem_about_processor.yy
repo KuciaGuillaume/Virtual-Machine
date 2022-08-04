@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"b4bc67f9-f95e-45eb-84f1-ef8a939dc8ca","path":"sprites/S_SSsystem_About_Processor/S_SSsystem_About_Processor.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"b4bc67f9-f95e-45eb-84f1-ef8a939dc8ca","path":"sprites/S_SSsystem_About_Processor/S_SSsystem_About_Processor.yy",},"LayerId":{"name":"187818fe-5dd5-4cad-91ef-5045673d90ea","path":"sprites/S_SSsystem_About_Processor/S_SSsystem_About_Processor.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_SSsystem_About_Processor","path":"sprites/S_SSsystem_About_Processor/S_SSsystem_About_Processor.yy",},"resourceVersion":"1.0","name":"b4bc67f9-f95e-45eb-84f1-ef8a939dc8ca","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"b4bc67f9-f95e-45eb-84f1-ef8a939dc8ca","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_SSsystem_About_Processor","path":"sprites/S_SSsystem_About_Processor/S_SSsystem_About_Processor.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"5fc46971-8d35-4c23-b2fd-b3e09af788b2","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b4bc67f9-f95e-45eb-84f1-ef8a939dc8ca","path":"sprites/S_SSsystem_About_Processor/S_SSsystem_About_Processor.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_SSsystem_About_Processor","path":"sprites/S_SSsystem_About_Processor/S_SSsystem_About_Processor.yy",},
     "resourceVersion": "1.4",
     "name": "S_SSsystem_About_Processor",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"187818fe-5dd5-4cad-91ef-5045673d90ea","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"187818fe-5dd5-4cad-91ef-5045673d90ea","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_About_Processor",
-  "tags": [],
   "resourceType": "GMSprite",
 }

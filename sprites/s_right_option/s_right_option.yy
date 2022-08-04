@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"47ed6e69-39c3-48f7-8953-b5ea76ebf982","path":"sprites/S_right_option/S_right_option.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"47ed6e69-39c3-48f7-8953-b5ea76ebf982","path":"sprites/S_right_option/S_right_option.yy",},"LayerId":{"name":"a25cf6c7-1bab-4856-bd88-8120e6ec5c8e","path":"sprites/S_right_option/S_right_option.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_right_option","path":"sprites/S_right_option/S_right_option.yy",},"resourceVersion":"1.0","name":"47ed6e69-39c3-48f7-8953-b5ea76ebf982","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"47ed6e69-39c3-48f7-8953-b5ea76ebf982","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_right_option","path":"sprites/S_right_option/S_right_option.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"44a9cb8b-02b7-4f9f-9d5d-be10a8f12410","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"47ed6e69-39c3-48f7-8953-b5ea76ebf982","path":"sprites/S_right_option/S_right_option.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 197,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_right_option","path":"sprites/S_right_option/S_right_option.yy",},
     "resourceVersion": "1.4",
     "name": "S_right_option",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"a25cf6c7-1bab-4856-bd88-8120e6ec5c8e","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"a25cf6c7-1bab-4856-bd88-8120e6ec5c8e","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_right_option",
-  "tags": [],
   "resourceType": "GMSprite",
 }

@@ -27,7 +27,7 @@ global.RstartMode = "START";
 
 // INIT_TIMER
 
-global.TIMER = 1;
+global.TIMER = 2;
 
 // PATH AND FOLDERS
 
@@ -57,7 +57,7 @@ var CUSTOM_RES = ["1920", "1080", false];
 var FULLSCREEN = true;
 var FRAMERATE = false;
 var CURSOR = "MAC";
-var LANGUAGE = "ENGLISH";
+var LANGUAGE = "FRENCH";
 global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, CURSOR, LANGUAGE ,undefined];
 
 // SOUND
@@ -181,11 +181,11 @@ AddTraduction( [["French", "ENGLISH"], ["Français", "FRENCH"]] );
 AddTraduction( [["English", "ENGLISH"], ["Anglais", "FRENCH"]] );
 AddTraduction( [["Your current connection", "ENGLISH"], ["Votre connection actuelle", "FRENCH"]] );
 AddTraduction( [["Welcome to system settings.\nCustomize your experience to the best!", "ENGLISH"], ["Bienvenue dans les paramètres système.\nPersonnalisez votre expérience au mieux !", "FRENCH"]] );
-AddTraduction( [["Monitors, brightness, night light, display profile\nDISPLAY\n", "ENGLISH"], ["Moniteurs, luminosité, eclairage nocturne, profil d'affichage\nAffichage\n", "FRENCH"]] );
-AddTraduction( [["Volume levels, output, input, sound devices\nSOUND", "ENGLISH"], ["Niveaux de volume, sortie, entrée, périphériques audio\nSON\n", "FRENCH"]] );
-AddTraduction( [["Wallpaper, cursor, taskbars\nPERSONALIZE", "ENGLISH"], ["Fond d'écran, curseur, barre des tâches\nPERSONNALISER\n", "FRENCH"]] );
-AddTraduction( [["Storage space\nSTORAGE", "ENGLISH"], ["Espace de stockage\nSTOCKAGE", "FRENCH"]] );
-AddTraduction( [["Device specifications\nABOUT", "ENGLISH"], ["Spécifications de l'appareil\nÀ PROPOS", "FRENCH"]] );
+AddTraduction( [["DISPLAY\nMonitors, brightness, night light, display profile", "ENGLISH"], ["AFFICHAGE\nMoniteurs, luminosité, eclairage nocturne, profil d'affichage", "FRENCH"]] );
+AddTraduction( [["SOUND\nVolume levels, output, input, sound devices", "ENGLISH"], ["SON\nNiveaux de volume, sortie, entrée, périphériques audio", "FRENCH"]] );
+AddTraduction( [["PERSONALIZE\nWallpaper, cursor, taskbars", "ENGLISH"], ["PERSONNALISER\nFond d'écran, curseur, barre des tâches", "FRENCH"]] );
+AddTraduction( [["STORAGE\nStorage space", "ENGLISH"], ["STOCKAGE\nEspace de stockage", "FRENCH"]] );
+AddTraduction( [["ABOUT\nDevice specifications", "ENGLISH"], ["À PROPOS\nSpécifications de l'appareil", "FRENCH"]] );
 AddTraduction( [["Open in file explorer", "ENGLISH"], ["Explorateur de fichiers", "FRENCH"]] );
 AddTraduction( [["BACK", "ENGLISH"], ["RETOUR", "FRENCH"]] );
 AddTraduction( [["Processor", "ENGLISH"], ["Processeur", "FRENCH"]] );
@@ -214,6 +214,124 @@ AddTraduction( [["This is your storage space", "ENGLISH"], ["Ceci est votre espa
 AddTraduction( [["Gb used", "ENGLISH"], ["Go utilisé(s)", "FRENCH"]] );
 AddTraduction( [["Gb free", "ENGLISH"], ["Go libre(s)", "FRENCH"]] );
 AddTraduction( [["Gb", "ENGLISH"], ["Go", "FRENCH"]] );
+AddTraduction( [["Local Account", "ENGLISH"], ["Compte local", "FRENCH"]] );
+AddTraduction( [["System", "ENGLISH"], ["Système", "FRENCH"]] );
+AddTraduction( [["Network & internet", "ENGLISH"], ["Réseau & internet", "FRENCH"]] );
+AddTraduction( [["Account", "ENGLISH"], ["Compte", "FRENCH"]] );
+AddTraduction( [["Update", "ENGLISH"], ["Mise à jour", "FRENCH"]] );
+AddTraduction( [["Power system", "ENGLISH"], ["Alimentation", "FRENCH"]] );
+AddTraduction( [["Select", "ENGLISH"], ["Sélectionner", "FRENCH"]] );
+AddTraduction( [["Errors", "ENGLISH"], ["Erreur", "FRENCH"]] );
+AddTraduction( [["Password too short", "ENGLISH"], ["Mot de passe trop court", "FRENCH"]] );
+AddTraduction( [["Your password must be\ndifferent from the old one", "ENGLISH"], ["Votre mot de passe doit être\ndifférent de l'ancien", "FRENCH"]] );
+AddTraduction( [["Success", "ENGLISH"], ["Succès", "FRENCH"]] );
+AddTraduction( [["Your passwords have been changed", "ENGLISH"], ["Votre mot de passe à été modifié", "FRENCH"]] );
+AddTraduction( [["Success", "ENGLISH"], ["Succès", "FRENCH"]] );
+AddTraduction( [["DISPLAY", "ENGLISH"], ["AFFICHAGE", "FRENCH"]] );
+AddTraduction( [["SOUND", "ENGLISH"], ["SON", "FRENCH"]] );
+AddTraduction( [["PERSONALIZE", "ENGLISH"], ["PERSONALIZE", "FRENCH"]] );
+AddTraduction( [["STORAGE", "ENGLISH"], ["STOCKAGE", "FRENCH"]] );
+AddTraduction( [["ABOUT", "ENGLISH"], ["A PROPOS", "FRENCH"]] );
+AddTraduction( [["SYSTEM", "ENGLISH"], ["SYSTÈME", "FRENCH"]] );
+AddTraduction( [["Folder is empty", "ENGLISH"], ["Le dossier est vide", "FRENCH"]] );
+AddTraduction( [["folder", "ENGLISH"], ["dossier", "FRENCH"]] );
+AddTraduction( [["not found", "ENGLISH"], ["introuvable", "FRENCH"]] );
+AddTraduction( [["You are already at the root", "ENGLISH"], ["Vous êtes déjà à la racine", "FRENCH"]] );
+AddTraduction( [["was not found", "ENGLISH"], ["n'a pas été trouvé", "FRENCH"]] );
+AddTraduction( [["No arguments", "ENGLISH"], ["Aucun argument", "FRENCH"]] );
+AddTraduction( [["Folder already exists", "ENGLISH"], ["Le dossier existe déjà", "FRENCH"]] );
+AddTraduction( [["was created", "ENGLISH"], ["a été créé", "FRENCH"]] );
+AddTraduction( [["You don't have permission to rename it", "ENGLISH"], ["Vous n'êtes pas autorisé à le renommer", "FRENCH"]] );
+AddTraduction( [["was deleted", "ENGLISH"], ["à été supprimée", "FRENCH"]] );
+AddTraduction( [["Here is the list of your keyboard commands", "ENGLISH"], ["Voici la liste de vos commandes clavier", "FRENCH"]] );
+AddTraduction( [["Your keyboard command history is empty !", "ENGLISH"], ["Votre historique des commandes clavier est vide !", "FRENCH"]] );
+AddTraduction( [["End of connection", "ENGLISH"], ["Fin de connexion", "FRENCH"]] );
+AddTraduction( [["You are not connected to anything", "ENGLISH"], ["Vous n'êtes connecté à rien", "FRENCH"]] );
+AddTraduction( [["command not found", "ENGLISH"], ["commande non trouvée", "FRENCH"]] );
+AddTraduction( [["too few arguments", "ENGLISH"], ["trop peu d'arguments", "FRENCH"]] );
+AddTraduction( [["has been successfully renamed to", "ENGLISH"], ["a été renommé avec succès en", "FRENCH"]] );
+AddTraduction( [["is not found", "ENGLISH"], ["n'est pas trouvé", "FRENCH"]] );
+AddTraduction( [["Connection", "ENGLISH"], ["Connexion", "FRENCH"]] );
+AddTraduction( [["CONNECT ID", "ENGLISH"], ["ID DE CONNEXION", "FRENCH"]] );
+AddTraduction( [["This means that your terminal\nis connected to another process,\nthey are now possible for\nyou to control this process\nremotely", "ENGLISH"], ["Cela signifie que votre terminal\nest connecté à un autre processus,\nil vous est désormais possible\nde contrôler ce processus\nà distance", "FRENCH"]] );
+AddTraduction( [["This means that a process is connecting to the terminal\n", "ENGLISH"], ["Cela signifie qu'un processus est connecté au terminal\n", "FRENCH"]] );
+AddTraduction( [["A process is connecting to you", "ENGLISH"], ["Un processus se connecte à vous", "FRENCH"]] );
+AddTraduction( [["Connect status", "ENGLISH"], ["État de la connexion", "FRENCH"]] );
+AddTraduction( [["true", "ENGLISH"], ["ok", "FRENCH"]] );
+AddTraduction( [["Connect at", "ENGLISH"], ["Connecté à", "FRENCH"]] );
+AddTraduction( [["false", "ENGLISH"], ["echec", "FRENCH"]] );
+AddTraduction( [["A process is connected to your terminal\nor the process you are trying to reach is already connected to another process.\nYou can only connect two processes together", "ENGLISH"], ["Un processus est connecté à votre terminal\nou le processus que vous essayez d'atteindre est déjà connecté à un autre processus.\nVous ne pouvez connecter que deux processus ensemble", "FRENCH"]] );
+AddTraduction( [["The target is already connected to another process", "ENGLISH"], ["La cible est déjà connectée à un autre processus", "FRENCH"]] );
+AddTraduction( [["Help", "ENGLISH"], ["Aide", "FRENCH"]] );
+AddTraduction( [["HELP", "ENGLISH"], ["AIDE", "FRENCH"]] );
+AddTraduction( [["History", "ENGLISH"], ["Historique", "FRENCH"]] );
+AddTraduction( [["Clear", "ENGLISH"], ["Effacer", "FRENCH"]] );
+AddTraduction( [["List of commands that may be useful to you", "ENGLISH"], ["Liste des commandes qui peuvent vous être utiles", "FRENCH"]] );
+
+// TERMINAL HELP
+AddTraduction( [["help : View this post\n", "ENGLISH"], ["help : afficher ce message\n", "FRENCH"]] );
+AddTraduction( [["ls : Allows you to see the contents of the current folder or a specific folder\n", "ENGLISH"], ["ls : Permet de voir le contenu du dossier courant ou d'un dossier spécifique\n", "FRENCH"]] );
+AddTraduction( [["cd : Allows you to move to the desired directory\n", "ENGLISH"], ["cd : Permet de se déplacer vers le répertoire souhaité\n", "FRENCH"]] );
+AddTraduction( [["cd [..] : Move to the back directory\n", "ENGLISH"], ["cd [..] : Déplacer vers le répertoire précédant\n", "FRENCH"]] );
+AddTraduction( [["mkdir : Allows you to create a directory\n", "ENGLISH"], ["mkdir : Permet de créer un répertoire\n", "FRENCH"]] );
+AddTraduction( [["rm : Allows you to delete a directory\n", "ENGLISH"], ["rm : permet de supprimer un répertoire\n", "FRENCH"]] );
+AddTraduction( [["exit : To close the window\n", "ENGLISH"], ["exit : Pour fermer la fenêtre\n", "FRENCH"]] );
+AddTraduction( [["getpid : Informs the process id\n", "ENGLISH"], ["getpid : renseigne l'identifiant du processus\n", "FRENCH"]] );
+AddTraduction( [["connect : Allows you to connect to a specified id\n", "ENGLISH"], ["connect : vous permet de vous connecter à un identifiant spécifié\n", "FRENCH"]] );
+AddTraduction( [["close : End of connection\n", "ENGLISH"], ["close : Fin de connexion\n", "FRENCH"]] );
+AddTraduction( [["rename : Allows you to rename a folder or file\n", "ENGLISH"], ["rename : permet de renommer un dossier ou un fichier\n", "FRENCH"]] );
+
+AddTraduction( [["Close all windows", "ENGLISH"], ["Fermez toutes les fenêtres", "FRENCH"]] );
+AddTraduction( [["Pin to taskbar", "ENGLISH"], ["Épingle à la barre des tâches", "FRENCH"]] );
+AddTraduction( [["Passwords are not the same", "ENGLISH"], ["les mots de passe ne sont pas les mêmes", "FRENCH"]] );
+AddTraduction( [["Age can only be number", "ENGLISH"], ["L'âge ne peut être qu'un nombre", "FRENCH"]] );
+AddTraduction( [["You did not enter the domain", "ENGLISH"], ["Vous n'avez pas entré de domaine", "FRENCH"]] );
+AddTraduction( [["Your domain name is invalid", "ENGLISH"], ["Votre nom de domaine est invalide", "FRENCH"]] );
+AddTraduction( [["Please fill in the information before the", "ENGLISH"], ["Veuillez remplir les informations avant le", "FRENCH"]] );
+AddTraduction( [["you can only insert '@' once", "ENGLISH"], ["vous ne pouvez insérer '@' qu'une seule fois", "FRENCH"]] );
+AddTraduction( [["Your email does not contain '@'", "ENGLISH"], ["Votre email ne contient pas de '@'", "FRENCH"]] );
+AddTraduction( [["Your email address is too short", "ENGLISH"], ["Votre adresse e-mail est trop courte", "FRENCH"]] );
+AddTraduction( [["Your 'help sentence' cannot be the same\n               as the password", "ENGLISH"], ["Votre 'phrase d'aide' ne peut pas être la même\n               que le mot de passe", "FRENCH"]] );
+AddTraduction( [["was not filled in", "ENGLISH"], ["n'a pas été rempli", "FRENCH"]] );
+AddTraduction( [["First Name", "ENGLISH"], ["Prénom", "FRENCH"]] );
+AddTraduction( [["Last Name", "ENGLISH"], ["Nom de famille", "FRENCH"]] );
+AddTraduction( [["E-mail address", "ENGLISH"], ["Adresse e-mail", "FRENCH"]] );
+AddTraduction( [["Age", "ENGLISH"], ["Âge", "FRENCH"]] );
+AddTraduction( [["Password", "ENGLISH"], ["Mot de passe", "FRENCH"]] );
+AddTraduction( [["Password again", "ENGLISH"], ["Mot de passe à nouveau", "FRENCH"]] );
+AddTraduction( [["Help sentence", "ENGLISH"], ["Phrase d'aide", "FRENCH"]] );
+AddTraduction( [["Turn off the machine", "ENGLISH"], ["Éteignez la machine", "FRENCH"]] );
+AddTraduction( [["Register", "ENGLISH"], ["S'inscrire", "FRENCH"]] );
+AddTraduction( [["Passwords are not the same !", "ENGLISH"], ["Les mots de passe ne sont pas les mêmes !", "FRENCH"]] );
+AddTraduction( [["Please fill in your information", "ENGLISH"], ["Merci de renseigner vos informations", "FRENCH"]] );
+AddTraduction( [["Your data is personal and will not be shared with anyone.\nCreate your account without fear", "ENGLISH"], ["Vos données sont personnelles et ne seront partagées avec personne.\nCréez votre compte sans crainte", "FRENCH"]] );
+AddTraduction( [["here you can edit your experience", "ENGLISH"], ["ici vous pouvez modifier votre expérience", "FRENCH"]] );
+AddTraduction( [["Choose a profile picture that defines you!\nAs well as wallpapers to your tastes", "ENGLISH"], ["Choisissez une photo de profil qui vous définit !\nAinsi qu'un fond d'écran à votre goût", "FRENCH"]] );
+AddTraduction( [["Restart the machine", "ENGLISH"], ["Redémarrez la machine", "FRENCH"]] );
+AddTraduction( [["Previous", "ENGLISH"], ["Précédent", "FRENCH"]] );
+AddTraduction( [["Select this one", "ENGLISH"], ["Sélectionnez celui-ci", "FRENCH"]] );
+AddTraduction( [["Finish", "ENGLISH"], ["Finir", "FRENCH"]] );
+
+AddTraduction( [["Data recovery", "ENGLISH"], ["Récupération de données", "FRENCH"]] );
+AddTraduction( [["Inventory retrieval", "ENGLISH"], ["Récupération d'inventaire", "FRENCH"]] );
+AddTraduction( [["Server initialization", "ENGLISH"], ["Initialisation du serveur", "FRENCH"]] );
+AddTraduction( [["Connection to instances", "ENGLISH"], ["Connexion aux instances", "FRENCH"]] );
+AddTraduction( [["Creation of temporary files", "ENGLISH"], ["Création de fichiers temporaires", "FRENCH"]] );
+AddTraduction( [["Component checks", "ENGLISH"], ["Vérifications des composants", "FRENCH"]] );
+AddTraduction( [["Securing overheating", "ENGLISH"], ["Sécurisation de la surchauffe", "FRENCH"]] );
+AddTraduction( [["Desktop initialization", "ENGLISH"], ["Initialisation du bureau", "FRENCH"]] );
+AddTraduction( [["Your machine is being initialized...", "ENGLISH"], ["Votre machine est en cours d'initialisation...", "FRENCH"]] );
+AddTraduction( [["Hi", "ENGLISH"], ["Salut", "FRENCH"]] );
+AddTraduction( [["your machine is loading...", "ENGLISH"], ["votre machine est en cours de chargement...", "FRENCH"]] );
+AddTraduction( [["Your machine is about to shutdown", "ENGLISH"], ["Votre machine est sur le point de s'arrêter", "FRENCH"]] );
+AddTraduction( [["Restarting the machine...", "ENGLISH"], ["Redémarrage de la machine...", "FRENCH"]] );
+AddTraduction( [["Do you like the displayed image ?", "ENGLISH"], ["Aimez-vous l'image affichée ?", "FRENCH"]] );
+AddTraduction( [["The password is incorrect, please try again", "ENGLISH"], ["Le mot de passe est incorrect. Veuillez réessayer", "FRENCH"]] );
+AddTraduction( [["Login to your session..", "ENGLISH"], ["Connection à votre session..", "FRENCH"]] );
+AddTraduction( [["I forgot my password", "ENGLISH"], ["j'ai oublié mon mot de passe", "FRENCH"]] );
+
+
+
 
 // CREATE DATE
 global.DATE = {
@@ -243,7 +361,7 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, global.GAME_VALUE, undefined];
 
 // LOAD
-savegame_clear("USER");
+//savegame_clear("USER");
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 global.PATH = LOAD_LIST[1];
@@ -283,4 +401,4 @@ window_set_fullscreen(global.SETTINGS[4]);
 	}
 
 // LOAD GAME
-room = RMainScene;
+room = Rstart;

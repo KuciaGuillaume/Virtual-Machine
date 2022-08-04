@@ -149,7 +149,7 @@ if (TAG == "REGISTER") {
 	DestroyButtonBox("RESTART MACHINE");
 	DestroyButtonBox("REGISTER");
 	DestroyTextButton("HELP TEXT");
-	AddText(960, 400, AutoLanguage("Perfect") + " " + name + AutoLanguage(", we will now personalize your profile"), Arial25, c_white, "Gp2", "TEXT_P_PROFILE", [["CENTERED"], undefined]);
+	AddText(960, 400, AutoLanguage("Perfect") + " " + name + ", " + AutoLanguage("we will now personalize your profile"), Arial25, c_white, "Gp2", "TEXT_P_PROFILE", [["CENTERED"], undefined]);
 	var load = CreateObjects(960, 540, "Gp2", Oregister_load, "IMAGE", "LOAD_P_PROFILE", [undefined]);
 	load.STATE = 1;
 	ON_REGISTER_UPDATE.LOCK_STATE = false;

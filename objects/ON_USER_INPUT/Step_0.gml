@@ -49,7 +49,7 @@ if ((KeyPressed(vk_escape) || MOVEMENT_TIME >= 60) && MODE == 1) {
 	vague.image_index = image_get - 16;
 	AddText(960, 240, "16:01", Segoe75, c_white, "Gp2", "CURRENT_TIME", [["CENTERED"],["FADE_IN", 0.0000005], undefined]);
 	AddText(960, 320, "dimanche 22 mai", Arial15, c_white, "Gp2", "CURRENT_DATE", [["CENTERED"],["FADE_IN", 0.0000005], undefined]);
-	CreateButtonBox(1737.5, 56.75, Sphoto, OboxText, "Do you like the displayed image ?", "Gp2", "Gp3", Arial10, c_white, "PHOTO", [["CENTERED"], ["POSITIONS", 1737.5, 90], undefined]);
+	CreateButtonBox(1737.5, 56.75, Sphoto, OboxText, AutoLanguage("Do you like the displayed image ?"), "Gp2", "Gp3", Arial10, c_white, "PHOTO", [["CENTERED"], ["POSITIONS", 1737.5, 90], undefined]);
 	CreateObjectSprite(1866, 1041.15, "Gp2", Swifi, OJustGUI, "BUTTON-NO-HAND", "IMAGE_WIFI", [["INFO", "Wifi"], ["FADE_IN", 0.0000003], undefined]);
 	return;
 }
@@ -71,7 +71,7 @@ if (MODE == 1 && KeyPressed(vk_enter)) {
 	if (password.TEXT != global.USER[5]) {
 		DestroyTextButton("Password");
 		DestroyText("FORGOT");
-		AddText(960, 650, "The password is incorrect, please try again", Segoe10, c_white, "Gp2", "WRONG_PASSWORD", [["CENTERED"], ["FADE_IN", 0.000005], undefined]);
+		AddText(960, 650, AutoLanguage("The password is incorrect, please try again"), Segoe10, c_white, "Gp2", "WRONG_PASSWORD", [["CENTERED"], ["FADE_IN", 0.000005], undefined]);
 		CreateButtonBox(960, 700, Sok, OboxText, "OK", "Gp2", "Gp3", Arial10, c_white, "OK", [["CENTERED"], ["FADE_IN", 0.000005], undefined]);
 	} else {
 		DestroyTextButton("Password");
@@ -86,7 +86,7 @@ if (MODE == 1 && KeyPressed(vk_enter)) {
 		MODE = 2;
 		
 		CreateObjectSprite(960, 550, "Gp2", Sstart_load, OJustGUI, "IMAGE", "SYSTEM_LOAD", [["FADE_IN", 0.0000006], undefined]);
-		AddText(960, 600, "Login to your session..", Arial10, c_white, "Gp2", "CONNECTION", [["CENTERED"], ["FADE_IN", 0.0000006], undefined] )
+		AddText(960, 600, AutoLanguage("Login to your session.."), Arial10, c_white, "Gp2", "CONNECTION", [["CENTERED"], ["FADE_IN", 0.0000006], undefined] )
 	}
 }
 
@@ -127,8 +127,8 @@ if (SWITCH_TO_CONNECT && TIME > 1) {
 	}
 	I *= 1.2;
 	if (TIME_PASS > 0.2) {
-		AddTextLink(960, 670, "I forgot my password", Arial10, c_white, #2980B9, "Gp2", "FORGOT", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
-		CreateTextButton(960, 640, Senterpassword, "Password", "Gp1", "Gp2", c_white, Arial10, 20, "Password", [["FADE_IN", 0.00001], ["SECRET"], undefined]);
+		AddTextLink(960, 670, AutoLanguage("I forgot my password"), Arial10, c_white, #2980B9, "Gp2", "FORGOT", [["FADE_IN", 0.000001], ["CENTERED"], undefined]);
+		CreateTextButton(960, 640, Senterpassword, AutoLanguage("Password"), "Gp1", "Gp2", c_white, Arial10, 20, "Password", [["FADE_IN", 0.00001], ["SECRET"], undefined]);
 		var type = GetWrite("Password");
 		type.ON_WRITE = true;
 		CreateObjectSprite(960, 450, "Gp1", Sicon_turing, OJustGUI, "IMAGE", "ICON_TURING", [["FADE_IN", 0.00001], undefined]);

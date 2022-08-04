@@ -2461,6 +2461,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Segoe75",
-  "tags": [],
   "resourceType": "GMFont",
 }

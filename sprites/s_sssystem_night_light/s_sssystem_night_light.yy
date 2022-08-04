@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"88e912ee-97be-4c15-8986-e0f48c208c82","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"88e912ee-97be-4c15-8986-e0f48c208c82","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},"LayerId":{"name":"33167e02-9b20-4b1f-a3fc-aaa0bcb20589","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_SSsystem_Night_light","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},"resourceVersion":"1.0","name":"88e912ee-97be-4c15-8986-e0f48c208c82","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"88e912ee-97be-4c15-8986-e0f48c208c82","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_SSsystem_Night_light","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"07f99cae-38a5-43a0-9a38-fefc95303b3d","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"88e912ee-97be-4c15-8986-e0f48c208c82","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 10,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_SSsystem_Night_light","path":"sprites/S_SSsystem_Night_light/S_SSsystem_Night_light.yy",},
     "resourceVersion": "1.4",
     "name": "S_SSsystem_Night_light",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"33167e02-9b20-4b1f-a3fc-aaa0bcb20589","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"33167e02-9b20-4b1f-a3fc-aaa0bcb20589","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_Night_light",
-  "tags": [],
   "resourceType": "GMSprite",
 }

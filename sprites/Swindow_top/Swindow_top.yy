@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"f6da71da-7ee2-44df-a95a-c722d2109af8","path":"sprites/Swindow_top/Swindow_top.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"f6da71da-7ee2-44df-a95a-c722d2109af8","path":"sprites/Swindow_top/Swindow_top.yy",},"LayerId":{"name":"007ed9f1-2e8c-4ed5-a62d-722fae13446b","path":"sprites/Swindow_top/Swindow_top.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Swindow_top","path":"sprites/Swindow_top/Swindow_top.yy",},"resourceVersion":"1.0","name":"f6da71da-7ee2-44df-a95a-c722d2109af8","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"f6da71da-7ee2-44df-a95a-c722d2109af8","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"Swindow_top","path":"sprites/Swindow_top/Swindow_top.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"4834465d-7201-41c2-995b-cd2698e8e081","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f6da71da-7ee2-44df-a95a-c722d2109af8","path":"sprites/Swindow_top/Swindow_top.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 24,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"Swindow_top","path":"sprites/Swindow_top/Swindow_top.yy",},
     "resourceVersion": "1.4",
     "name": "Swindow_top",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"007ed9f1-2e8c-4ed5-a62d-722fae13446b","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"007ed9f1-2e8c-4ed5-a62d-722fae13446b","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Swindow_top",
-  "tags": [],
   "resourceType": "GMSprite",
 }

@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"e37bacc3-2ae4-4e4a-827c-dfcf7bf3129d","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"e37bacc3-2ae4-4e4a-827c-dfcf7bf3129d","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},"LayerId":{"name":"df54ada3-92b0-4495-9a93-f9ac0b85a7bc","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_Explorer_folder","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},"resourceVersion":"1.0","name":"e37bacc3-2ae4-4e4a-827c-dfcf7bf3129d","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"e37bacc3-2ae4-4e4a-827c-dfcf7bf3129d","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_Explorer_folder","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"249b8c7c-286d-427e-9236-3ba0a80373c9","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e37bacc3-2ae4-4e4a-827c-dfcf7bf3129d","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 10,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_Explorer_folder","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},
     "resourceVersion": "1.4",
     "name": "S_Explorer_folder",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"df54ada3-92b0-4495-9a93-f9ac0b85a7bc","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"df54ada3-92b0-4495-9a93-f9ac0b85a7bc","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_Explorer_folder",
-  "tags": [],
   "resourceType": "GMSprite",
 }

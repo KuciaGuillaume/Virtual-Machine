@@ -11,22 +11,25 @@ MODE = global.RstartMode;
 LOADING_TEXT = undefined;
 REGISTER = false;
 
-LOADS_TEXT = ["Data recovery", "Inventory retrieval", "Server initialization", "Connection to instances", "Creation of temporary files", "Component checks", "Securing overheating", "Desktop initialization", undefined];
+LOADS_TEXT = [AutoLanguage("Data recovery"), AutoLanguage("Inventory retrieval"),
+AutoLanguage("Server initialization"), AutoLanguage("Connection to instances"),
+AutoLanguage("Creation of temporary files"), AutoLanguage("Component checks"),
+AutoLanguage("Securing overheating"), AutoLanguage("Desktop initialization"), undefined];
 
 // SELECT MODE TYPE
 
 if (MODE == "START") {
 	if (global.USER[0] == undefined) {
-		LOADING_TEXT = "Your machine is being initialized...";
+		LOADING_TEXT = AutoLanguage("Your machine is being initialized...");
 		REGISTER = false;
 	} else {
-		LOADING_TEXT = "Hi " +  global.USER[1] + ", your machine is loading...";
+		LOADING_TEXT = AutoLanguage("Hi") + " " +  global.USER[1] + ", " + AutoLanguage("your machine is loading...");
 		TIMER /= 4;
 		REGISTER = true;
 	}
 }
 if (MODE == "END")
-	LOADING_TEXT = "Your machine is about to shutdown";
+	LOADING_TEXT = AutoLanguage("Your machine is about to shutdown");
 if (MODE == "RESTART")
-	LOADING_TEXT = "Restarting the machine...";
+	LOADING_TEXT = AutoLanguage("Restarting the machine...");
 

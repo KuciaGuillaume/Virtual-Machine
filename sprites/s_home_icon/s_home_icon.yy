@@ -24,15 +24,10 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"9405f4b6-68fd-4c8c-844d-166f057e5658","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"9405f4b6-68fd-4c8c-844d-166f057e5658","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"LayerId":{"name":"8a4a7dab-999a-4d35-b2ec-66f3f7e4c0c5","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_Home_Icon","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"resourceVersion":"1.0","name":"9405f4b6-68fd-4c8c-844d-166f057e5658","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"3343cea9-3486-42d0-b06b-ab107b4b979b","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"3343cea9-3486-42d0-b06b-ab107b4b979b","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"LayerId":{"name":"8a4a7dab-999a-4d35-b2ec-66f3f7e4c0c5","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_Home_Icon","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"resourceVersion":"1.0","name":"3343cea9-3486-42d0-b06b-ab107b4b979b","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"9405f4b6-68fd-4c8c-844d-166f057e5658","resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"3343cea9-3486-42d0-b06b-ab107b4b979b","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_Home_Icon","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -46,7 +41,7 @@
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"3c6b7c73-f87d-465d-9ca9-5c953c9a7708","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"9405f4b6-68fd-4c8c-844d-166f057e5658","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
             {"id":"041801aa-c181-44b0-9efa-b24c7df98146","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3343cea9-3486-42d0-b06b-ab107b4b979b","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -62,14 +57,12 @@
     "yorigin": 16,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_Home_Icon","path":"sprites/S_Home_Icon/S_Home_Icon.yy",},
     "resourceVersion": "1.4",
     "name": "S_Home_Icon",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"8a4a7dab-999a-4d35-b2ec-66f3f7e4c0c5","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"8a4a7dab-999a-4d35-b2ec-66f3f7e4c0c5","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -78,6 +71,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_Home_Icon",
-  "tags": [],
   "resourceType": "GMSprite",
 }

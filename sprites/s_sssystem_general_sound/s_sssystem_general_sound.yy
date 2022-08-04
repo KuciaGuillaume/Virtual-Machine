@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"185416c0-b826-46ec-9754-a4832356e680","path":"sprites/S_SSsystem_General_sound/S_SSsystem_General_sound.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"185416c0-b826-46ec-9754-a4832356e680","path":"sprites/S_SSsystem_General_sound/S_SSsystem_General_sound.yy",},"LayerId":{"name":"636e8683-4a46-49fb-86dc-933969d9ae05","path":"sprites/S_SSsystem_General_sound/S_SSsystem_General_sound.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_SSsystem_General_sound","path":"sprites/S_SSsystem_General_sound/S_SSsystem_General_sound.yy",},"resourceVersion":"1.0","name":"185416c0-b826-46ec-9754-a4832356e680","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"185416c0-b826-46ec-9754-a4832356e680","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_SSsystem_General_sound","path":"sprites/S_SSsystem_General_sound/S_SSsystem_General_sound.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"1ed05bbe-a0e2-43f3-88d7-62f47e98c498","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"185416c0-b826-46ec-9754-a4832356e680","path":"sprites/S_SSsystem_General_sound/S_SSsystem_General_sound.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 10,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_SSsystem_General_sound","path":"sprites/S_SSsystem_General_sound/S_SSsystem_General_sound.yy",},
     "resourceVersion": "1.4",
     "name": "S_SSsystem_General_sound",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"636e8683-4a46-49fb-86dc-933969d9ae05","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"636e8683-4a46-49fb-86dc-933969d9ae05","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_General_sound",
-  "tags": [],
   "resourceType": "GMSprite",
 }

@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"5c13829a-2248-4911-9efd-8d2bfcd162c7","path":"sprites/S_Settings_Network_Ethernet/S_Settings_Network_Ethernet.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"5c13829a-2248-4911-9efd-8d2bfcd162c7","path":"sprites/S_Settings_Network_Ethernet/S_Settings_Network_Ethernet.yy",},"LayerId":{"name":"c9a36373-6167-4c02-9a75-908358d56bdc","path":"sprites/S_Settings_Network_Ethernet/S_Settings_Network_Ethernet.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_Settings_Network_Ethernet","path":"sprites/S_Settings_Network_Ethernet/S_Settings_Network_Ethernet.yy",},"resourceVersion":"1.0","name":"5c13829a-2248-4911-9efd-8d2bfcd162c7","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"5c13829a-2248-4911-9efd-8d2bfcd162c7","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_Settings_Network_Ethernet","path":"sprites/S_Settings_Network_Ethernet/S_Settings_Network_Ethernet.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"af800df4-e03c-4fd5-ba64-da399f2af263","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"5c13829a-2248-4911-9efd-8d2bfcd162c7","path":"sprites/S_Settings_Network_Ethernet/S_Settings_Network_Ethernet.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_Settings_Network_Ethernet","path":"sprites/S_Settings_Network_Ethernet/S_Settings_Network_Ethernet.yy",},
     "resourceVersion": "1.4",
     "name": "S_Settings_Network_Ethernet",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c9a36373-6167-4c02-9a75-908358d56bdc","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c9a36373-6167-4c02-9a75-908358d56bdc","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_Settings_Network_Ethernet",
-  "tags": [],
   "resourceType": "GMSprite",
 }

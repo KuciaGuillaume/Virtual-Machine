@@ -63,8 +63,8 @@ function terminal_update(id) {
 		}
 		if (id.CONNECTION) {
 			id.CONNECTION_TIME += delta_time / 1000000;
-			if (CONNECTION_TIME >= 1) { id.write_text.TEXT = ["Connection.", undefined]; } if (CONNECTION_TIME >= 3) { id.write_text.TEXT = ["Connection...", undefined]; }
-			if (CONNECTION_TIME >= 2) { id.write_text.TEXT = ["Connection..", undefined]; } if (CONNECTION_TIME >= 4 || CONNECTION_TIME < 1) { id.write_text.TEXT = ["Connection", undefined]; }
+			if (CONNECTION_TIME >= 1) { id.write_text.TEXT = [AutoLanguage("Connection") + ".", undefined]; } if (CONNECTION_TIME >= 3) { id.write_text.TEXT = [AutoLanguage("Connection") + "...", undefined]; }
+			if (CONNECTION_TIME >= 2) { id.write_text.TEXT = [AutoLanguage("Connection") + "..", undefined]; } if (CONNECTION_TIME >= 4 || CONNECTION_TIME < 1) { id.write_text.TEXT = [AutoLanguage("Connection"), undefined]; }
 			id.write_text.TEXT_INDEX = 1;
 			id.write_text.TEXT_INDEX_MAX = 1;
 			if (id.CONNECTION_TIME >= id.SAVING_TIMER) {
@@ -78,11 +78,11 @@ function terminal_update(id) {
 				}
 				if (find && (!id.CATCH && !get.CATCH) && !get.CONNECT) {
 					if (id.CONNECT_AT_IMAGE == undefined) {
-						addtolist(AddText(x, y, "CONNECT ID: " + string(id.CONNECT_ID), Arial10, c_black, id.WINDOW.LAYERS[1], id.TAG + "CONNECT_AT_TEXT", [["CENTERED"], undefined]), id.WINDOW.list_objects);
-						addtolist(CreateObjectSprite(x, y, id.WINDOW.LAYERS[0], S_connect_at, OJustGUI, "BUTTON-NO-HAND", id.TAG + "CONNECT_AT_IMAGE" , [["INFO", "This means that your terminal\nis connected to another process,\nthey are now possible for\nyou to control this process\nremotely"], undefined]), id.WINDOW.list_objects);
+						addtolist(AddText(x, y, AutoLanguage("CONNECT ID") + ": " + string(id.CONNECT_ID), Arial10, c_black, id.WINDOW.LAYERS[1], id.TAG + "CONNECT_AT_TEXT", [["CENTERED"], undefined]), id.WINDOW.list_objects);
+						addtolist(CreateObjectSprite(x, y, id.WINDOW.LAYERS[0], S_connect_at, OJustGUI, "BUTTON-NO-HAND", id.TAG + "CONNECT_AT_IMAGE" , [["INFO", AutoLanguage("This means that your terminal\nis connected to another process,\nthey are now possible for\nyou to control this process\nremotely")], undefined]), id.WINDOW.list_objects);
 						if (GetObject(get.TAG + "CONNECT_TO_YOU") == undefined) {
-							addtolist(CreateObjectSprite(get.x + 300, get.y + 40, get.WINDOW.LAYERS[0], S_connect_to_you, OJustGUI, "BUTTON-NO-HAND", get.TAG + "CONNECT_TO_YOU" , [["INFO", "This means that a process is connecting to the terminal\n"], undefined]), get.WINDOW.list_objects);
-							addtolist(AddText(get.x + 300, get.y + 40, "A process is connecting to you", Segoe8, c_white, get.WINDOW.LAYERS[1], get.TAG + "CONNECT_TO_YOU_TEXT", [["FADE_IN", 0.0001], ["CENTERED"], undefined]), get.WINDOW.list_objects);
+							addtolist(CreateObjectSprite(get.x + 300, get.y + 40, get.WINDOW.LAYERS[0], S_connect_to_you, OJustGUI, "BUTTON-NO-HAND", get.TAG + "CONNECT_TO_YOU" , [["INFO", AutoLanguage("This means that a process is connecting to the terminal\n")], undefined]), get.WINDOW.list_objects);
+							addtolist(AddText(get.x + 300, get.y + 40, AutoLanguage("A process is connecting to you"), Segoe8, c_white, get.WINDOW.LAYERS[1], get.TAG + "CONNECT_TO_YOU_TEXT", [["FADE_IN", 0.0001], ["CENTERED"], undefined]), get.WINDOW.list_objects);
 						}
 							
 					}
@@ -91,17 +91,17 @@ function terminal_update(id) {
 					id.CONNECTION_TIME = 0;
 					id.write_text.TEXT = ["", undefined];
 					get.CATCH = true;
-					display_result(id.system_write, "Connect status : true\nConnect at " + string(id.CONNECT_ID));
+					display_result(id.system_write, AutoLanguage("Connect status") + " : " + AutoLanguage("true") + "\n" + AutoLanguage("Connect at") + " " + string(id.CONNECT_ID));
 				} else {
 					id.CONNECT = false;
 					id.CONNECTION = false;
 					id.CONNECTION_TIME = 0;
 					id.write_text.TEXT = ["", undefined];
 					if (id.CATCH || (get != undefined && instance_exists(get) && get.object_index == OJustGUITerminal && get.CATCH))
-						 { display_result(id.system_write, "Connect status : false\n" + "A process is connected to your terminal\nor the process you are trying to reach is already connected to another process.\nYou can only connect two processes together"); return; }
+						 { display_result(id.system_write, AutoLanguage("Connect status") + " : " + AutoLanguage("false") + "\n" + AutoLanguage("A process is connected to your terminal\nor the process you are trying to reach is already connected to another process.\nYou can only connect two processes together")); return; }
 					if (get != undefined && instance_exists(get) && get.object_index == OJustGUITerminal && get.CONNECT)
-						{ display_result(id.system_write, "Connect status : false\n" + "The target is already connected to another process."); return; }
-					display_result(id.system_write, "Connect status : false\n" + string(id.CONNECT_ID) + " not found.");
+						{ display_result(id.system_write, AutoLanguage("Connect status") + " : " + AutoLanguage("false") + "\n" + AutoLanguage("The target is already connected to another process") + "."); return; }
+					display_result(id.system_write, AutoLanguage("Connect status") + " : "  + AutoLanguage("false") + "\n" + string(id.CONNECT_ID) + " " + AutoLanguage("not found") + ".");
 				}
 			}
 		}

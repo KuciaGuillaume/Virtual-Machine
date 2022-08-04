@@ -2,10 +2,10 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/MainScene/Objects/Objects/Terminal/Scripts.yy",
+    "name": "Divers",
+    "path": "folders/Global/Scripts/Divers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "Terminal_functions",
+  "name": "AutoLanguageSAve",
   "resourceType": "GMScript",
 }

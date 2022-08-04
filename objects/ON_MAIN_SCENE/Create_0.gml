@@ -19,14 +19,25 @@ ICONS = [undefined];
 
 PATH = global.PATH;
 // FOLDERS
+
 if (global.FOLDERS != undefined) {
 	NAME_FOLDERS = global.FOLDERS;
 	FOLDERS = [undefined];
+	if (PATH != undefined) {
+		for (var i = 1; PATH[i] != undefined; i++) {
+			var nf = PATH[i][0][0][0];
+			
+			if (nf == "Desk" || nf == "Bureau" )
+				PATH[i][0][0][0] = AutoLanguageSave(PATH[i][0][0][0], 3);
+			if (nf == "Downloads" || nf == "Téléchargements" )
+				PATH[i][0][0][0] = AutoLanguageSave(PATH[i][0][0][0], 3);
+		}
+	}
 	for (var i = 0; NAME_FOLDERS[i] != undefined; i++) {
 		var folder = AddFolders(NAME_FOLDERS[i], "START");
 		FOLDERS[i] = folder;
 		FOLDERS[i + 1] = undefined;
-		for (var e = 1; PATH[1][e] != undefined && PATH[1][e][0][0][0] != NAME_FOLDERS[i][0]; ) { e++;}
+		for (var e = 1; PATH[1][e] != undefined && PATH[1][e][0][0][0] != NAME_FOLDERS[i][0]; ) {e++;}
 		if (PATH[1][e] != undefined)
 			PATH[1][e][0][0][2] = folder;
 	}
@@ -44,7 +55,7 @@ NET_MAX = 1;
 
 
 
-if (PATH == undefined || PATH == undefined) {
+if (PATH == undefined) {
 	PATH = [[["~", "ROOT"]], undefined];
 	var get = terminal_mkdir(["mkdir", AutoLanguage("Desk"),  AutoLanguage("Documents"), AutoLanguage("Downloads"), undefined], undefined, PATH, undefined, "/~", undefined, "xx."); PATH = get[0];
 }

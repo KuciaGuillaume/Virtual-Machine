@@ -24,18 +24,11 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"4c508b81-97eb-44d1-8973-e06e81544e87","path":"sprites/SiconBox/SiconBox.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4c508b81-97eb-44d1-8973-e06e81544e87","path":"sprites/SiconBox/SiconBox.yy",},"LayerId":{"name":"4233ecd8-0393-401e-ab15-6fafec29e363","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"SiconBox","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","name":"4c508b81-97eb-44d1-8973-e06e81544e87","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"44fa8811-cdcc-4482-90e1-649947e381f6","path":"sprites/SiconBox/SiconBox.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"44fa8811-cdcc-4482-90e1-649947e381f6","path":"sprites/SiconBox/SiconBox.yy",},"LayerId":{"name":"4233ecd8-0393-401e-ab15-6fafec29e363","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"SiconBox","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","name":"44fa8811-cdcc-4482-90e1-649947e381f6","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"b6768a68-faba-42f4-8013-ca98f2f6cd35","path":"sprites/SiconBox/SiconBox.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"b6768a68-faba-42f4-8013-ca98f2f6cd35","path":"sprites/SiconBox/SiconBox.yy",},"LayerId":{"name":"4233ecd8-0393-401e-ab15-6fafec29e363","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"SiconBox","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","name":"b6768a68-faba-42f4-8013-ca98f2f6cd35","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"4c508b81-97eb-44d1-8973-e06e81544e87","resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"44fa8811-cdcc-4482-90e1-649947e381f6","resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"b6768a68-faba-42f4-8013-ca98f2f6cd35","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"SiconBox","path":"sprites/SiconBox/SiconBox.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -43,14 +36,14 @@
     "autoRecord": true,
     "volume": 1.0,
     "length": 3.0,
-    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
-    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
+    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MessageEventKeyframe",},
+    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"5461ca24-7330-40b4-b226-60dbdb488896","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4c508b81-97eb-44d1-8973-e06e81544e87","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"bcdd1d75-5c77-4326-aa28-33b0a4a96b72","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"44fa8811-cdcc-4482-90e1-649947e381f6","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"6446e7f5-9483-429c-8984-036dd12bd5be","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b6768a68-faba-42f4-8013-ca98f2f6cd35","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+            {"id":"5461ca24-7330-40b4-b226-60dbdb488896","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4c508b81-97eb-44d1-8973-e06e81544e87","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"bcdd1d75-5c77-4326-aa28-33b0a4a96b72","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"44fa8811-cdcc-4482-90e1-649947e381f6","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"6446e7f5-9483-429c-8984-036dd12bd5be","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b6768a68-faba-42f4-8013-ca98f2f6cd35","path":"sprites/SiconBox/SiconBox.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -66,14 +59,12 @@
     "yorigin": 68,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"SiconBox","path":"sprites/SiconBox/SiconBox.yy",},
     "resourceVersion": "1.4",
     "name": "SiconBox",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"4233ecd8-0393-401e-ab15-6fafec29e363","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"4233ecd8-0393-401e-ab15-6fafec29e363","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -82,6 +73,5 @@
   },
   "resourceVersion": "1.0",
   "name": "SiconBox",
-  "tags": [],
   "resourceType": "GMSprite",
 }

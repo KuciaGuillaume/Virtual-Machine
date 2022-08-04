@@ -408,6 +408,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Segoe10",
-  "tags": [],
   "resourceType": "GMFont",
 }

@@ -2409,6 +2409,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Segoe55",
-  "tags": [],
   "resourceType": "GMFont",
 }

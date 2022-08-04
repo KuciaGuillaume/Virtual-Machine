@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"9d704030-4731-4bcd-9ff8-ab06dd2a463a","path":"sprites/S_SSsystem_Personalize_Select_hover/S_SSsystem_Personalize_Select_hover.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"9d704030-4731-4bcd-9ff8-ab06dd2a463a","path":"sprites/S_SSsystem_Personalize_Select_hover/S_SSsystem_Personalize_Select_hover.yy",},"LayerId":{"name":"d0a475e4-9a1d-452a-8f51-a14aa42a4be1","path":"sprites/S_SSsystem_Personalize_Select_hover/S_SSsystem_Personalize_Select_hover.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_SSsystem_Personalize_Select_hover","path":"sprites/S_SSsystem_Personalize_Select_hover/S_SSsystem_Personalize_Select_hover.yy",},"resourceVersion":"1.0","name":"9d704030-4731-4bcd-9ff8-ab06dd2a463a","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"9d704030-4731-4bcd-9ff8-ab06dd2a463a","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_SSsystem_Personalize_Select_hover","path":"sprites/S_SSsystem_Personalize_Select_hover/S_SSsystem_Personalize_Select_hover.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"00227442-4600-436c-8b04-7201287472d7","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"9d704030-4731-4bcd-9ff8-ab06dd2a463a","path":"sprites/S_SSsystem_Personalize_Select_hover/S_SSsystem_Personalize_Select_hover.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_SSsystem_Personalize_Select_hover","path":"sprites/S_SSsystem_Personalize_Select_hover/S_SSsystem_Personalize_Select_hover.yy",},
     "resourceVersion": "1.4",
     "name": "S_SSsystem_Personalize_Select_hover",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d0a475e4-9a1d-452a-8f51-a14aa42a4be1","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d0a475e4-9a1d-452a-8f51-a14aa42a4be1","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_Personalize_Select_hover",
-  "tags": [],
   "resourceType": "GMSprite",
 }

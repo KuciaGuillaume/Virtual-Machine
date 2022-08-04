@@ -277,6 +277,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Arial10",
-  "tags": [],
   "resourceType": "GMFont",
 }

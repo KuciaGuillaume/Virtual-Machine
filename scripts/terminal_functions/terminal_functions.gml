@@ -80,7 +80,7 @@ function terminal_ls(ARRAY, ID_RESULT, PWD) {
 		if (PWD[1] != undefined && ls[1] == undefined)
 			display_result(ID_RESULT, "|->" + COMMAND);
 		if (PWD[1] == undefined || (PWD[1][0][0][0] == ".." && PWD[2] == undefined)) {
-			display_result(ID_RESULT, "Folder is empty");
+			display_result(ID_RESULT, AutoLanguage("Folder is empty"));
 			return find;
 		}
 		for (var i = 1; PWD[i] != undefined; i++) {
@@ -94,7 +94,7 @@ function terminal_ls(ARRAY, ID_RESULT, PWD) {
 						if (is_array(PWD[f]) && PWD[f][0][0][0] == ls[e]) { break; }
 					}
 					if (PWD[f] == undefined) {
-						display_result(ID_RESULT, "ls: folder [ " + ls[e] + " ] not found.");
+						display_result(ID_RESULT, "ls: " + AutoLanguage("folder") + " [ " + ls[e] + " ] " + AutoLanguage("not found") + ".");
 						return find;
 					} else {
 						terminal_ls(["ls", undefined], ID_RESULT,  PWD[f]);
@@ -124,7 +124,7 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 		if (cd[1] == undefined) {
 			if (PWD[0][0][0] == "~") {
 				if (ID_RESULT != undefined)
-					display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "cd: You are already at the root.");
+					display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "cd: " + AutoLanguage("You are already at the root") + ".");
 				return [PWD, true, PATH];
 			}
 			for (; PWD[0][0][0] != "~"; ) {
@@ -157,7 +157,7 @@ function terminal_cd(ARRAY, ID_RESULT, PWD, PATH) {
 				return [PWD, true, PATH];
 			}
 		if (ID_RESULT != undefined)
-			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "cd: " + cd[1] + " was not found.");
+			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "cd: " + cd[1] + " " + AutoLanguage("was not found") + ".");
 		return [PWD, true, PATH];
 	}
 	return [PWD, false, PATH];
@@ -168,7 +168,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT, PERMISSION
 	var folder = undefined;
 	if (mkdir[0] == "mkdir" && mkdir[1] == undefined) {
 		if (ID_RESULT != undefined)
-			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "mkdir: No arguments.");
+			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "mkdir: " + AutoLanguage("No arguments") + ".");
 		return [PWD, true, folder];
 	} else if (mkdir[0] == "mkdir") {
 		if (ID_RESULT != undefined)
@@ -178,7 +178,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT, PERMISSION
 			for (var e = 1; PWD[e] != undefined; e++) {
 				if (PWD[e] != undefined && is_array(PWD[e]) && PWD[e][0][0] == mkdir[i]) {
 					if (ID_RESULT != undefined)
-						display_result(ID_RESULT, mkdir[i] + ": Folder already exists.");
+						display_result(ID_RESULT, mkdir[i] + ": " + AutoLanguage("Folder already exists") + ".");
 					exists_already = true;
 				}
 			}
@@ -191,7 +191,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT, PERMISSION
 			if (current_day < 10) var day = "0" + string(current_day); else var day = string(current_day);
 			if (current_month < 10) var month = "0" + string(current_month); else var month = string(current_month);
 			var DateOfCreation = day + "/" + month + "/" + string(current_year);
-			if (ON_MAIN_SCENE.PATH[0][0][0] == "Desk") {
+			if (ON_MAIN_SCENE.PATH[0][0][0] == AutoLanguage("Desk")) {
 				var folder = AddFolders(mkdir[i], undefined);
 				ON_MAIN_SCENE.PATH[e] = [[[mkdir[i], "FOLDER", folder, DateOfCreation, PERMISSION]], [[["..", "PREVIOUS"], "*", undefined]],undefined];
 			} else
@@ -200,7 +200,7 @@ function terminal_mkdir(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT, PERMISSION
 			ON_MAIN_SCENE.PATH = save;
 			if (ID_RESULT != undefined) {
 				terminal_saving(PARENT);
-				display_result(ID_RESULT, "[ " + mkdir[i] + " ] was created.");
+				display_result(ID_RESULT, "[ " + mkdir[i] + " ] " + AutoLanguage("was created") + ".");
 			}
 		}
 		return [PWD, true, folder];
@@ -212,7 +212,7 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 	var rm = ARRAY;
 	if (rm[0] == "rm" && rm[1] == undefined) {
 		if (ID_RESULT != undefined)
-			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "rm: No arguments.");
+			display_result(ID_RESULT, "|-> " + COMMAND + "\n" + "rm: " + AutoLanguage("No arguments") + ".");
 		return [PWD, true];
 	} else if (rm[0] == "rm") {
 		if (ID_RESULT != undefined)
@@ -226,10 +226,10 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 					var pwd = ON_MAIN_SCENE.PATH[e];
 					if (pwd[0][0][0] != ".." && string_char_at(pwd[0][0][4], 3) == ".") {
 						if (ID_RESULT != undefined)
-							display_result(ID_RESULT,  "[" + rm[i] + "] You don't have permission to rename it.");
+							display_result(ID_RESULT,  "[" + rm[i] + "] " + AutoLanguage("You don't have permission to rename it") + ".");
 						return [pwd, true];
 					}
-					if (ON_MAIN_SCENE.PATH[0][0][0] == "Desk") {
+					if (ON_MAIN_SCENE.PATH[0][0][0] == AutoLanguage("Desk")) {
 						ON_MAIN_SCENE.FOLDERS = remove_findlist(ON_MAIN_SCENE.PATH[e][0][0][2], ON_MAIN_SCENE.FOLDERS);
 						ON_MAIN_SCENE.NAME_FOLDERS = remove_findlist_index(ON_MAIN_SCENE.PATH[e][0][0][0], ON_MAIN_SCENE.NAME_FOLDERS, 0);
 						var folder = ON_MAIN_SCENE.PATH[e][0][0][2];
@@ -242,7 +242,7 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 					if (PARENT != undefined)
 						terminal_saving(PARENT);
 					if (ID_RESULT != undefined)
-						display_result(ID_RESULT, "[ " + rm[i] + " ] was deleted.");
+						display_result(ID_RESULT, "[ " + rm[i] + " ] " + AutoLanguage("was deleted") + ".");
 					find = true;
 					break;
 				}
@@ -250,7 +250,7 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 		}
 		if (!find) {
 			if (ID_RESULT != undefined)
-				display_result(ID_RESULT, "rm: " + rm[1] + " was not found.");
+				display_result(ID_RESULT, "rm: " + rm[1] + " " + AutoLanguage("was not found") + ".");
 		}
 		var copy = PATH;
 		ON_MAIN_SCENE.PATH = save;
@@ -260,12 +260,12 @@ function terminal_rm(ARRAY, ID_RESULT, PWD, COMMAND, PATH, PARENT) {
 }
 
 function terminal_history(PARENT) {
-	display_result(PARENT.system_write, "Here is the list of your keyboard commands: ");
+	display_result(PARENT.system_write, AutoLanguage("Here is the list of your keyboard commands") + ": ");
 	for (var e = 0; PARENT.COMMAND_HISTORY[e] != undefined; e++) {
 		display_result(PARENT.system_write, "- " + PARENT.COMMAND_HISTORY[e]);
 	}
 	if (e == 0)
-		display_result(PARENT.system_write, "Your keyboard command history is empty !");
+		display_result(PARENT.system_write, AutoLanguage("Your keyboard command history is empty !"));
 }
 
 
@@ -297,20 +297,20 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		DestroyText(send.TAG + "CONNECT_AT_TEXT"); send.CONNECT_AT_TEXT = undefined;
 		DestroyObject(id.TAG + "CONNECT_TO_YOU"); id.CONNECT_TO_YOU = undefined;
 		DestroyText(id.TAG + "CONNECT_TO_YOU_TEXT"); id.CONNECT_TO_YOU_TEXT = undefined;
-		display_result(send.system_write, "End of connection.");
+		display_result(send.system_write, AutoLanguage("End of connection") + ".");
 		return;
 	}
 	if (ARRAY[0] == "close" && ARRAY[1] == undefined) {
 		command_find = true;
 		if (send.CONNECT == false)
-			display_result(send.system_write, "You are not connected to anything.");
+			display_result(send.system_write, AutoLanguage("You are not connected to anything") + ".");
 		else {
 			DestroyObject(send.TAG + "CONNECT_AT_IMAGE"); send.CONNECT_AT_IMAGE = undefined;
 			DestroyText(send.TAG + "CONNECT_AT_TEXT"); send.CONNECT_AT_TEXT = undefined;
 			DestroyObject(id.TAG + "CONNECT_TO_YOU"); id.CONNECT_TO_YOU = undefined;
 			DestroyText(id.TAG + "CONNECT_TO_YOU_TEXT"); id.CONNECT_TO_YOU_TEXT = undefined;
 			send.CONNECT = false;
-			display_result(send.system_write, "End of connection.");
+			display_result(send.system_write, AutoLanguage("End of connection") + ".");
 			var ID = GetObject(send.CONNECT_ID.TAG);
 			id.CATCH = false;
 		}
@@ -328,7 +328,7 @@ function terminal_execute(id, ARRAY, COMMAND, send) {
 		var rename = terminal_rename(ARRAY, id.system_write, id.PWD, id);
 		if (rename == true || rename == "NO_PERMISSION") { command_find = true; }
 		if (!command_find)
-			display_result(id.system_write, COMMAND + ": command not found.");
+			display_result(id.system_write, COMMAND + ": " + AutoLanguage("command not found") + ".");
 	} else
 		display_result(id.system_write, id.pwd.TEXT);
 }
@@ -342,7 +342,7 @@ function array_size(array) {
 function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
 	if (ARRAY[0] == "rename" && array_size(ARRAY) < 3) {
 		if (ID_RESULT != undefined)
-			display_result(ID_RESULT, "Rename: too few arguments");
+			display_result(ID_RESULT, "Rename: " + AutoLanguage("too few arguments"));
 		return true;
 	}
 	if (ARRAY[0] != "rename")
@@ -351,14 +351,14 @@ function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
 		if (is_array(PWD[i]) && PWD[i][0][0][0] == ARRAY[1]) {
 			if (string_char_at(PWD[i][0][0][4], 3) == ".") {
 				if (ID_RESULT != undefined)
-					display_result(ID_RESULT,  "[" + ARRAY[1] + "] You don't have permission to rename it.");
+					display_result(ID_RESULT,  "[" + ARRAY[1] + "] " + AutoLanguage("You don't have permission to rename it") + ".");
 				return "NO_PERMISSION";
 			}
 			PWD[i][0][0][0] = ARRAY[2];
 			if (ID_RESULT != undefined)
-				display_result(ID_RESULT,  "[" + ARRAY[1] + "] has been successfully renamed to [" + ARRAY[2] + "]");
+				display_result(ID_RESULT,  "[" + ARRAY[1] + "] " + AutoLanguage("has been successfully renamed to") + " [" + ARRAY[2] + "]");
 			for (var e = 0; ON_MAIN_SCENE.FOLDERS[e] != undefined; e++) {
-				if (ON_MAIN_SCENE.NAME_FOLDERS[e][0] == ARRAY[1] && PWD[0][0][0] == "Desk") {
+				if (ON_MAIN_SCENE.NAME_FOLDERS[e][0] == ARRAY[1] && PWD[0][0][0] == AutoLanguage("Desk")) {
 					var folder = ON_MAIN_SCENE.FOLDERS[e];
 					if (folder != undefined) {
 						folder.TEXT_CONNECT.TEXT = ARRAY[2];
@@ -382,7 +382,7 @@ function terminal_rename(ARRAY, ID_RESULT, PWD, PARENT) {
 		}
 	}
 	if (ID_RESULT != undefined)
-		display_result(ID_RESULT,  "[" + ARRAY[1] + "] is not found.");
+		display_result(ID_RESULT,  "[" + ARRAY[1] + "] " + AutoLanguage("is not found") + ".");
 	return true;
 }
 

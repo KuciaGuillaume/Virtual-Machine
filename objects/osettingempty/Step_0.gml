@@ -39,7 +39,7 @@ if (PARENT != undefined && string_count("EDIT_LANGUAGE_CHANGE", TAG) > 0) {
 	
 		var pos_x = Diff(PARENT.x, (x + SIZE_X) - 110);
 		var pos_y = Diff(PARENT.y, y + 10);
-		var word = "Select";
+		var word = AutoLanguage("Select");
 		var empt_text = GetEmptText(CenterStr((x + SIZE_X) - 60, word), MidleStr( y + 26, word), word, Segoe10, c_gray, #262626, PARENT.WINDOW.LAYERS[2]);
 		LANGUAGE_BUTTON_SELECT = CreateEmptyButton(OSettingEmpty, pos_x, pos_y, 100, 30, #F8FAFF, #F8FAFF, PARENT.WINDOW.LAYERS[1], undefined, empt_text, PARENT.TAG + "ACCOUNT_EDIT_LANGUAGE_SELECT" + TAG, "EMPT_BUTTON", [undefined]);
 		LANGUAGE_BUTTON_SELECT.REF_X = pos_x;
@@ -78,13 +78,13 @@ if (!MouseInsideRound(id) || !mouse_check_button_pressed(mb_left) || !ON) return
 if (PARENT != undefined && PARENT.TAG + "ACCOUNT_EDIT_PASSWORD_APPLY" == TAG) {
 	if (OBJECT_LINKED.write.TEXT_OUTPUT == OBJECT_LINKED.write.INITIAL_TEXT)
 		return;
-	if (string_byte_length(OBJECT_LINKED.write.TEXT_OUTPUT) < 5) {  CreateNotification(Ssystem_icon, "Errors", "Password too short", PARENT.TAG + "PASSWORD_EDIT_ERROR"); return; }
-	if (OBJECT_LINKED.write.TEXT_OUTPUT == global.USER[5]) {  CreateNotification(Ssystem_icon, "Errors", "Your password must be\ndifferent from the old one", PARENT.TAG + "PASSWORD_EDIT_ERROR=="); return; }
+	if (string_byte_length(OBJECT_LINKED.write.TEXT_OUTPUT) < 5) {  CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Password too short"), PARENT.TAG + "PASSWORD_EDIT_ERROR"); return; }
+	if (OBJECT_LINKED.write.TEXT_OUTPUT == global.USER[5]) {  CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Your password must be\ndifferent from the old one"), PARENT.TAG + "PASSWORD_EDIT_ERROR=="); return; }
 	global.USER[5] = OBJECT_LINKED.write.TEXT_OUTPUT;
 	OBJECT_LINKED.write.TEXT = [OBJECT_LINKED.write.INITIAL_TEXT, undefined];
 	OBJECT_LINKED.write.TEXT_INDEX = 1;
 	OBJECT_LINKED.write.TEXT_INDEX_MAX = 1;
-	CreateNotification(Ssystem_icon, "Success", "Your passwords have been changed", PARENT.TAG + "PASSWORD_EDIT_SUCCESS");
+	CreateNotification(Ssystem_icon, AutoLanguage("Success"), AutoLanguage("Your passwords have been changed"), PARENT.TAG + "PASSWORD_EDIT_SUCCESS");
 }
 
 if (string_count("SET-ING", TAG) > 0) {
@@ -117,7 +117,7 @@ if (string_count("SET-ING", TAG) > 0) {
 }
 
 if (PARENT != undefined && PARENT.TAG + "SSDISPLAY" == TAG) {
-	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/DISPLAY";
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/" +  AutoLanguage("DISPLAY");
 	PARENT.SETTING_TITLE_FX = 20;
 	DestroySSystemDisplay(PARENT);
 	DestroySSystem(PARENT);
@@ -125,7 +125,7 @@ if (PARENT != undefined && PARENT.TAG + "SSDISPLAY" == TAG) {
 }
 
 if (PARENT != undefined && PARENT.TAG + "SSSOUND" == TAG) {
-	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/SOUND";
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/" + AutoLanguage("SOUND");
 	PARENT.SETTING_TITLE_FX = 20;
 	DestroySSystemSound(PARENT);
 	DestroySSystem(PARENT);
@@ -133,7 +133,7 @@ if (PARENT != undefined && PARENT.TAG + "SSSOUND" == TAG) {
 }
 
 if (PARENT != undefined && PARENT.TAG + "SSPERSONALIZE" == TAG) {
-	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/PERSONALIZE";
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/" + AutoLanguage("PERSONALIZE");
 	PARENT.SETTING_TITLE_FX = 20;
 	DestroySSystemPersonalize(PARENT);
 	DestroySSystem(PARENT);
@@ -141,7 +141,7 @@ if (PARENT != undefined && PARENT.TAG + "SSPERSONALIZE" == TAG) {
 }
 
 if (PARENT != undefined && PARENT.TAG + "SSSTORAGE" == TAG) {
-	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/STORAGE";
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/" + AutoLanguage("STORAGE");
 	PARENT.SETTING_TITLE_FX = 20;
 	DestroySSystemStorage(PARENT);
 	DestroySSystem(PARENT);
@@ -149,7 +149,7 @@ if (PARENT != undefined && PARENT.TAG + "SSSTORAGE" == TAG) {
 }
 
 if (PARENT != undefined && PARENT.TAG + "SSABOUT" == TAG) {
-	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/ABOUT";
+	PARENT.SETTING_TITLE.TEXT = PARENT.SETTING_TITLE.TEXT + "/" + AutoLanguage("ABOUT");
 	PARENT.SETTING_TITLE_FX = 20;
 	DestroySSystemAbout(PARENT);
 	DestroySSystem(PARENT);
@@ -157,32 +157,32 @@ if (PARENT != undefined && PARENT.TAG + "SSABOUT" == TAG) {
 }
 
 if (PARENT != undefined && PARENT.TAG + "SYSTEM_BACK" == TAG) {
-	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/DISPLAY") {
-		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+	if (PARENT.SETTING_TITLE.TEXT == AutoLanguage("SYSTEM") + "/" + AutoLanguage("DISPLAY")) {
+		PARENT.SETTING_TITLE.TEXT = AutoLanguage("SYSTEM");
 		DestroySSystemDisplay(PARENT);
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);
 	}
-	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/SOUND") {
-		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+	if (PARENT.SETTING_TITLE.TEXT == AutoLanguage("SYSTEM") + "/" + AutoLanguage("SOUND")) {
+		PARENT.SETTING_TITLE.TEXT = AutoLanguage("SYSTEM");
 		DestroySSystemSound(PARENT);
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);
 	}
-	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/PERSONALIZE") {
-		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+	if (PARENT.SETTING_TITLE.TEXT == AutoLanguage("SYSTEM") + "/" + AutoLanguage("PERSONALIZE")) {
+		PARENT.SETTING_TITLE.TEXT = AutoLanguage("SYSTEM");
 		DestroySSystemPersonalize(PARENT);
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);
 	}
-	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/STORAGE") {
-		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+	if (PARENT.SETTING_TITLE.TEXT == AutoLanguage("SYSTEM") + "/" + AutoLanguage("STORAGE")) {
+		PARENT.SETTING_TITLE.TEXT = AutoLanguage("SYSTEM");
 		DestroySSystemStorage(PARENT);
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);
 	}
-	if (PARENT.SETTING_TITLE.TEXT == "SYSTEM/ABOUT") {
-		PARENT.SETTING_TITLE.TEXT = "SYSTEM";
+	if (PARENT.SETTING_TITLE.TEXT == AutoLanguage("SYSTEM") + "/" + AutoLanguage("ABOUT")) {
+		PARENT.SETTING_TITLE.TEXT = AutoLanguage("SYSTEM");
 		DestroySSystemAbout(PARENT);
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);

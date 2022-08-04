@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"cc0224c4-4f02-4ee7-8abf-f8f5bb2e7a63","path":"sprites/S_SSsystem_Personalize_cursor_Win11_Light/S_SSsystem_Personalize_cursor_Win11_Light.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"cc0224c4-4f02-4ee7-8abf-f8f5bb2e7a63","path":"sprites/S_SSsystem_Personalize_cursor_Win11_Light/S_SSsystem_Personalize_cursor_Win11_Light.yy",},"LayerId":{"name":"fb6d9772-e76c-45a4-9cab-f48037bb8851","path":"sprites/S_SSsystem_Personalize_cursor_Win11_Light/S_SSsystem_Personalize_cursor_Win11_Light.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_SSsystem_Personalize_cursor_Win11_Light","path":"sprites/S_SSsystem_Personalize_cursor_Win11_Light/S_SSsystem_Personalize_cursor_Win11_Light.yy",},"resourceVersion":"1.0","name":"cc0224c4-4f02-4ee7-8abf-f8f5bb2e7a63","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"cc0224c4-4f02-4ee7-8abf-f8f5bb2e7a63","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_SSsystem_Personalize_cursor_Win11_Light","path":"sprites/S_SSsystem_Personalize_cursor_Win11_Light/S_SSsystem_Personalize_cursor_Win11_Light.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"e8f0cfba-25dd-4888-989f-5e716580b5a0","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"cc0224c4-4f02-4ee7-8abf-f8f5bb2e7a63","path":"sprites/S_SSsystem_Personalize_cursor_Win11_Light/S_SSsystem_Personalize_cursor_Win11_Light.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_SSsystem_Personalize_cursor_Win11_Light","path":"sprites/S_SSsystem_Personalize_cursor_Win11_Light/S_SSsystem_Personalize_cursor_Win11_Light.yy",},
     "resourceVersion": "1.4",
     "name": "S_SSsystem_Personalize_cursor_Win11_Light",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fb6d9772-e76c-45a4-9cab-f48037bb8851","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fb6d9772-e76c-45a4-9cab-f48037bb8851","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_Personalize_cursor_Win11_Light",
-  "tags": [],
   "resourceType": "GMSprite",
 }

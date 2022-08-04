@@ -324,6 +324,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Arial15",
-  "tags": [],
   "resourceType": "GMFont",
 }

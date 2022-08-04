@@ -56,17 +56,17 @@ CONNECT_AT_TEXT = undefined;
 CONNECT_TO_YOU = undefined;
 CONNECT_TO_YOU_TEXT = undefined;
 // TERMINAL HELP MESSAGE
-HELP_MESSAGE = "[HELP] List of commands that may be useful to you:\n\n";
-HELP_MESSAGE = HELP_MESSAGE + "-help : View this post\n";
-HELP_MESSAGE = HELP_MESSAGE + "-ls : Allows you to see the contents of the current folder or a specific folder\n";
-HELP_MESSAGE = HELP_MESSAGE + "-cd : Allows you to move to the desired directory\n";
-HELP_MESSAGE = HELP_MESSAGE + "-cd [..] : Move to the back directory\n";
-HELP_MESSAGE = HELP_MESSAGE + "-mkdir : Allows you to create a directory\n";
-HELP_MESSAGE = HELP_MESSAGE + "-rm : Allows you to delete a directory\n";
-HELP_MESSAGE = HELP_MESSAGE + "-exit : To close the window\n";
-HELP_MESSAGE = HELP_MESSAGE + "-getpid : Informs the process id\n";
-HELP_MESSAGE = HELP_MESSAGE + "-connect : Allows you to connect to a specified id\n";
-HELP_MESSAGE = HELP_MESSAGE + "-close : End of connection\n";
-HELP_MESSAGE = HELP_MESSAGE + "-rename : Allows you to rename a folder or file\n";
+HELP_MESSAGE = "[" + AutoLanguage("HELP") + "] " + AutoLanguage("List of commands that may be useful to you") + ":\n\n";
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("help : View this post\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("ls : Allows you to see the contents of the current folder or a specific folder\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("cd : Allows you to move to the desired directory\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("cd [..] : Move to the back directory\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("mkdir : Allows you to create a directory\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("rm : Allows you to delete a directory\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("exit : To close the window\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("getpid : Informs the process id\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("connect : Allows you to connect to a specified id\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("close : End of connection\n");
+HELP_MESSAGE = HELP_MESSAGE + "-" + AutoLanguage("rename : Allows you to rename a folder or file\n");
 
 // VARIABLES 

@@ -149,6 +149,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Segoe8",
-  "tags": [],
   "resourceType": "GMFont",
 }

@@ -24,12 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"47fb9ba1-cdf4-40f5-a403-e9ca18e85b9c","path":"sprites/S_Folde_icon/S_Folde_icon.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"47fb9ba1-cdf4-40f5-a403-e9ca18e85b9c","path":"sprites/S_Folde_icon/S_Folde_icon.yy",},"LayerId":{"name":"2f2fa1be-5159-4fbe-9f74-1e25289fb3de","path":"sprites/S_Folde_icon/S_Folde_icon.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"S_Folde_icon","path":"sprites/S_Folde_icon/S_Folde_icon.yy",},"resourceVersion":"1.0","name":"47fb9ba1-cdf4-40f5-a403-e9ca18e85b9c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"47fb9ba1-cdf4-40f5-a403-e9ca18e85b9c","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"S_Folde_icon","path":"sprites/S_Folde_icon/S_Folde_icon.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -42,7 +39,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"a9ba0810-ec28-46a7-b3a2-16a2c488f56b","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"47fb9ba1-cdf4-40f5-a403-e9ca18e85b9c","path":"sprites/S_Folde_icon/S_Folde_icon.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,14 +55,12 @@
     "yorigin": 17,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"S_Folde_icon","path":"sprites/S_Folde_icon/S_Folde_icon.yy",},
     "resourceVersion": "1.4",
     "name": "S_Folde_icon",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"2f2fa1be-5159-4fbe-9f74-1e25289fb3de","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"2f2fa1be-5159-4fbe-9f74-1e25289fb3de","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -74,6 +69,5 @@
   },
   "resourceVersion": "1.0",
   "name": "S_Folde_icon",
-  "tags": [],
   "resourceType": "GMSprite",
 }

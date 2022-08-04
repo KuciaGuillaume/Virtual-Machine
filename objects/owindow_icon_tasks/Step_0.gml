@@ -184,11 +184,11 @@ if (mouse_check_button_pressed(mb_right) && MouseInsideObject(id) && string_coun
 			DestroyButtonBox(WINDOWS_BUTTONS[i].TAG);
 	WINDOWS_BUTTONS = [undefined];
 	if (windows_n > 0) {
-		var close_all = CreateButton_Image_Text(x, Y, S_window_option_button, S_window_option_close, x - 100, Y,  Obox, "Close all windows", "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "CLOSE_ALL_WINDOW", [["CENTERED"], ["FADE_IN", 0.00001], undefined]); Y -= 22.5;
+		var close_all = CreateButton_Image_Text(x, Y, S_window_option_button, S_window_option_close, x - 100, Y,  Obox, AutoLanguage("Close all windows"), "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "CLOSE_ALL_WINDOW", [["CENTERED"], ["FADE_IN", 0.00001], undefined]); Y -= 22.5;
 		close_all.PARENT = id;
 		WINDOWS_BUTTONS = addtolist(close_all, WINDOWS_BUTTONS);
 	}
-	var pin = CreateButton_Image_Text(x, Y, S_window_option_button, S_window_option_pin, x - 100, Y,  Obox, "Pin to taskbar", "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "PIN", [["CENTERED"], ["FADE_IN", 0.00001], undefined]); Y -= 22.5;
+	var pin = CreateButton_Image_Text(x, Y, S_window_option_button, S_window_option_pin, x - 100, Y,  Obox, AutoLanguage("Pin to taskbar"), "TaskBar_Gp1", "TaskBar_Gp2", Arial10, c_black, TAG + "PIN", [["CENTERED"], ["FADE_IN", 0.00001], undefined]); Y -= 22.5;
 	pin.PARENT = id;
 	WINDOWS_BUTTONS = addtolist(pin, WINDOWS_BUTTONS);
 	var name = "";

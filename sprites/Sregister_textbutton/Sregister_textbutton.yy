@@ -24,15 +24,10 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"4e827e06-d2e3-4037-b2da-589dd29ae9c4","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4e827e06-d2e3-4037-b2da-589dd29ae9c4","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"LayerId":{"name":"c6775024-7df8-419d-86f4-e42ead25ae38","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Sregister_textbutton","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","name":"4e827e06-d2e3-4037-b2da-589dd29ae9c4","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"d5b13405-d6b5-4dd0-bfee-b77bbd7a7a8b","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"d5b13405-d6b5-4dd0-bfee-b77bbd7a7a8b","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"LayerId":{"name":"c6775024-7df8-419d-86f4-e42ead25ae38","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"Sregister_textbutton","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","name":"d5b13405-d6b5-4dd0-bfee-b77bbd7a7a8b","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"4e827e06-d2e3-4037-b2da-589dd29ae9c4","resourceType":"GMSpriteFrame",},
+    {"resourceVersion":"1.1","name":"d5b13405-d6b5-4dd0-bfee-b77bbd7a7a8b","resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"Sregister_textbutton","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 0.0,
@@ -40,13 +35,13 @@
     "autoRecord": true,
     "volume": 1.0,
     "length": 2.0,
-    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
-    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
+    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MessageEventKeyframe",},
+    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"b383f1b2-fbde-40ad-b08c-2a6dac6340d1","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4e827e06-d2e3-4037-b2da-589dd29ae9c4","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"bc9bb832-989c-43d5-99f2-b39deee286f8","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d5b13405-d6b5-4dd0-bfee-b77bbd7a7a8b","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+            {"id":"b383f1b2-fbde-40ad-b08c-2a6dac6340d1","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4e827e06-d2e3-4037-b2da-589dd29ae9c4","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"bc9bb832-989c-43d5-99f2-b39deee286f8","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d5b13405-d6b5-4dd0-bfee-b77bbd7a7a8b","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -62,14 +57,12 @@
     "yorigin": 22,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"Sregister_textbutton","path":"sprites/Sregister_textbutton/Sregister_textbutton.yy",},
     "resourceVersion": "1.4",
     "name": "Sregister_textbutton",
-    "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c6775024-7df8-419d-86f4-e42ead25ae38","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c6775024-7df8-419d-86f4-e42ead25ae38","resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -78,6 +71,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Sregister_textbutton",
-  "tags": [],
   "resourceType": "GMSprite",
 }

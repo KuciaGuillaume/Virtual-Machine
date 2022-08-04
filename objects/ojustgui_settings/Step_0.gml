@@ -116,23 +116,23 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			ICON = CreateObjectSprite(x - 332.5, y + 70, WINDOW.LAYERS[0], Sfemme, OJustGUI, "IMAGE", "SETTINGS_USER_ICON_" + TAG, [["INDEX_IMAGE", global.USER[6][1]], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ICON.image_xscale = 0.7;
 		ICON.image_yscale = 0.7;
-		ICON.TEXT_CONNECT = AddText(ICON.x + 60, ICON.y, global.USER[1] + "\nLocal Account", Segoe10, c_black, WINDOW.LAYERS[1], "SETTINGS_USER_NAME_" + TAG, [["BACK", 5], undefined]);
+		ICON.TEXT_CONNECT = AddText(ICON.x + 60, ICON.y, global.USER[1] + "\n" + AutoLanguage("Local Account"), Segoe10, c_black, WINDOW.LAYERS[1], "SETTINGS_USER_NAME_" + TAG, [["BACK", 5], undefined]);
 		WINDOW.list_objects = addtolist(ICON, WINDOW.list_objects);
 		
 		
 
 		// CREATE SETTING
-		var system = CreateSetting("System", S_Settings_System, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "SYSTEM", id); system.SETTING_SELECT = true;
+		var system = CreateSetting( AutoLanguage("System"), S_Settings_System, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "SYSTEM", id); system.SETTING_SELECT = true;
 		OBJECT_SELECT_INDEX = system;
 		OBJECT_SELECT = CreateObjectSprite(system.x + 125, system.OBJECT_LINKED.y - 1, WINDOW.LAYERS[1], S_Settings_Select, OJustGUI, "IMAGE", "SETTING_SELECT" + TAG, [undefined]);
-		CreateSetting("Network & internet", S_Settings_Network, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "NETWORK", id);
-		CreateSetting("Account", S_Settings_Account, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "ACCOUNT", id);
-		CreateSetting("Update", S_Settings_Update, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "UPDATE", id);
-		CreateSetting("Power system", S_Settings_Power, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "POWER_SYSTEM", id);
+		CreateSetting(AutoLanguage("Network & internet"), S_Settings_Network, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "NETWORK", id);
+		CreateSetting(AutoLanguage("Account"), S_Settings_Account, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "ACCOUNT", id);
+		CreateSetting(AutoLanguage("Update"), S_Settings_Update, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "UPDATE", id);
+		CreateSetting(AutoLanguage("Power system"), S_Settings_Power, WINDOW.LAYERS[0], WINDOW.LAYERS[1], TAG + "POWER_SYSTEM", id);
 		WINDOW.list_objects = addtolist(OBJECT_SELECT, WINDOW.list_objects);
 		
 		// SETTING TITLE
-		SETTING_TITLE = AddText(x - 100, y + 30, "SYSTEM", Segoe15, c_black, WINDOW.LAYERS[0], TAG + "SETTING_TITLE", [undefined]);
+		SETTING_TITLE = AddText(x - 100, y + 30, AutoLanguage("SYSTEM"), Segoe15, c_black, WINDOW.LAYERS[0], TAG + "SETTING_TITLE", [undefined]);
 		
 		// CREATE SETTING
 		CreateSSystem(id);

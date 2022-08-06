@@ -57,7 +57,7 @@ var CUSTOM_RES = ["1920", "1080", false];
 var FULLSCREEN = true;
 var FRAMERATE = false;
 var CURSOR = "MAC";
-var LANGUAGE = "FRENCH";
+var LANGUAGE = "ENGLISH";
 global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN, FRAMERATE, CURSOR, LANGUAGE ,undefined];
 
 // SOUND
@@ -171,6 +171,7 @@ AddTraduction( [["Type here to search", "ENGLISH"], ["Tapez ici pour rechercher"
 AddTraduction( [["All Apps", "ENGLISH"], ["Toutes les applications", "FRENCH"]] );
 AddTraduction( [["Recommanded", "ENGLISH"], ["Recommandé", "FRENCH"]] );
 AddTraduction( [["File_explorers", "ENGLISH"], ["Explorateurs de fichiers", "FRENCH"]] );
+AddTraduction( [["File_explorer", "ENGLISH"], ["Explorateur de fichiers", "FRENCH"]] );
 AddTraduction( [["Terminal", "ENGLISH"], ["Terminal", "FRENCH"]] );
 AddTraduction( [["Settings", "ENGLISH"], ["Paramètres", "FRENCH"]] );
 AddTraduction( [["Search results", "ENGLISH"], ["Résultats de recherche", "FRENCH"]] );
@@ -221,7 +222,8 @@ AddTraduction( [["Account", "ENGLISH"], ["Compte", "FRENCH"]] );
 AddTraduction( [["Update", "ENGLISH"], ["Mise à jour", "FRENCH"]] );
 AddTraduction( [["Power system", "ENGLISH"], ["Alimentation", "FRENCH"]] );
 AddTraduction( [["Select", "ENGLISH"], ["Sélectionner", "FRENCH"]] );
-AddTraduction( [["Errors", "ENGLISH"], ["Erreur", "FRENCH"]] );
+AddTraduction( [["Errors", "ENGLISH"], ["Erreurs", "FRENCH"]] );
+AddTraduction( [["Error", "ENGLISH"], ["Erreur", "FRENCH"]] );
 AddTraduction( [["Password too short", "ENGLISH"], ["Mot de passe trop court", "FRENCH"]] );
 AddTraduction( [["Your password must be\ndifferent from the old one", "ENGLISH"], ["Votre mot de passe doit être\ndifférent de l'ancien", "FRENCH"]] );
 AddTraduction( [["Success", "ENGLISH"], ["Succès", "FRENCH"]] );
@@ -330,7 +332,22 @@ AddTraduction( [["The password is incorrect, please try again", "ENGLISH"], ["Le
 AddTraduction( [["Login to your session..", "ENGLISH"], ["Connection à votre session..", "FRENCH"]] );
 AddTraduction( [["I forgot my password", "ENGLISH"], ["j'ai oublié mon mot de passe", "FRENCH"]] );
 
+AddTraduction( [["Turn off", "ENGLISH"], ["Éteindre", "FRENCH"]] );
+AddTraduction( [["Restart", "ENGLISH"], ["Redémarrer", "FRENCH"]] );
+AddTraduction( [["Standby", "ENGLISH"], ["Veille", "FRENCH"]] );
 
+AddTraduction( [["Home", "ENGLISH"], ["Démarrer", "FRENCH"]] );
+AddTraduction( [["Administrator", "ENGLISH"], ["Administrateur", "FRENCH"]] );
+AddTraduction( [["Change your account name", "ENGLISH"], ["Modifier le nom de votre compte", "FRENCH"]] );
+AddTraduction( [["Name too short", "ENGLISH"], ["Nom trop court", "FRENCH"]] );
+AddTraduction( [["Your name must be\ndifferent from the old one", "ENGLISH"], ["Votre nom doit être\ndifférent de l'ancien", "FRENCH"]] );
+AddTraduction( [["Your name account have been changed", "ENGLISH"], ["Votre nom de compte a été modifié", "FRENCH"]] );
+AddTraduction( [["Change your account information", "ENGLISH"], ["Changer vos informations de compte", "FRENCH"]] );
+AddTraduction( [["Your email address have been changed", "ENGLISH"], ["Votre adresse e-mail a été modifiée", "FRENCH"]] );
+AddTraduction( [["Patch notes", "ENGLISH"], ["Notes de mise à jour", "FRENCH"]] );
+AddTraduction( [["News", "ENGLISH"], ["Nouveautés", "FRENCH"]] );
+AddTraduction( [["Patchs", "ENGLISH"], ["Correctifs", "FRENCH"]] );
+AddTraduction( [["Others", "ENGLISH"], ["Autres", "FRENCH"]] );
 
 
 // CREATE DATE
@@ -342,6 +359,7 @@ global.DATE = {
 };
 
 // CREATE USERS VARAIBLES
+
 
 STATE = undefined;
 FIRST_NAME = "NULL";
@@ -361,7 +379,6 @@ global.USER = [STATE, FIRST_NAME, LAST_NAME, EMAIL, AGE, PASSWORD, ICON, BACKGRO
 LOAD_LIST = [global.USER, global.PATH, global.FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, global.GAME_VALUE, undefined];
 
 // LOAD
-//savegame_clear("USER");
 LOAD_LIST = savegame_load("USER", LOAD_LIST);
 global.USER = LOAD_LIST[0];
 global.PATH = LOAD_LIST[1];
@@ -401,4 +418,4 @@ window_set_fullscreen(global.SETTINGS[4]);
 	}
 
 // LOAD GAME
-room = Rstart;
+room = RMainScene;

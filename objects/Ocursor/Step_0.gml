@@ -37,9 +37,9 @@ for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 		if (class[0].INFO) {
 			if (class[4] == undefined) {
 				if (room != RMainScene)
-					class[4] = CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], undefined]);
+					class[4] = CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Gp4", "Gp5", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], ["PARENT" , class[0].TAG] , undefined]);
 				else
-					class[4] = CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Notifications_Gp0", "Notifications_Gp1", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], undefined]);
+					class[4] = CreateRound(class[0].TAG, class[0].INFO_NAME, Segoe8, "Notifications_Gp0", "Notifications_Gp1", #282828, 5, [["FADE_IN", 0.000003], ["CENTERED"], ["PARENT" , class[0].TAG] , undefined]);
 			}
 		}
 		
@@ -71,7 +71,7 @@ for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 			
 		// INFO
 		if (class[0].INFO) {
-			if (class[4] != undefined) {
+			if (class[4] != undefined && instance_exists(class[4])) {
 				DestroyRound(class[4].TAG);
 				class[4] = undefined;
 			}

@@ -83,3 +83,4 @@ PERSONALIZE_ALL_CURSOR = [undefined];
 // SNETWORK
 SNETWORK_OBJECT = [undefined];
 SACCOUNT_OBJECT = [undefined];
+SUPDATE_OBJECT = [undefined];

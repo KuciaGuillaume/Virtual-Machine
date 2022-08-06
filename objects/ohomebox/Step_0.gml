@@ -38,9 +38,9 @@ if (TAG == "HOME_POWER") {
 	var SIZE_Y = 125;
 	var XBUTTON = x;
 	var YBUTTON = y - 50;
-	var shutdown = CreateSimpleEmptyButton(OHomeEmpty, XBUTTON, YBUTTON, 130, 30, c_white, #EEEEEE, "Home_Gp5", "Home_Gp6", S_home_shutdown, Segoe10, "Turn off", "HOME_OPTION_POWER_OFF", "EMPT_BUTTON-NO-HAND",  [["SLIDE", 0.00005], ["FADE_IN", 0.000005], ["CENTERED"], undefined]);
-	var restart = CreateSimpleEmptyButton(OHomeEmpty, XBUTTON, YBUTTON, 130, 30, c_white, #EEEEEE, "Home_Gp5", "Home_Gp6", S_home_restart, Segoe10,  "Restart", "HOME_OPTION_RESTART", "EMPT_BUTTON-NO-HAND",  [["SLIDE", 0.00005], ["FADE_IN", 0.000005], ["CENTERED"], undefined]);
-	var standby = CreateSimpleEmptyButton(OHomeEmpty, XBUTTON, YBUTTON, 130, 30, c_white, #EEEEEE, "Home_Gp5", "Home_Gp6", S_home_sleep, Segoe10,  "Standby", "HOME_OPTION_STANDBY", "EMPT_BUTTON-NO-HAND",  [["SLIDE", 0.00005], ["FADE_IN", 0.000005], ["CENTERED"], undefined]);
+	var shutdown = CreateSimpleEmptyButton(OHomeEmpty, XBUTTON, YBUTTON, 130, 30, c_white, #EEEEEE, "Home_Gp5", "Home_Gp6", S_home_shutdown, Segoe10, AutoLanguage("Turn off"), "HOME_OPTION_POWER_OFF", "EMPT_BUTTON-NO-HAND",  [["SLIDE", 0.00005], ["FADE_IN", 0.000005], ["CENTERED"], undefined]);
+	var restart = CreateSimpleEmptyButton(OHomeEmpty, XBUTTON, YBUTTON, 130, 30, c_white, #EEEEEE, "Home_Gp5", "Home_Gp6", S_home_restart, Segoe10,  AutoLanguage("Restart"), "HOME_OPTION_RESTART", "EMPT_BUTTON-NO-HAND",  [["SLIDE", 0.00005], ["FADE_IN", 0.000005], ["CENTERED"], undefined]);
+	var standby = CreateSimpleEmptyButton(OHomeEmpty, XBUTTON, YBUTTON, 130, 30, c_white, #EEEEEE, "Home_Gp5", "Home_Gp6", S_home_sleep, Segoe10,  AutoLanguage("Standby"), "HOME_OPTION_STANDBY", "EMPT_BUTTON-NO-HAND",  [["SLIDE", 0.00005], ["FADE_IN", 0.000005], ["CENTERED"], undefined]);
 	var BUTTONS = [standby, restart, shutdown, undefined];
 	OPTION_MENU = CreateEmptyRoundButton(OHomeEmpty, x, Y, c_white, BUTTONS, 5, "Home_Gp4", "HOME_OPTION_MENU", [["SLIDE", 0.00005], ["FADE_IN", 0.000005], ["EXT", c_gray, 10, 2], undefined]);
 }

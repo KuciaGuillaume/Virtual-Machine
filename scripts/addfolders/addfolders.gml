@@ -71,6 +71,9 @@ function AddFileEplorerFloder(NAME, LIST, PARENT, CreationDate) {
 		folder.PARENT_DIFF_Y = Y - PARENT.y;
 	else
 		folder.PARENT_DIFF_Y = (PARENT.y - Y) * (-1);
+	folder.visible = false;
+	folder.TEXT_CONNECT.visible = false;
+	folder.OBJECT_LINKED.visible = false;
 	addtolist(folder, PARENT.WINDOW.list_objects);
 	return LIST;
 }
@@ -125,6 +128,14 @@ function UpdateFileExplorer(PWD, PATH, LIST, PARENT) {
 			var Y = previous + 24;
 			obj.PARENT_DIFF_Y = (PARENT.y - Y) * (-1);
 			previous = Y;
+		}
+	}
+	for (var i = 0; PARENT.WINDOW.list_objects[i] != undefined; i++) {
+		var folder = PARENT.WINDOW.list_objects[i];
+		if (instance_exists(folder) && string_count("FILE_EXPLORERS", folder.TAG) > 0) {
+			folder.visible = true;
+			folder.TEXT_CONNECT.visible = true;
+			folder.OBJECT_LINKED.visible = true;
 		}
 	}
 	return LIST;

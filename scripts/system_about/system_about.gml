@@ -110,10 +110,7 @@ function UpdateSystemAbout(id) {
 
 	for (var i = 0; id.SSSYSTEM_ABOUT_OBJECT[i] != undefined; i++) {
 		var get = id.SSSYSTEM_ABOUT_OBJECT[i][0];
-		if (id.image_alpha < 1)
-			get.ALPHA = id.image_alpha * id.SSSYSTEM_ABOUT_OBJECT[i][3];
-		else
-			get.ALPHA = id.SSSYSTEM_ABOUT_OBJECT[i][3];
+		get.image_alpha = id.SSSYSTEM_ABOUT_OBJECT[i][3];
 		if (get.TYPE != "EMPT_BUTTON-NO-HAND") {
 			if (id.SSSYSTEM_ABOUT_OBJECT[i][1] != undefined)
 				get.x = id.x + id.SSSYSTEM_ABOUT_OBJECT[i][1];

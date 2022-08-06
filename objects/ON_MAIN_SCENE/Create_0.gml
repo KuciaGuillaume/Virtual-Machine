@@ -70,7 +70,7 @@ if (global.SETTINGS[6] == "WIN11_LIGHT")
 var background = CreateObjectSprite(0, 0, "Background_Gp0", S_backgrounds, OJustGUI, "IMAGE", "MAIN_BACKGROUNDS", [["FADE_IN", 0.00001], undefined]);
 background.image_index = global.USER[7];
 TASKBAR = CreateObjectSprite(960, 1040, "TaskBar_Gp0", S_taskbar, OJustGUI, "IMAGE", "MAIN_TASKBAR", [["FADE_IN", 0.00001], undefined]);
-HOME_ICON = CreateObjectSprite(TASKBAR.x, TASKBAR.y - 3, "TaskBar_Gp1", S_Home_Icon, Owindow_icon_tasks, "BUTTON-NO-HAND", "HOME_ICON", [["INFO", "Home"], undefined]);
+HOME_ICON = CreateObjectSprite(TASKBAR.x, TASKBAR.y - 3, "TaskBar_Gp1", S_Home_Icon, Owindow_icon_tasks, "BUTTON-NO-HAND", "HOME_ICON", [["INFO", AutoLanguage("Home")], undefined]);
 ICON = addtolist(HOME_ICON, ICONS);
 HOME = undefined;
 // PIN

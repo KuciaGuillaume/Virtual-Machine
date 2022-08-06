@@ -17,3 +17,13 @@ else
 
 TEXT_CONNECT.image_alpha = image_alpha;
 
+var timeA = TimeAction( 5 , "second" , TIMEA );
+TIMEA = timeA.value;
+
+if (timeA.state) {
+	if (PARENT != undefined) {
+		if (GetObject( PARENT ) = undefined) {
+			DestroyRound( TAG );
+		}
+	}
+}

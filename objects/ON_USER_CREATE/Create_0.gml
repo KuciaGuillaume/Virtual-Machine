@@ -5,8 +5,6 @@
 if (global.USER[9][0] == undefined) {
 	for (var i = 0; i != 15; i++)
 		global.USER[9][i] = 0;
-	SAVE_LIST = [global.USER, undefined];
-	savegame_save("USER", SAVE_LIST);
 }
 
 

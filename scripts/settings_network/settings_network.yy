@@ -7,6 +7,5 @@
   },
   "resourceVersion": "1.0",
   "name": "SETTINGS_NETWORK",
-  "tags": [],
   "resourceType": "GMScript",
 }

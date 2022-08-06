@@ -7,6 +7,5 @@
   },
   "resourceVersion": "1.0",
   "name": "SYSTEM_PERSONALIZE",
-  "tags": [],
   "resourceType": "GMScript",
 }

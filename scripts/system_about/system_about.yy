@@ -7,6 +7,5 @@
   },
   "resourceVersion": "1.0",
   "name": "SYSTEM_ABOUT",
-  "tags": [],
   "resourceType": "GMScript",
 }

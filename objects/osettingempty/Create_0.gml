@@ -116,3 +116,5 @@ SELECTV2_CONNECT = undefined;
 LANGUAGE_BUTTON_SELECT = undefined;
 LANGUAGE = undefined;
 LANGUAGE_CHECKER = undefined;
+
+CLICK = false;

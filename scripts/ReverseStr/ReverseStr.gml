@@ -11,6 +11,7 @@ function ReverseStr(str){
 
 function MidleStr( y, text ) {
 	
+	//var breakline_count = string_count("\n", text) + 1;
 	return y - (string_height(text) / 2);
 	
 }

@@ -44,6 +44,7 @@
 				TIMER_TIME = 0;
 				TIMER_DELTA = 0;
 				TIMER_STATE_END = false;
+				
 
 /////////////////// BASE VARIABLES ///////////////////
 

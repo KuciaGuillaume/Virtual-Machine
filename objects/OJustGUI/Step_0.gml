@@ -146,8 +146,6 @@ if (TAG == "USER_BACKGROUND" && !SKIP) {
 				
 		}
 		image_index = i;
-		SAVE_LIST = [global.USER, undefined];
-		savegame_save("USER", SAVE_LIST);
 		var like = GetObject("LIKE");
 		var dislike = GetObject("DISLIKE");
 		if (like != undefined && dislike != undefined) {
@@ -209,7 +207,7 @@ if (GET_FOLDER != undefined) {
 		else if ((current_time - SAVE_CURRENT < 200) && (WRITE == undefined || (WRITE != undefined && !WRITE.ON_WRITE)) && ON_MAIN_SCENE.ON_DESK) {
 			SAVE_CURRENT = current_time;
 			var desk = AutoLanguage("Desk");
-			var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+			var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, AutoLanguage("File_explorer"));
 			window.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, "/~/" + desk + "/" + TEXT_CONNECT.TEXT);
 			window.WINDOW_BK.PWD_PATH = "/~/" + desk + "/" + TEXT_CONNECT.TEXT;
 		} else

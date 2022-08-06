@@ -7,6 +7,5 @@
   },
   "resourceVersion": "1.0",
   "name": "Home_search_apps",
-  "tags": [],
   "resourceType": "GMScript",
 }

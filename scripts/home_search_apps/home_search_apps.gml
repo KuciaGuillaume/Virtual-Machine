@@ -5,7 +5,7 @@ function Destroy_search_apps(ID, i, get) {
 	DestroyEmptyButton(get[1].TAG);
 	if (get[0] == AutoLanguage("Terminal"))
 		ID.ALL_TERMINAL = undefined;
-	if (get[0] == AutoLanguage("File_explorers"))
+	if (get[0] == StrLimit(AutoLanguage("File_explorers"), 13))
 		ID.ALL_EXPLORERS = undefined;
 	if (get[0] == AutoLanguage("Settings"))
 		ID.ALL_SETTINGS = undefined;
@@ -30,7 +30,7 @@ function Create_search_apps(ID, X, Y, get, i) {
 		ID.ALL_TERMINAL = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", get[2], get[3], get[4], "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ID.ALL_APPS_LIST[i][1] = ID.ALL_TERMINAL;
 	}
-	if (get[0] == AutoLanguage("File_explorers")) {
+	if (get[0] == StrLimit(AutoLanguage("File_explorers"), 13)) {
 		ID.ALL_EXPLORERS = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", get[2], get[3], get[4], "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 		ID.ALL_APPS_LIST[i][1] = ID.ALL_EXPLORERS;
 	}
@@ -90,7 +90,7 @@ function Home_search_apps(ID, search) {
 				var PWD = results[g][0];
 				for (var h = 1; results[g][2] != PWD[h][0][0][0]; ) { h++; }
 				var name = PWD[h][0][0][0];
-				var files = GetObject(name + "HOME");
+				var files = GetObject(name + "HOME_FIND");
 				
 				// CREATE
 				if (files == undefined) {
@@ -125,7 +125,7 @@ function Home_search_apps(ID, search) {
 function Create_find_files(name, X, Y, ID, PWD, PATH) {
 	var empt = GetEmptLinked(790, 550, "Home_Gp2", S_Folde_icon, OJustGUI, "IMAGE");
 	var empt_text = GetEmptText(790, 550, name, Arial10, c_black, c_white, "Home_Gp2");
-	var button = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", empt, empt_text, name + "HOME", "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
+	var button = CreateEmptyButton(OHomeEmpty, X, Y, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", empt, empt_text, name + "HOME_FIND", "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
 	button.IS_FOLDER = true;
 	button.FOLDER_PWD = PWD;
 	button.FOLDER_PWD_PATH = PATH;
@@ -137,7 +137,7 @@ function Update_home_files(ID) {
 		home_buttons_rect(ID.ALL_FILES_LIST[i]);
 	for (var i = 0; ID.ALL_APPS_LIST[i] != undefined; i++) {
 		var get = ID.ALL_APPS_LIST[i];
-		if (get[0] == AutoLanguage("File_explorers") && ID.ALL_EXPLORERS != undefined)
+		if (get[0] == StrLimit(AutoLanguage("File_explorers"), 13) && ID.ALL_EXPLORERS != undefined)
 			home_buttons_rect(ID.ALL_EXPLORERS);
 		if (get[0] == AutoLanguage("Terminal") && ID.ALL_TERMINAL != undefined)
 			home_buttons_rect(ID.ALL_TERMINAL);

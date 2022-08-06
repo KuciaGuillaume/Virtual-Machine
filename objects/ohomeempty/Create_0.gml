@@ -49,6 +49,7 @@
 
 // CREATE VARIABLES
 image_index = 0;
+ID = undefined;
 
 // BUTTO? EMPT
 COLOR_1 = undefined;

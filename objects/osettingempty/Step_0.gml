@@ -71,9 +71,36 @@ if (PARENT != undefined && string_count("EDIT_LANGUAGE_CHANGE", TAG) > 0) {
 	
 } 
 
-// CLICK
-if (!MouseInsideRound(id) || !mouse_check_button_pressed(mb_left) || !ON) return;
+if (string_count("UPDATE_BUTTON", TAG) > 0 && PARENT != undefined && TAG != "UPDATE_BUTTON_MOVER") {
+	
+	if (mouse_check_button_pressed(mb_left) && MouseInsideRound(id)) {
+		CLICK = true;
+	} else if (mouse_check_button_pressed(mb_left) && !MouseInsideRound(id) && MouseInside(PARENT.x - 100, PARENT.x + 350, PARENT.y + 120, PARENT.y + 160)) {
+		CLICK = false;
+		TEXT_COLOR_1 = c_gray;
+		TEXT_COLOR_2 = #262626;
+	}
+		
+	if (CLICK && instance_exists(OBJECT_LINKED)) {
+		var self_index = FindListIndex(id, PARENT.SUPDATE_OBJECT, 0);
+		self_index = PARENT.SUPDATE_OBJECT[self_index][1];
+		var index = FindListIndex(OBJECT_LINKED, PARENT.SUPDATE_OBJECT, 0);
+		var distance = Diff(PARENT.SUPDATE_OBJECT[index][1], self_index);
+		if (PARENT.SUPDATE_OBJECT[index][1] > self_index)
+			PARENT.SUPDATE_OBJECT[index][1] -= (distance) * (delta_time * 0.00001);
+		else if (PARENT.SUPDATE_OBJECT[index][1] < self_index)
+			PARENT.SUPDATE_OBJECT[index][1] += (distance) * (delta_time * 0.00001);
+		if (distance < 5) {
+			TEXT_COLOR_1 = c_white;
+			TEXT_COLOR_2 = c_white;
+		}
+		show_debug_message(id.TAG);
+	}
+	
+}
 
+// CLICK
+if (!mouse_check_button_pressed(mb_left) || !MouseInsideRound(id) || !ON) return;
 
 if (PARENT != undefined && PARENT.TAG + "ACCOUNT_EDIT_PASSWORD_APPLY" == TAG) {
 	if (OBJECT_LINKED.write.TEXT_OUTPUT == OBJECT_LINKED.write.INITIAL_TEXT)
@@ -85,6 +112,79 @@ if (PARENT != undefined && PARENT.TAG + "ACCOUNT_EDIT_PASSWORD_APPLY" == TAG) {
 	OBJECT_LINKED.write.TEXT_INDEX = 1;
 	OBJECT_LINKED.write.TEXT_INDEX_MAX = 1;
 	CreateNotification(Ssystem_icon, AutoLanguage("Success"), AutoLanguage("Your passwords have been changed"), PARENT.TAG + "PASSWORD_EDIT_SUCCESS");
+}
+
+if (PARENT != undefined && PARENT.TAG + "ACCOUNT_NAME_APPLY" == TAG) {
+	if (OBJECT_LINKED.write.TEXT_OUTPUT == OBJECT_LINKED.write.INITIAL_TEXT)
+		return;
+	if (string_byte_length(OBJECT_LINKED.write.TEXT_OUTPUT) < 2) {  CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Name too short"), PARENT.TAG + "ACCOUNT_NAME_EDIT_ERROR"); return; }
+	
+	var name = "";
+	var last_name = "";
+	var output = OBJECT_LINKED.write.TEXT_OUTPUT;
+	for (var i = 0; i < string_byte_length(output) && string_char_at(output, i + 1) != "\n"; i++)
+		name = name + string_char_at(output, i + 1);
+	i += 1;
+	for (; i < string_byte_length(output); i++)
+		last_name = last_name + string_char_at(output, i + 1);
+	if (OBJECT_LINKED.write.TEXT_OUTPUT == name + " " + last_name) {  CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Your name must be\ndifferent from the old one"), PARENT.TAG + "ACCOUNT_NAME_EDIT_ERROR"); return; }
+	global.USER[1] = name;
+	global.USER[2] = last_name;
+	OBJECT_LINKED.write.INITIAL_TEXT = name + " " + last_name;
+	OBJECT_LINKED.write.TEXT = [OBJECT_LINKED.write.INITIAL_TEXT, undefined];
+	OBJECT_LINKED.write.TEXT_INDEX = 1;
+	OBJECT_LINKED.write.TEXT_INDEX_MAX = 1;
+	CreateNotification(Ssystem_icon, AutoLanguage("Success"), AutoLanguage("Your name account have been changed"), PARENT.TAG + "ACCOUNT_NAME_EDIT_SUCCESS");
+	
+	DestroySAccount(PARENT);
+	CreateSAccount(PARENT);
+}
+
+if (PARENT != undefined && PARENT.TAG + "ACCOUNT_EMAIL_APPLY" == TAG) {
+	if (OBJECT_LINKED.write.TEXT_OUTPUT == OBJECT_LINKED.write.INITIAL_TEXT)
+		return;
+		
+	// MAIL ERROR
+	var mail =  OBJECT_LINKED.write.TEXT_OUTPUT;
+	var num_a = 0;
+	var size = string_byte_length(mail);
+	var end_mail = "";
+	var all_end = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com", "hotmail.co.uk", "hotmail.fr", "msn.com", "yahoo.fr", "wanadoo.fr", "orange.fr", "comcast.net", "yahoo.co.uk", "yahoo.com.br", "yahoo.co.in", "live.com", "rediffmail.com", "free.fr", "gmx.de", "web.de", "yandex.ru", "ymail.com", "libero.it", "outlook.com", "icloud.com", "icloud.fr", "epitech.eu", undefined];
+	var find = false;
+	
+	// MAIL LOOP
+	for (var i = 0; i < size; i++) {
+		var char = string_char_at(mail, i + 1);
+		if (char == "@")
+			num_a += 1;
+	}
+	for (var i = size; i != 0 && string_char_at(mail, i) != "@";) i--;
+	if (i == 0) { CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("You did not enter the domain") + ".\n   Example: '.com', '.fr'...", PARENT.TAG + "ACCOUNT_EMAIL_EDIT_ERROR"); return; }
+	for (var e = 1; i - 2 != size; i++) {
+		var char = string_char_at(mail, i + 1);
+		end_mail = string_insert(end_mail, char, e);
+		e += 1;
+	}
+	end_mail = ReverseStr(end_mail);
+	// FINAL MAIL
+	for (var i = 0; all_end[i] != undefined; i++)
+		if (end_mail == all_end[i])
+			find = true;
+	if (!find) {CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Your domain name is invalid") + " : ' " + end_mail + " '", PARENT.TAG + "ACCOUNT_EMAIL_EDIT_ERROR"); return; }
+	if (string_char_at(mail, 1) == "@") {CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Please fill in the information before the") + " '@'", PARENT.TAG + "ACCOUNT_EMAIL_EDIT_ERROR"); return; }
+	if (num_a > 1) {CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("you can only insert '@' once"), PARENT.TAG + "ACCOUNT_EMAIL_EDIT_ERROR"); return; }
+	if (num_a < 1) {CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Your email does not contain '@'"), PARENT.TAG + "ACCOUNT_EMAIL_EDIT_ERROR"); return; }
+	if (size < 5) {CreateNotification(Ssystem_icon, AutoLanguage("Error"), AutoLanguage("Your email address is too short"), PARENT.TAG + "ACCOUNT_EMAIL_EDIT_ERROR"); return; }
+		
+	global.USER[3] = mail;
+	OBJECT_LINKED.write.INITIAL_TEXT = mail;
+	OBJECT_LINKED.write.TEXT = [OBJECT_LINKED.write.INITIAL_TEXT, undefined];
+	OBJECT_LINKED.write.TEXT_INDEX = 1;
+	OBJECT_LINKED.write.TEXT_INDEX_MAX = 1;
+	CreateNotification(Ssystem_icon, AutoLanguage("Success"), AutoLanguage("Your email address have been changed"), PARENT.TAG + "ACCOUNT_NAME_EDIT_SUCCESS");
+	
+	DestroySAccount(PARENT);
+	CreateSAccount(PARENT);
 }
 
 if (string_count("SET-ING", TAG) > 0) {
@@ -105,6 +205,8 @@ if (string_count("SET-ING", TAG) > 0) {
 	DestroySNetwork(PARENT);
 	
 	DestroySAccount(PARENT);
+	
+	DestroySUpdate(PARENT);
 
 	if (string_count("SYSTEM", TAG) > 0 && string_count("POWER", TAG) == 0)
 		CreateSSystem(PARENT);
@@ -114,6 +216,9 @@ if (string_count("SET-ING", TAG) > 0) {
 		
 	if (string_count("ACCOUNT", TAG) > 0)
 		CreateSAccount(PARENT);
+		
+	if (string_count("UPDATE", TAG) > 0)
+		CreateSUpdate(PARENT);
 }
 
 if (PARENT != undefined && PARENT.TAG + "SSDISPLAY" == TAG) {
@@ -187,6 +292,7 @@ if (PARENT != undefined && PARENT.TAG + "SYSTEM_BACK" == TAG) {
 		DestroySSystem(PARENT);
 		CreateSSystem(PARENT);
 	}
+
 }
 
 if (PARENT != undefined && PARENT.TAG + "DISPLAY_APPLY_CHANGES" == TAG) {

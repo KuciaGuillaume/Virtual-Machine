@@ -1,6 +1,10 @@
 /// @Project by Kucia Guillaume* ///
 
 // DRAW TEXT
+var save = TEXT;
+
+if (string_count("HOME_FIND", TAG) > 0)
+	TEXT = StrLimit( TEXT , 13 );
 
 if (FONT != draw_get_font())
 	draw_set_font(FONT);
@@ -22,4 +26,5 @@ else if (BACK)
 	draw_text(x - BACK_POWER, (y - (TEXT_HEIGHT / 2)) + 2, TEXT);
 else
 	draw_text(x, y, TEXT);
+TEXT = save;
 draw_set_alpha(1);

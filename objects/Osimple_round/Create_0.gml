@@ -22,3 +22,6 @@ TEXT_CONNECT = undefined;
 // ROUND TIMER
 ROUND_TIME = 0;
 
+// TIME ACTION
+TIMEA = 0;
+

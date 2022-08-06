@@ -9,7 +9,7 @@ if (TIME >= TIMER) {
 	else if (REGISTER && MODE == "START")
 		room = RUserConnection;
 	if (MODE == "END")
-		game_end(0);
+		game_end();
 	if (MODE == "RESTART") {
 		if (TIMER == 5.1)
 			game_restart();

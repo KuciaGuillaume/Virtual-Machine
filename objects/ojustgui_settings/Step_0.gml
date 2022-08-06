@@ -24,6 +24,8 @@ if (CLOSE && string_count("SETTINGS", WINDOW_TAG)) {
 	DestroySNetwork(id);
 	
 	DestroySAccount(id);
+	
+	DestroySUpdate(id);
 
 	if (ICON != undefined) {
 		DestroyText(ICON.TEXT_CONNECT.TAG);
@@ -50,6 +52,7 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			ICON.x = x - 332.5; ICON.y = y + 70;
 			ICON.TEXT_CONNECT.x = ICON.x + 60; ICON.TEXT_CONNECT.y = ICON.y;
 			ICON.image_alpha = image_alpha;
+			ICON.TEXT_CONNECT.image_alpha = image_alpha;
 			ICON.ON = WINDOW.ON;
 		}
 		
@@ -90,6 +93,32 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 			SETTING_TITLE.image_alpha = image_alpha;
 		}
 		
+		// IMAGE ALPHA FOR PAGES
+		for (var i = 0; SACCOUNT_OBJECT[i] != undefined; i++)
+			SACCOUNT_OBJECT[i][3] = image_alpha;
+
+		for (var i = 0; SSYSTEM_OBJECT[i] != undefined; i++)
+			SSYSTEM_OBJECT[i][3] = image_alpha;
+
+		for (var i = 0; SSSYSTEM_DISPLAY_OBJECT[i] != undefined; i++)
+			SSSYSTEM_DISPLAY_OBJECT[i][3] = image_alpha;
+		
+		for (var i = 0; SSSYSTEM_SOUND_OBJECT[i] != undefined; i++)
+			SSSYSTEM_SOUND_OBJECT[i][3] = image_alpha;
+
+		for (var i = 0; SSSYSTEM_PERSONALIZE_OBJECT[i] != undefined; i++)
+			SSSYSTEM_PERSONALIZE_OBJECT[i][3] = image_alpha;
+
+		for (var i = 0; SSSYSTEM_STORAGE_OBJECT[i] != undefined; i++)
+			SSSYSTEM_STORAGE_OBJECT[i][3] = image_alpha;
+			
+		for (var i = 0; SSSYSTEM_ABOUT_OBJECT[i] != undefined; i++)
+			SSSYSTEM_ABOUT_OBJECT[i][3] = image_alpha;
+
+		for (var i = 0; SNETWORK_OBJECT[i] != undefined; i++)
+			SNETWORK_OBJECT[i][3] = image_alpha;
+		
+		
 		// UPDATE IN SETTING
 		UpdateSSystem(id);
 		UpdateSystemDisplay(id);
@@ -101,6 +130,8 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 		UpdateSNetwork(id);
 		
 		UpdateSAccount(id);
+		
+		UpdateSUpdate(id);
 		
 		// ALL_SETTING
 		for (var i = 0; all_settings[i] != undefined; i++)

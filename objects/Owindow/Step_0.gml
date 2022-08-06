@@ -20,7 +20,11 @@ else
 if (ICON.image_xscale < 1 && !FADE_END) {
 	ICON.image_xscale += 0.00001 * delta_time;
 	ICON.image_yscale += 0.00001 * delta_time;
+} else if (ICON.image_xscale > 1) {
+	ICON.image_xscale = 1;
+	ICON.image_yscale = 1;
 }
+
 
 if (WINDOW_BK != undefined && instance_exists(WINDOW_BK)) {
 	WINDOW_BK.x = x + 3;

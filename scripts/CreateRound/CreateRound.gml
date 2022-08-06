@@ -2,10 +2,17 @@
 function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, OPTION) {
 	
 	var my = GetObject(OBJECT_TAG);
+	var PARENT = undefined;
 	
 	if (my == undefined || my.TAG != OBJECT_TAG)
 		return undefined;
 	var roundRect = GetObject(TEXT_NAME + OBJECT_TAG);
+	for (var i = 0; OPTION[i] != undefined; i++) {
+		if (OPTION[i][0] == "PARENT") {
+			PARENT = OPTION[i][1];
+			break;
+		}
+	}
 	if (roundRect != undefined) {
 		var TEXT = roundRect.TEXT_CONNECT;
 		var X = (my.x - (string_width(TEXT.TEXT) / 2)) - MARGE;
@@ -18,6 +25,7 @@ function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, 
 		roundRect.BBOX_Y = (Y + TEXT.TEXT_HEIGHT) + MARGE;
 		roundRect.COLOR = COLOR;
 		roundRect.MARGE = MARGE;
+		roundRect.PARENT = PARENT;
 		return roundRect;
 	}
 	var TEXT = AddText(my.x, my.y - 25 - string_height(TEXT_NAME)/2, TEXT_NAME, FONT, c_white, LAYER2, TEXT_NAME + OBJECT_TAG, OPTION);
@@ -31,6 +39,7 @@ function CreateRound(OBJECT_TAG, TEXT_NAME, FONT, LAYER1, LAYER2, COLOR, MARGE, 
 	roundRect.COLOR = COLOR;
 	roundRect.TEXT_CONNECT = TEXT;
 	roundRect.MARGE = MARGE;
+	roundRect.PARENT = PARENT;
 	return roundRect;
 }
 

@@ -98,10 +98,7 @@ function UpdateSystemSound(id) {
 	
 	for (var i = 0; id.SSSYSTEM_SOUND_OBJECT[i] != undefined; i++) {
 		var get = id.SSSYSTEM_SOUND_OBJECT[i][0];
-		if (id.image_alpha < 1)
-			get.ALPHA = id.image_alpha * id.SSSYSTEM_SOUND_OBJECT[i][3];
-		else
-			get.ALPHA = id.SSSYSTEM_SOUND_OBJECT[i][3];
+		get.image_alpha = id.SSSYSTEM_SOUND_OBJECT[i][3];
 		if (get.TYPE != "EMPT_BUTTON-NO-HAND") {
 			get.x = id.x + id.SSSYSTEM_SOUND_OBJECT[i][1];
 			get.y = id.y + id.SSSYSTEM_SOUND_OBJECT[i][2];

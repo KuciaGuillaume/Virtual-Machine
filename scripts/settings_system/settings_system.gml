@@ -179,10 +179,7 @@ function UpdateSSystem(id) {
 	
 	for (var i = 0; id.SSYSTEM_OBJECT[i] != undefined; i++) {
 		var get = id.SSYSTEM_OBJECT[i][0];
-		if (id.image_alpha < 1)
-			get.ALPHA = id.image_alpha * id.SSYSTEM_OBJECT[i][3];
-		else
-			get.ALPHA = id.SSYSTEM_OBJECT[i][3];
+		get.image_alpha = id.SSYSTEM_OBJECT[i][3];
 		if (get.TYPE != "EMPT_BUTTON-NO-HAND") {
 			get.x = id.x + id.SSYSTEM_OBJECT[i][1];
 			get.y = id.y + id.SSYSTEM_OBJECT[i][2];

@@ -33,13 +33,15 @@ function CreateHomeApps() {
 	if (ON_MAIN_SCENE.HOME == undefined)
 		return;
 		// CREATE EXPLORER
+		
+		var file_ex_txt = StrLimit(AutoLanguage("File_explorers"), 13);
 
 		ON_MAIN_SCENE.HOME.ALL_APPS_LIST = [undefined];
 		var empt = GetEmptLinked(790, 550, "Home_Gp2", S_File_explorer_icon, OJustGUI, "IMAGE");
-		var empt_text = GetEmptText(790, 550, AutoLanguage("File_explorers"), Arial10, c_black, c_white, "Home_Gp2");
+		var empt_text = GetEmptText(790, 550, file_ex_txt, Arial10, c_black, c_white, "Home_Gp2");
 		
 		ON_MAIN_SCENE.HOME.ALL_EXPLORERS = CreateEmptyButton(OHomeEmpty, 790, 550, 150, 50, #EEEEEE, #9DBBD5, "Home_Gp1", empt, empt_text, "HOME_FILE_EXPLORERS", "EMPT_BUTTON-NO-HAND", [["AUTO_CLASS"], ["CENTERED"], ["SLIDE", 0.0001], ["FADE_IN", 0.000005], undefined]);
-		ON_MAIN_SCENE.HOME.ALL_APPS_LIST = addtolist([AutoLanguage("File_explorers"), ON_MAIN_SCENE.HOME.ALL_EXPLORERS, empt, empt_text, "HOME_FILE_EXPLORERS"], ON_MAIN_SCENE.HOME.ALL_APPS_LIST);
+		ON_MAIN_SCENE.HOME.ALL_APPS_LIST = addtolist([file_ex_txt, ON_MAIN_SCENE.HOME.ALL_EXPLORERS, empt, empt_text, "HOME_FILE_EXPLORERS"], ON_MAIN_SCENE.HOME.ALL_APPS_LIST);
 		
 		// CREATE TERMINAL
 		var empt = GetEmptLinked(790, 550, "Home_Gp2", S_terminal_icon, OJustGUI, "IMAGE");

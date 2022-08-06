@@ -94,8 +94,6 @@ if (DISLIKE) {
 				
 		}
 		get.image_index = i;
-		SAVE_LIST = [global.USER, undefined];
-		savegame_save("USER", SAVE_LIST);
 		var like = GetObject("LIKE");
 		like.image_index = 0;
 		image_index = 0;
@@ -204,8 +202,6 @@ if (TAG == "EDIT_FINISH") {
 	var load = CreateObjects(960, 540, "Gp2", Oregister_load, "IMAGE", "FINISH_LOAD", [undefined]);
 	load.STATE = 2;
 	load.TIMER = global.TIMER / 2;
-	SAVE_LIST = [global.USER, undefined];
-	savegame_save("USER", SAVE_LIST);
 	DestroyObject("REGISTER_CURSOR");
 }
 
@@ -218,8 +214,6 @@ if (TAG == "LIKE") {
 	var get = GetObject("USER_BACKGROUND");
 	image_index = 1;
 	global.USER[9][get.image_index] = 1;
-	SAVE_LIST = [global.USER, undefined];
-	savegame_save("USER", SAVE_LIST);
 }
 if (TAG == "DISLIKE" && image_index == 0) {
 	image_index = 1
@@ -251,7 +245,7 @@ if (TAG == "RENAME_FOLDER_SLIDERS") {
 }
 
 if (TAG == "DESK_OPEN_IN_FILE_EXPLORER") {
-	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, AutoLanguage("File_explorer"));
 	if (window != undefined) {
 		window.WINDOW_BK.PWD = ON_MAIN_SCENE.PATH[1];
 		window.WINDOW_BK.PWD_PATH = "/~/" + AutoLanguage("Desk");
@@ -298,7 +292,7 @@ if (string_count("RENAME_EXPLORERS_FOLDERS", TAG) > 0) {
 if (string_count("EXPLORERS_OPEN_IN_ANOTHER", TAG) > 0) {
 	mouse_clear(mb_right);
 	mouse_clear(mb_left);
-	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, "File_explorer");
+	var window = CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, AutoLanguage("File_explorer"));
 	window.WINDOW_BK.PWD = go_to_path(ON_MAIN_SCENE.PATH, PARENT.PARENT.PWD_PATH + "/" + PARENT.PARENT.FOLDER_LIST[NUM_LINKED].NAME);
 	window.WINDOW_BK.PWD_PATH = PARENT.PARENT.PWD_PATH + "/" + PARENT.PARENT.FOLDER_LIST[NUM_LINKED].NAME;
 	PARENT.PARENT.EXPLORER_SLIDER = undefined;

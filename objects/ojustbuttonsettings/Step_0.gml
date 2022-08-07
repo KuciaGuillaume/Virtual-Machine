@@ -313,7 +313,6 @@ if (PARENT != undefined && PARENT.TAG + "NOTIFICATION_SOUND_SELECTOR" == TAG) {
 			ROUND.COLOR = #282828;
 			ROUND.MARGE = 5;
 		}
-			
 		
 		
 		SELECT = true;
@@ -354,7 +353,7 @@ if (PARENT != undefined && PARENT.TAG + "NOTIFICATION_SOUND_SELECTOR" == TAG) {
 if (PARENT.TAG + "NOTIFICATION_SOUND_BAR_2" == TAG)
 	IMAGE_WIDTH = OBJECT_LINKED.x - x;
 	
-if (PARENT.TAG + "UPDATE_NEWS_ARTICLE" == TAG && PARENT.WINDOW.ON) {
+if (string_count("ARTICLE", TAG) > 0 && PARENT.WINDOW.ON) {
 	
 	if (MouseInsideObject(id)) {
 		if (mouse_wheel_down() && IMAGE_TOP < Diff(IMAGE_HEIGHT, sprite_height))
@@ -368,23 +367,6 @@ if (PARENT.TAG + "UPDATE_NEWS_ARTICLE" == TAG && PARENT.WINDOW.ON) {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

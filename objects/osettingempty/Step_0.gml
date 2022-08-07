@@ -87,10 +87,25 @@ if (string_count("UPDATE_BUTTON", TAG) > 0 && PARENT != undefined && TAG != "UPD
 	
 	if (mouse_check_button_pressed(mb_left) && MouseInsideRound(id)) {
 		CLICK = true;
+		
+	// CREATTION AND DELETE ARTICLES
+
 		if (PARENT.TAG + "NEWS_UPDATE_BUTTON" != TAG) {
 			PARENT.SUPDATE_OBJECT = remove_findlist_index(GetObject(PARENT.TAG + "UPDATE_NEWS_ARTICLE"), PARENT.SUPDATE_OBJECT, 0);
 			DestroyObject(PARENT.TAG + "UPDATE_NEWS_ARTICLE");
-		} else {
+		}
+		if (PARENT.TAG + "PATCH_UPDATE_BUTTON" != TAG) {
+			PARENT.SUPDATE_OBJECT = remove_findlist_index(GetObject(PARENT.TAG + "UPDATE_PATCH_ARTICLE"), PARENT.SUPDATE_OBJECT, 0);
+			DestroyObject(PARENT.TAG + "UPDATE_PATCH_ARTICLE");
+		}
+		if (PARENT.TAG + "OTHERS_UPDATE_BUTTON" != TAG) {
+			PARENT.SUPDATE_OBJECT = remove_findlist_index(GetObject(PARENT.TAG + "UPDATE_OTHERS_ARTICLE"), PARENT.SUPDATE_OBJECT, 0);
+			DestroyObject(PARENT.TAG + "UPDATE_OTHERS_ARTICLE");
+		}
+		
+		
+
+		if (PARENT.TAG + "NEWS_UPDATE_BUTTON" == TAG) {
 			// CREATE ARTCILE NEWS
 			var NEWS = CreateObjectSprite(PARENT.x, PARENT.y, PARENT.WINDOW.LAYERS[0], News_Article_Update, OJustButtonSettings, "IMAGE", PARENT.TAG + "UPDATE_NEWS_ARTICLE", [undefined]);
 			PARENT.WINDOW.list_objects = addtolist(NEWS, PARENT.WINDOW.list_objects);
@@ -106,6 +121,46 @@ if (string_count("UPDATE_BUTTON", TAG) > 0 && PARENT != undefined && TAG != "UPD
 			else if (global.SETTINGS[7] == "FRENCH")
 				NEWS.image_index = 1;
 		}
+		
+		if (PARENT.TAG + "PATCH_UPDATE_BUTTON" == TAG) {
+			// CREATE ARTCILE NEWS
+			var PATCH = CreateObjectSprite(PARENT.x, PARENT.y, PARENT.WINDOW.LAYERS[0], Patchs_Article_Update, OJustButtonSettings, "IMAGE", PARENT.TAG + "UPDATE_PATCH_ARTICLE", [undefined]);
+			PARENT.WINDOW.list_objects = addtolist(PATCH, PARENT.WINDOW.list_objects);
+			PARENT.SUPDATE_OBJECT = addtolist([PATCH, -100, 180, 1], PARENT.SUPDATE_OBJECT);
+			PATCH.SET_DISPLAY_LEFT = true;
+			PATCH.IMAGE_TOP = 0;
+			PATCH.IMAGE_HEIGHT = 370;
+			PATCH.IMAGE_LEFT = 0;
+			PATCH.IMAGE_WIDTH = 450;
+			PATCH.PARENT = PARENT;
+			if (global.SETTINGS[7] == "ENGLISH")
+				PATCH.image_index = 0;
+			else if (global.SETTINGS[7] == "FRENCH")
+				PATCH.image_index = 1;
+		}
+		
+		if (PARENT.TAG + "OTHERS_UPDATE_BUTTON" == TAG) {
+			// CREATE ARTCILE NEWS
+			var OTHERS = CreateObjectSprite(PARENT.x, PARENT.y, PARENT.WINDOW.LAYERS[0], Others_Article_Update, OJustButtonSettings, "IMAGE", PARENT.TAG + "UPDATE_OTHERS_ARTICLE", [undefined]);
+			PARENT.WINDOW.list_objects = addtolist(OTHERS, PARENT.WINDOW.list_objects);
+			PARENT.SUPDATE_OBJECT = addtolist([OTHERS, -100, 180, 1], PARENT.SUPDATE_OBJECT);
+			OTHERS.SET_DISPLAY_LEFT = true;
+			OTHERS.IMAGE_TOP = 0;
+			OTHERS.IMAGE_HEIGHT = 370;
+			OTHERS.IMAGE_LEFT = 0;
+			OTHERS.IMAGE_WIDTH = 450;
+			OTHERS.PARENT = PARENT;
+			if (global.SETTINGS[7] == "ENGLISH")
+				OTHERS.image_index = 0;
+			else if (global.SETTINGS[7] == "FRENCH")
+				OTHERS.image_index = 1;
+		}
+		
+		
+		
+		
+		
+
 	} else if (mouse_check_button_pressed(mb_left) && !MouseInsideRound(id) && MouseInside(PARENT.x - 100, PARENT.x + 350, PARENT.y + 120, PARENT.y + 160)) {
 		CLICK = false;
 		TEXT_COLOR_1 = c_gray;
@@ -131,6 +186,27 @@ if (string_count("UPDATE_BUTTON", TAG) > 0 && PARENT != undefined && TAG != "UPD
 
 // CLICK
 if (!mouse_check_button_pressed(mb_left) || !MouseInsideRound(id) || !ON) return;
+
+
+if (PARENT != undefined && PARENT.TAG + "OPEN_IN_DOCUMENT_VIEWER" == TAG) {
+	var window = CreateWindow(S_Document_Viewer_BK, OJustGUI_DocumentViewer, "DOCUMENT_VIEWER", S_Document_Viewer_Icon, AutoLanguage("Document viewer"), SWindow_Top_Viewer);
+	
+	if (GetObject(PARENT.TAG + "UPDATE_NEWS_ARTICLE") != undefined) {
+		window.WINDOW_BK.DOCUMENT_VIEWER = News_Article_Update_Big;
+		if (global.SETTINGS[7] == "FRENCH")
+			window.WINDOW_BK.DOCUMENT_VIEWER_INDEX = 1;
+	} else if (GetObject(PARENT.TAG + "UPDATE_PATCH_ARTICLE") != undefined) {
+		window.WINDOW_BK.DOCUMENT_VIEWER = Patchs_Article_update_big;
+		if (global.SETTINGS[7] == "FRENCH")
+			window.WINDOW_BK.DOCUMENT_VIEWER_INDEX = 1;
+	} else if (GetObject(PARENT.TAG + "UPDATE_OTHERS_ARTICLE") != undefined) {
+		window.WINDOW_BK.DOCUMENT_VIEWER = Others_Article_Update_Big;
+		if (global.SETTINGS[7] == "FRENCH")
+			window.WINDOW_BK.DOCUMENT_VIEWER_INDEX = 1;
+	}
+	ShowMyWindow();
+}
+
 
 if (PARENT != undefined && PARENT.TAG + "ACCOUNT_EDIT_PASSWORD_APPLY" == TAG) {
 	if (OBJECT_LINKED.write.TEXT_OUTPUT == OBJECT_LINKED.write.INITIAL_TEXT)

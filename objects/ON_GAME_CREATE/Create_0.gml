@@ -362,7 +362,7 @@ AddTraduction( [["Language change", "ENGLISH"], ["Changement de langue", "FRENCH
 AddTraduction( [["To restart", "ENGLISH"], ["Redémarrer", "FRENCH"]] );
 AddTraduction( [["Do not restart", "ENGLISH"], ["Ne pas redémarrer", "FRENCH"]] );
 AddTraduction( [["Open in document viewer", "ENGLISH"], ["Ouvrire dans la visionneuse de documents", "FRENCH"]] );
-
+AddTraduction( [["Document viewer", "ENGLISH"], ["Visionneuse de documents", "FRENCH"]] );
 
 
 // CREATE DATE

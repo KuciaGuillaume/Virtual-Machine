@@ -117,6 +117,12 @@ if ((WINDOW != undefined && instance_exists(WINDOW)) && !CLOSE && string_count("
 
 		for (var i = 0; SNETWORK_OBJECT[i] != undefined; i++)
 			SNETWORK_OBJECT[i][3] = image_alpha;
+			
+		for (var i = 0; SUPDATE_OBJECT[i] != undefined; i++) {
+			SUPDATE_OBJECT[i][3] = image_alpha;
+			if (SUPDATE_OBJECT[i][0].object_index == OJustButtonSettings)
+				SUPDATE_OBJECT[i][0].ALPHA = image_alpha;
+		}
 		
 		
 		// UPDATE IN SETTING

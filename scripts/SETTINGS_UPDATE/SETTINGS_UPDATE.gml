@@ -42,7 +42,7 @@ function CreateSUpdate(id) {
 	id.SUPDATE_OBJECT = addtolist([NEWS_UPDATE_BUTTON, -100, 120, 1], id.SUPDATE_OBJECT);
 	
 	// CREATE PATCH_UPDATE_BUTTON
-	var empt_text = GetEmptText(id.x, id.y, AutoLanguage("Patch"), Segoe10, c_gray, #262626, id.WINDOW.LAYERS[4]);
+	var empt_text = GetEmptText(id.x, id.y, AutoLanguage("Patchs"), Segoe10, c_gray, #262626, id.WINDOW.LAYERS[4]);
 	
 	var PATCH_UPDATE_BUTTON = CreateEmptyButton(OSettingEmpty, id.x, id.y, 150, 40, c_white, c_white, id.WINDOW.LAYERS[1], undefined, empt_text, id.TAG + "PATCH_UPDATE_BUTTON", "EMPT_BUTTON", [["CENTERED"], undefined]);
 	PATCH_UPDATE_BUTTON.PARENT = id;
@@ -107,6 +107,8 @@ function UpdateSUpdate(id) {
 	for (var i = 0; id.SUPDATE_OBJECT[i] != undefined; i++) {
 		var get = id.SUPDATE_OBJECT[i][0];
 		get.image_alpha = id.SUPDATE_OBJECT[i][3];
+		if (get.object_index == OJustButtonSettings)
+			get.ALPHA = id.SUPDATE_OBJECT[i][3];
 		if (get.TYPE != "EMPT_BUTTON-NO-HAND" || get.TYPE == "EMPT_BUTTON") {
 			if (id.SUPDATE_OBJECT[i][1] != undefined)
 				get.x = id.x + id.SUPDATE_OBJECT[i][1];

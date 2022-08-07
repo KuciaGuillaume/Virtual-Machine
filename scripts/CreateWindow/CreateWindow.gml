@@ -28,7 +28,7 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME, TOP_WINDOW) 
 	global.layer_depth[i + 1] = undefined;
 	global.last_layer_id -= 7;
 
-	var window = CreateObjectSprite(960, 260, LAYER_1, TOP_WINDOW, Owindow, "TOP_WINDOW", TAG + string(ID), OPTION);
+	var window = CreateObjectSprite(960, 540 - (sprite_get_height(WINDOW_BK)/2) + 30, LAYER_1, TOP_WINDOW, Owindow, "TOP_WINDOW", TAG + string(ID), OPTION);
 	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, WINDOW_BK_OBJECT, "WINDOW_BK", TAG + "_BK" + string(ID), OPTION);
 	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5 + 10, window.y + 3, LAYER_2 , Swindow_close, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
 	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5 + 10, window.y + 3, LAYER_2 , Swindow_reduce, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);

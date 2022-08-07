@@ -73,7 +73,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Backgrounds",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Backgrounds.yy",
+    "path": "folders/MainScene/Objects/Sprites/Backgrounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_backgrounds",

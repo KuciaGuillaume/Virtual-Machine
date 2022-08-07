@@ -67,7 +67,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Display",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System/Display.yy",
+    "path": "folders/MainScene/Objects/Sprites/Settings/System/Display.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_Brightness_selector",

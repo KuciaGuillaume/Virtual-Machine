@@ -78,7 +78,7 @@ for (var i = 0; global.WINDOWS_PIN[i] != undefined; i++) {
 	var class = global.WINDOWS_PIN[i];
 	if (!class[0])
 		continue;
-	CreateWindowIcon(class[1], class[2], class[3], class[4], class[5]);
+	CreateWindowIcon(class[1], class[2], class[3], class[4], class[5], class[6]);
 }
 
 if (global.SETTINGS[5]) {

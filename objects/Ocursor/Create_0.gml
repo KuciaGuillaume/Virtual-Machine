@@ -10,4 +10,6 @@ INFO_NAME = undefined;
 // PRESS_TIME
 PRESS_TIME = 0;
 
+ON = true;
+
 

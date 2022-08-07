@@ -64,8 +64,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Window",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Window.yy",
+    "name": "Desk",
+    "path": "folders/MainScene/Objects/Sprites/Desk.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_right_option",

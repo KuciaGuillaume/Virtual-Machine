@@ -254,7 +254,7 @@ if (mouse_check_button_pressed(mb_left) && MouseInsideObject(id) && string_count
 		}
 	}
 	if (all_closed)
-		CreateWindow(CREATE_WINDOW_IMAGE,  CREATE_WINDOW_OBJECT, CREATE_WINDOW_TAG, CREATE_WINDOW_ICON, CREATE_WINDOW_NAME);
+		CreateWindow(CREATE_WINDOW_IMAGE,  CREATE_WINDOW_OBJECT, CREATE_WINDOW_TAG, CREATE_WINDOW_ICON, CREATE_WINDOW_NAME, CREATE_WINDOW_TOP);
 	setforfolders(ON_MAIN_SCENE.FOLDERS, false);
 	ON_MAIN_SCENE.ON_DESK = false;
 	mouse_clear(mb_left);

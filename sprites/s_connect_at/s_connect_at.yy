@@ -65,7 +65,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Terminal",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Terminal.yy",
+    "path": "folders/MainScene/Objects/Sprites/Terminal.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_connect_at",

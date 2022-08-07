@@ -25,6 +25,14 @@ global.TEXT = [undefined];
 
 global.RstartMode = "START";
 
+global.Requirement = {
+	
+	type : undefined,
+	state : "OFF",
+	response : false
+	
+};
+
 // INIT_TIMER
 
 global.TIMER = 2;
@@ -348,6 +356,13 @@ AddTraduction( [["Patch notes", "ENGLISH"], ["Notes de mise à jour", "FRENCH"]]
 AddTraduction( [["News", "ENGLISH"], ["Nouveautés", "FRENCH"]] );
 AddTraduction( [["Patchs", "ENGLISH"], ["Correctifs", "FRENCH"]] );
 AddTraduction( [["Others", "ENGLISH"], ["Autres", "FRENCH"]] );
+AddTraduction( [["Language change", "ENGLISH"], ["Changement de langue", "FRENCH"]] );
+AddTraduction( [["A change of language during the execution of the machine can\ncause some bugs. We advise you to do a restart.", "ENGLISH"], ["Un changement de langue durant l'exécution de la machine peut\nprovoquer quelques bugs. Nous vous conseillons de faire un\nredémarrage.", "FRENCH"]] );
+AddTraduction( [["Language change", "ENGLISH"], ["Changement de langue", "FRENCH"]] );
+AddTraduction( [["To restart", "ENGLISH"], ["Redémarrer", "FRENCH"]] );
+AddTraduction( [["Do not restart", "ENGLISH"], ["Ne pas redémarrer", "FRENCH"]] );
+AddTraduction( [["Open in document viewer", "ENGLISH"], ["Ouvrire dans la visionneuse de documents", "FRENCH"]] );
+
 
 
 // CREATE DATE

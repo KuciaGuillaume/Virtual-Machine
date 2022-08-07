@@ -35,7 +35,8 @@ if (PARENT != undefined) {
 
 if (PARENT != undefined && string_count("EDIT_LANGUAGE_CHANGE", TAG) > 0) {
 	
-	if (LANGUAGE_BUTTON_SELECT == undefined && MouseInsideRound(id) && global.SETTINGS[7] != LANGUAGE) {
+	var pressed = false;
+	if (LANGUAGE_BUTTON_SELECT == undefined && MouseInsideRound(id) && global.SETTINGS[7] != LANGUAGE && PARENT.WINDOW.ON) {
 	
 		var pos_x = Diff(PARENT.x, (x + SIZE_X) - 110);
 		var pos_y = Diff(PARENT.y, y + 10);
@@ -55,13 +56,17 @@ if (PARENT != undefined && string_count("EDIT_LANGUAGE_CHANGE", TAG) > 0) {
 		LANGUAGE_BUTTON_SELECT = undefined;
 	}
 	
-	if (LANGUAGE_BUTTON_SELECT != undefined && mouse_check_button_pressed(mb_left) && MouseInsideRound(LANGUAGE_BUTTON_SELECT))
+	if (LANGUAGE_BUTTON_SELECT != undefined && mouse_check_button_pressed(mb_left) && MouseInsideRound(LANGUAGE_BUTTON_SELECT)) {
 		global.SETTINGS[7] = LANGUAGE;
+		pressed = true;
+	}
 	
 	if (global.SETTINGS[7] == LANGUAGE && LANGUAGE_CHECKER == undefined) {
 		LANGUAGE_CHECKER = CreateObjectSprite(x, y, PARENT.WINDOW.LAYERS[2], S_SAccount_Check, OJustGUI, "IMAGE", PARENT.TAG + "LANGUAGE_SELECT" + TAG, [undefined]);
 		PARENT.WINDOW.list_objects = addtolist(LANGUAGE_CHECKER, PARENT.WINDOW.list_objects);
 		PARENT.SACCOUNT_OBJECT = addtolist([LANGUAGE_CHECKER, Diff(PARENT.x, (x + SIZE_X) - 40), Diff(PARENT.y, (y + 10)), 1], PARENT.SACCOUNT_OBJECT);
+		if (pressed)
+			CreateAdminRequirement( AutoLanguage("Language change"), AutoLanguage("A change of language during the execution of the machine can\ncause some bugs. We advise you to do a restart."),  AutoLanguage("To restart") ,  AutoLanguage("Do not restart") , S_SAccount_EDIT_LANGUAGE, "EDIT_LANGUAGE");
 	} else if (global.SETTINGS[7] != LANGUAGE && LANGUAGE_CHECKER != undefined) {
 		PARENT.SACCOUNT_OBJECT = remove_findlist_index(LANGUAGE_CHECKER, PARENT.SACCOUNT_OBJECT, 0);
 		PARENT.WINDOW.list_objects = remove_findlist(LANGUAGE_CHECKER, PARENT.WINDOW.list_objects);
@@ -69,12 +74,38 @@ if (PARENT != undefined && string_count("EDIT_LANGUAGE_CHANGE", TAG) > 0) {
 		LANGUAGE_CHECKER = undefined;
 	}
 	
+	if (global.Requirement.state == "FINISH" && global.Requirement.type == "EDIT_LANGUAGE" && global.Requirement.response == true) {
+		global.Requirement.state = "OFF";
+		global.Requirement.type = undefined;
+		global.Requirement.response = false;
+		Machine("RESTART");
+	}
+	
 } 
 
-if (string_count("UPDATE_BUTTON", TAG) > 0 && PARENT != undefined && TAG != "UPDATE_BUTTON_MOVER") {
+if (string_count("UPDATE_BUTTON", TAG) > 0 && PARENT != undefined && TAG != "UPDATE_BUTTON_MOVER" && PARENT.WINDOW.ON) {
 	
 	if (mouse_check_button_pressed(mb_left) && MouseInsideRound(id)) {
 		CLICK = true;
+		if (PARENT.TAG + "NEWS_UPDATE_BUTTON" != TAG) {
+			PARENT.SUPDATE_OBJECT = remove_findlist_index(GetObject(PARENT.TAG + "UPDATE_NEWS_ARTICLE"), PARENT.SUPDATE_OBJECT, 0);
+			DestroyObject(PARENT.TAG + "UPDATE_NEWS_ARTICLE");
+		} else {
+			// CREATE ARTCILE NEWS
+			var NEWS = CreateObjectSprite(PARENT.x, PARENT.y, PARENT.WINDOW.LAYERS[0], News_Article_Update, OJustButtonSettings, "IMAGE", PARENT.TAG + "UPDATE_NEWS_ARTICLE", [undefined]);
+			PARENT.WINDOW.list_objects = addtolist(NEWS, PARENT.WINDOW.list_objects);
+			PARENT.SUPDATE_OBJECT = addtolist([NEWS, -100, 180, 1], PARENT.SUPDATE_OBJECT);
+			NEWS.SET_DISPLAY_LEFT = true;
+			NEWS.IMAGE_TOP = 0;
+			NEWS.IMAGE_HEIGHT = 370;
+			NEWS.IMAGE_LEFT = 0;
+			NEWS.IMAGE_WIDTH = 450;
+			NEWS.PARENT = PARENT;
+			if (global.SETTINGS[7] == "ENGLISH")
+				NEWS.image_index = 0;
+			else if (global.SETTINGS[7] == "FRENCH")
+				NEWS.image_index = 1;
+		}
 	} else if (mouse_check_button_pressed(mb_left) && !MouseInsideRound(id) && MouseInside(PARENT.x - 100, PARENT.x + 350, PARENT.y + 120, PARENT.y + 160)) {
 		CLICK = false;
 		TEXT_COLOR_1 = c_gray;
@@ -91,10 +122,9 @@ if (string_count("UPDATE_BUTTON", TAG) > 0 && PARENT != undefined && TAG != "UPD
 		else if (PARENT.SUPDATE_OBJECT[index][1] < self_index)
 			PARENT.SUPDATE_OBJECT[index][1] += (distance) * (delta_time * 0.00001);
 		if (distance < 5) {
-			TEXT_COLOR_1 = c_white;
-			TEXT_COLOR_2 = c_white;
+			TEXT_COLOR_1 = #262626;
+			TEXT_COLOR_2 = #262626;
 		}
-		show_debug_message(id.TAG);
 	}
 	
 }

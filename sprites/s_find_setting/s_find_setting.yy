@@ -66,8 +66,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Settings",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings.yy",
+    "name": "File_explorer",
+    "path": "folders/MainScene/Objects/Sprites/File_explorer.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_Find_setting",

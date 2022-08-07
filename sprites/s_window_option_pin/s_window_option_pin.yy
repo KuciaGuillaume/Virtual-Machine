@@ -67,7 +67,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Window",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Window.yy",
+    "path": "folders/MainScene/Objects/Sprites/Window.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_window_option_pin",

@@ -65,7 +65,7 @@
   "nineSlice": null,
   "parent": {
     "name": "About",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System/About.yy",
+    "path": "folders/MainScene/Objects/Sprites/Settings/System/About.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_About_Motherboard",

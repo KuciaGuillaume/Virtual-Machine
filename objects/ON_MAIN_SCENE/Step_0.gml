@@ -28,16 +28,16 @@ else
 var CTRL = KeyPress(vk_control);
 
 if (CTRL && KeyPressed(ord("T"))) {
-	CreateWindow(Sterminal_bk, OJustGUITerminal, "TERMINAL", S_terminal_icon, AutoLanguage("Terminal"));
+	CreateWindow(Sterminal_bk, OJustGUITerminal, "TERMINAL", S_terminal_icon, AutoLanguage("Terminal"), Swindow_top);
 	setforfolders(FOLDERS, false);
 	ON_DESK = false;
 }
 
 if (CTRL && KeyPressed(ord("E")))
-	CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, AutoLanguage("File_explorer"));
+	CreateWindow(S_File_explorer_Bk, OJustGUI_File_explorer, "FILE_EXPLORER", S_File_explorer_icon, AutoLanguage("File_explorer"), Swindow_top);
 
 if (KeyPressed(vk_escape))
-	CreateWindow(S_Settings_BK, OJustGUI_Settings, "SETTINGS", S_Settings_Icon, AutoLanguage("Settings"));
+	CreateWindow(S_Settings_BK, OJustGUI_Settings, "SETTINGS", S_Settings_Icon, AutoLanguage("Settings"), Swindow_top);
 
 if (mouse_check_button_pressed(mb_left) || mouse_check_button_pressed(mb_right))
 	check_all_off()

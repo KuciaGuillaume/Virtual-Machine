@@ -1,6 +1,6 @@
 
 
-function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
+function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME, TOP_WINDOW) {
 	static ID = 0;
 	
 	DestroyHome();
@@ -28,7 +28,7 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	global.layer_depth[i + 1] = undefined;
 	global.last_layer_id -= 7;
 
-	var window = CreateObjectSprite(960, 260, LAYER_1, Swindow_top, Owindow, "TOP_WINDOW", TAG + string(ID), OPTION);
+	var window = CreateObjectSprite(960, 260, LAYER_1, TOP_WINDOW, Owindow, "TOP_WINDOW", TAG + string(ID), OPTION);
 	window.WINDOW_BK = CreateObjectSprite(960 + 3, window.y + (window.sprite_height/2) - 6, LAYER_1, WINDOW_BK, WINDOW_BK_OBJECT, "WINDOW_BK", TAG + "_BK" + string(ID), OPTION);
 	window.CLOSE = CreateObjectSprite(window.bbox_left + 17.5 + 10, window.y + 3, LAYER_2 , Swindow_close, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
 	window.REDUCE = CreateObjectSprite(window.bbox_left + 42.5 + 10, window.y + 3, LAYER_2 , Swindow_reduce, OJustGUI, "BUTTON-NO-HAND", TAG + "CLOSE" + string(ID), OPTION);
@@ -108,6 +108,7 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	icon.CREATE_WINDOW_TAG = TAG;
 	icon.CREATE_WINDOW_ICON = ICON;
 	icon.CREATE_WINDOW_NAME = NAME;
+	icon.CREATE_WINDOW_TOP = TOP_WINDOW;
 	icon.ON_TASK = window.ON_OBJECT;
 	icon.WINDOW_TAG = TAG;
 	icon.CREATE_WINDOW_OBJECT = WINDOW_BK_OBJECT;
@@ -125,7 +126,7 @@ function CreateWindow(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	return window;
 }
 
-function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
+function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME, TOP_WINDOW) {
 	static ID = 500;
 	
 	for (var i = 0; ON_MAIN_SCENE.TASKS[i] != undefined && ON_MAIN_SCENE.TASKS[i][0] != TAG; ) { i++; }
@@ -153,6 +154,7 @@ function CreateWindowIcon(WINDOW_BK, WINDOW_BK_OBJECT, TAG, ICON, NAME) {
 	icon.CREATE_WINDOW_TAG = TAG;
 	icon.CREATE_WINDOW_ICON = ICON;
 	icon.CREATE_WINDOW_NAME = NAME;
+	icon.CREATE_WINDOW_TOP = TOP_WINDOW;
 	icon.ON_TASK = undefined;
 	icon.PIN = true;
 	icon.WINDOW_TAG = TAG;

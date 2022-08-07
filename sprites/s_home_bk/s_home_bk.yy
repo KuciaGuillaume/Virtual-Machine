@@ -65,7 +65,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Home",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Home.yy",
+    "path": "folders/MainScene/Objects/Sprites/Home.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_Home_BK",

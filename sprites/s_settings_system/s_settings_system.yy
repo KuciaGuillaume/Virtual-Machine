@@ -64,8 +64,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Setting",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/Setting.yy",
+    "name": "Terminal",
+    "path": "folders/MainScene/Objects/Sprites/Terminal.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_Settings_System",

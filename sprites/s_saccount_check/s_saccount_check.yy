@@ -65,7 +65,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Account",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/Account.yy",
+    "path": "folders/MainScene/Objects/Sprites/Settings/Account.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SAccount_Check",

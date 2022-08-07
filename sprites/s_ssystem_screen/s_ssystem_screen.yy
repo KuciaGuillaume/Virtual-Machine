@@ -64,8 +64,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "System",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System.yy",
+    "name": "Display",
+    "path": "folders/MainScene/Objects/Sprites/Settings/System/Display.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SSystem_screen",

@@ -65,7 +65,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Storage",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System/Storage.yy",
+    "path": "folders/MainScene/Objects/Sprites/Settings/System/Storage.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_Stockage_Hard_Disk",

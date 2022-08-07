@@ -14,7 +14,7 @@ y = mouse_y;
 
 if (room == RMainScene)
 	ON_MAIN_SCENE.ON_GUI = false;
-for (var i = 0; global.BUTTONS[i] != undefined; i++) {
+for (var i = 0; global.BUTTONS[i] != undefined && ON; i++) {
 	var class = global.BUTTONS[i];
 	
 	if ((class[1] != "BUTTON" && class[1] != "CHECKER" && class[1] != "TEXT_BUTTON" && class[1] != "EMPT_BUTTON" && class[1] != "EMPT_BUTTON-NO-HAND" && class[1] != "INFO" && class[1] != "BUTTON-NO-HAND") || class[2] != room)
@@ -25,9 +25,9 @@ for (var i = 0; global.BUTTONS[i] != undefined; i++) {
 			image_index = 1;
 		if (class[1] == "TEXT_BUTTON")
 			image_index = 2;
-		if ((class[1] == "BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON-NO-HAND") && mouse_check_button(mb_left) && PRESS_TIME >= 0.2)
+		if ((class[1] == "BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON") && mouse_check_button(mb_left) && PRESS_TIME >= 0.2)
 			image_index = 3;
-		else if ((class[1] == "BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON-NO-HAND") && mouse_check_button(mb_left))
+		else if ((class[1] == "BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON-NO-HAND" || class[1] == "EMPT_BUTTON") && mouse_check_button(mb_left))
 			PRESS_TIME +=  delta_time / 1000000;
 		else
 			PRESS_TIME = 0;

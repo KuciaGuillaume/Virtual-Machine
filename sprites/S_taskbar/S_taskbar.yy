@@ -64,8 +64,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites.yy",
+    "name": "Window",
+    "path": "folders/MainScene/Objects/Sprites/Window.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_taskbar",

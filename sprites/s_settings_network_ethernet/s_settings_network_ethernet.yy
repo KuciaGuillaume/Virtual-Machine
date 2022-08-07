@@ -64,8 +64,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Network",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/Network.yy",
+    "name": "Setting",
+    "path": "folders/MainScene/Objects/Sprites/Settings/Setting.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_Settings_Network_Ethernet",

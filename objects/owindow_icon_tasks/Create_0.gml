@@ -42,6 +42,7 @@ CREATE_WINDOW_IMAGE = undefined;
 CREATE_WINDOW_TAG = undefined;
 CREATE_WINDOW_ICON = undefined;
 CREATE_WINDOW_NAME = undefined;
+CREATE_WINDOW_TOP = undefined;
 VISIO_TIME = 0;
 
 HOME = false;

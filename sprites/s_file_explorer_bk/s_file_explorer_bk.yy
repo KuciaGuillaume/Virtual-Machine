@@ -64,8 +64,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "File_explorer",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/File_explorer.yy",
+    "name": "Window",
+    "path": "folders/MainScene/Objects/Sprites/Window.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_File_explorer_Bk",

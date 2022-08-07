@@ -65,7 +65,7 @@
   "nineSlice": null,
   "parent": {
     "name": "cursor",
-    "path": "folders/MainScene/Objects/Objects/Settings/Sprites/Settings/System/Personalize/cursor.yy",
+    "path": "folders/MainScene/Objects/Sprites/Settings/System/Personalize/cursor.yy",
   },
   "resourceVersion": "1.0",
   "name": "S_SSsystem_Personalize_cursor_Win11",

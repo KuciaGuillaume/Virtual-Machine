@@ -353,3 +353,47 @@ if (PARENT != undefined && PARENT.TAG + "NOTIFICATION_SOUND_SELECTOR" == TAG) {
 
 if (PARENT.TAG + "NOTIFICATION_SOUND_BAR_2" == TAG)
 	IMAGE_WIDTH = OBJECT_LINKED.x - x;
+	
+if (PARENT.TAG + "UPDATE_NEWS_ARTICLE" == TAG && PARENT.WINDOW.ON) {
+	
+	if (MouseInsideObject(id)) {
+		if (mouse_wheel_down() && IMAGE_TOP < Diff(IMAGE_HEIGHT, sprite_height))
+			IMAGE_TOP += (delta_time * 0.0008);
+		else if (IMAGE_TOP > Diff(IMAGE_HEIGHT, sprite_height))
+			IMAGE_TOP = Diff(IMAGE_HEIGHT, sprite_height);
+		if (mouse_wheel_up() && IMAGE_TOP > 0)
+			IMAGE_TOP -= (delta_time * 0.0008);
+		else if (IMAGE_TOP < 0)
+			IMAGE_TOP = 0;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

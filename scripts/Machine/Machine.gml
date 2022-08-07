@@ -1,7 +1,17 @@
 
 function Machine(OPTION){
-	if (OPTION == "RESTART") {	global.RstartMode = "RESTART"; room = Rstart; }
-	if (OPTION == "END") {	global.RstartMode = "END"; room = Rstart; }
+	if (OPTION == "RESTART") {
+		savegame_clear("USER");
+		savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, global.GAME_VALUE, undefined]);	
+		global.RstartMode = "RESTART";
+		room = Rstart;
+	}
+	if (OPTION == "END") {	
+		savegame_clear("USER");
+		savegame_save("USER", [global.USER, ON_MAIN_SCENE.PATH, ON_MAIN_SCENE.NAME_FOLDERS, global.WINDOWS_PIN, global.SETTINGS, global.SOUNDS, global.GAME_VALUE, undefined]);
+		global.RstartMode = "END";
+		room = Rstart;
+	}
 	if (OPTION == "STANDBY") {
 		// CREATE GLOBAL WINDOW LAYER
 		global.layer_depth = [undefined];

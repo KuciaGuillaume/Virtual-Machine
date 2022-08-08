@@ -71,7 +71,8 @@ global.SETTINGS = [BRIGHTNESS, NIGHT_VISION, WINDOW_SIZE, CUSTOM_RES, FULLSCREEN
 // SOUND
 var GENERAL_SOUND = 50;
 var NOTIFICATION_SOUND = 50;
-global.SOUNDS = [GENERAL_SOUND, NOTIFICATION_SOUND];
+var AMBIANT_SOUND = 50;
+global.SOUNDS = [GENERAL_SOUND, NOTIFICATION_SOUND, AMBIANT_SOUND];
 
 global.MegaLangue = 
 [
@@ -363,6 +364,8 @@ AddTraduction( [["To restart", "ENGLISH"], ["Redémarrer", "FRENCH"]] );
 AddTraduction( [["Do not restart", "ENGLISH"], ["Ne pas redémarrer", "FRENCH"]] );
 AddTraduction( [["Open in document viewer", "ENGLISH"], ["Ouvrire dans la visionneuse de documents", "FRENCH"]] );
 AddTraduction( [["Document viewer", "ENGLISH"], ["Visionneuse de documents", "FRENCH"]] );
+AddTraduction( [["Ambient volume", "ENGLISH"], ["Volume ambiant", "FRENCH"]] );
+
 
 
 // CREATE DATE

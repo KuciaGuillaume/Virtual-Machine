@@ -180,6 +180,7 @@
     {"id":{"name":"Slike","path":"sprites/Slike/Slike.yy",},"order":2,},
     {"id":{"name":"S_SAccount_Check","path":"sprites/S_SAccount_Check/S_SAccount_Check.yy",},"order":0,},
     {"id":{"name":"S_Explorer_folder","path":"sprites/S_Explorer_folder/S_Explorer_folder.yy",},"order":2,},
+    {"id":{"name":"S_SSsystem_Ambiant_sound","path":"sprites/S_SSsystem_Ambiant_sound/S_SSsystem_Ambiant_sound.yy",},"order":2,},
     {"id":{"name":"Oregister_load","path":"objects/Oregister_load/Oregister_load.yy",},"order":1,},
     {"id":{"name":"S_Brightness_bar_2","path":"sprites/S_Brightness_bar_2/S_Brightness_bar_2.yy",},"order":1,},
     {"id":{"name":"Ocursor","path":"objects/Ocursor/Ocursor.yy",},"order":0,},

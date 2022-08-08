@@ -353,6 +353,70 @@ if (PARENT != undefined && PARENT.TAG + "NOTIFICATION_SOUND_SELECTOR" == TAG) {
 if (PARENT.TAG + "NOTIFICATION_SOUND_BAR_2" == TAG)
 	IMAGE_WIDTH = OBJECT_LINKED.x - x;
 	
+	
+// AMBIANT_SOUND_SELECTOR
+if (PARENT != undefined && PARENT.TAG + "AMBIANT_SOUND_SELECTOR" == TAG) {
+	if (mouse_check_button(mb_left) && (MouseInsideObject(id) || SELECT)) {
+		
+		// CREATE ROUND
+		if (ROUND == undefined) {
+			ROUND = CreateRound(TAG, string(SOUND_AMBIANT), Segoe8, "Notifications_Gp0", "Notifications_Gp1", #282828, 5, [["CENTERED"], undefined]);
+			ROUND.image_alpha = 1;
+			ROUND.TEXT_CONNECT.image_alpha = 1;
+		} else {
+			var TEXT = ROUND.TEXT_CONNECT;
+			TEXT.TEXT = string(SOUND_AMBIANT);
+			var X = (x - (string_width(TEXT.TEXT) / 2)) - 5;
+			var Y = ((y - 25 - (string_height(string(SOUND_AMBIANT))/2)) - (string_height(TEXT.TEXT) / 2)) - (5 / 2);
+			ROUND.x = X;
+			ROUND.y = Y;
+			TEXT.x = x;
+			TEXT.y = y - 25 - string_height(string(SOUND_AMBIANT))/2;
+			ROUND.BBOX_X = (X + TEXT.TEXT_WIDTH) + 5;
+			ROUND.BBOX_Y = (Y + TEXT.TEXT_HEIGHT) + 5;
+			ROUND.COLOR = #282828;
+			ROUND.MARGE = 5;
+		}
+		
+		
+		SELECT = true;
+		for (var i = 0; PARENT.SSSYSTEM_SOUND_OBJECT[i] != undefined; i++) {
+			if (PARENT.SSSYSTEM_SOUND_OBJECT[i][0] == id)
+				break;
+		}
+			
+		x = mouse_x;
+		PARENT.SSSYSTEM_SOUND_OBJECT[i][1] = x - PARENT.x;
+		if (y - mouse_y > 50 || y - mouse_y < -50 || x - mouse_x > 50 || x - mouse_x < -50) {
+			if (ROUND != undefined) {
+				DestroyRound(ROUND.TAG);
+				ROUND = undefined;
+			}
+			SELECT = false;
+		}
+		if (x < OBJECT_LINKED.x)
+			PARENT.SSSYSTEM_SOUND_OBJECT[i][1] = (OBJECT_LINKED.x - PARENT.x);
+		else if (x > OBJECT_LINKED.x + OBJECT_LINKED.sprite_width)
+			PARENT.SSSYSTEM_SOUND_OBJECT[i][1] = (OBJECT_LINKED.x - PARENT.x) + OBJECT_LINKED.sprite_width;
+		
+		SOUND_AMBIANT = round((x - OBJECT_LINKED.x) / 2);
+		if (SOUND_AMBIANT > 100)
+			SOUND_AMBIANT = 100;
+		if (SOUND_AMBIANT < 0)
+			SOUND_AMBIANT = 0;
+		global.SOUNDS[2] = SOUND_AMBIANT;
+	} else {
+		if (ROUND != undefined) {
+			DestroyRound(ROUND.TAG);
+			ROUND = undefined;
+		}
+		SELECT = false;
+	}
+}
+
+if (PARENT.TAG + "AMBIANT_SOUND_BAR_2" == TAG)
+	IMAGE_WIDTH = OBJECT_LINKED.x - x;
+	
 if (string_count("ARTICLE", TAG) > 0 && PARENT.WINDOW.ON) {
 	
 	if (MouseInsideObject(id)) {

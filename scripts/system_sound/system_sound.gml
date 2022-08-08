@@ -92,6 +92,42 @@ function CreateSystemSound(id) {
 	bar_2.IMAGE_HEIGHT = 10;
 	bar_2.IMAGE_TOP = 0;
 	bar_2.IMAGE_LEFT = 0;
+	
+	// CREATE AMBIANT VOLUME
+	var empt_linked = GetEmptLinked(id.x - 290, id.y + 220, id.WINDOW.LAYERS[1], S_SSsystem_Ambiant_sound, OJustGUI,  "IMAGE");
+	var empt_text = GetEmptText(id.x - 100, id.y + 220, AutoLanguage("Ambient volume"), Arial10, c_gray, c_gray, id.WINDOW.LAYERS[1]);
+	
+	var SOUND_AMBIANT = CreateEmptyButton(OSettingEmpty, id.x - 100, id.y + 220, 450, 50, #FBFCFE, #F8FAFF, id.WINDOW.LAYERS[0], empt_linked, empt_text, id.TAG + "SOUND_AMBIANT", "EMPT_BUTTON-NO-HAND", [["BACK", 150], undefined]);
+	SOUND_AMBIANT.PARENT = id;
+	SOUND_AMBIANT.REF_X = -100;
+	SOUND_AMBIANT.REF_Y = 220;
+	SOUND_AMBIANT.EXT = true;
+	SOUND_AMBIANT.EXT_COLOR = #EAEEF1;
+	id.WINDOW.list_objects = addtolist(SOUND_AMBIANT, id.WINDOW.list_objects);
+	id.SSSYSTEM_SOUND_OBJECT = addtolist([SOUND_AMBIANT, 190, 220, 1], id.SSSYSTEM_SOUND_OBJECT);
+
+	// CREATE NOTIFICATION SOUND BAR_1
+	var bar_1 = CreateObjectSprite(id.x + 110, id.y + 242, id.WINDOW.LAYERS[1], S_Brightness_bar_1, OJustGUI, "IMAGE", id.TAG + "AMBIANT_SOUND_BAR_1", [undefined]);
+	id.WINDOW.list_objects = addtolist(bar_1, id.WINDOW.list_objects);
+	id.SSSYSTEM_SOUND_OBJECT = addtolist([bar_1, 110, 242, 1], id.SSSYSTEM_SOUND_OBJECT);
+	
+	// CREATE NOTIFICATION SOUND SELECTOR
+	var selector = CreateObjectSprite(id.x + 110 + 200, id.y + 247, id.WINDOW.LAYERS[3], S_Brightness_selector, OJustButtonSettings, "BUTTON", id.TAG + "AMBIANT_SOUND_SELECTOR", [undefined]);
+	id.WINDOW.list_objects = addtolist(selector, id.WINDOW.list_objects);
+	id.SSSYSTEM_SOUND_OBJECT = addtolist([selector, 110 + (global.SOUNDS[2] * 2), 247, 1], id.SSSYSTEM_SOUND_OBJECT);
+	selector.PARENT = id;
+	selector.OBJECT_LINKED = bar_1;
+
+	// CREATE NOTIFICATION SOUND BAR_2
+	var bar_2 = CreateObjectSprite(id.x + 110, id.y + 242, id.WINDOW.LAYERS[2], S_Brightness_bar_2, OJustButtonSettings, "IMAGE", id.TAG + "AMBIANT_SOUND_BAR_2", [undefined]);
+	id.WINDOW.list_objects = addtolist(bar_2, id.WINDOW.list_objects);
+	id.SSSYSTEM_SOUND_OBJECT = addtolist([bar_2, 110, 242, 1], id.SSSYSTEM_SOUND_OBJECT);
+	bar_2.OBJECT_LINKED = selector;
+	bar_2.PARENT = id;
+	bar_2.SET_DISPLAY_LEFT = true;
+	bar_2.IMAGE_HEIGHT = 10;
+	bar_2.IMAGE_TOP = 0;
+	bar_2.IMAGE_LEFT = 0;
 }
 
 function UpdateSystemSound(id) {
